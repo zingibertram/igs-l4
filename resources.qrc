@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>resources/sphere_frame.png</file>
+    </qresource>
+    <qresource prefix="/texture">
+        <file>resources/tex1.jpg</file>
+    </qresource>
+</RCC>
