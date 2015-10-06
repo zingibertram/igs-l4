@@ -15,13 +15,20 @@ SOURCES += main.cpp\
     point3d.cpp \
     matrix.cpp \
     surfaceimage.cpp \
-    triangle.cpp
+    triangle.cpp \
+    drawing.cpp \
+    utils.cpp \
+    drawFlat.cpp \
+    drawHuro.cpp \
+    drawFong.cpp
 HEADERS  += mainwindow.h \
     point3d.h \
     matrix.h \
     surfaceimage.h \
     surface.h \
-    triangle.h
+    triangle.h \
+    drawing.h \
+    utils.h
 
 FORMS    += mainwindow.ui
 

@@ -1,6 +1,8 @@
 #include "surfaceimage.h"
+#include "utils.h"
 
 #include <QtAlgorithms>
+#include <Exception>
 
 #include <stdio.h>
 
@@ -178,72 +180,11 @@ void SurfaceImage::paintEvent(QPaintEvent *event)
     {
         this->drawFrame(&painter);
     }
-    else if (surface.type == FLAT)
-    {
-        this->drawFlat();
-    }
-    else if (surface.type == HURO)
-    {
-        this->drawHuro();
-    }
-    else if (surface.type == FONG)
-    {
-        drawFong();
-    }
-    painter.drawImage(0, 0, bmp);
-}
-
-QColor SurfaceImage::calcColor(Vector n, bool isColor, QColor tex, bool isTextured)
-{
-    QColor c;
-    if (n.z > 0)
-    {
-        c = surface.exterior;
-    }
     else
     {
-        c = surface.interior;
+        draw();
     }
-    if (isColor)
-    {
-        return c;
-    }
-
-    if (isTextured)
-    {
-        c = tex;
-    }
-    double cosnl = n ^ light;
-    if (n.z * cosnl <= 0)
-    {
-        cosnl = 0;
-    }
-    cosnl = surface.kd * fabs(cosnl);
-
-    Vector r;
-    double nLength = n.len();
-    if (nLength > 0.00001)
-    {
-        r = n * (2 * (n * light) * (1.0 / nLength)) - light;
-    }
-    double cosor = observer ^ r;
-    if (cosor < 0)
-    {
-        cosor = 0;
-    }
-    cosor = surface.ks * pow(cosor, surface.n);
-
-    int R = min(surface.absent.red(), c.red()) * surface.ka
-          + min(surface.dot.red(), c.red()) * cosnl
-          + surface.dot.red() * cosor;
-    int G = min(surface.absent.green(), c.green()) * surface.ka
-          + min(surface.dot.green(), c.green()) * cosnl
-          + surface.dot.green() * cosor;
-    int B = min(surface.absent.blue(), c.blue()) * surface.ka
-          + min(surface.dot.blue(), c.blue()) * cosnl
-          + surface.dot.blue() * cosor;
-
-    return QColor(min(R, 255), min(G, 255), min(B, 255));
+    painter.drawImage(0, 0, bmp);
 }
 
 void SurfaceImage::setPolygonsCharacters(bool isColor)
@@ -251,25 +192,10 @@ void SurfaceImage::setPolygonsCharacters(bool isColor)
     for (int i = 0; i < polygons.count(); ++i)
     {
         Vector normal = this->getPlaneMatrix(&vertices[polygons[i].a], &vertices[polygons[i].b], &vertices[polygons[i].c]);
-        polygons[i].color = this->calcColor(normal, isColor);
+        polygons[i].color = U::calcColor(&surface, &observer, &light, normal, isColor);
         polygons[i].normal = normal;
     }
 }
-
-//void SurfaceImage::drawFlat(QPainter *pai)
-//{
-//    this->setPolygonsCharacters(false);
-//    for (int i = 0; i < polygons.count(); ++i)
-//    {
-//        pai->setPen(QPen(polygons[i].color));
-//        pai->setBrush(QBrush(polygons[i].color));
-//        QPointF vertex[3];
-//        vertex[0] = vertices[polygons[i].a].toQPoint() + center;
-//        vertex[1] = vertices[polygons[i].b].toQPoint() + center;
-//        vertex[2] = vertices[polygons[i].c].toQPoint() + center;
-//        pai->drawPolygon(vertex, 3);
-//    }
-//}
 
 void SurfaceImage::drawFrame(QPainter *pai)
 {
@@ -374,59 +300,37 @@ void SurfaceImage::setVerticesColor()
         {
             current = surface.interior;
         }
-        vertices[key].color = this->calcColor(vertices[key].normal, false);
+        vertices[key].color = U::calcColor(&surface, &observer, &light, vertices[key].normal, false);
     }
 }
 
-QColor SurfaceImage::colorInterpolation(QColor max, QColor min, double kmax, double kmin)
-{
-    double r = max.red() * kmax + min.red() * kmin;
-    if (r > 255)
-    {
-        r = 255;
-    }
-    double g = max.green() * kmax + min.green() * kmin;
-    if (g > 255)
-    {
-        g = 255;
-    }
-    double b = max.blue() * kmax + min.blue() * kmin;
-    if (b > 255)
-    {
-        b = 255;
-    }
-    return QColor(r, g, b);
-}
-
-void SurfaceImage::setPixel(QColor current, int i, int j)
-{
-    QColor bufCol(bmp.pixel(i, j));
-    double one_Minus_Alpha = 1.0 - surface.alpha;
-    int r = surface.alpha * (double)current.red() + one_Minus_Alpha * (double)bufCol.red();
-    int g = surface.alpha * (double)current.green() + one_Minus_Alpha * (double)bufCol.green();
-    int b = surface.alpha * (double)current.blue() + one_Minus_Alpha * (double)bufCol.blue();
-    bmp.setPixel(i, j, QColor(std::min(255, r), std::min(255, g), std::min(255, b)).rgb());
-}
-
-void SurfaceImage::drawFlat()
+void SurfaceImage::draw()
 {
     this->setZBuffer();
-    this->setPolygonsCharacters(false);
+    this->setPolygonsCharacters(!surface.isFlat);
 
+    if (!surface.isFlat)
+    {
+        this->setVerticesNormal();
+    }
+    if (surface.type == HURO)
+    {
+        this->setVerticesColor();
+    }
+
+    FlatDrawing *drawing = getDrawing();
     for (int i = 0; i < polygons.count(); ++i)
     {
         this->sortVertex(i);
+
         Point3D A = vertices[polygons[i].a];
         Point3D B = vertices[polygons[i].b];
         Point3D C = vertices[polygons[i].c];
 
-        QPoint texA, texB, texC;
-        if (surface.isTextured)
-        {
-            texA = texels[polygons[i].a];
-            texB = texels[polygons[i].b];
-            texC = texels[polygons[i].c];
-        }
+        drawing->setVertices(&vertices, &polygons[i]);
+
+        drawing->setTexels(&texels, &polygons[i]);
+
         double prevSY = C.y() - 1.0;
         for (double sy = C.y(); sy <= A.y(); sy += 0.3)
         {
@@ -437,26 +341,19 @@ void SurfaceImage::drawFlat()
             prevSY = sy;
             double k;
             double xa, xb, za, zb;
-            int texXA, texXB, texYA, texYB;
 
             xa = C.x();
             za = C.z();
-            if (surface.isTextured)
-            {
-                texXA = texC.x();
-                texYA = texC.y();
-            }
+
+            drawing->setA();
 
             if (A.y() - C.y() > eps)
             {
                 k = (sy - C.y()) / (A.y() - C.y());
                 xa += k * (A.x() - C.x());
                 za += k * (A.z() - C.z());
-                if (surface.isTextured)
-                {
-                    texXA += k * (double)(texA.x() - texC.x());
-                    texYA += k * (double)(texA.y() - texC.y());
-                }
+
+                drawing->setInterpolatedA(k);
             }
 
             if (sy < B.y())
@@ -465,32 +362,22 @@ void SurfaceImage::drawFlat()
                 xb = C.x() + k * (B.x() - C.x());
                 zb = C.z() + k * (B.z() - C.z());
 
-                if (surface.isTextured)
-                {
-                    texXB = texC.x() + k * (double)(texB.x() - texC.x());
-                    texYB = texC.y() + k * (double)(texB.y() - texC.y());
-                }
+                drawing->setBCInterpolatedB(k);
             }
             else
             {
                 xb = B.x();
                 zb = B.z();
-                if (surface.isTextured)
-                {
-                    texXB = texB.x();
-                    texYB = texB.y();
-                }
+
+                drawing->setB();
 
                 if (A.y() - B.y() > eps)
                 {
                     k = (sy - B.y()) / (A.y() - B.y());
                     xb += k * (A.x() - B.x());
                     zb += k * (A.z() - B.z());
-                    if (surface.isTextured)
-                    {
-                        texXB += k * (double)(texA.x() - texB.x());
-                        texYB += k * (double)(texA.y() - texB.y());
-                    }
+
+                    drawing->setABInterpolatedB(k);
                 }
             }
 
@@ -499,12 +386,8 @@ void SurfaceImage::drawFlat()
                 double tmp;
                 tmp = xa; xa = xb; xb = tmp;
                 tmp = za; za = zb; zb = tmp;
-                if (surface.isTextured)
-                {
-                    int tex;
-                    tex = texXA; texXA = texXB; texXB = tex;
-                    tex = texYA; texYA = texYB; texYB = tex;
-                }
+
+                drawing->swapAB();
             }
             double prevSX = xa - 1.0;
             for (double sx = xa; sx <= xb; sx += 1.0)
@@ -520,378 +403,26 @@ void SurfaceImage::drawFlat()
                 int xp = (int)(sx + center.x());
                 int yp = (int)(center.y() - sy);
 
-                QPoint texPoint;
-                QColor texColor;
-                if (surface.isTextured)
-                {
-                    texPoint = QPoint(texXA + (double)(texXB - texXA) * k, texYA + (double)(texYB - texYA) * k);
-                    if (textureImg.valid(texPoint))
-                    {
-                        texColor = QColor(textureImg.pixel(texPoint));
-                    }
-                }
-
-                if (- 1 < xp && xp < this->width() && - 1 < yp && yp < this->height())
-                {
-                    if (sz - zBuffer[xp][yp] > 0.999)
-                    {
-                        QColor current;
-
-                        if (surface.isTextured)
-                        {
-                            current = this->calcColor(polygons[i].normal, false, texColor, true);
-                        }
-                        else
-                        {
-                            current = polygons[i].color;
-                        }
-
-                        setPixel(current, xp, yp);
-                        zBuffer[xp][yp] = sz;
-                    }
-                }
+                drawing->calculatePixel(xp, yp, sz, k, polygons[i].color, polygons[i].normal);
             }
         }
     }
     this->delZBuffer();
 }
 
-void SurfaceImage::drawHuro()
+FlatDrawing* SurfaceImage::getDrawing()
 {
-    this->setZBuffer();
-    this->setPolygonsCharacters(true);
-
-    this->setVerticesNormal();
-    this->setVerticesColor();
-    for (int i = 0; i < polygons.count(); ++i)
+    switch (surface.type)
     {
-        this->sortVertex(i);
-        Point3D A = vertices[polygons[i].a];
-        Point3D B = vertices[polygons[i].b];
-        Point3D C = vertices[polygons[i].c];
-
-        QPoint texA, texB, texC;
-        if (surface.isTextured)
-        {
-            texA = texels[polygons[i].a];
-            texB = texels[polygons[i].b];
-            texC = texels[polygons[i].c];
-        }
-        double prevSY = C.y() - 1.0;
-        for (double sy = C.y(); sy <= A.y(); sy += 0.3)
-        {
-            if ((int)prevSY == (int)sy)
-            {
-                continue;
-            }
-            prevSY = sy;
-            double k;
-            double xa, xb, za, zb;
-            int texXA, texXB, texYA, texYB;
-
-            QColor cola, colb;
-
-            xa = C.x();
-            za = C.z();
-            if (surface.isTextured)
-            {
-                texXA = texC.x();
-                texYA = texC.y();
-            }
-
-            cola = C.color;
-            if (A.y() - C.y() > eps)
-            {
-                k = (sy - C.y()) / (A.y() - C.y());
-                xa += k * (A.x() - C.x());
-                za += k * (A.z() - C.z());
-                if (surface.isTextured)
-                {
-                    texXA += k * (double)(texA.x() - texC.x());
-                    texYA += k * (double)(texA.y() - texC.y());
-                }
-
-                cola = this->colorInterpolation(A.color, C.color, k, 1 - k);
-            }
-
-            if (sy < B.y())
-            {
-                k = (sy - C.y()) / (B.y() - C.y());
-                xb = C.x() + k * (B.x() - C.x());
-                zb = C.z() + k * (B.z() - C.z());
-
-                if (surface.isTextured)
-                {
-                    texXB = texC.x() + k * (double)(texB.x() - texC.x());
-                    texYB = texC.y() + k * (double)(texB.y() - texC.y());
-                }
-
-                colb = this->colorInterpolation(B.color, C.color, k, 1 - k);
-            }
-            else
-            {
-                xb = B.x();
-                zb = B.z();
-                if (surface.isTextured)
-                {
-                    texXB = texB.x();
-                    texYB = texB.y();
-                }
-
-                colb = B.color;
-                if (A.y() - B.y() > eps)
-                {
-                    k = (sy - B.y()) / (A.y() - B.y());
-                    xb += k * (A.x() - B.x());
-                    zb += k * (A.z() - B.z());
-                    if (surface.isTextured)
-                    {
-                        texXB += k * (double)(texA.x() - texB.x());
-                        texYB += k * (double)(texA.y() - texB.y());
-                    }
-
-                    colb = this->colorInterpolation(A.color, B.color, k, 1 - k);
-                }
-            }
-
-            if (xa > xb)
-            {
-                double tmp;
-                tmp = xa; xa = xb; xb = tmp;
-                tmp = za; za = zb; zb = tmp;
-                if (surface.isTextured)
-                {
-                    int tex;
-                    tex = texXA; texXA = texXB; texXB = tex;
-                    tex = texYA; texYA = texYB; texYB = tex;
-                }
-
-                QColor buf = cola;
-                cola = colb; colb = buf;
-            }
-            double prevSX = xa - 1.0;
-            for (double sx = xa; sx <= xb; sx += 1.0)
-            {
-
-                if ((int)prevSX == (int)sx)
-                {
-                    continue;
-                }
-                prevSX = sx;
-                double k = (sx - xa) / (xb - xa);
-                double sz = za + (zb - za) * k;
-                int xp = (int)(sx + center.x());
-                int yp = (int)(center.y() - sy);
-
-                QPoint texPoint;
-                QColor texColor;
-                if (surface.isTextured)
-                {
-                    texPoint = QPoint(texXA + (double)(texXB - texXA) * k, texYA + (double)(texYB - texYA) * k);
-                    if (textureImg.valid(texPoint))
-                    {
-                        texColor = QColor(textureImg.pixel(texPoint));
-                    }
-                }
-
-                if (- 1 < xp && xp < this->width() && - 1 < yp && yp < this->height())
-                {
-                    if (sz - zBuffer[xp][yp] > 0.999)
-                    {
-                        QColor current;
-
-                        QColor tmpCol = this->colorInterpolation(colb, cola, k, 1 - k);
-                        if (surface.isTextured)
-                        {
-                            int r = tmpCol.redF() * (double)texColor.red();
-                            int g = tmpCol.greenF() * (double)texColor.green();
-                            int b = tmpCol.blueF() * (double)texColor.blue();
-                            current = QColor(r, g, b);
-                        }
-                        else
-                        {
-                            current = tmpCol;
-                        }
-
-                        setPixel(current, xp, yp);
-                        zBuffer[xp][yp] = sz;
-                    }
-                }
-            }
-        }
+        case FLAT:
+            return new FlatDrawing(&textureImg, &surface, &observer, &light, zBuffer, &bmp, width(), height());
+        case HURO:
+            return new HuroDrawing(&textureImg, &surface, &observer, &light, zBuffer, &bmp, width(), height());
+        case FONG:
+            return new FongDrawing(&textureImg, &surface, &observer, &light, zBuffer, &bmp, width(), height());
+        default:
+            throw "Unsupported colorable surface type";
     }
-    this->delZBuffer();
-}
-
-void SurfaceImage::drawFong()
-{
-    this->setZBuffer();
-    this->setPolygonsCharacters(true);
-
-    this->setVerticesNormal();
-    for (int i = 0; i < polygons.count(); ++i)
-    {
-        this->sortVertex(i);
-        Point3D A = vertices[polygons[i].a];
-        Point3D B = vertices[polygons[i].b];
-        Point3D C = vertices[polygons[i].c];
-
-        QPoint texA, texB, texC;
-        if (surface.isTextured)
-        {
-            texA = texels[polygons[i].a];
-            texB = texels[polygons[i].b];
-            texC = texels[polygons[i].c];
-        }
-        double prevSY = C.y() - 1.0;
-        for (double sy = C.y(); sy <= A.y(); sy += 0.3)
-        {
-            if ((int)prevSY == (int)sy)
-            {
-                continue;
-            }
-            prevSY = sy;
-            double k;
-            double xa, xb, za, zb;
-            int texXA, texXB, texYA, texYB;
-
-            Vector veca, vecb;
-
-            xa = C.x();
-            za = C.z();
-            if (surface.isTextured)
-            {
-                texXA = texC.x();
-                texYA = texC.y();
-            }
-
-            veca = C.normal;
-            if (A.y() - C.y() > eps)
-            {
-                k = (sy - C.y()) / (A.y() - C.y());
-                xa += k * (A.x() - C.x());
-                za += k * (A.z() - C.z());
-                if (surface.isTextured)
-                {
-                    texXA += k * (double)(texA.x() - texC.x());
-                    texYA += k * (double)(texA.y() - texC.y());
-                }
-
-                veca = C.normal * (1 - k) + A.normal * k;
-            }
-
-            if (sy < B.y())
-            {
-                k = (sy - C.y()) / (B.y() - C.y());
-                xb = C.x() + k * (B.x() - C.x());
-                zb = C.z() + k * (B.z() - C.z());
-
-                if (surface.isTextured)
-                {
-                    texXB = texC.x() + k * (double)(texB.x() - texC.x());
-                    texYB = texC.y() + k * (double)(texB.y() - texC.y());
-                }
-
-                vecb = C.normal * (1 - k) + B.normal * k;
-            }
-            else
-            {
-                xb = B.x();
-                zb = B.z();
-                if (surface.isTextured)
-                {
-                    texXB = texB.x();
-                    texYB = texB.y();
-                }
-
-                vecb = B.normal;
-                if (A.y() - B.y() > eps)
-                {
-                    k = (sy - B.y()) / (A.y() - B.y());
-                    xb += k * (A.x() - B.x());
-                    zb += k * (A.z() - B.z());
-                    if (surface.isTextured)
-                    {
-                        texXB += k * (double)(texA.x() - texB.x());
-                        texYB += k * (double)(texA.y() - texB.y());
-                    }
-
-                    vecb = B.normal * (1 - k) + A.normal * k;
-                }
-            }
-
-            if (xa > xb)
-            {
-                double tmp;
-                tmp = xa; xa = xb; xb = tmp;
-                tmp = za; za = zb; zb = tmp;
-                if (surface.isTextured)
-                {
-                    int tex;
-                    tex = texXA; texXA = texXB; texXB = tex;
-                    tex = texYA; texYA = texYB; texYB = tex;
-                }
-
-                Vector buf = veca;
-                veca = vecb; vecb = buf;
-            }
-            double prevSX = xa - 1.0;
-            for (double sx = xa; sx <= xb; sx += 1.0)
-            {
-                if ((int)prevSX == (int)sx)
-                {
-                    continue;
-                }
-                prevSX = sx;
-                double k = (sx - xa) / (xb - xa);
-                double sz = za + (zb - za) * k;
-                int xp = (int)(sx + center.x());
-                int yp = (int)(center.y() - sy);
-
-                QPoint texPoint;
-                QColor texColor;
-                if (surface.isTextured)
-                {
-                    texPoint = QPoint(texXA + (double)(texXB - texXA) * k, texYA + (double)(texYB - texYA) * k);
-                    if (textureImg.valid(texPoint))
-                    {
-                        texColor = QColor(textureImg.pixel(texPoint));
-                    }
-                }
-
-                if (- 1 < xp && xp < this->width() && - 1 < yp && yp < this->height())
-                {
-                    if (sz - zBuffer[xp][yp] > 0.999)
-                    {
-                        Vector norm;
-                        QColor current;
-
-                        norm = veca + (vecb - veca) * k;
-                        if (surface.isTextured)
-                        {
-                            current = this->calcColor(norm, false, texColor, true);
-                        }
-                        else
-                        {
-                            if (norm.z > 0)
-                            {
-                                current = surface.exterior;
-                            }
-                            else
-                            {
-                                current = surface.interior;
-                            }
-                            current = this->calcColor(norm, false);
-                        }
-
-                        setPixel(current, xp, yp);
-                        zBuffer[xp][yp] = sz;
-                    }
-                }
-            }
-        }
-    }
-    this->delZBuffer();
 }
 
 void SurfaceImage::drawAxis(QPainter *p)

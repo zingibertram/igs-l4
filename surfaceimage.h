@@ -5,6 +5,8 @@
 #include "point3d.h"
 #include "surface.h"
 #include "triangle.h"
+#include "utils.h"
+#include "drawing.h"
 
 #include <QWidget>
 #include <QGraphicsView>
@@ -19,10 +21,6 @@
 #include <QRgb>
 
 #include <math.h>
-
-typedef QList<Triangle> Polygons;
-typedef QMap<VertexIndex, Point3D> Vertices;
-typedef QMap<VertexIndex, QPoint> Texels;
 
 class SurfaceImage : public QGraphicsView
 {
@@ -59,21 +57,17 @@ private:
     void setPoints();
     void setPolygons();
     void paintEvent(QPaintEvent *event);
-//    void drawFlat(QPainter* pai);
     void drawFrame(QPainter* pai);
     void drawAxis(QPainter *p);
     Matrix rotMatrix(int i, int j, int angle);
-    QColor calcColor(Vector n, bool isColor, QColor tex = QColor(), bool isTextured = false);
     void setZBuffer();
     void delZBuffer();
     void sortVertex(int idx);
     void setVerticesNormal();
     void setVerticesColor();
-    QColor colorInterpolation(QColor max, QColor min, double kmax, double kmin);
     void setPolygonsCharacters(bool isColor);
-    void drawFlat();
-    void drawHuro();
-    void drawFong();
+    void draw();
+    FlatDrawing* getDrawing();
     void setPixel(QColor current, int i, int j);
 };
 
