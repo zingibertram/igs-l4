@@ -70,14 +70,6 @@ void FongDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor c, 
             }
             else
             {
-                if (norm.z > 0)
-                {
-                    current = surface->exterior;
-                }
-                else
-                {
-                    current = surface->interior;
-                }
                 current = U::calcColor(surface, observer, light, norm, false);
             }
 

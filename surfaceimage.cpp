@@ -2,7 +2,7 @@
 #include "utils.h"
 
 #include <QtAlgorithms>
-#include <Exception>
+#include <QTime>
 
 #include <stdio.h>
 
@@ -291,21 +291,15 @@ void SurfaceImage::setVerticesColor()
     for (int k = 0; k < keys.count(); ++k)
     {
         VertexIndex key = keys[k];
-        QColor current;
-        if (vertices[key].normal.z > 0)
-        {
-            current = surface.exterior;
-        }
-        else
-        {
-            current = surface.interior;
-        }
         vertices[key].color = U::calcColor(&surface, &observer, &light, vertices[key].normal, false);
     }
 }
 
 void SurfaceImage::draw()
 {
+    QTime time;
+    time.start();
+
     this->setZBuffer();
     this->setPolygonsCharacters(surface.type != FLAT);
 
@@ -408,6 +402,9 @@ void SurfaceImage::draw()
         }
     }
     this->delZBuffer();
+
+    int t = time.elapsed();
+    qDebug() << surface.type << " " << t;
 }
 
 FlatDrawing* SurfaceImage::getDrawing()

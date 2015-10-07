@@ -25,15 +25,8 @@ QColor U::colorInterpolation(QColor max, QColor min, double kmax, double kmin)
 
 QColor U::calcColor(Surface *surface, Vector *observer, Vector *light, Vector n, bool isColor, QColor tex, bool isTextured)
 {
-    QColor c;
-    if (n.z > 0)
-    {
-        c = surface->exterior;
-    }
-    else
-    {
-        c = surface->interior;
-    }
+    QColor c = n.z > 0 ? surface->exterior  : surface->interior;
+
     if (isColor)
     {
         return c;
@@ -43,8 +36,13 @@ QColor U::calcColor(Surface *surface, Vector *observer, Vector *light, Vector n,
     {
         c = tex;
     }
-    Vector _light = *light;
-    double cosnl = n ^ _light;
+
+    return calcColorImpl(surface, *observer, *light, n, c);
+}
+
+QColor U::calcColorImpl(Surface *surface, Vector observer, Vector light, Vector n, QColor c)
+{
+    double cosnl = n ^ light;
     if (n.z * cosnl <= 0)
     {
         cosnl = 0;
@@ -55,14 +53,15 @@ QColor U::calcColor(Surface *surface, Vector *observer, Vector *light, Vector n,
     double nLength = n.len();
     if (nLength > 0.00001)
     {
-        r = n * (2 * (n * _light) * (1.0 / nLength)) - _light;
+        r = n * (2 * (n * light) * (1.0 / nLength)) - light;
     }
-    Vector _observer = *observer;
-    double cosor = _observer ^ r;
+
+    double cosor = observer ^ r;
     if (cosor < 0)
     {
         cosor = 0;
     }
+
     cosor = surface->ks * pow(cosor, surface->n);
 
     int R = min(surface->absent.red(), c.red()) * surface->ka

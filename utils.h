@@ -13,6 +13,7 @@ namespace U
 {
     QColor colorInterpolation(QColor max, QColor min, double kmax, double kmin);
     QColor calcColor(Surface *surface, Vector *observer, Vector *light, Vector n, bool isColor, QColor tex = QColor(), bool isTextured = false);
+    QColor calcColorImpl(Surface *surface, Vector observer, Vector light, Vector n, QColor c);
 }
 
 #endif // UTILS_H

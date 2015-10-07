@@ -65,9 +65,9 @@ void HuroDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor c, 
             QColor tmpCol = U::colorInterpolation(colb, cola, k, 1 - k);
             if (surface->isTextured)
             {
-                int r = tmpCol.redF() * (double)texColor.red();
-                int g = tmpCol.greenF() * (double)texColor.green();
-                int b = tmpCol.blueF() * (double)texColor.blue();
+                int r = tmpCol.redF() * texColor.redF();
+                int g = tmpCol.greenF() * texColor.greenF();
+                int b = tmpCol.blueF() * texColor.blueF();
                 current = QColor(r, g, b);
             }
             else
