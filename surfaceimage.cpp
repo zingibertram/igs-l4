@@ -1,5 +1,6 @@
 #include "surfaceimage.h"
 #include "utils.h"
+#include "vector.h"
 
 #include <QtAlgorithms>
 #include <QTime>
@@ -405,6 +406,8 @@ void SurfaceImage::draw()
 
     int t = time.elapsed();
     qDebug() << surface.type << " " << t;
+    qDebug() << sizeof(Surface);
+    qDebug() << sizeof(Surface*);
 }
 
 FlatDrawing* SurfaceImage::getDrawing()

@@ -1,7 +1,7 @@
 #ifndef POINT3D_H
 #define POINT3D_H
 
-#include "triangle.h"
+#include "vector.h"
 
 #include <QList>
 #include <QPointF>

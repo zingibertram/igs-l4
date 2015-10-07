@@ -28,7 +28,8 @@ HEADERS  += mainwindow.h \
     surface.h \
     triangle.h \
     drawing.h \
-    utils.h
+    utils.h \
+    vector.h
 
 FORMS    += mainwindow.ui
 

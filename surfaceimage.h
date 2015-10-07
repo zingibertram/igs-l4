@@ -7,6 +7,7 @@
 #include "triangle.h"
 #include "utils.h"
 #include "drawing.h"
+#include "vector.h"
 
 #include <QWidget>
 #include <QGraphicsView>
