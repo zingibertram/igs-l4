@@ -10,19 +10,19 @@
 
 class FlatDrawing
 {
+private:
+    QImage *bmp;
+    QPoint *texA;
+    QPoint *texB;
+    QPoint *texC;
 protected:
     QImage *textureImg;
     Surface *surface;
     double **zBuffer;
-    QImage *bmp;
 
     Point3D *A;
     Point3D *B;
     Point3D *C;
-
-    QPoint *texA;
-    QPoint *texB;
-    QPoint *texC;
 
     int texXA;
     int texXB;

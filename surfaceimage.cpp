@@ -307,9 +307,9 @@ void SurfaceImage::setVerticesColor()
 void SurfaceImage::draw()
 {
     this->setZBuffer();
-    this->setPolygonsCharacters(!surface.isFlat);
+    this->setPolygonsCharacters(surface.type != FLAT);
 
-    if (!surface.isFlat)
+    if (surface.type != FLAT)
     {
         this->setVerticesNormal();
     }
