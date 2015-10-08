@@ -1,5 +1,7 @@
 #include "triangle.h"
 
+#include <QDebug>
+
 int min(int a, int b)
 {
     if (a < b)

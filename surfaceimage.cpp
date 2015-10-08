@@ -4,6 +4,7 @@
 
 #include <QtAlgorithms>
 #include <QTime>
+#include <QDebug>
 
 #include <stdio.h>
 
@@ -28,9 +29,7 @@ SurfaceImage::SurfaceImage(QWidget *parent) :
     matbuf[15] = 1;
     rotate = Matrix(matbuf);
 
-    observer.x = 0;
-    observer.y = 0;
-    observer.z = 1;
+    observer = Vector(0, 0, 1);
 
     lineColor = Qt::white;
 }
@@ -70,17 +69,19 @@ void SurfaceImage::buildRotateMatrix()
 
 Vector SurfaceImage::getPlaneMatrix(Point3D *A, Point3D *B, Point3D *C)
 {
-    Vector plain;
-    plain.x = (A->y() - B->y())*(A->z() + B->z())
+    double x = (A->y() - B->y())*(A->z() + B->z())
              +(B->y() - C->y())*(B->z() + C->z())
              +(C->y() - A->y())*(C->z() + A->z());
-    plain.y = (A->z() - B->z())*(A->x() + B->x())
+    double y = (A->z() - B->z())*(A->x() + B->x())
              +(B->z() - C->z())*(B->x() + C->x())
              +(C->z() - A->z())*(C->x() + A->x());
-    plain.z = (A->x() - B->x())*(A->y() + B->y())
+    double z = (A->x() - B->x())*(A->y() + B->y())
              +(B->x() - C->x())*(B->y() + C->y())
              +(C->x() - A->x())*(C->y() + A->y());
+
+    Vector plain(x, y, z);
     plain.unit();
+
     return plain;
 }
 

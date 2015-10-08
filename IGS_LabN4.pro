@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     utils.cpp \
     drawFlat.cpp \
     drawHuro.cpp \
-    drawFong.cpp
+    drawFong.cpp \
+    vector.cpp
 HEADERS  += mainwindow.h \
     point3d.h \
     matrix.h \
