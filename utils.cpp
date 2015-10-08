@@ -2,6 +2,15 @@
 #include "surface.h"
 
 #include <QColor>
+#include <QDebug>
+
+#include <math.h>
+#include <algorithm>
+
+void debugColor(QColor c, QString s)
+{
+    qDebug() << s << c.red() << ' ' << c.green() << ' ' << c.blue();
+}
 
 QColor U::colorInterpolation(QColor max, QColor min, double kmax, double kmin)
 {
@@ -23,9 +32,9 @@ QColor U::colorInterpolation(QColor max, QColor min, double kmax, double kmin)
     return QColor(r, g, b);
 }
 
-QColor U::calcColor(Surface *surface, Vector *observer, Vector *light, Vector n, bool isColor, QColor tex, bool isTextured)
+QColor U::calcColor(Surface *surface, Vector *light, Vector n, bool isColor, QColor tex, bool isTextured)
 {
-    QColor c = n.z > 0 ? surface->exterior  : surface->interior;
+    QColor c = n.z() > 0 ? surface->exterior  : surface->interior;
 
     if (isColor)
     {
@@ -37,13 +46,13 @@ QColor U::calcColor(Surface *surface, Vector *observer, Vector *light, Vector n,
         c = tex;
     }
 
-    return calcColorImpl(surface, *observer, *light, n, c);
+    return calcColorImpl(surface, *light, n, c);
 }
 
-QColor U::calcColorImpl(Surface *surface, Vector observer, Vector light, Vector n, QColor c)
+QColor U::calcColorImpl(Surface *surface, Vector light, Vector n, QColor c)
 {
     double cosnl = n ^ light;
-    if (n.z * cosnl <= 0)
+    if (n.z() * cosnl <= 0)
     {
         cosnl = 0;
     }
@@ -56,7 +65,7 @@ QColor U::calcColorImpl(Surface *surface, Vector observer, Vector light, Vector 
         r = n * (2 * (n * light) * (1.0 / nLength)) - light;
     }
 
-    double cosor = observer ^ r;
+    double cosor = surface->observer ^ r;
     if (cosor < 0)
     {
         cosor = 0;
@@ -64,15 +73,15 @@ QColor U::calcColorImpl(Surface *surface, Vector observer, Vector light, Vector 
 
     cosor = surface->ks * pow(cosor, surface->n);
 
-    int R = min(surface->absent.red(), c.red()) * surface->ka
-          + min(surface->dot.red(), c.red()) * cosnl
+    int R = std::min(surface->absent.red(), c.red()) * surface->ka
+          + std::min(surface->dot.red(), c.red()) * cosnl
           + surface->dot.red() * cosor;
-    int G = min(surface->absent.green(), c.green()) * surface->ka
-          + min(surface->dot.green(), c.green()) * cosnl
+    int G = std::min(surface->absent.green(), c.green()) * surface->ka
+          + std::min(surface->dot.green(), c.green()) * cosnl
           + surface->dot.green() * cosor;
-    int B = min(surface->absent.blue(), c.blue()) * surface->ka
-          + min(surface->dot.blue(), c.blue()) * cosnl
+    int B = std::min(surface->absent.blue(), c.blue()) * surface->ka
+          + std::min(surface->dot.blue(), c.blue()) * cosnl
           + surface->dot.blue() * cosor;
 
-    return QColor(min(R, 255), min(G, 255), min(B, 255));
+    return QColor(std::min(R, 255), std::min(G, 255), std::min(B, 255));
 }

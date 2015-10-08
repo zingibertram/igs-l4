@@ -29,8 +29,6 @@ SurfaceImage::SurfaceImage(QWidget *parent) :
     matbuf[15] = 1;
     rotate = Matrix(matbuf);
 
-    observer = Vector(0, 0, 1);
-
     lineColor = Qt::white;
 }
 
@@ -194,7 +192,7 @@ void SurfaceImage::setPolygonsCharacters(bool isColor)
     for (int i = 0; i < polygons.count(); ++i)
     {
         Vector normal = this->getPlaneMatrix(&vertices[polygons[i].a], &vertices[polygons[i].b], &vertices[polygons[i].c]);
-        polygons[i].color = U::calcColor(&surface, &observer, &light, normal, isColor);
+        polygons[i].color = U::calcColor(&surface, &light, normal, isColor);
         polygons[i].normal = normal;
     }
 }
@@ -293,7 +291,7 @@ void SurfaceImage::setVerticesColor()
     for (int k = 0; k < keys.count(); ++k)
     {
         VertexIndex key = keys[k];
-        vertices[key].color = U::calcColor(&surface, &observer, &light, vertices[key].normal, false);
+        vertices[key].color = U::calcColor(&surface, &light, vertices[key].normal, false);
     }
 }
 
@@ -416,11 +414,11 @@ FlatDrawing* SurfaceImage::getDrawing()
     switch (surface.type)
     {
         case FLAT:
-            return new FlatDrawing(&textureImg, &surface, &observer, &light, zBuffer, &bmp, width(), height());
+            return new FlatDrawing(&textureImg, &surface, &light, zBuffer, &bmp, width(), height());
         case HURO:
-            return new HuroDrawing(&textureImg, &surface, &observer, &light, zBuffer, &bmp, width(), height());
+            return new HuroDrawing(&textureImg, &surface, &light, zBuffer, &bmp, width(), height());
         case FONG:
-            return new FongDrawing(&textureImg, &surface, &observer, &light, zBuffer, &bmp, width(), height());
+            return new FongDrawing(&textureImg, &surface, &light, zBuffer, &bmp, width(), height());
         default:
             throw "Unsupported colorable surface type";
     }

@@ -3,14 +3,10 @@
 
 #include "point3d.h"
 #include "vector.h"
+#include "typedefs.h"
 
-#include <QPair>
 #include <QColor>
-
-int min(int a, int b);
-void debugColor(QColor c, QString s);
-
-typedef QPair<int, int> VertexIndex;
+#include <QList>
 
 struct Triangle
 {
@@ -23,6 +19,9 @@ struct Triangle
 
     Triangle();
 };
+
+typedef QList<Triangle> Polygons;
+
 bool operator <(Triangle t1, Triangle t2);
 
 #endif // PLAIN_H

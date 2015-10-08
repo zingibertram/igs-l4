@@ -1,5 +1,7 @@
 #include "drawing.h"
 
+#include <QMap>
+
 void FlatDrawing::setTexels(Texels *texels, Triangle *polygon)
 {
     if (surface->isTextured)

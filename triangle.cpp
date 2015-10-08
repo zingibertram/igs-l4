@@ -1,21 +1,5 @@
 #include "triangle.h"
 
-#include <QDebug>
-
-int min(int a, int b)
-{
-    if (a < b)
-    {
-        return a;
-    }
-    return b;
-}
-
-void debugColor(QColor c, QString s)
-{
-    qDebug() << s << c.red() << ' ' << c.green() << ' ' << c.blue();
-}
-
 Triangle::Triangle()
 {
     z = 0;

@@ -6,11 +6,13 @@ class Vector
 private:
     double x;
     double y;
-    double z;
+    double z_;
 
 public:
     Vector(double vx, double vy, double vz);
     Vector();
+
+    double z();
 
     void unit();
     double len();

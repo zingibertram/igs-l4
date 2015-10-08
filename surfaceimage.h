@@ -38,7 +38,6 @@ private:
 
     // параметрическое уравнение
     Surface surface;
-    Vector observer;
     Vector light;
     double matbuf[16];
     Matrix rotate;

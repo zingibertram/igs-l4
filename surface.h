@@ -2,6 +2,7 @@
 #define SURFACE_H
 
 #include "point3d.h"
+#include "vector.h"
 
 #include <QColor>
 
@@ -51,6 +52,10 @@ struct Surface
     bool isTextured;
 
     QString textureFile;
+
+    Vector observer;
+
+    Surface();
 };
 
 #endif // SURFACE_H

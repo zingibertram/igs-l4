@@ -2,10 +2,12 @@
 #define POINT3D_H
 
 #include "vector.h"
+#include "typedefs.h"
 
 #include <QList>
 #include <QPointF>
 #include <QColor>
+#include <QMap>
 
 class Point3D
 {
@@ -37,5 +39,7 @@ public:
     double to(Point3D t);
     QPointF toQPoint();
 };
+
+typedef QMap<VertexIndex, Point3D> Vertices;
 
 #endif // POINT3D_H

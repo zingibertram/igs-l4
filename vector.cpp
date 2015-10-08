@@ -8,14 +8,19 @@ Vector::Vector(double vx, double vy, double vz)
 {
     x = vx;
     y = vy;
-    z = vz;
+    z_ = vz;
 }
 
 Vector::Vector()
 {
     x = 0.0;
     y = 0.0;
-    z = 0.0;
+    z_ = 0.0;
+}
+
+double Vector::z()
+{
+    return z_;
 }
 
 void Vector::unit()
@@ -25,46 +30,46 @@ void Vector::unit()
     {
         x /= s;
         y /= s;
-        z /= s;
+        z_ /= s;
     }
 }
 
 double Vector::len()
 {
-    return sqrt(x * x + y * y + z * z);
+    return sqrt(x * x + y * y + z_ * z_);
 }
 
 double Vector::operator *(Vector a)
 {
-    return x * a.x + y * a.y + z * a.z;
+    return x * a.x + y * a.y + z_ * a.z_;
 }
 
 Vector Vector::operator +(Vector a)
 {
-    return Vector(x + a.x, y + a.y, z + a.z);
+    return Vector(x + a.x, y + a.y, z_ + a.z_);
 }
 
 Vector Vector::operator -(Vector a)
 {
-    return Vector(x - a.x, y - a.y, z - a.z);
+    return Vector(x - a.x, y - a.y, z_ - a.z_);
 }
 
 Vector Vector::operator +=(Vector a)
 {
     x += a.x;
     y += a.y;
-    z += a.z;
+    z_ += a.z_;
     return *this;
 }
 
 Vector Vector::operator *(double k)
 {
-    return Vector(x * k, y * k, z * k);
+    return Vector(x * k, y * k, z_ * k);
 }
 
 void Vector::print()
 {
-    qDebug() << x << y << z;
+    qDebug() << x << y << z_;
 }
 
 double Vector::operator ^(Vector a)
