@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     drawHuro.cpp \
     drawFong.cpp \
     vector.cpp \
-    surface.cpp
+    surface.cpp \
+    surfacecalculation.cpp
 HEADERS  += mainwindow.h \
     point3d.h \
     matrix.h \
@@ -32,7 +33,8 @@ HEADERS  += mainwindow.h \
     drawing.h \
     utils.h \
     vector.h \
-    typedefs.h
+    typedefs.h \
+    surfacecalculation.h
 
 FORMS    += mainwindow.ui
 

@@ -3,7 +3,6 @@
 #include "vector.h"
 
 #include <QtAlgorithms>
-#include <QTime>
 #include <QDebug>
 
 #include <stdio.h>
@@ -185,6 +184,9 @@ void SurfaceImage::paintEvent(QPaintEvent *event)
         draw();
     }
     painter.drawImage(0, 0, bmp);
+
+    int t = time.elapsed();
+    qDebug() << "Calc and draw of (" << surface.type << ") is " << t << " ms";
 }
 
 void SurfaceImage::setPolygonsCharacters(bool isColor)
@@ -192,7 +194,7 @@ void SurfaceImage::setPolygonsCharacters(bool isColor)
     for (int i = 0; i < polygons.count(); ++i)
     {
         Vector normal = this->getPlaneMatrix(&vertices[polygons[i].a], &vertices[polygons[i].b], &vertices[polygons[i].c]);
-        polygons[i].color = U::calcColor(&surface, &light, normal, isColor);
+        polygons[i].color = U::calcColor(&surface, normal, isColor);
         polygons[i].normal = normal;
     }
 }
@@ -291,15 +293,12 @@ void SurfaceImage::setVerticesColor()
     for (int k = 0; k < keys.count(); ++k)
     {
         VertexIndex key = keys[k];
-        vertices[key].color = U::calcColor(&surface, &light, vertices[key].normal, false);
+        vertices[key].color = U::calcColor(&surface, vertices[key].normal, false);
     }
 }
 
 void SurfaceImage::draw()
 {
-    QTime time;
-    time.start();
-
     this->setZBuffer();
     this->setPolygonsCharacters(surface.type != FLAT);
 
@@ -402,11 +401,6 @@ void SurfaceImage::draw()
         }
     }
     this->delZBuffer();
-
-    int t = time.elapsed();
-    qDebug() << surface.type << " " << t;
-    qDebug() << sizeof(Surface);
-    qDebug() << sizeof(Surface*);
 }
 
 FlatDrawing* SurfaceImage::getDrawing()
@@ -414,11 +408,11 @@ FlatDrawing* SurfaceImage::getDrawing()
     switch (surface.type)
     {
         case FLAT:
-            return new FlatDrawing(&textureImg, &surface, &light, zBuffer, &bmp, width(), height());
+            return new FlatDrawing(&textureImg, &surface, zBuffer, &bmp, width(), height());
         case HURO:
-            return new HuroDrawing(&textureImg, &surface, &light, zBuffer, &bmp, width(), height());
+            return new HuroDrawing(&textureImg, &surface, zBuffer, &bmp, width(), height());
         case FONG:
-            return new FongDrawing(&textureImg, &surface, &light, zBuffer, &bmp, width(), height());
+            return new FongDrawing(&textureImg, &surface, zBuffer, &bmp, width(), height());
         default:
             throw "Unsupported colorable surface type";
     }
@@ -442,9 +436,9 @@ void SurfaceImage::drawAxis(QPainter *p)
 
 void SurfaceImage::setSurface(Surface sur)
 {
+    time.start();
+
     surface = sur;
-    light = Vector(sur.illuminant.x(), sur.illuminant.y(), sur.illuminant.z());
-    light.unit();
     if (surface.isTextured)
     {
         surface.exterior = QColor(Qt::white);

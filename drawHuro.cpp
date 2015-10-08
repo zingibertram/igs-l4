@@ -1,7 +1,7 @@
 #include "drawing.h"
 
-HuroDrawing::HuroDrawing(QImage *texture, Surface *s, Vector *sun, double **buffer, QImage *img, int w, int h)
-    :FlatDrawing(texture, s, sun, buffer, img, w, h)
+HuroDrawing::HuroDrawing(QImage *texture, Surface *s, double **buffer, QImage *img, int w, int h)
+    :FlatDrawing(texture, s, buffer, img, w, h)
 {
 }
 

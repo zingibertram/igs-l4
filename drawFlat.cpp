@@ -1,10 +1,9 @@
 #include "drawing.h"
 
-FlatDrawing::FlatDrawing(QImage *texture, Surface *s, Vector *sun, double **buffer, QImage *img, int w, int h)
+FlatDrawing::FlatDrawing(QImage *texture, Surface *s, double **buffer, QImage *img, int w, int h)
 {
     textureImg = texture;
     surface = s;
-    light = sun;
     zBuffer = buffer;
     bmp = img;
 
@@ -88,7 +87,7 @@ void FlatDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor c, 
 
             if (surface->isTextured)
             {
-                current = U::calcColor(surface, light, n, false, texColor, true);
+                current = U::calcColor(surface, n, false, texColor, true);
             }
             else
             {

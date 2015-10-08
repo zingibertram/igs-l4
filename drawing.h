@@ -31,10 +31,8 @@ protected:
 
     int width;
     int height;
-
-    Vector *light;
 public:
-    FlatDrawing(QImage *, Surface *, Vector *, double **, QImage *, int, int);
+    FlatDrawing(QImage *, Surface *, double **, QImage *, int, int);
 
     void setTexels(Texels *texels, Triangle *polygon);
     void setVertices(Vertices *vertices, Triangle *polygon);
@@ -57,7 +55,7 @@ private:
     QColor colb;
 
 public:
-    HuroDrawing(QImage *, Surface*, Vector *, double **, QImage *, int, int);
+    HuroDrawing(QImage *, Surface*, double **, QImage *, int, int);
 
     virtual void setA();
     virtual void setInterpolatedA(double k);
@@ -75,7 +73,7 @@ private:
     Vector vecb;
 
 public:
-    FongDrawing(QImage *, Surface*, Vector *, double **, QImage *, int, int);
+    FongDrawing(QImage *, Surface*, double **, QImage *, int, int);
 
     virtual void setA();
     virtual void setInterpolatedA(double k);

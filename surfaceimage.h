@@ -20,6 +20,7 @@
 #include <QPen>
 #include <QImage>
 #include <QRgb>
+#include <QTime>
 
 #include <math.h>
 
@@ -38,7 +39,6 @@ private:
 
     // параметрическое уравнение
     Surface surface;
-    Vector light;
     double matbuf[16];
     Matrix rotate;
     QPointF center;
@@ -50,6 +50,8 @@ private:
     QImage bmp;
     QColor lineColor;
     QImage textureImg;
+
+    QTime time;
 
     Matrix funcSurface(double u, double v);
     void buildRotateMatrix();

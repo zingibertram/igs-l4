@@ -32,7 +32,7 @@ QColor U::colorInterpolation(QColor max, QColor min, double kmax, double kmin)
     return QColor(r, g, b);
 }
 
-QColor U::calcColor(Surface *surface, Vector *light, Vector n, bool isColor, QColor tex, bool isTextured)
+QColor U::calcColor(Surface *surface, Vector n, bool isColor, QColor tex, bool isTextured)
 {
     QColor c = n.z() > 0 ? surface->exterior  : surface->interior;
 
@@ -46,12 +46,12 @@ QColor U::calcColor(Surface *surface, Vector *light, Vector n, bool isColor, QCo
         c = tex;
     }
 
-    return calcColorImpl(surface, *light, n, c);
+    return calcColorImpl(surface, n, c);
 }
 
-QColor U::calcColorImpl(Surface *surface, Vector light, Vector n, QColor c)
+QColor U::calcColorImpl(Surface *surface, Vector n, QColor c)
 {
-    double cosnl = n ^ light;
+    double cosnl = n ^ surface->light;
     if (n.z() * cosnl <= 0)
     {
         cosnl = 0;
@@ -62,7 +62,7 @@ QColor U::calcColorImpl(Surface *surface, Vector light, Vector n, QColor c)
     double nLength = n.len();
     if (nLength > 0.00001)
     {
-        r = n * (2 * (n * light) * (1.0 / nLength)) - light;
+        r = n * (2 * (n * surface->light) * (1.0 / nLength)) - surface->light;
     }
 
     double cosor = surface->observer ^ r;

@@ -313,10 +313,18 @@ void MainWindow::on_slider_V_Param_valueChanged(int value)
 
 void MainWindow::illuminantCoords_Changed()
 {
-    this->setValueLabel(ui->value_X_Coord, ui->slider_X_Illuminant->value(), 4, "(");
-    this->setValueLabel(ui->value_Y_Coord, ui->slider_Y_Illuminant->value(), 4, "(");
-    this->setValueLabel(ui->value_Z_Coord, ui->slider_Z_Illuminant->value(), 4, "(");
-    surface.illuminant = Point3D(ui->slider_X_Illuminant->value(), ui->slider_Y_Illuminant->value(), ui->slider_Z_Illuminant->value());
+    double x = ui->slider_X_Illuminant->value();
+    double y = ui->slider_Y_Illuminant->value();
+    double z = ui->slider_Z_Illuminant->value();
+
+    this->setValueLabel(ui->value_X_Coord, x, 4, "(");
+    this->setValueLabel(ui->value_Y_Coord, y, 4, "(");
+    this->setValueLabel(ui->value_Z_Coord, z, 4, "(");
+
+    Vector l(x, y, z);
+    l.unit();
+    surface.light = l;
+
     this->paramsChanged();
 }
 

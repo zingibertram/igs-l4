@@ -1,7 +1,6 @@
 #ifndef SURFACE_H
 #define SURFACE_H
 
-#include "point3d.h"
 #include "vector.h"
 
 #include <QColor>
@@ -41,8 +40,6 @@ struct Surface
 
     Shading type;
 
-    Point3D illuminant;
-
     double ka;
     double kd;
     double ks;
@@ -53,6 +50,7 @@ struct Surface
 
     QString textureFile;
 
+    Vector light;
     Vector observer;
 
     Surface();
