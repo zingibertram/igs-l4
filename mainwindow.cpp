@@ -390,9 +390,8 @@ void MainWindow::on_checkBox_Textured_clicked(bool checked)
 
 void MainWindow::textureChanged(QString tex)
 {
-    surface.textureFile = tex;
+    surface.textureImg.load(tex);
     ui->graphicsView_Surface->setSurface(surface);
-    ui->graphicsView_Surface->loadTexture();
     ui->graphicsView_Surface->hide();
     ui->graphicsView_Surface->show();
 }

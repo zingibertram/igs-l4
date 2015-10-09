@@ -16,7 +16,6 @@ private:
     QPoint *texB;
     QPoint *texC;
 protected:
-    QImage *textureImg;
     Surface *surface;
     double **zBuffer;
 
@@ -32,7 +31,7 @@ protected:
     int width;
     int height;
 public:
-    FlatDrawing(QImage *, Surface *, double **, QImage *, int, int);
+    FlatDrawing(Surface *, double **, QImage *, int, int);
 
     void setTexels(Texels *texels, Triangle *polygon);
     void setVertices(Vertices *vertices, Triangle *polygon);
@@ -55,7 +54,7 @@ private:
     QColor colb;
 
 public:
-    HuroDrawing(QImage *, Surface*, double **, QImage *, int, int);
+    HuroDrawing(Surface*, double **, QImage *, int, int);
 
     virtual void setA();
     virtual void setInterpolatedA(double k);
@@ -73,7 +72,7 @@ private:
     Vector vecb;
 
 public:
-    FongDrawing(QImage *, Surface*, double **, QImage *, int, int);
+    FongDrawing(Surface*, double **, QImage *, int, int);
 
     virtual void setA();
     virtual void setInterpolatedA(double k);

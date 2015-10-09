@@ -31,7 +31,6 @@ class SurfaceImage : public QGraphicsView
 public:
     explicit SurfaceImage(QWidget *parent = 0);
     void setSurface(Surface sur);
-    void loadTexture();
 
 private:
     static const double radianScal = 3.14159265 / 180.0;
@@ -49,7 +48,6 @@ private:
     bool nots;
     QImage bmp;
     QColor lineColor;
-    QImage textureImg;
 
     QTime time;
 

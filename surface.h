@@ -4,6 +4,7 @@
 #include "vector.h"
 
 #include <QColor>
+#include <QImage>
 
 enum Shading
 {
@@ -28,15 +29,11 @@ struct Surface
 
     int fstParam;
     int sndParam;
-    int lstParam;
 
     QColor exterior;
     QColor interior;
     QColor absent;
     QColor dot;
-
-    bool isFlat;
-    bool isSort;
 
     Shading type;
 
@@ -48,7 +45,7 @@ struct Surface
 
     bool isTextured;
 
-    QString textureFile;
+    QImage textureImg;
 
     Vector light;
     Vector observer;

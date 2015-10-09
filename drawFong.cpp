@@ -1,7 +1,7 @@
 #include "drawing.h"
 
-FongDrawing::FongDrawing(QImage *texture, Surface *s, double **buffer, QImage *img, int w, int h)
-    :FlatDrawing(texture, s, buffer, img, w, h)
+FongDrawing::FongDrawing(Surface *s, double **buffer, QImage *img, int w, int h)
+    :FlatDrawing(s, buffer, img, w, h)
 {
 }
 
@@ -50,9 +50,9 @@ void FongDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor c, 
     if (surface->isTextured)
     {
         texPoint = QPoint(texXA + (double)(texXB - texXA) * k, texYA + (double)(texYB - texYA) * k);
-        if (textureImg->valid(texPoint))
+        if (surface->textureImg.valid(texPoint))
         {
-            texColor = QColor(textureImg->pixel(texPoint));
+            texColor = QColor(surface->textureImg.pixel(texPoint));
         }
     }
 

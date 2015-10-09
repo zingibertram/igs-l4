@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     drawFong.cpp \
     vector.cpp \
     surface.cpp \
-    surfacecalculation.cpp
+    surfacecalculation.cpp \
+    tripolygon.cpp
 HEADERS  += mainwindow.h \
     point3d.h \
     matrix.h \
@@ -34,7 +35,8 @@ HEADERS  += mainwindow.h \
     utils.h \
     vector.h \
     typedefs.h \
-    surfacecalculation.h
+    surfacecalculation.h \
+    tripolygon.h
 
 FORMS    += mainwindow.ui
 

@@ -5,6 +5,7 @@
 #include "point3d.h"
 #include "surface.h"
 #include "typedefs.h"
+#include "tripolygon.h"
 
 #include <QColor>
 

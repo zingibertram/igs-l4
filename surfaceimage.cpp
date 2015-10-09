@@ -91,8 +91,8 @@ void SurfaceImage::setPoints()
     double dv = mv / surface.dV;
     double u;
     double v;
-    int w = textureImg.width();
-    int h = textureImg.height();
+    int w = (double)surface.textureImg.width();
+    int h = (double)surface.textureImg.height();
     for (u = 0.0; u <= mu + 0.000001; u += du)
     {
         int j = 0;
@@ -102,7 +102,7 @@ void SurfaceImage::setPoints()
             vertices[vind] = (this->funcSurface(u, v) * rotate).toPoint3D();
             if (surface.isTextured)
             {
-                texels[vind] = QPoint((double)w * u / mu, (double)h * v / mv);
+                texels[vind] = QPoint(w * u / mu, h * v / mv);
             }
             ++j;
         }
@@ -408,11 +408,11 @@ FlatDrawing* SurfaceImage::getDrawing()
     switch (surface.type)
     {
         case FLAT:
-            return new FlatDrawing(&textureImg, &surface, zBuffer, &bmp, width(), height());
+            return new FlatDrawing(&surface, zBuffer, &bmp, width(), height());
         case HURO:
-            return new HuroDrawing(&textureImg, &surface, zBuffer, &bmp, width(), height());
+            return new HuroDrawing(&surface, zBuffer, &bmp, width(), height());
         case FONG:
-            return new FongDrawing(&textureImg, &surface, zBuffer, &bmp, width(), height());
+            return new FongDrawing(&surface, zBuffer, &bmp, width(), height());
         default:
             throw "Unsupported colorable surface type";
     }
@@ -445,9 +445,4 @@ void SurfaceImage::setSurface(Surface sur)
         surface.interior = QColor(Qt::white);
     }
     this->buildRotateMatrix();
-}
-
-void SurfaceImage::loadTexture()
-{
-    textureImg.load(surface.textureFile);
 }

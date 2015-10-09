@@ -1,8 +1,7 @@
 #include "drawing.h"
 
-FlatDrawing::FlatDrawing(QImage *texture, Surface *s, double **buffer, QImage *img, int w, int h)
+FlatDrawing::FlatDrawing(Surface *s, double **buffer, QImage *img, int w, int h)
 {
-    textureImg = texture;
     surface = s;
     zBuffer = buffer;
     bmp = img;
@@ -73,9 +72,9 @@ void FlatDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor c, 
     if (surface->isTextured)
     {
         texPoint = QPoint(texXA + (double)(texXB - texXA) * k, texYA + (double)(texYB - texYA) * k);
-        if (textureImg->valid(texPoint))
+        if (surface->textureImg.valid(texPoint))
         {
-            texColor = QColor(textureImg->pixel(texPoint));
+            texColor = QColor(surface->textureImg.pixel(texPoint));
         }
     }
 
