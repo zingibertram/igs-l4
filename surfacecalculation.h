@@ -36,7 +36,8 @@ public:
     void setSize(int w, int h);
     void calculateSurface();
     void calculateColors(QImage* bmp);
-    //void* polygons(); // получение всех полигонов, для построения каркаса
+    QList<TriPolygon>* polygons_(); // получение всех полигонов, для построения каркаса
+    QList<Point3D>* vertices_(); // получение всех точек, для построения каркаса
 
 private:
     // в порядке использования

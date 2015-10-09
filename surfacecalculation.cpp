@@ -36,12 +36,15 @@ void SurfaceCalculation::setSize(int w, int h)
 
 void SurfaceCalculation::calculateSurface()
 {
+    // падает при изменении количества сегментов
+    // после изменения максимума
     if (surface->isPointsChanged)
     {
         vertices.clear();
         texels.clear();
         polygons.clear();
 
+        calculateRotateMatrix();
         calculateVertices();
         calculatePolygons();
 
@@ -158,7 +161,16 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
 
     deleteZBuffer();
 }
-//void* SurfaceCalculation::polygons(); // получение всех полигонов, для построения каркаса
+
+QList<TriPolygon>* SurfaceCalculation::polygons_()
+{
+    return &polygons;
+}
+
+QList<Point3D>* SurfaceCalculation::vertices_()
+{
+    return &vertices;
+}
 
 // в порядке использования
 void SurfaceCalculation::calculateRotateMatrix()
@@ -216,23 +228,19 @@ void SurfaceCalculation::calculateVertices()
     double dv = mv / surface->dV;
     double u;
     double v;
-    double w = surface->textureImg.width();
-    double h = surface->textureImg.height();
+    double w = surface->textureImg.width() * u;
+    double h = surface->textureImg.height() * v;
 
-    int i = 0;
     for (u = 0.0; u <= mu + 0.000001; u += du)
     {
-        int j = 0;
         for (v = 0.0; v <= mv + 0.000001; v += dv)
         {
             vertices.append((funcSurface(u, v) * rotate).toPoint3D());
             if (surface->isTextured)
             {
-                texels.append(QPoint(w * u / mu, h * v / mv));
+                texels.append(QPoint(w / mu, h / mv));
             }
-            ++j;
         }
-        ++i;
     }
 }
 
@@ -251,12 +259,13 @@ void SurfaceCalculation::calculatePolygons()
             int i_1 = i + 1;
             if (i == surface->dU - 1 && surface->maxU == 360)
             {
-                i_1 = 0;
+                continue;
+                //i_1 = 0;
             }
-            A = i * surface->dU + j;
-            B = i_1 * surface->dU + j;
-            C = i_1 * surface->dU + j_1;
-            D = i * surface->dU + j_1;
+            A = i * surface->dV + j;
+            B = i_1 * surface->dV + j;
+            C = i_1 * surface->dV + j_1;
+            D = i * surface->dV + j_1;
 
             TriPolygon fst(C, B, A);
             fst.z = vertices[C].z() + vertices[B].z() + vertices[A].z();
