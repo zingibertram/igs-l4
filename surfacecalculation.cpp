@@ -38,7 +38,7 @@ void SurfaceCalculation::calculateSurface()
 {
     // падает при изменении количества сегментов
     // после изменения максимума
-    if (surface->isPointsChanged)
+    if (surface->isPointsChanged || 1)
     {
         vertices.clear();
         texels.clear();
@@ -246,26 +246,39 @@ void SurfaceCalculation::calculateVertices()
 
 void SurfaceCalculation::calculatePolygons()
 {
-    for (int i = 0; i < surface->dU; ++i)
+    for (int i = 0; i < surface->dU - 1; ++i)
     {
-        for (int j = 0; j < surface->dV; ++j)
+        for (int j = 0; j < surface->dV - 1; ++j)
         {
             int A, B, C, D;
             int j_1 = j + 1;
-            if (j == surface->dV - 1 && surface->maxV == 360)
+            if (j == surface->dV - 1)
             {
-                j_1 = 0;
+                if (surface->maxV == 360)
+                {
+                    j_1 = 0;
+                }
+                else
+                {
+                    continue;
+                }
             }
             int i_1 = i + 1;
-            if (i == surface->dU - 1 && surface->maxU == 360)
+            if (i == surface->dU - 1)
             {
-                continue;
-                //i_1 = 0;
+                if (surface->maxU == 360)
+                {
+                    i_1 = 0;
+                }
+                else
+                {
+                    continue;
+                }
             }
             A = i * surface->dV + j;
-            B = i_1 * surface->dV + j;
-            C = i_1 * surface->dV + j_1;
-            D = i * surface->dV + j_1;
+            B = A + 1;//i_1 * surface->dV + j;
+            C = A + surface->dV;//i_1 * surface->dV + j_1;
+            D = C + 1;//i * surface->dV + j_1;
 
             TriPolygon fst(C, B, A);
             fst.z = vertices[C].z() + vertices[B].z() + vertices[A].z();
