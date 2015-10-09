@@ -1,8 +1,9 @@
 #include "drawing.h"
 
-#include <QMap>
+#include <QList>
+#include <QPoint>
 
-void FlatDrawing::setTexels(Texels *texels, Triangle *polygon)
+void FlatDrawing::setTexels(QList<QPoint> *texels, TriPolygon *polygon)
 {
     if (surface->isTextured)
     {
@@ -12,7 +13,7 @@ void FlatDrawing::setTexels(Texels *texels, Triangle *polygon)
     }
 }
 
-void FlatDrawing::setVertices(Vertices *vertices, Triangle *polygon)
+void FlatDrawing::setVertices(QList<Point3D>* vertices, TriPolygon* polygon)
 {
     A = &vertices->operator [](polygon->a);
     B = &vertices->operator [](polygon->b);

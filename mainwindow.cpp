@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->textureChanged(":/texture/resources/tex1.jpg");
     this->setConnection();
     this->reset();
+    ui->graphicsView_Surface->setSurface(&surface);
     ui->radioButton_WireframeShading->click();
 }
 
@@ -27,6 +28,7 @@ void MainWindow::reset()
     surface.zOld = 0;
 
     surface.isTextured = false;
+    surface.isPointsChanged = true;
 
     ui->slider_X_Rotate->setValue(90);
     ui->slider_Y_Rotate->setValue(60);
@@ -184,11 +186,11 @@ void MainWindow::actionAboutTriggered()
     aboutBox.exec();
 }
 
-void MainWindow::paramsChanged()
+void MainWindow::paramsChanged(bool isCalc)
 {
     if (!isSetFirstState)
     {
-        ui->graphicsView_Surface->setSurface(surface);
+        surface.isPointsChanged = isCalc;
         ui->graphicsView_Surface->hide();
         ui->graphicsView_Surface->show();
     }
@@ -252,63 +254,63 @@ void MainWindow::on_slider_XRotate_valueChanged(int value)
 {
     this->setValueLabel(ui->value_X_Rotate, value, 4, "(");
     surface.xRotate = value;
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::on_slider_YRotate_valueChanged(int value)
 {
     this->setValueLabel(ui->value_Y_Rotate, value, 4, "(");
     surface.yRotate = value;
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::on_slider_ZRotate_valueChanged(int value)
 {
     this->setValueLabel(ui->value_Z_Rotate, value, 4, "(");
     surface.zRotate = value;
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::on_slider_UMax_valueChanged(int value)
 {
     this->setValueLabel(ui->value_U_Max, value, 3, "(");
     surface.maxU = value;
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::on_slider_VMax_valueChanged(int value)
 {
     this->setValueLabel(ui->value_V_Max, value, 3, "(");
     surface.maxV = value;
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::on_slider_dU_valueChanged(int value)
 {
     this->setValueLabel(ui->value_U_Interval, value, 3, "(");
     surface.dU = value;
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::on_slider_dV_valueChanged(int value)
 {
     this->setValueLabel(ui->value_V_Interval, value, 3, "(");
     surface.dV = value;
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::on_slider_U_Param_valueChanged(int value)
 {
     this->setValueLabel(ui->value_U_Param, value, 3, "(");
     surface.fstParam = value;
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::on_slider_V_Param_valueChanged(int value)
 {
     this->setValueLabel(ui->value_V_Param, value, 3, "(");
     surface.sndParam = value;
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::illuminantCoords_Changed()
@@ -391,7 +393,5 @@ void MainWindow::on_checkBox_Textured_clicked(bool checked)
 void MainWindow::textureChanged(QString tex)
 {
     surface.textureImg.load(tex);
-    ui->graphicsView_Surface->setSurface(surface);
-    ui->graphicsView_Surface->hide();
-    ui->graphicsView_Surface->show();
+    paramsChanged();
 }

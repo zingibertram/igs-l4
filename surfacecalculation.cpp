@@ -36,122 +36,127 @@ void SurfaceCalculation::setSize(int w, int h)
 
 void SurfaceCalculation::calculateSurface()
 {
-    vertices.clear();
-    texels.clear();
-    polygons.clear();
+    if (surface->isPointsChanged)
+    {
+        vertices.clear();
+        texels.clear();
+        polygons.clear();
 
-    calculateVertices();
-    calculatePolygons();
+        calculateVertices();
+        calculatePolygons();
 
-    qSort(polygons);
+        qSort(polygons);
+    }
 }
 
 void SurfaceCalculation::calculateColors(QImage* bmp)
 {
-//    createZBuffer();
+    createZBuffer();
 
-//    this->setPolygonsCharacters(surface->type != FLAT);
+    setPolygonsCharacters(surface->type != FLAT);
 
-//    if (surface->type != FLAT)
-//    {
-//        this->setVerticesNormal();
-//    }
-//    if (surface->type == HURO)
-//    {
-//        this->setVerticesColor();
-//    }
+    if (surface->type != FLAT)
+    {
+        setVerticesNormal();
+    }
+    if (surface->type == HURO)
+    {
+        setVerticesColor();
+    }
 
-//    FlatDrawing *drawing = getDrawing(bmp);
-//    for (int i = 0; i < polygons.count(); ++i)
-//    {
-//        this->sortVertex(i);
+    sortPolygonsVertices();
 
-//        Point3D A = vertices[polygons[i].a];
-//        Point3D B = vertices[polygons[i].b];
-//        Point3D C = vertices[polygons[i].c];
+    QPointF center(width / 2.0, height / 2.0);
 
-//        drawing->setVertices(&vertices, &polygons[i]);
+    FlatDrawing *drawing = getDrawing(bmp);
+    for (int i = 0; i < polygons.count(); ++i)
+    {
+        Point3D A = vertices[polygons[i].a];
+        Point3D B = vertices[polygons[i].b];
+        Point3D C = vertices[polygons[i].c];
 
-//        drawing->setTexels(&texels, &polygons[i]);
+        drawing->setVertices(&vertices, &polygons[i]);
 
-//        double prevSY = C.y() - 1.0;
-//        for (double sy = C.y(); sy <= A.y(); sy += 0.3)
-//        {
-//            if ((int)prevSY == (int)sy)
-//            {
-//                continue;
-//            }
-//            prevSY = sy;
-//            double k;
-//            double xa, xb, za, zb;
+        drawing->setTexels(&texels, &polygons[i]);
 
-//            xa = C.x();
-//            za = C.z();
+        double prevSY = C.y() - 1.0;
+        for (double sy = C.y(); sy <= A.y(); sy += 0.3)
+        {
+            if ((int)prevSY == (int)sy)
+            {
+                continue;
+            }
+            prevSY = sy;
+            double k;
+            double xa, xb, za, zb;
 
-//            drawing->setA();
+            xa = C.x();
+            za = C.z();
 
-//            if (A.y() - C.y() > eps)
-//            {
-//                k = (sy - C.y()) / (A.y() - C.y());
-//                xa += k * (A.x() - C.x());
-//                za += k * (A.z() - C.z());
+            drawing->setA();
 
-//                drawing->setInterpolatedA(k);
-//            }
+            if (A.y() - C.y() > eps)
+            {
+                k = (sy - C.y()) / (A.y() - C.y());
+                xa += k * (A.x() - C.x());
+                za += k * (A.z() - C.z());
 
-//            if (sy < B.y())
-//            {
-//                k = (sy - C.y()) / (B.y() - C.y());
-//                xb = C.x() + k * (B.x() - C.x());
-//                zb = C.z() + k * (B.z() - C.z());
+                drawing->setInterpolatedA(k);
+            }
 
-//                drawing->setBCInterpolatedB(k);
-//            }
-//            else
-//            {
-//                xb = B.x();
-//                zb = B.z();
+            if (sy < B.y())
+            {
+                k = (sy - C.y()) / (B.y() - C.y());
+                xb = C.x() + k * (B.x() - C.x());
+                zb = C.z() + k * (B.z() - C.z());
 
-//                drawing->setB();
+                drawing->setBCInterpolatedB(k);
+            }
+            else
+            {
+                xb = B.x();
+                zb = B.z();
 
-//                if (A.y() - B.y() > eps)
-//                {
-//                    k = (sy - B.y()) / (A.y() - B.y());
-//                    xb += k * (A.x() - B.x());
-//                    zb += k * (A.z() - B.z());
+                drawing->setB();
 
-//                    drawing->setABInterpolatedB(k);
-//                }
-//            }
+                if (A.y() - B.y() > eps)
+                {
+                    k = (sy - B.y()) / (A.y() - B.y());
+                    xb += k * (A.x() - B.x());
+                    zb += k * (A.z() - B.z());
 
-//            if (xa > xb)
-//            {
-//                double tmp;
-//                tmp = xa; xa = xb; xb = tmp;
-//                tmp = za; za = zb; zb = tmp;
+                    drawing->setABInterpolatedB(k);
+                }
+            }
 
-//                drawing->swapAB();
-//            }
-//            double prevSX = xa - 1.0;
-//            for (double sx = xa; sx <= xb; sx += 1.0)
-//            {
+            if (xa > xb)
+            {
+                double tmp;
+                tmp = xa; xa = xb; xb = tmp;
+                tmp = za; za = zb; zb = tmp;
 
-//                if ((int)prevSX == (int)sx)
-//                {
-//                    continue;
-//                }
-//                prevSX = sx;
-//                double k = (sx - xa) / (xb - xa);
-//                double sz = za + (zb - za) * k;
-//                int xp = (int)(sx + center.x());
-//                int yp = (int)(center.y() - sy);
+                drawing->swapAB();
+            }
+            double prevSX = xa - 1.0;
+            for (double sx = xa; sx <= xb; sx += 1.0)
+            {
 
-//                drawing->calculatePixel(xp, yp, sz, k, polygons[i].color, polygons[i].normal);
-//            }
-//        }
-//    }
+                if ((int)prevSX == (int)sx)
+                {
+                    continue;
+                }
+                prevSX = sx;
+                double k = (sx - xa) / (xb - xa);
+                double sz = za + (zb - za) * k;
+                int xp = (int)(sx + center.x());
+                int yp = (int)(center.y() - sy);
 
-//    deleteZBuffer();
+                drawing->calculatePixel(xp, yp, sz, k, polygons[i].color, polygons[i].normal);
+            }
+        }
+    }
+
+    deleteZBuffer();
 }
 //void* SurfaceCalculation::polygons(); // получение всех полигонов, для построения каркаса
 

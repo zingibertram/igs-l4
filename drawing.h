@@ -7,6 +7,8 @@
 #include "utils.h"
 
 #include <QImage>
+#include <QList>
+#include <QPoint>
 
 class FlatDrawing
 {
@@ -33,8 +35,8 @@ protected:
 public:
     FlatDrawing(Surface *, double **, QImage *, int, int);
 
-    void setTexels(Texels *texels, Triangle *polygon);
-    void setVertices(Vertices *vertices, Triangle *polygon);
+    void setTexels(QList<QPoint>* texels, TriPolygon* polygon);
+    void setVertices(QList<Point3D>* vertices, TriPolygon* polygon);
     void setPixel(QColor current, int i, int j);
 
     // в порядке использования

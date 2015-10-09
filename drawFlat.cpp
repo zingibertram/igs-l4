@@ -1,5 +1,7 @@
 #include "drawing.h"
 
+#include <QColor>
+
 FlatDrawing::FlatDrawing(Surface *s, double **buffer, QImage *img, int w, int h)
 {
     surface = s;
@@ -8,6 +10,12 @@ FlatDrawing::FlatDrawing(Surface *s, double **buffer, QImage *img, int w, int h)
 
     width = w;
     height = h;
+
+    if (surface->isTextured)
+    {
+        surface->exterior = QColor(Qt::white);
+        surface->interior = QColor(Qt::white);
+    }
 }
 
 void FlatDrawing::setA()
