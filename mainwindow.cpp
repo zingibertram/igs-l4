@@ -63,6 +63,8 @@ void MainWindow::reset()
     ui->slider_Alpha->setValue(10);
 
     isSetFirstState = false;
+
+    paramsChanged(true);
 }
 
 void MainWindow::setConnection()
@@ -225,7 +227,7 @@ void MainWindow::shadingChanged(bool isflat)
     {
         surface.type = FLAT;
     }
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::setValueLabel(QLabel *l, double val, int len, QString dec)
