@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     surface.cpp \
     surfacecalculation.cpp \
     tripolygon.cpp \
-    surfacefunction.cpp
+    surfacefunction.cpp \
+    surfacefunctionsmodel.cpp
 HEADERS  += mainwindow.h \
     point3d.h \
     matrix.h \
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     typedefs.h \
     surfacecalculation.h \
     tripolygon.h \
-    surfacefunction.h
+    surfacefunction.h \
+    surfacefunctionsmodel.h
 
 FORMS    += mainwindow.ui
 

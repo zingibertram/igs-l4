@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "surfacefunctionsmodel.h"
 
 #include <QFileDialog>
 
@@ -8,9 +9,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->textureChanged(":/texture/resources/tex1.jpg");
-    this->setConnection();
-    this->reset();
+    textureChanged(":/texture/resources/tex1.jpg");
+    setConnection();
+    reset();
+    ui->comboBox_SurfaceFunctions->setModel(new SurfaceFunctionsModel(this));
     ui->graphicsView_Surface->setSurface(&surface);
     ui->radioButton_WireframeShading->click();
 }

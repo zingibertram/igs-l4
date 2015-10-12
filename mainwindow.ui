@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>623</width>
+    <width>643</width>
     <height>429</height>
    </rect>
   </property>
@@ -209,7 +209,7 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-168</y>
+         <y>0</y>
          <width>222</width>
          <height>996</height>
         </rect>
@@ -243,7 +243,7 @@ background-color: black;</string>
             <number>1</number>
            </property>
            <item>
-            <widget class="QComboBox" name="comboBox"/>
+            <widget class="QComboBox" name="comboBox_SurfaceFunctions"/>
            </item>
           </layout>
          </widget>
@@ -2688,7 +2688,7 @@ background-color: black;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>623</width>
+     <width>643</width>
      <height>21</height>
     </rect>
    </property>
