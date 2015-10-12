@@ -2,6 +2,7 @@
 #define SURFACE_H
 
 #include "vector.h"
+#include "surfacefunction.h"
 
 #include <QColor>
 #include <QImage>
@@ -29,6 +30,7 @@ struct Surface
 
     int fstParam;
     int sndParam;
+    SurfaceFunction* func;
 
     QColor exterior;
     QColor interior;
