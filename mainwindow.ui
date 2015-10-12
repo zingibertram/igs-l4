@@ -112,51 +112,6 @@ QPushButton:hover
 	background: rgb(0, 170, 0);
 }
 
-
-QComboBox {
-	border: 1px solid #8f8f91;
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
-    padding: 1px 18px 1px 3px;
-	min-width: 6em;
- }
-
- QComboBox:editable {
-     background: white;
- }
-
- QComboBox:!editable, QComboBox::drop-down:editable {
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
-      /*background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                  stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
-                                  stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);*/
- }
-
- /* QComboBox получает состояние &quot;on&quot; когда выпадающий список раскрыт */
- QComboBox:!editable:on, QComboBox::drop-down:editable:on {
-     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                 stop: 0 #D3D3D3, stop: 0.4 #D8D8D8,
-                                 stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);
- }
-
- QComboBox:on { /* сдвиг текста когда выпадающий список раскрывается */
-     padding-top: 3px;
-     padding-left: 4px;
- }
-
- QComboBox::drop-down {
-     subcontrol-origin: padding;
-     subcontrol-position: top right;
-     width: 15px;
-
-     border-left-width: 1px;
-     border-left-color: darkgray;
-     border-left-style: solid; /* только одна линия */
- }
-
- QComboBox::down-arrow:on { /* сдвиг стрелки когда выпадающий список раскрывается */
-     top: 1px;
-     left: 1px;
- }
 </string>
   </property>
   <widget class="QWidget" name="centralWidget">

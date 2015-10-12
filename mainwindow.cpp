@@ -12,7 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     textureChanged(":/texture/resources/tex1.jpg");
     setConnection();
     reset();
-    ui->comboBox_SurfaceFunctions->setModel(new SurfaceFunctionsModel(this));
+    SurfaceFunctionsModel* model = new SurfaceFunctionsModel(this);
+    ui->comboBox_SurfaceFunctions->setModel(model);
     ui->graphicsView_Surface->setSurface(&surface);
     ui->radioButton_WireframeShading->click();
 }

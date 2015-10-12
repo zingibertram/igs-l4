@@ -2,6 +2,7 @@
 
 #include <Qt>
 #include <QVariant>
+#include <QDebug>
 
 SurfaceFunctionsModel::SurfaceFunctionsModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -13,15 +14,25 @@ SurfaceFunctionsModel::SurfaceFunctionsModel(QObject *parent) :
 
 int SurfaceFunctionsModel::rowCount(const QModelIndex &parent) const
 {
-    return 3;
+    return functions.count();
 }
 
 QVariant SurfaceFunctionsModel::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
+    qDebug() << row << role << functions.count();
     if (role == Qt::DisplayRole)
     {
-        return 1;
+        return functions[row]->name();
     }
-    return 1;
+    return 0;
 }
+
+//QVariant SurfaceFunctionsModel::headerData(int section, Qt::Orientation orientation, int role) const
+//{
+//    if (role == Qt::DisplayRole)
+//    {
+//        return 2;
+//    }
+//    return 2;
+//}
