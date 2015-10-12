@@ -36,9 +36,7 @@ void SurfaceCalculation::setSize(int w, int h)
 
 void SurfaceCalculation::calculateSurface()
 {
-    // падает при изменении количества сегментов
-    // после изменения максимума
-    if (surface->isPointsChanged || 1)
+    if (surface->isPointsChanged)
     {
         vertices.clear();
         texels.clear();
@@ -172,7 +170,6 @@ QList<Point3D>* SurfaceCalculation::vertices_()
     return &vertices;
 }
 
-// в порядке использования
 void SurfaceCalculation::calculateRotateMatrix()
 {
     if (surface->xOld != surface->xRotate)
@@ -214,9 +211,21 @@ Matrix SurfaceCalculation::funcSurface(double degu, double degv)
     double fst = surface->fstParam;
     double snd = surface->sndParam;
 
+    // sand watch
     double x = (snd + (fst + snd * cos(u)) * cos(v)) * sin(u);
     double y = (snd + (fst + snd * cos(u)) * sin(v)) * sin(u);
     double z = snd * sin(u) + fst * sin(u);
+
+    // tor
+//    double x = (fst + snd * cos(u)) * cos(v);
+//    double y = (fst + snd * cos(u)) * sin(v);
+//    double z = snd * sin(u);
+
+    // sphere
+//    double x = fst * sin(u) * cos(v);
+//    double y = fst * sin(u) * sin(v);
+//    double z = fst * cos(u);
+
     return Matrix(Point3D(x, y, z));
 }
 
@@ -228,8 +237,8 @@ void SurfaceCalculation::calculateVertices()
     double dv = mv / surface->dV;
     double u;
     double v;
-    double w = surface->textureImg.width() * u;
-    double h = surface->textureImg.height() * v;
+    double w = surface->textureImg.width() / mu;
+    double h = surface->textureImg.height() / mv;
 
     for (u = 0.0; u <= mu + 0.000001; u += du)
     {
@@ -238,47 +247,36 @@ void SurfaceCalculation::calculateVertices()
             vertices.append((funcSurface(u, v) * rotate).toPoint3D());
             if (surface->isTextured)
             {
-                texels.append(QPoint(w / mu, h / mv));
+                texels.append(QPoint(w * u, h * v));
             }
         }
     }
+    int tr = 90;
+    tr++;
 }
 
 void SurfaceCalculation::calculatePolygons()
 {
-    for (int i = 0; i < surface->dU - 1; ++i)
+    int u = surface->dU + 1;
+    int v = surface->dV + 1;
+
+    bool isU = surface->maxU == 360;
+    bool isV = surface->maxV == 360;
+
+    int mu = isU ? u : u - 1;
+    int mv = isV ? v : v - 1;
+
+    for (int i = 0; i < mu; ++i)
     {
-        for (int j = 0; j < surface->dV - 1; ++j)
+        for (int j = 0; j < mv; ++j)
         {
-            int A, B, C, D;
-            int j_1 = j + 1;
-            if (j == surface->dV - 1)
-            {
-                if (surface->maxV == 360)
-                {
-                    j_1 = 0;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-            int i_1 = i + 1;
-            if (i == surface->dU - 1)
-            {
-                if (surface->maxU == 360)
-                {
-                    i_1 = 0;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-            A = i * surface->dV + j;
-            B = A + 1;//i_1 * surface->dV + j;
-            C = A + surface->dV;//i_1 * surface->dV + j_1;
-            D = C + 1;//i * surface->dV + j_1;
+            int j_1 = isV ? (j + 1) % v : j + 1;
+            int i_1 = isU ? (i + 1) % u : i + 1;
+
+            int A = i * v + j;
+            int B = i_1 * v + j;
+            int C = i_1 * v + j_1;
+            int D = i * v + j_1;
 
             TriPolygon fst(C, B, A);
             fst.z = vertices[C].z() + vertices[B].z() + vertices[A].z();

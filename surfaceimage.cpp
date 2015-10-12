@@ -67,6 +67,13 @@ void SurfaceImage::drawFrame(QPainter *pai)
         pai->drawLine(vertex[2], vertex[1]);
         pai->drawLine(vertex[0], vertex[2]);
     }
+
+//    for (int i = 0; i < vertices->count(); ++i)
+//    {
+//        QPointF t = vertices->operator [](i).toQPoint() + center;
+//        QString st;
+//        pai->drawText(t, st.number(i));
+//    }
 }
 
 void SurfaceImage::drawAxis(QPainter *p)

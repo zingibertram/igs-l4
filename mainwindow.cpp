@@ -34,8 +34,8 @@ void MainWindow::reset()
     ui->slider_Y_Rotate->setValue(60);
     ui->slider_Z_Rotate->setValue(30);
 
-    ui->slider_U_Max->setValue(360);
-    ui->slider_V_Max->setValue(360);
+    ui->slider_U_Max->setValue(180);
+    ui->slider_V_Max->setValue(180);
 
     ui->slider_U_Interval->setValue(20);
     ui->slider_V_Interval->setValue(20);
