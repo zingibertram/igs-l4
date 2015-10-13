@@ -2,6 +2,24 @@
 
 #include <math.h>
 
+SurfaceBorder::SurfaceBorder()
+{
+    minU = 0;
+    maxU = 360;
+    minV = 0;
+    maxV = 360;
+    isCycle = true;
+}
+
+SurfaceBorder::SurfaceBorder(int iu, int iv, int xu, int xv, bool cycle)
+{
+    minU = iu;
+    maxU = xu;
+    minV = iv;
+    maxV = xv;
+    isCycle = cycle;
+}
+
 SurfaceFunction::SurfaceFunction()
 {
 }
@@ -10,6 +28,17 @@ void SurfaceFunction::setParams(double f, double s)
 {
     fst = f;
     snd = s;
+}
+
+SurfaceBorder* SurfaceFunction::surfaceBorder()
+{
+    return border;
+}
+
+Sphere::Sphere() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, -90, 360, 90);
 }
 
 Matrix Sphere::getVertex(double degu, double degv)
@@ -24,6 +53,12 @@ Matrix Sphere::getVertex(double degu, double degv)
     return Matrix(Point3D(x, y, z));
 }
 
+Torus::Torus() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
 Matrix Torus::getVertex(double degu, double degv)
 {
     double u = degu * radianScal;
@@ -36,6 +71,12 @@ Matrix Torus::getVertex(double degu, double degv)
     return Matrix(Point3D(x, y, z));
 }
 
+Hourglass::Hourglass() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
 Matrix Hourglass::getVertex(double degu, double degv)
 {
     double u = degu * radianScal;
@@ -46,4 +87,22 @@ Matrix Hourglass::getVertex(double degu, double degv)
     double z = snd * sin(u) + fst * sin(u);
 
     return Matrix(Point3D(x, y, z));
+}
+
+Trefoil::Trefoil() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 720, 360);
+}
+
+Matrix Trefoil::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = cos(u) * cos(v) + 3 * cos(u) * (1.5 + sin(0.75 * u));
+    double y = sin(u) * cos(v) + 3 * sin(u) * (1.5 + sin(0.75 * u));
+    double z = sin(v) + 2 * cos(1.5 * u);
+
+    return Matrix(Point3D(x * fst, y * fst, z * fst));
 }

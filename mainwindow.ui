@@ -255,7 +255,7 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-596</y>
+         <y>0</y>
          <width>222</width>
          <height>996</height>
         </rect>
@@ -518,7 +518,7 @@ background-color: black;</string>
                 <number>1</number>
                </property>
                <property name="maximum">
-                <number>360</number>
+                <number>720</number>
                </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>

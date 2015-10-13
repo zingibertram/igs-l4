@@ -205,8 +205,9 @@ Matrix SurfaceCalculation::rotateMatrix(int i, int j, int angle)
 
 void SurfaceCalculation::calculateVertices()
 {
-    double mu = surface->maxU;
-    double mv = surface->maxV;
+    SurfaceBorder* b = surface->func->surfaceBorder();
+    double mu = b->dU - b->minU;
+    double mv = b->dV - b->minV;
     double du = mu / surface->dU;
     double dv = mv / surface->dV;
     double u;
@@ -214,9 +215,9 @@ void SurfaceCalculation::calculateVertices()
     double w = surface->textureImg.width() / mu;
     double h = surface->textureImg.height() / mv;
 
-    for (u = 0.0; u <= mu + 0.000001; u += du)
+    for (u = b->minU; u <= mu + 0.000001; u += du)
     {
-        for (v = 0.0; v <= mv + 0.000001; v += dv)
+        for (v = b->minV; v <= mv + 0.000001; v += dv)
         {
             vertices.append((surface->func->getVertex(u, v) * rotate).toPoint3D());
             if (surface->isTextured)
@@ -234,8 +235,10 @@ void SurfaceCalculation::calculatePolygons()
     int u = surface->dU + 1;
     int v = surface->dV + 1;
 
-    bool isU = surface->maxU == 360;
-    bool isV = surface->maxV == 360;
+    SurfaceBorder* b = surface->func->surfaceBorder();
+
+    bool isU = b->dU == b->maxU && b->isCycle;
+    bool isV = b->dV == b->maxV && b->isCycle;
 
     int mu = isU ? u : u - 1;
     int mv = isV ? v : v - 1;

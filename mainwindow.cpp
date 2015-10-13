@@ -282,6 +282,7 @@ void MainWindow::on_slider_UMax_valueChanged(int value)
 {
     this->setValueLabel(ui->value_U_Max, value, 3, "(");
     surface.maxU = value;
+    surface.func->surfaceBorder()->dU = value;
     this->paramsChanged(true);
 }
 
@@ -289,6 +290,7 @@ void MainWindow::on_slider_VMax_valueChanged(int value)
 {
     this->setValueLabel(ui->value_V_Max, value, 3, "(");
     surface.maxV = value;
+    surface.func->surfaceBorder()->dV = value;
     this->paramsChanged(true);
 }
 
@@ -408,10 +410,12 @@ void MainWindow::setComboBoxFuncItems()
     functions["Sphere"] = new Sphere();
     functions["Torus"] = new Torus();
     functions["Hourglass"] = new Hourglass();
+    functions["Trefoil"] = new Trefoil();
 
     ui->comboBox_SurfaceFunctions->addItem("Sphere", "Sphere");
     ui->comboBox_SurfaceFunctions->addItem("Torus", "Torus");
     ui->comboBox_SurfaceFunctions->addItem("Hourglass", "Hourglass");
+    ui->comboBox_SurfaceFunctions->addItem("Trefoil", "Trefoil");
 }
 
 void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)
@@ -420,5 +424,14 @@ void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)
     QString key = var.toString();
     surface.func = functions[key];
     surface.func->setParams(ui->slider_U_Param->value(), ui->slider_V_Param->value());
+
+    ui->slider_U_Max->setMinimum(surface.func->surfaceBorder()->minU);
+    ui->slider_U_Max->setMaximum(surface.func->surfaceBorder()->maxU);
+    ui->slider_V_Max->setMinimum(surface.func->surfaceBorder()->minV);
+    ui->slider_V_Max->setMaximum(surface.func->surfaceBorder()->maxV);
+
+    surface.func->surfaceBorder()->dU = ui->slider_U_Max->value();
+    surface.func->surfaceBorder()->dV = ui->slider_V_Max->value();
+
     paramsChanged(true);
 }
