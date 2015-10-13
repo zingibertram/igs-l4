@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "surfacefunctionsmodel.h"
+#include "surfacefunction.h"
 
 #include <QFileDialog>
 
@@ -11,9 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     textureChanged(":/texture/resources/tex1.jpg");
     setConnection();
+    setComboBoxFuncItems();
     reset();
-    SurfaceFunctionsModel* model = new SurfaceFunctionsModel(this);
-    ui->comboBox_SurfaceFunctions->setModel(model);
+
     ui->graphicsView_Surface->setSurface(&surface);
     ui->radioButton_WireframeShading->click();
 }
@@ -64,6 +64,8 @@ void MainWindow::reset()
     ui->slider_Specular->setValue(8);
     ui->slider_Power->setValue(25);
     ui->slider_Alpha->setValue(10);
+
+    ui->comboBox_SurfaceFunctions->setCurrentIndex(2);
 
     isSetFirstState = false;
 
@@ -118,6 +120,8 @@ void MainWindow::setConnection()
     this->connect(ui->slider_Diffusion, SIGNAL(valueChanged(int)), this, SLOT(on_slider_Diffusion_valueChanged(int)));
     this->connect(ui->slider_Specular, SIGNAL(valueChanged(int)), this, SLOT(on_slider_Specular_valueChanged(int)));
     this->connect(ui->slider_Power, SIGNAL(valueChanged(int)), this, SLOT(on_slider_Power_valueChanged(int)));
+
+    connect(ui->comboBox_SurfaceFunctions, SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_SurfaceFunctions_currentIndexChanged(int)));
 }
 
 MainWindow::~MainWindow()
@@ -127,11 +131,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::setCurrentColor(QWidget *panel, QColor current, QColor *surfaceSide)
 {
+    QString panelName = panel->objectName();
     *surfaceSide = current;
-    QPalette wPalette = panel->palette();
-    wPalette.setColor(QPalette::Background, current);
-    panel->setPalette(wPalette);
-    //panel->setStyleSheet("(QPalette::WindowText, QColor(255 - current.red(), 255 - current.green(), 255 - current.blue()));");
+    panel->setStyleSheet(QString("QWidget#%2{border: 1px solid #8f8f91;background:%1;}").arg(current.name(), panelName));
     this->paramsChanged();
 }
 
@@ -307,14 +309,14 @@ void MainWindow::on_slider_dV_valueChanged(int value)
 void MainWindow::on_slider_U_Param_valueChanged(int value)
 {
     this->setValueLabel(ui->value_U_Param, value, 3, "(");
-    surface.fstParam = value;
+    surface.func->setParams(value, ui->slider_V_Param->value());
     this->paramsChanged(true);
 }
 
 void MainWindow::on_slider_V_Param_valueChanged(int value)
 {
     this->setValueLabel(ui->value_V_Param, value, 3, "(");
-    surface.sndParam = value;
+    surface.func->setParams(ui->slider_U_Param->value(), value);
     this->paramsChanged(true);
 }
 
@@ -399,4 +401,24 @@ void MainWindow::textureChanged(QString tex)
 {
     surface.textureImg.load(tex);
     paramsChanged();
+}
+
+void MainWindow::setComboBoxFuncItems()
+{
+    functions["Sphere"] = new Sphere();
+    functions["Torus"] = new Torus();
+    functions["Hourglass"] = new Hourglass();
+
+    ui->comboBox_SurfaceFunctions->addItem("Sphere", "Sphere");
+    ui->comboBox_SurfaceFunctions->addItem("Torus", "Torus");
+    ui->comboBox_SurfaceFunctions->addItem("Hourglass", "Hourglass");
+}
+
+void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)
+{
+    QVariant var = ui->comboBox_SurfaceFunctions->itemData(index);
+    QString key = var.toString();
+    surface.func = functions[key];
+    surface.func->setParams(ui->slider_U_Param->value(), ui->slider_V_Param->value());
+    paramsChanged(true);
 }

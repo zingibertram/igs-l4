@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "surface.h"
+#include "surfacefunction.h"
 
 #include <QMainWindow>
 #include <QSpinBox>
@@ -30,12 +31,14 @@ private:
     Surface surface;
     bool isSetFirstState;
     QImage texture;
+    QMap<QString, SurfaceFunction*> functions;
 
     void setCurrentColor(QWidget *panel, QColor current, QColor *surfaceSide);
     void paramsChanged(bool isCalc = false);
     void textureChanged(QString tex);
     void setConnection();
     void setValueLabel(QLabel *l = 0, double val = 0, int len = 0, QString dec = "");
+    void setComboBoxFuncItems();
 
 private slots:
     void actionAboutTriggered();
@@ -64,6 +67,8 @@ private slots:
     void on_slider_Alpha_valueChanged(int value);
     void on_pushButton_ChooseTexture_clicked();
     void on_checkBox_Textured_clicked(bool checked);
+
+    void on_comboBox_SurfaceFunctions_currentIndexChanged(int index);
 };
 
 #endif // MAINWINDOW_H

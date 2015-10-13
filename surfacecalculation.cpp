@@ -81,7 +81,7 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
         drawing->setTexels(&texels, &polygons[i]);
 
         double prevSY = C.y() - 1.0;
-        for (double sy = C.y(); sy <= A.y(); sy += 0.3)
+        for (double sy = C.y(); sy <= A.y(); sy += 0.5)
         {
             if ((int)prevSY == (int)sy)
             {
@@ -139,7 +139,7 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
                 drawing->swapAB();
             }
             double prevSX = xa - 1.0;
-            for (double sx = xa; sx <= xb; sx += 1.0)
+            for (double sx = xa; sx <= xb; sx += 0.5)
             {
 
                 if ((int)prevSX == (int)sx)
@@ -203,32 +203,6 @@ Matrix SurfaceCalculation::rotateMatrix(int i, int j, int angle)
     return rx;
 }
 
-Matrix SurfaceCalculation::funcSurface(double degu, double degv)
-{
-    double u = degu * radianScal;
-    double v = degv * radianScal;
-
-    double fst = surface->fstParam;
-    double snd = surface->sndParam;
-
-    // sand watch
-    double x = (snd + (fst + snd * cos(u)) * cos(v)) * sin(u);
-    double y = (snd + (fst + snd * cos(u)) * sin(v)) * sin(u);
-    double z = snd * sin(u) + fst * sin(u);
-
-    // tor
-//    double x = (fst + snd * cos(u)) * cos(v);
-//    double y = (fst + snd * cos(u)) * sin(v);
-//    double z = snd * sin(u);
-
-    // sphere
-//    double x = fst * sin(u) * cos(v);
-//    double y = fst * sin(u) * sin(v);
-//    double z = fst * cos(u);
-
-    return Matrix(Point3D(x, y, z));
-}
-
 void SurfaceCalculation::calculateVertices()
 {
     double mu = surface->maxU;
@@ -244,7 +218,7 @@ void SurfaceCalculation::calculateVertices()
     {
         for (v = 0.0; v <= mv + 0.000001; v += dv)
         {
-            vertices.append((funcSurface(u, v) * rotate).toPoint3D());
+            vertices.append((surface->func->getVertex(u, v) * rotate).toPoint3D());
             if (surface->isTextured)
             {
                 texels.append(QPoint(w * u, h * v));

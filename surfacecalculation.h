@@ -43,7 +43,6 @@ private:
     // в порядке использования
     void calculateRotateMatrix(); // вычисление матрицы поворота
     Matrix rotateMatrix(int i, int j, int angle); // вычисление матрицы поворота
-    Matrix funcSurface(double degu, double degv); // параметрическая функция задания поверхности
     void calculateVertices(); // вычисление вершин поверхности
     void calculatePolygons(); // вычисление полигонов поверхности
 

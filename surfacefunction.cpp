@@ -6,21 +6,10 @@ SurfaceFunction::SurfaceFunction()
 {
 }
 
-QString SurfaceFunction::name()
-{
-    return _name;
-}
-
 void SurfaceFunction::setParams(double f, double s)
 {
     fst = f;
     snd = s;
-}
-
-Sphere::Sphere()
-    :SurfaceFunction()
-{
-    _name = "Sphere";
 }
 
 Matrix Sphere::getVertex(double degu, double degv)
@@ -35,12 +24,6 @@ Matrix Sphere::getVertex(double degu, double degv)
     return Matrix(Point3D(x, y, z));
 }
 
-Torus::Torus()
-    :SurfaceFunction()
-{
-    _name = "Torus";
-}
-
 Matrix Torus::getVertex(double degu, double degv)
 {
     double u = degu * radianScal;
@@ -51,12 +34,6 @@ Matrix Torus::getVertex(double degu, double degv)
     double z = snd * sin(u);
 
     return Matrix(Point3D(x, y, z));
-}
-
-Hourglass::Hourglass()
-    :SurfaceFunction()
-{
-    _name = "Hourglass";
 }
 
 Matrix Hourglass::getVertex(double degu, double degv)

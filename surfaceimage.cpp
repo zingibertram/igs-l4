@@ -40,7 +40,7 @@ void SurfaceImage::paintEvent(QPaintEvent *event)
     }
 
     int t = time.elapsed();
-    qDebug() << "Draw surface of type (%i)" << surface->type << ") is " << t << "ms";
+    qDebug() << "Draw surface of type " << surface->type << "is" << t << "ms";
 }
 
 void SurfaceImage::drawFrame(QPainter *pai)

@@ -28,8 +28,6 @@ struct Surface
     int dU;
     int dV;
 
-    int fstParam;
-    int sndParam;
     SurfaceFunction* func;
 
     QColor exterior;
