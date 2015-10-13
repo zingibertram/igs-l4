@@ -74,6 +74,13 @@ void SurfaceImage::drawFrame(QPainter *pai)
 //        QString st;
 //        pai->drawText(t, st.number(i));
 //    }
+
+//    for (int i = 0; i < vertices->count(); ++i)
+//    {
+//        QPointF t = vertices->operator [](i).toQPoint() + center;
+//        QString st;
+//        pai->drawEllipse(t, 4, 4);
+//    }
 }
 
 void SurfaceImage::drawAxis(QPainter *p)

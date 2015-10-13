@@ -411,11 +411,15 @@ void MainWindow::setComboBoxFuncItems()
     functions["Torus"] = new Torus();
     functions["Hourglass"] = new Hourglass();
     functions["Trefoil"] = new Trefoil();
+    functions["Seashell"] = new Seashell();
+    functions["KleinBottle"] = new KleinBottle();
 
     ui->comboBox_SurfaceFunctions->addItem("Sphere", "Sphere");
     ui->comboBox_SurfaceFunctions->addItem("Torus", "Torus");
     ui->comboBox_SurfaceFunctions->addItem("Hourglass", "Hourglass");
     ui->comboBox_SurfaceFunctions->addItem("Trefoil", "Trefoil");
+    ui->comboBox_SurfaceFunctions->addItem("Seashell", "Seashell");
+    ui->comboBox_SurfaceFunctions->addItem("KleinBottle", "KleinBottle");
 }
 
 void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)
@@ -425,9 +429,9 @@ void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)
     surface.func = functions[key];
     surface.func->setParams(ui->slider_U_Param->value(), ui->slider_V_Param->value());
 
-    ui->slider_U_Max->setMinimum(surface.func->surfaceBorder()->minU);
+    ui->slider_U_Max->setMinimum(surface.func->surfaceBorder()->minU + 1);
     ui->slider_U_Max->setMaximum(surface.func->surfaceBorder()->maxU);
-    ui->slider_V_Max->setMinimum(surface.func->surfaceBorder()->minV);
+    ui->slider_V_Max->setMinimum(surface.func->surfaceBorder()->minV + 1);
     ui->slider_V_Max->setMaximum(surface.func->surfaceBorder()->maxV);
 
     surface.func->surfaceBorder()->dU = ui->slider_U_Max->value();

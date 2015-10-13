@@ -238,7 +238,7 @@ void SurfaceCalculation::calculatePolygons()
     SurfaceBorder* b = surface->func->surfaceBorder();
 
     bool isU = b->dU == b->maxU && b->isCycle;
-    bool isV = b->dV == b->maxV && b->isCycle;
+    bool isV = b->dV == b->maxV;
 
     int mu = isU ? u : u - 1;
     int mv = isV ? v : v - 1;

@@ -65,4 +65,18 @@ public:
     virtual Matrix getVertex(double degu, double degv);
 };
 
+class Seashell : public SurfaceFunction
+{
+public:
+    Seashell();
+    virtual Matrix getVertex(double degu, double degv);
+};
+
+class KleinBottle : public SurfaceFunction
+{
+public:
+    KleinBottle();
+    virtual Matrix getVertex(double degu, double degv);
+};
+
 #endif // SURFACEFUNCTION_H
