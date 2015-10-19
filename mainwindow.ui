@@ -255,7 +255,7 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-596</y>
          <width>222</width>
          <height>996</height>
         </rect>
@@ -412,76 +412,6 @@ background-color: black;</string>
             <number>1</number>
            </property>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_7">
-             <item>
-              <widget class="QLabel" name="label_V_Max">
-               <property name="font">
-                <font>
-                 <family>Consolas</family>
-                </font>
-               </property>
-               <property name="text">
-                <string>V max:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_13">
-               <property name="font">
-                <font>
-                 <family>Consolas</family>
-                </font>
-               </property>
-               <property name="text">
-                <string>0</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSlider" name="slider_V_Max">
-               <property name="font">
-                <font>
-                 <family>Consolas</family>
-                </font>
-               </property>
-               <property name="minimum">
-                <number>1</number>
-               </property>
-               <property name="maximum">
-                <number>360</number>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_14">
-               <property name="font">
-                <font>
-                 <family>Consolas</family>
-                </font>
-               </property>
-               <property name="text">
-                <string>360</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="value_V_Max">
-               <property name="font">
-                <font>
-                 <family>Consolas</family>
-                </font>
-               </property>
-               <property name="text">
-                <string>(***)</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_6">
              <item>
               <widget class="QLabel" name="label_U_Max">
@@ -552,33 +482,33 @@ background-color: black;</string>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
              <item>
-              <widget class="QLabel" name="label_V_Interval">
+              <widget class="QLabel" name="label_V_Max">
                <property name="font">
                 <font>
                  <family>Consolas</family>
                 </font>
                </property>
                <property name="text">
-                <string>V seg:</string>
+                <string>V max:</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_19">
+              <widget class="QLabel" name="label_13">
                <property name="font">
                 <font>
                  <family>Consolas</family>
                 </font>
                </property>
                <property name="text">
-                <string>1</string>
+                <string>0</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QSlider" name="slider_V_Interval">
+              <widget class="QSlider" name="slider_V_Max">
                <property name="font">
                 <font>
                  <family>Consolas</family>
@@ -588,7 +518,7 @@ background-color: black;</string>
                 <number>1</number>
                </property>
                <property name="maximum">
-                <number>50</number>
+                <number>360</number>
                </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -596,19 +526,19 @@ background-color: black;</string>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_20">
+              <widget class="QLabel" name="label_14">
                <property name="font">
                 <font>
                  <family>Consolas</family>
                 </font>
                </property>
                <property name="text">
-                <string> 50</string>
+                <string>360</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="value_V_Interval">
+              <widget class="QLabel" name="value_V_Max">
                <property name="font">
                 <font>
                  <family>Consolas</family>
@@ -679,6 +609,76 @@ background-color: black;</string>
              </item>
              <item>
               <widget class="QLabel" name="value_U_Interval">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                </font>
+               </property>
+               <property name="text">
+                <string>(***)</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_10">
+             <item>
+              <widget class="QLabel" name="label_V_Interval">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                </font>
+               </property>
+               <property name="text">
+                <string>V seg:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_19">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                </font>
+               </property>
+               <property name="text">
+                <string>1</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_V_Interval">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                </font>
+               </property>
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="maximum">
+                <number>50</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_20">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                </font>
+               </property>
+               <property name="text">
+                <string> 50</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="value_V_Interval">
                <property name="font">
                 <font>
                  <family>Consolas</family>

@@ -1,5 +1,7 @@
 #include "surfacefunction.h"
 
+#include <QDebug>
+
 #include <math.h>
 
 SurfaceBorder::SurfaceBorder()
@@ -39,7 +41,7 @@ Sphere::Sphere() :
     SurfaceFunction()
 {
     // полувывернута
-    border = new SurfaceBorder(0, 0, 360, 180, false);
+    border = new SurfaceBorder(0, 0, 360, 180);
 }
 
 Matrix Sphere::getVertex(double degu, double degv)
@@ -47,9 +49,9 @@ Matrix Sphere::getVertex(double degu, double degv)
     double u = degu * radianScal;
     double v = degv * radianScal;
 
-    double x = fst * sin(u) * cos(v);
-    double y = fst * sin(u) * sin(v);
-    double z = fst * cos(u);
+    double x = fst * sin(v) * cos(u);
+    double y = fst * sin(v) * sin(u);
+    double z = fst * cos(v);
 
     return Matrix(Point3D(x, y, z));
 }
@@ -106,13 +108,13 @@ Matrix Trefoil::getVertex(double degu, double degv)
     double y = snd * sin(u) * cos(v) + fst * sin(u) * (1.5 + sin(1.5 * u) / 2);
     double z = snd * sin(v) + 2 * fst / 3 * cos(1.5 * u);
 
-    return Matrix(Point3D(x, y, z));
+    return Matrix(Point3D(x, y, -z));
 }
 
 Seashell::Seashell() :
     SurfaceFunction()
 {
-    border = new SurfaceBorder(0, 0, 1440, 360, false);
+    border = new SurfaceBorder(0, 0, 720, 360, false);
 }
 
 Matrix Seashell::getVertex(double degu, double degv)
@@ -120,11 +122,11 @@ Matrix Seashell::getVertex(double degu, double degv)
     double u = degu * radianScal;
     double v = degv * radianScal;
 
-    double x = u * cos(u) * (cos(v) + 1);
-    double y = u * sin(u) * (cos(v) + 1);
-    double z = u * sin(v) - pow((u + 3) / 8.0 * (180 * radianScal), 2) - 20;
+    double x = fst * u * cos(u) * (cos(v) + 1);
+    double y = fst * u * sin(u) * (cos(v) + 1);
+    double z = fst * pow((u + 3) / 8.0 * (180 * radianScal), 2) - fst * u * sin(v);
 
-    return Matrix(Point3D(snd * x, snd * y, snd * z));
+    return Matrix(Point3D(x, y, z));
 }
 
 KleinBottle::KleinBottle() :
@@ -138,9 +140,9 @@ Matrix KleinBottle::getVertex(double degu, double degv)
     double u = degu * radianScal;
     double v = degv * radianScal;
 
-    double x = (snd + cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
-    double y = (snd + cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
-    double z = sin(u / 2.0) * sin(v) + cos(u / 2.0) * sin(2.0 * v);
+    double x = (snd + fst * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (snd + fst * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = fst * sin(u / 2.0) * sin(v) + fst * cos(u / 2.0) * sin(2.0 * v);
 
-    return Matrix(Point3D(fst * x, fst * y, fst * z));
+    return Matrix(Point3D(x, y, z));
 }
