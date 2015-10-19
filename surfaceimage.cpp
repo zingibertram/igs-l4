@@ -1,11 +1,6 @@
 #include "surfaceimage.h"
 #include "surfacecalculation.h"
 
-#include <QDebug>
-#include <QTime>
-
-#include <stdio.h>
-
 SurfaceImage::SurfaceImage(QWidget *parent) :
     QGraphicsView(parent)
 {
@@ -13,9 +8,6 @@ SurfaceImage::SurfaceImage(QWidget *parent) :
 
 void SurfaceImage::paintEvent(QPaintEvent *event)
 {
-    QTime time;
-    time.start();
-
     QGraphicsView::paintEvent(event);
 
     QPainter painter(viewport());
@@ -38,9 +30,6 @@ void SurfaceImage::paintEvent(QPaintEvent *event)
         surfCalc->calculateColors(&bmp);
         painter.drawImage(0, 0, bmp);
     }
-
-    int t = time.elapsed();
-    qDebug() << "Draw surface of type " << surface->type << "is" << t << "ms";
 }
 
 void SurfaceImage::drawFrame(QPainter *pai)

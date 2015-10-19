@@ -1,7 +1,5 @@
 #include "surfacefunction.h"
 
-#include <QDebug>
-
 #include <math.h>
 
 SurfaceBorder::SurfaceBorder()
@@ -95,7 +93,6 @@ Matrix Hourglass::getVertex(double degu, double degv)
 Trefoil::Trefoil() :
     SurfaceFunction()
 {
-    // вывернут
     border = new SurfaceBorder(0, 0, 720, 360);
 }
 
