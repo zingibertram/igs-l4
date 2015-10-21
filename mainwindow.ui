@@ -101,6 +101,7 @@ QPushButton
 	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
     border: 1px solid #8f8f91;
     min-width: 80px;
+    min-height: 16px;
  }
 
 QPushButton:hover
@@ -120,6 +121,7 @@ QComboBox
     border: 1px solid #8f8f91;
 	padding: 1px 18px 1px 3px;
 	min-width: 6em;
+	min-height: 16px;
  }
 
 QComboBox::!editable:hover, QComboBox::drop-down:editable:hover
@@ -168,7 +170,7 @@ QComboBox::drop-down
 
 QComboBox::down-arrow
 {
-	image: url(:/icons/resources/ddarrow.png);
+	image: url(:/icons/resources/arrow-down.png);
  }
 
 QComboBox::down-arrow:on
@@ -203,6 +205,269 @@ QWidget#widget_InteriorColor
 {
 	border: 1px solid #8f8f91;
 }*/
+
+
+QMenuBar
+{
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	border: 1px solid #8f8f91;
+	margin-left: -1px;
+	margin-top: -1px;
+	margin-right: -1px;
+ }
+
+QMenuBar::item
+{
+	spacing: 4px; /* интервал между пунктами меню */
+	padding: 1px 4px;
+	background: transparent;
+}
+
+QMenuBar::item:selected
+{ /* когда выделено с помощью мыши или клавиатуры */
+ 	background: rgb(0, 170, 0);
+}
+
+QMenuBar::item:pressed
+{
+	background: rgb(0, 85, 0);
+}
+
+
+QMenu
+{
+	background-color: rgb(240, 240, 240); /* устанавливаем фон меню */
+	border: 1px solid #8f8f91;
+}
+
+QMenu::item
+{
+     /* устанавливаем фон пункта меню. установите его во что-нибудь непрозрачное
+         если вы хотите чтобы цвет меню отличался от цвета пункта меню */
+	background-color: transparent;
+}
+
+QMenu::item:selected
+{ /* когда пользователь выбирает пункт с помощью мыши или клавиатуры */
+	background-color: rgb(0, 170, 0);
+}
+
+QMenu::item:pressed
+{
+	background-color: rgb(0, 85, 0);
+}
+
+QMenu::separator
+{
+	height: 1px;
+	background: #8f8f91;
+	margin-left: 16px;
+	margin-right: 8px;
+}
+
+
+QRadioButton::indicator
+{
+	width: 11px;
+	height: 11px;
+	border: 1px solid #8f8f91;
+	border-radius: 6px;
+}
+
+QRadioButton::indicator::unchecked
+{
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QRadioButton::indicator::checked
+{
+	image: url(:/icons/resources/rbindicator.png);
+}
+
+QRadioButton::indicator:hover
+{
+	background-color: rgb(0, 170, 0);
+}
+
+QRadioButton::indicator:pressed
+{
+	background-color: rgb(0, 85, 0);
+}
+
+
+QCheckBox::indicator
+{
+	width: 11px;
+	height: 11px;
+	border: 1px solid #8f8f91;
+}
+
+QCheckBox::indicator::unchecked
+{
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QCheckBox::indicator::checked
+{
+	image: url(:/icons/resources/cbindicator.png);
+}
+
+QCheckBox::indicator:hover
+{
+	background-color: rgb(0, 170, 0);
+}
+
+QCheckBox::indicator:pressed
+{
+	background-color: rgb(0, 85, 0);
+}
+
+/*
+QScrollBar:vertical
+{
+	border: 1px solid #8f8f91;
+	background: rgb(240, 240, 240);
+	margin: 0px 20px 0 20px;
+}
+
+QScrollBar::handle:vertical
+{
+	border: 1px solid #8f8f91;
+	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	min-height: 20px;
+}
+
+QScrollBar::add-line:vertical
+{
+	border: 1px solid #8f8f91;
+	background: rgb(240, 240, 240);
+	height: 20px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical
+{
+	border: 1px solid #8f8f91;
+	background: rgb(240, 240, 240);
+	height: 20px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical
+{
+	border: 1px solid #8f8f91;
+	image: url(:/icons/resources/arrow-up.png);
+	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+
+QScrollBar::down-arrow:vertical
+{
+	border: 1px solid #8f8f91;
+	image: url(:/icons/resources/arrow-down.png);
+	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+{
+	background: none;
+}*/
+
+
+
+QScrollBar:vertical
+{
+	background: rgb(240, 240, 240);
+	border: 1px solid rgb(220, 220, 220);
+	width: 18px;
+	margin: 17px 0 17px 0;
+}
+
+QScrollBar::handle:vertical
+{
+	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	border: 1px solid #8f8f91;
+	min-height: 20px;
+	margin: -1px -1px
+}
+
+QScrollBar::handle:vertical:hover
+{
+	background: rgb(0, 170, 0);
+}
+
+QScrollBar::handle:vertical:pressed
+{
+	background: rgb(0, 85, 0);
+}
+
+QScrollBar::add-line:vertical
+{
+	border: 1px solid #8f8f91;
+	background: none;
+	height: 16px;
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical
+{
+	border: 1px solid #8f8f91;
+	background: none;
+	height: 16px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical
+{
+	border: 1px solid #8f8f91;
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	image: url(:/icons/resources/arrow-up.png);
+}
+
+QScrollBar::up-arrow:vertical:hover
+{
+	background: rgb(0, 170, 0);
+}
+
+QScrollBar::up-arrow:vertical:pressed
+{
+	background: rgb(0, 85, 0);
+}
+
+QScrollBar::down-arrow:vertical
+{
+	border: 1px solid #8f8f91;
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	image: url(:/icons/resources/arrow-down.png);
+}
+
+QScrollBar::down-arrow:vertical:hover
+{
+	background: rgb(0, 170, 0);
+}
+
+QScrollBar::down-arrow:vertical:pressed
+{
+	background: rgb(0, 85, 0);
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+{
+	background: none;
+}
+
+QScrollBar::add-page:vertical:pressed, QScrollBar::sub-page:vertical:pressed
+{
+	background: rgb(0, 85, 0);
+	border: 1px solid #8f8f91;
+}
 </string>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -255,9 +520,9 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-596</y>
+         <y>0</y>
          <width>222</width>
-         <height>996</height>
+         <height>989</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -2768,7 +3033,7 @@ background-color: black;</string>
      <x>0</x>
      <y>0</y>
      <width>643</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

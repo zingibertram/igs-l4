@@ -3,6 +3,10 @@
 #include "surfacefunction.h"
 
 #include <QFileDialog>
+#include <QScrollBar>
+#include <QDebug>
+
+#include <math.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -396,13 +400,13 @@ void MainWindow::on_checkBox_Textured_clicked(bool checked)
     ui->groupBox_InterioColor->setEnabled(!checked);
     surface.isTextured = checked;
     this->setValueLabel();
-    this->paramsChanged();
+    this->paramsChanged(true);
 }
 
 void MainWindow::textureChanged(QString tex)
 {
     surface.textureImg.load(tex);
-    paramsChanged();
+    paramsChanged(true);
 }
 
 void MainWindow::setComboBoxFuncItems()

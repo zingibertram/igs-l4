@@ -137,9 +137,9 @@ Matrix KleinBottle::getVertex(double degu, double degv)
     double u = degu * radianScal;
     double v = degv * radianScal;
 
-    double x = (snd + fst * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
-    double y = (snd + fst * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
-    double z = fst * sin(u / 2.0) * sin(v) + fst * cos(u / 2.0) * sin(2.0 * v);
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
 
     return Matrix(Point3D(x, y, z));
 }

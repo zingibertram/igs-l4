@@ -1,7 +1,10 @@
 <RCC>
     <qresource prefix="/icons">
         <file>resources/sphere_frame.png</file>
-        <file>resources/ddarrow.png</file>
+        <file>resources/rbindicator.png</file>
+        <file>resources/cbindicator.png</file>
+        <file>resources/arrow-down.png</file>
+        <file>resources/arrow-up.png</file>
     </qresource>
     <qresource prefix="/texture">
         <file>resources/tex1.jpg</file>
