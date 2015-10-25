@@ -418,12 +418,36 @@ void MainWindow::setComboBoxFuncItems()
     functions["Seashell"] = new Seashell();
     functions["KleinBottle"] = new KleinBottle();
 
-    ui->comboBox_SurfaceFunctions->addItem("Sphere", "Sphere");
+    // not implemented surfaces
+    /*functions["ConicalSpiralModCliffordTorus"] = new ConicalSpiralModCliffordTorus();
+    functions["SpiralModCliffordTorus"] = new SpiralModCliffordTorus();
+    functions["CliffordTorus"] = new CliffordTorus();
+    functions["HyperbolicHelicoid"] = new HyperbolicHelicoid();
+    functions["Catenoid"] = new Catenoid();
+    functions["Helicoid"] = new Helicoid();
+    functions["Surface1"] = new Surface1();
+    functions["Hyperboloid2Sheets"] = new Hyperboloid2Sheets();
+    functions["Hyperboloid1Sheet"] = new Hyperboloid1Sheet();
+    functions["ConicalSpiral"] = new ConicalSpiral();
+    functions["Spiral"] = new Spiral();
+    functions["Surface2"] = new Surface2();
+    functions["CrossCup"] = new CrossCup();
+    functions["AstroidalEllipsoid"] = new AstroidalEllipsoid();
+    functions["EightSurface"] = new EightSurface();
+    functions["Surface3"] = new Surface3();
+    functions["Surface4"] = new Surface4();*/
+
+    /*ui->comboBox_SurfaceFunctions->addItem("Sphere", "Sphere");
     ui->comboBox_SurfaceFunctions->addItem("Torus", "Torus");
     ui->comboBox_SurfaceFunctions->addItem("Hourglass", "Hourglass");
     ui->comboBox_SurfaceFunctions->addItem("Trefoil", "Trefoil");
     ui->comboBox_SurfaceFunctions->addItem("Seashell", "Seashell");
-    ui->comboBox_SurfaceFunctions->addItem("KleinBottle", "KleinBottle");
+    ui->comboBox_SurfaceFunctions->addItem("KleinBottle", "KleinBottle");*/
+    QList<QString> keys = functions.keys();
+    for (int i = 0; i < keys.count(); ++i)
+    {
+        ui->comboBox_SurfaceFunctions->addItem(keys[i], keys[i]);
+    }
 }
 
 void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)

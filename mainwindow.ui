@@ -46,7 +46,7 @@ QSlider::groove:horizontal
 
 QSlider::sub-page:horizontal
 {
-	background: rgb(0, 170, 0);
+	background: rgb(153, 255, 102);
 	border: 1px solid #8f8f91;
 	height: 4px;
 }
@@ -69,12 +69,12 @@ QSlider::handle:horizontal
 
 QSlider::handle:horizontal:hover
 {
-	background: rgb(0, 170, 0);
+	background: rgb(153, 255, 102);
 }
 
 QSlider::handle:horizontal:pressed
 {
-	background: rgb(0, 85, 0);
+	background: rgb(0, 204, 51);
 }
 
 QSlider::sub-page:horizontal:disabled
@@ -106,12 +106,12 @@ QPushButton
 
 QPushButton:hover
 {
-	background: rgb(0, 170, 0);
+	background: rgb(153, 255, 102);
 }
 
 QPushButton:pressed
 {
-     background-color: rgb(0, 85, 0);
+     background-color: rgb(0, 204, 51);
  }
 
 
@@ -126,7 +126,7 @@ QComboBox
 
 QComboBox::!editable:hover, QComboBox::drop-down:editable:hover
 {
-	background-color: rgb(0, 170, 0);
+	background-color: rgb(153, 255, 102);
 }
 
 QComboBox:editable
@@ -135,24 +135,17 @@ QComboBox:editable
 }
 
 QComboBox:!editable, QComboBox::drop-down:editable
-{/*
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                  stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
-                                  stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);*/
+{
 	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
 }
 
- /* QComboBox получает состояние &quot;on&quot; когда выпадающий список раскрыт */
 QComboBox:!editable:on, QComboBox::drop-down:editable:on
-{/*
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                 stop: 0 #D3D3D3, stop: 0.4 #D8D8D8,
-                                 stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);*/
-	background-color: rgb(0, 85, 0);
+{
+	background-color: rgb(0, 204, 51);
 }
 
 QComboBox:on
-{ /* сдвиг текста когда выпадающий список раскрывается */
+{
 	padding-top: 3px;
 	padding-left: 4px;
 }
@@ -165,7 +158,7 @@ QComboBox::drop-down
 
 	border-left-width: 1px;
 	border-left-color: darkgray;
-	border-left-style: solid; /* только одна линия */
+	border-left-style: solid;
 }
 
 QComboBox::down-arrow
@@ -174,7 +167,7 @@ QComboBox::down-arrow
  }
 
 QComboBox::down-arrow:on
-{ /* сдвиг стрелки когда выпадающий список раскрывается */
+{
 	top: 1px;
 	left: 1px;
 }
@@ -182,29 +175,9 @@ QComboBox::down-arrow:on
 QComboBox QAbstractItemView
 {
 	border: 1px solid darkgray;
-	selection-background-color: rgb(0, 170, 0);
+	selection-background-color: rgb(153, 255, 102);
+	selection-color: black;
 }
-
-/*
-QWidget#widget_IlluminantDottedColor
-{
-	border: 1px solid #8f8f91;
-}
-
-QWidget#widget_IlluminantAbsentColor
-{
-	border: 1px solid #8f8f91;
-}
-
-QWidget#widget_ExteriorColor
-{
-	border: 1px solid #8f8f91;
-}
-
-QWidget#widget_InteriorColor
-{
-	border: 1px solid #8f8f91;
-}*/
 
 
 QMenuBar
@@ -218,43 +191,42 @@ QMenuBar
 
 QMenuBar::item
 {
-	spacing: 4px; /* интервал между пунктами меню */
+	spacing: 4px;
 	padding: 1px 4px;
 	background: transparent;
 }
 
 QMenuBar::item:selected
-{ /* когда выделено с помощью мыши или клавиатуры */
- 	background: rgb(0, 170, 0);
+{
+ 	background: rgb(153, 255, 102);
 }
 
 QMenuBar::item:pressed
 {
-	background: rgb(0, 85, 0);
+	background: rgb(0, 204, 51);
 }
 
 
 QMenu
 {
-	background-color: rgb(240, 240, 240); /* устанавливаем фон меню */
+	background-color: rgb(240, 240, 240);
 	border: 1px solid #8f8f91;
 }
 
 QMenu::item
 {
-     /* устанавливаем фон пункта меню. установите его во что-нибудь непрозрачное
-         если вы хотите чтобы цвет меню отличался от цвета пункта меню */
 	background-color: transparent;
 }
 
 QMenu::item:selected
-{ /* когда пользователь выбирает пункт с помощью мыши или клавиатуры */
-	background-color: rgb(0, 170, 0);
+{
+	background-color: rgb(153, 255, 102);
+	color: black;
 }
 
 QMenu::item:pressed
 {
-	background-color: rgb(0, 85, 0);
+	background-color: rgb(0, 204, 51);
 }
 
 QMenu::separator
@@ -286,12 +258,12 @@ QRadioButton::indicator::checked
 
 QRadioButton::indicator:hover
 {
-	background-color: rgb(0, 170, 0);
+	background-color: rgb(153, 255, 102);
 }
 
 QRadioButton::indicator:pressed
 {
-	background-color: rgb(0, 85, 0);
+	background-color: rgb(0, 204, 51);
 }
 
 
@@ -314,70 +286,13 @@ QCheckBox::indicator::checked
 
 QCheckBox::indicator:hover
 {
-	background-color: rgb(0, 170, 0);
+	background-color: rgb(153, 255, 102);
 }
 
 QCheckBox::indicator:pressed
 {
-	background-color: rgb(0, 85, 0);
+	background-color: rgb(0, 204, 51);
 }
-
-/*
-QScrollBar:vertical
-{
-	border: 1px solid #8f8f91;
-	background: rgb(240, 240, 240);
-	margin: 0px 20px 0 20px;
-}
-
-QScrollBar::handle:vertical
-{
-	border: 1px solid #8f8f91;
-	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f6f7fa, stop: 1 #dadbde);
-	min-height: 20px;
-}
-
-QScrollBar::add-line:vertical
-{
-	border: 1px solid #8f8f91;
-	background: rgb(240, 240, 240);
-	height: 20px;
-	subcontrol-position: top;
-	subcontrol-origin: margin;
-}
-
-QScrollBar::sub-line:vertical
-{
-	border: 1px solid #8f8f91;
-	background: rgb(240, 240, 240);
-	height: 20px;
-	subcontrol-position: top;
-	subcontrol-origin: margin;
-}
-
-QScrollBar::up-arrow:vertical
-{
-	border: 1px solid #8f8f91;
-	image: url(:/icons/resources/arrow-up.png);
-	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f6f7fa, stop: 1 #dadbde);
-	subcontrol-position: top;
-	subcontrol-origin: margin;
-}
-
-QScrollBar::down-arrow:vertical
-{
-	border: 1px solid #8f8f91;
-	image: url(:/icons/resources/arrow-down.png);
-	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f6f7fa, stop: 1 #dadbde);
-	subcontrol-position: bottom;
-	subcontrol-origin: margin;
-}
-
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
-{
-	background: none;
-}*/
-
 
 
 QScrollBar:vertical
@@ -398,12 +313,12 @@ QScrollBar::handle:vertical
 
 QScrollBar::handle:vertical:hover
 {
-	background: rgb(0, 170, 0);
+	background: rgb(153, 255, 102);
 }
 
 QScrollBar::handle:vertical:pressed
 {
-	background: rgb(0, 85, 0);
+	background: rgb(0, 204, 51);
 }
 
 QScrollBar::add-line:vertical
@@ -433,12 +348,12 @@ QScrollBar::up-arrow:vertical
 
 QScrollBar::up-arrow:vertical:hover
 {
-	background: rgb(0, 170, 0);
+	background: rgb(153, 255, 102);
 }
 
 QScrollBar::up-arrow:vertical:pressed
 {
-	background: rgb(0, 85, 0);
+	background: rgb(0, 204, 51);
 }
 
 QScrollBar::down-arrow:vertical
@@ -450,12 +365,12 @@ QScrollBar::down-arrow:vertical
 
 QScrollBar::down-arrow:vertical:hover
 {
-	background: rgb(0, 170, 0);
+	background: rgb(153, 255, 102);
 }
 
 QScrollBar::down-arrow:vertical:pressed
 {
-	background: rgb(0, 85, 0);
+	background: rgb(0, 204, 51);
 }
 
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
@@ -465,7 +380,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
 
 QScrollBar::add-page:vertical:pressed, QScrollBar::sub-page:vertical:pressed
 {
-	background: rgb(0, 85, 0);
+	background: rgb(0, 204, 51);
 	border: 1px solid #8f8f91;
 }
 </string>
@@ -475,7 +390,16 @@ QScrollBar::add-page:vertical:pressed, QScrollBar::sub-page:vertical:pressed
     <property name="spacing">
      <number>3</number>
     </property>
-    <property name="margin">
+    <property name="leftMargin">
+     <number>4</number>
+    </property>
+    <property name="topMargin">
+     <number>4</number>
+    </property>
+    <property name="rightMargin">
+     <number>4</number>
+    </property>
+    <property name="bottomMargin">
      <number>4</number>
     </property>
     <item>
@@ -550,7 +474,16 @@ background-color: black;</string>
            <property name="spacing">
             <number>1</number>
            </property>
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
@@ -570,7 +503,16 @@ background-color: black;</string>
            <string>Закраска</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <property name="spacing">
@@ -639,7 +581,16 @@ background-color: black;</string>
            <property name="spacing">
             <number>1</number>
            </property>
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
@@ -673,7 +624,16 @@ background-color: black;</string>
            <property name="spacing">
             <number>1</number>
            </property>
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
@@ -1107,7 +1067,16 @@ background-color: black;</string>
            <property name="spacing">
             <number>1</number>
            </property>
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
@@ -1346,7 +1315,16 @@ background-color: black;</string>
            <property name="spacing">
             <number>1</number>
            </property>
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
@@ -1731,7 +1709,16 @@ background-color: black;</string>
            <property name="spacing">
             <number>1</number>
            </property>
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
@@ -1967,7 +1954,16 @@ background-color: black;</string>
            <string>Цвет источника света (точечный)</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_23">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
@@ -2230,7 +2226,16 @@ background-color: black;</string>
            <string>Цвет источника света (рассеяный)</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_27">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
@@ -2493,7 +2498,16 @@ background-color: black;</string>
            <string>Внешний цвет поверхности</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_13">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
@@ -2756,7 +2770,16 @@ background-color: black;</string>
            <string>Внутренний цвет поверхности</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_19">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
             <number>1</number>
            </property>
            <item>
