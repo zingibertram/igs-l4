@@ -383,6 +383,36 @@ QScrollBar::add-page:vertical:pressed, QScrollBar::sub-page:vertical:pressed
 	background: rgb(0, 204, 51);
 	border: 1px solid #8f8f91;
 }
+
+
+Line
+{
+	border: 1px solid #8f8f91;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+
+QLabel#label_SurfaceLocation
+{
+	border: 1px solid #8f8f91;
+	margin-top: 10px;
+}
+
+QLabel#label_SurfaceMain
+{
+	border: 1px solid #8f8f91;
+}
+QLabel#label_LightSource
+{
+	border: 1px solid #8f8f91;
+	margin-top: 10px;
+}
+
+QLabel#label_ColorSelection
+{
+	border: 1px solid #8f8f91;
+	margin-top: 10px;
+}
 </string>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -444,9 +474,9 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-697</y>
          <width>222</width>
-         <height>989</height>
+         <height>1103</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -465,6 +495,16 @@ background-color: black;</string>
         <property name="bottomMargin">
          <number>0</number>
         </property>
+        <item>
+         <widget class="QLabel" name="label_SurfaceMain">
+          <property name="text">
+           <string>Основное</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QGroupBox" name="groupBox_SurfaceFunction">
           <property name="title">
@@ -608,6 +648,19 @@ background-color: black;</string>
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_SurfaceLocation">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>Положение поверхности</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -1302,6 +1355,16 @@ background-color: black;</string>
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="label_LightSource">
+          <property name="text">
+           <string>Источник света</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QGroupBox" name="groupBox_IlluminantParams">
           <property name="font">
            <font>
@@ -1941,6 +2004,16 @@ background-color: black;</string>
             </layout>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_ColorSelection">
+          <property name="text">
+           <string>Выбор цвета</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>

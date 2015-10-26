@@ -37,4 +37,6 @@ debug/*
 release/*
 build-IGS_LabN4-Desktop_Qt_5_5_0_MinGW_32bit-Debug/*
 build-IGS_LabN4-Desktop_Qt_5_5_0_MinGW_32bit-Release/*
+build-IGS_LabN4-Desktop_Qt_5_4_1_MinGW_32bit-Debug/*
+build-IGS_LabN4-Desktop_Qt_5_4_1_MinGW_32bit-Release/*
 bin/*

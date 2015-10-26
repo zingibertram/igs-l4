@@ -143,3 +143,309 @@ Matrix KleinBottle::getVertex(double degu, double degv)
 
     return Matrix(Point3D(x, y, z));
 }
+
+ConicalSpiralModCliffordTorus::ConicalSpiralModCliffordTorus() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix ConicalSpiralModCliffordTorus::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = fst * cos(10 * radianScal * v + u + v) / (sqrt(2) + cos(v - u));
+    double y = fst * sin(10 * radianScal * v + u + v) / (sqrt(2) + cos(v - u));
+    double z = fst * sin(v - u) / (sqrt(2) + cos(v - u)) + fst * snd * degv;
+
+    return Matrix(Point3D(x, y, z));
+}
+
+SpiralModCliffordTorus::SpiralModCliffordTorus() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix SpiralModCliffordTorus::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+CliffordTorus::CliffordTorus() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix CliffordTorus::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+HyperbolicHelicoid::HyperbolicHelicoid() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix HyperbolicHelicoid::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+Catenoid::Catenoid() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix Catenoid::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+Helicoid::Helicoid() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix Helicoid::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+Surface1::Surface1() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix Surface1::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+Hyperboloid2Sheets::Hyperboloid2Sheets() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix Hyperboloid2Sheets::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+Hyperboloid1Sheet::Hyperboloid1Sheet() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix Hyperboloid1Sheet::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+ConicalSpiral::ConicalSpiral() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix ConicalSpiral::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+Spiral::Spiral() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix Spiral::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+Surface2::Surface2() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix Surface2::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+CrossCup::CrossCup() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix CrossCup::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+AstroidalEllipsoid::AstroidalEllipsoid() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix AstroidalEllipsoid::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+EightSurface::EightSurface() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix EightSurface::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+Surface3::Surface3() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix Surface3::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}
+
+Surface4::Surface4() :
+    SurfaceFunction()
+{
+    border = new SurfaceBorder(0, 0, 360, 360);
+}
+
+Matrix Surface4::getVertex(double degu, double degv)
+{
+    double u = degu * radianScal;
+    double v = degv * radianScal;
+
+    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
+    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
+    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+
+    return Matrix(Point3D(x, y, z));
+}

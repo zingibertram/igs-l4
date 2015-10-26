@@ -417,9 +417,7 @@ void MainWindow::setComboBoxFuncItems()
     functions["Trefoil"] = new Trefoil();
     functions["Seashell"] = new Seashell();
     functions["KleinBottle"] = new KleinBottle();
-
-    // not implemented surfaces
-    /*functions["ConicalSpiralModCliffordTorus"] = new ConicalSpiralModCliffordTorus();
+    functions["ConicalSpiralModCliffordTorus"] = new ConicalSpiralModCliffordTorus();
     functions["SpiralModCliffordTorus"] = new SpiralModCliffordTorus();
     functions["CliffordTorus"] = new CliffordTorus();
     functions["HyperbolicHelicoid"] = new HyperbolicHelicoid();
@@ -435,14 +433,8 @@ void MainWindow::setComboBoxFuncItems()
     functions["AstroidalEllipsoid"] = new AstroidalEllipsoid();
     functions["EightSurface"] = new EightSurface();
     functions["Surface3"] = new Surface3();
-    functions["Surface4"] = new Surface4();*/
+    functions["Surface4"] = new Surface4();
 
-    /*ui->comboBox_SurfaceFunctions->addItem("Sphere", "Sphere");
-    ui->comboBox_SurfaceFunctions->addItem("Torus", "Torus");
-    ui->comboBox_SurfaceFunctions->addItem("Hourglass", "Hourglass");
-    ui->comboBox_SurfaceFunctions->addItem("Trefoil", "Trefoil");
-    ui->comboBox_SurfaceFunctions->addItem("Seashell", "Seashell");
-    ui->comboBox_SurfaceFunctions->addItem("KleinBottle", "KleinBottle");*/
     QList<QString> keys = functions.keys();
     for (int i = 0; i < keys.count(); ++i)
     {
