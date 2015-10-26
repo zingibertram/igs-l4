@@ -8,16 +8,18 @@ SurfaceBorder::SurfaceBorder()
     maxU = 360;
     minV = 0;
     maxV = 360;
-    isCycle = true;
+    isUCycle = true;
+    isVCycle = true;
 }
 
-SurfaceBorder::SurfaceBorder(int iu, int iv, int xu, int xv, bool cycle)
+SurfaceBorder::SurfaceBorder(int iu, int iv, int xu, int xv, bool uCycle, bool vCycle)
 {
     minU = iu;
     maxU = xu;
     minV = iv;
     maxV = xv;
-    isCycle = cycle;
+    isUCycle = uCycle;
+    isVCycle = vCycle;
 }
 
 SurfaceFunction::SurfaceFunction()
@@ -111,7 +113,7 @@ Matrix Trefoil::getVertex(double degu, double degv)
 Seashell::Seashell() :
     SurfaceFunction()
 {
-    border = new SurfaceBorder(0, 0, 720, 360, false);
+    border = new SurfaceBorder(0, 0, 720, 360, false, true);
 }
 
 Matrix Seashell::getVertex(double degu, double degv)
@@ -129,7 +131,7 @@ Matrix Seashell::getVertex(double degu, double degv)
 KleinBottle::KleinBottle() :
     SurfaceFunction()
 {
-    border = new SurfaceBorder(0, 0, 360, 360, false);
+    border = new SurfaceBorder(0, 0, 360, 360, false, true);
 }
 
 Matrix KleinBottle::getVertex(double degu, double degv)
@@ -147,7 +149,7 @@ Matrix KleinBottle::getVertex(double degu, double degv)
 ConicalSpiralModCliffordTorus::ConicalSpiralModCliffordTorus() :
     SurfaceFunction()
 {
-    border = new SurfaceBorder(0, 0, 360, 360);
+    border = new SurfaceBorder(0, 0, 360, 360, false, false);
 }
 
 Matrix ConicalSpiralModCliffordTorus::getVertex(double degu, double degv)
@@ -165,7 +167,7 @@ Matrix ConicalSpiralModCliffordTorus::getVertex(double degu, double degv)
 SpiralModCliffordTorus::SpiralModCliffordTorus() :
     SurfaceFunction()
 {
-    border = new SurfaceBorder(0, 0, 360, 360, false);
+    border = new SurfaceBorder(0, 0, 360, 360, false, false);
 }
 
 Matrix SpiralModCliffordTorus::getVertex(double degu, double degv)

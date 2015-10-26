@@ -15,10 +15,11 @@ struct SurfaceBorder
     int dU;
     int dV;
 
-    bool isCycle;
+    bool isUCycle;
+    bool isVCycle;
 
     SurfaceBorder();
-    SurfaceBorder(int iu, int iv, int xu, int xv, bool cycle = true);
+    SurfaceBorder(int iu, int iv, int xu, int xv, bool uCycle = true, bool vCycle = true);
 };
 
 class SurfaceFunction
