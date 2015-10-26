@@ -165,7 +165,7 @@ Matrix ConicalSpiralModCliffordTorus::getVertex(double degu, double degv)
 SpiralModCliffordTorus::SpiralModCliffordTorus() :
     SurfaceFunction()
 {
-    border = new SurfaceBorder(0, 0, 360, 360);
+    border = new SurfaceBorder(0, 0, 360, 360, false);
 }
 
 Matrix SpiralModCliffordTorus::getVertex(double degu, double degv)
@@ -173,9 +173,9 @@ Matrix SpiralModCliffordTorus::getVertex(double degu, double degv)
     double u = degu * radianScal;
     double v = degv * radianScal;
 
-    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
-    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
-    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+    double x = fst * cos(u + v) / (sqrt(2) + cos(v - u));
+    double y = fst * sin(u + v) / (sqrt(2) + cos(v - u));
+    double z = fst * sin(v - u) / (sqrt(2) + cos(v - u)) + 30 * v;
 
     return Matrix(Point3D(x, y, z));
 }
@@ -191,9 +191,9 @@ Matrix CliffordTorus::getVertex(double degu, double degv)
     double u = degu * radianScal;
     double v = degv * radianScal;
 
-    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
-    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
-    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+    double x = fst * cos(u + v) / (sqrt(2) + cos(v - u));
+    double y = fst * sin(u + v) / (sqrt(2) + cos(v - u));
+    double z = fst * sin(v - u) / (sqrt(2) + cos(v - u));
 
     return Matrix(Point3D(x, y, z));
 }
