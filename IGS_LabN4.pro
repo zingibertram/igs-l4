@@ -27,10 +27,8 @@ SOURCES += main.cpp\
     surface.cpp \
     surfacecalculation.cpp \
     tripolygon.cpp \
-    surfacefunction.cpp \
-    Debug/debug/moc_mainwindow.cpp \
-    Debug/debug/moc_surfaceimage.cpp \
-    Debug/debug/qrc_resources.cpp
+    surfacefunction.cpp
+
 HEADERS  += mainwindow.h \
     point3d.h \
     matrix.h \
@@ -43,8 +41,7 @@ HEADERS  += mainwindow.h \
     typedefs.h \
     surfacecalculation.h \
     tripolygon.h \
-    surfacefunction.h \
-    Debug/ui_mainwindow.h
+    surfacefunction.h
 
 FORMS    += mainwindow.ui
 

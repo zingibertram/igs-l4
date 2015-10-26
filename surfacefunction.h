@@ -130,7 +130,7 @@ public:
 
 /*x = a * Math.Cosh(U) * Math.Cos(V);
 y = a * Math.Cosh(U) * Math.Sin(V);
-z = a * U;/**/
+z = a * U;*/
 class Surface1 : public SurfaceFunction
 {
 public:
@@ -173,7 +173,7 @@ public:
 // #####
 /*x = a / 2 * (1 + Math.Cos(V)) * Math.Cos(U);
 y = a / 2 * (1 + Math.Cos(V)) * Math.Sin(U);
-z = -Math.Tanh(U - Math.PI) * a * Math.Sin(V);/**/
+z = -Math.Tanh(U - Math.PI) * a * Math.Sin(V);*/
 class Surface2 : public SurfaceFunction
 {
 public:
@@ -207,7 +207,7 @@ public:
 
 /*x = a * Math.Sin(2 * U) * Math.Pow(Math.Sin(V), 2);
 y = a * Math.Sin(U) * Math.Cos(2 * V);
-z = a * Math.Cos(U) * Math.Sin(2 * V);/**/
+z = a * Math.Cos(U) * Math.Sin(2 * V);*/
 class Surface3 : public SurfaceFunction
 {
 public:
@@ -217,7 +217,7 @@ public:
 
 /*x = (a + a * Math.Cos(V)) * Math.Sin(U);
 y = (a + a * Math.Cos(V)) * Math.Cos(U);
-z = a * Math.Sin(U);/**/
+z = a * Math.Sin(U);*/
 class Surface4 : public SurfaceFunction
 {
 public:
