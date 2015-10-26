@@ -71,6 +71,9 @@ void MainWindow::reset()
 
     ui->comboBox_SurfaceFunctions->setCurrentIndex(2);
 
+    ui->pushButton_Expand_LightSource->click();
+    ui->pushButton_Expand_ColorSelection->click();
+
     isSetFirstState = false;
 
     paramsChanged(true);
@@ -81,6 +84,8 @@ void MainWindow::setConnection()
     this->connect(ui->action_About, SIGNAL(triggered()), this, SLOT(actionAboutTriggered()));
     this->connect(ui->action_Exit, SIGNAL(triggered()), this, SLOT(close()));
     this->connect(ui->action_Reset, SIGNAL(triggered()), this, SLOT(reset()));
+    this->connect(ui->action_ExpandAll, SIGNAL(triggered()), this, SLOT(expandAll()));
+    this->connect(ui->action_CollapseAll, SIGNAL(triggered()), this, SLOT(collapseAll()));
 
     this->connect(ui->radioButton_WireframeShading, SIGNAL(clicked(bool)), this, SLOT(shadingChanged(bool)));
     this->connect(ui->radioButton_FongShding, SIGNAL(clicked(bool)), this, SLOT(shadingChanged(bool)));
@@ -458,4 +463,44 @@ void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)
     surface.func->surfaceBorder()->dV = ui->slider_V_Max->value();
 
     paramsChanged(true);
+}
+
+void MainWindow::expandAll()
+{
+    if (!ui->pushButton_Expand_ColorSelection->isChecked())
+    {
+        ui->pushButton_Expand_ColorSelection->click();
+    }
+    if (!ui->pushButton_Expand_LightSource->isChecked())
+    {
+        ui->pushButton_Expand_LightSource->click();
+    }
+    if (!ui->pushButton_Expand_SurfaceLocation->isChecked())
+    {
+        ui->pushButton_Expand_SurfaceLocation->click();
+    }
+    if (!ui->pushButton_Expand_SurfaceMain->isChecked())
+    {
+        ui->pushButton_Expand_SurfaceMain->click();
+    }
+}
+
+void MainWindow::collapseAll()
+{
+    if (ui->pushButton_Expand_ColorSelection->isChecked())
+    {
+        ui->pushButton_Expand_ColorSelection->click();
+    }
+    if (ui->pushButton_Expand_LightSource->isChecked())
+    {
+        ui->pushButton_Expand_LightSource->click();
+    }
+    if (ui->pushButton_Expand_SurfaceLocation->isChecked())
+    {
+        ui->pushButton_Expand_SurfaceLocation->click();
+    }
+    if (ui->pushButton_Expand_SurfaceMain->isChecked())
+    {
+        ui->pushButton_Expand_SurfaceMain->click();
+    }
 }

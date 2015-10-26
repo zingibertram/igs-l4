@@ -69,6 +69,9 @@ private slots:
     void on_checkBox_Textured_clicked(bool checked);
 
     void on_comboBox_SurfaceFunctions_currentIndexChanged(int index);
+
+    void expandAll();
+    void collapseAll();
 };
 
 #endif // MAINWINDOW_H

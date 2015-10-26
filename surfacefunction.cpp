@@ -129,7 +129,7 @@ Matrix Seashell::getVertex(double degu, double degv)
 KleinBottle::KleinBottle() :
     SurfaceFunction()
 {
-    border = new SurfaceBorder(0, 0, 360, 360);
+    border = new SurfaceBorder(0, 0, 360, 360, false);
 }
 
 Matrix KleinBottle::getVertex(double degu, double degv)
