@@ -27,7 +27,10 @@ SOURCES += main.cpp\
     surface.cpp \
     surfacecalculation.cpp \
     tripolygon.cpp \
-    surfacefunction.cpp
+    surfacefunction.cpp \
+    Debug/debug/moc_mainwindow.cpp \
+    Debug/debug/moc_surfaceimage.cpp \
+    Debug/debug/qrc_resources.cpp
 HEADERS  += mainwindow.h \
     point3d.h \
     matrix.h \
@@ -40,20 +43,18 @@ HEADERS  += mainwindow.h \
     typedefs.h \
     surfacecalculation.h \
     tripolygon.h \
-    surfacefunction.h
+    surfacefunction.h \
+    Debug/ui_mainwindow.h
 
 FORMS    += mainwindow.ui
-
-OTHER_FILES += \
-    replace.txt \
-    TMVertexGenerator.cs \
-    out.txt \
-    old.txt
 
 RESOURCES += \
     resources.qrc
 
 RC_FILE += winico.rc
+
+DISTFILES += \
+    other/TMVertexGenerator.cs
 
 
 
