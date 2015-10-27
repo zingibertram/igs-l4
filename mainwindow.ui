@@ -481,7 +481,7 @@ background-color: black;</string>
       </property>
       <property name="minimumSize">
        <size>
-        <width>230</width>
+        <width>222</width>
         <height>0</height>
        </size>
       </property>
@@ -501,8 +501,8 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-618</y>
-         <width>212</width>
+         <y>-685</y>
+         <width>204</width>
          <height>1085</height>
         </rect>
        </property>
@@ -536,6 +536,12 @@ background-color: black;</string>
             <height>0</height>
            </size>
           </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <layout class="QVBoxLayout" name="verticalLayout_11">
            <property name="leftMargin">
             <number>0</number>
@@ -551,11 +557,11 @@ background-color: black;</string>
            </property>
            <item>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceMain">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>18</height>
+              </size>
              </property>
              <property name="styleSheet">
               <string notr="true">text-align: left;</string>
@@ -740,11 +746,11 @@ background-color: black;</string>
            </item>
            <item>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceLocation">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>18</height>
+              </size>
              </property>
              <property name="styleSheet">
               <string notr="true">text-align: left;</string>
@@ -1475,11 +1481,11 @@ background-color: black;</string>
            </item>
            <item>
             <widget class="QPushButton" name="pushButton_Expand_LightSource">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>18</height>
+              </size>
              </property>
              <property name="styleSheet">
               <string notr="true">text-align: left;</string>
@@ -2161,15 +2167,9 @@ background-color: black;</string>
            </item>
            <item>
             <widget class="QPushButton" name="pushButton_Expand_ColorSelection">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
              <property name="minimumSize">
               <size>
-               <width>82</width>
+               <width>200</width>
                <height>18</height>
               </size>
              </property>
