@@ -215,7 +215,7 @@ Matrix HyperbolicHelicoid::getVertex(double degu, double degv)
     double u = degu * radianScal;
     double v = degv * radianScal;
 
-    double t = cosh(u) * sinh(v);
+    double t = cosh(u) * sinh(v); // должен быть торсион, считается через векторы
     double d = 1 + cosh(u) * cosh(v);
     double x = fst * sinh(v) * cos(t * u) / d;
     double y = fst * sinh(v) * sin(t * u) / d;
