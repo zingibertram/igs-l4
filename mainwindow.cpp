@@ -71,8 +71,10 @@ void MainWindow::reset()
 
     ui->comboBox_SurfaceFunctions->setCurrentIndex(2);
 
-    ui->pushButton_Expand_LightSource->click();
-    ui->pushButton_Expand_ColorSelection->click();
+    changeChecked(ui->pushButton_Expand_ColorSelection, false);
+    changeChecked(ui->pushButton_Expand_LightSource, false);
+    changeChecked(ui->pushButton_Expand_SurfaceLocation);
+    changeChecked(ui->pushButton_Expand_SurfaceMain);
 
     isSetFirstState = false;
 
@@ -485,40 +487,24 @@ void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)
 
 void MainWindow::expandAll()
 {
-    if (!ui->pushButton_Expand_ColorSelection->isChecked())
-    {
-        ui->pushButton_Expand_ColorSelection->click();
-    }
-    if (!ui->pushButton_Expand_LightSource->isChecked())
-    {
-        ui->pushButton_Expand_LightSource->click();
-    }
-    if (!ui->pushButton_Expand_SurfaceLocation->isChecked())
-    {
-        ui->pushButton_Expand_SurfaceLocation->click();
-    }
-    if (!ui->pushButton_Expand_SurfaceMain->isChecked())
-    {
-        ui->pushButton_Expand_SurfaceMain->click();
-    }
+    changeChecked(ui->pushButton_Expand_ColorSelection);
+    changeChecked(ui->pushButton_Expand_LightSource);
+    changeChecked(ui->pushButton_Expand_SurfaceLocation);
+    changeChecked(ui->pushButton_Expand_SurfaceMain);
 }
 
 void MainWindow::collapseAll()
 {
-    if (ui->pushButton_Expand_ColorSelection->isChecked())
+    changeChecked(ui->pushButton_Expand_ColorSelection, false);
+    changeChecked(ui->pushButton_Expand_LightSource, false);
+    changeChecked(ui->pushButton_Expand_SurfaceLocation, false);
+    changeChecked(ui->pushButton_Expand_SurfaceMain, false);
+}
+
+void MainWindow::changeChecked(QPushButton* pb, bool need)
+{
+    if (pb->isChecked() != need)
     {
-        ui->pushButton_Expand_ColorSelection->click();
-    }
-    if (ui->pushButton_Expand_LightSource->isChecked())
-    {
-        ui->pushButton_Expand_LightSource->click();
-    }
-    if (ui->pushButton_Expand_SurfaceLocation->isChecked())
-    {
-        ui->pushButton_Expand_SurfaceLocation->click();
-    }
-    if (ui->pushButton_Expand_SurfaceMain->isChecked())
-    {
-        ui->pushButton_Expand_SurfaceMain->click();
+        pb->click();
     }
 }

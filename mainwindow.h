@@ -39,6 +39,7 @@ private:
     void setConnection();
     void setValueLabel(QLabel *l = 0, double val = 0, int len = 0, QString dec = "");
     void setComboBoxFuncItems();
+    void changeChecked(QPushButton* pb, bool need = true);
 
 private slots:
     void actionAboutTriggered();
