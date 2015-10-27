@@ -404,6 +404,24 @@ void MainWindow::on_checkBox_Textured_clicked(bool checked)
     ui->groupBox_ExteriorColor->setEnabled(!checked);
     ui->groupBox_InterioColor->setEnabled(!checked);
     surface.isTextured = checked;
+
+    if (checked)
+    {
+        surface.exterior = surface.interior = QColor(Qt::white);
+    }
+    else
+    {
+        int r = ui->slider_R_Ext->value();
+        int g = ui->slider_G_Ext->value();
+        int b = ui->slider_B_Ext->value();
+        surface.exterior = QColor(r, g, b);
+
+        r = ui->slider_R_Int->value();
+        g = ui->slider_G_Int->value();
+        b = ui->slider_B_Int->value();
+        surface.interior = QColor(r, g, b);
+    }
+
     this->setValueLabel();
     this->paramsChanged(true);
 }
