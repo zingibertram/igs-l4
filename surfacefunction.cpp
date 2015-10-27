@@ -146,6 +146,8 @@ Matrix KleinBottle::getVertex(double degu, double degv)
     return Matrix(Point3D(x, y, z));
 }
 
+
+// тор
 ConicalSpiralModCliffordTorus::ConicalSpiralModCliffordTorus() :
     SurfaceFunction()
 {
@@ -159,7 +161,7 @@ Matrix ConicalSpiralModCliffordTorus::getVertex(double degu, double degv)
 
     double x = fst * cos(10 * radianScal * v + u + v) / (sqrt(2) + cos(v - u));
     double y = fst * sin(10 * radianScal * v + u + v) / (sqrt(2) + cos(v - u));
-    double z = fst * sin(v - u) / (sqrt(2) + cos(v - u)) + fst * snd * degv;
+    double z = fst * sin(v - u) / (sqrt(2) + cos(v - u));
 
     return Matrix(Point3D(x, y, z));
 }
@@ -188,6 +190,7 @@ CliffordTorus::CliffordTorus() :
     border = new SurfaceBorder(0, 0, 360, 360);
 }
 
+// тор
 Matrix CliffordTorus::getVertex(double degu, double degv)
 {
     double u = degu * radianScal;
@@ -203,17 +206,20 @@ Matrix CliffordTorus::getVertex(double degu, double degv)
 HyperbolicHelicoid::HyperbolicHelicoid() :
     SurfaceFunction()
 {
-    border = new SurfaceBorder(0, 0, 360, 360);
+    border = new SurfaceBorder(0, 0, 360, 360, false, false);
 }
 
+// не работает
 Matrix HyperbolicHelicoid::getVertex(double degu, double degv)
 {
     double u = degu * radianScal;
     double v = degv * radianScal;
 
-    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
-    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
-    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+    double t = cosh(u) * sinh(v);
+    double d = 1 + cosh(u) * cosh(v);
+    double x = fst * sinh(v) * cos(t * u) / d;
+    double y = fst * sinh(v) * sin(t * u) / d;
+    double z = fst * cosh(v) * sinh(u) / d;
 
     return Matrix(Point3D(x, y, z));
 }
@@ -239,7 +245,7 @@ Matrix Catenoid::getVertex(double degu, double degv)
 Helicoid::Helicoid() :
     SurfaceFunction()
 {
-    border = new SurfaceBorder(0, 0, 360, 360);
+    border = new SurfaceBorder(0, 0, 360, 1080, false, false);
 }
 
 Matrix Helicoid::getVertex(double degu, double degv)
@@ -247,9 +253,9 @@ Matrix Helicoid::getVertex(double degu, double degv)
     double u = degu * radianScal;
     double v = degv * radianScal;
 
-    double x = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * cos(u);
-    double y = (fst + snd * cos(u / 2.0) * sin(v) - sin(u / 2.0) * sin(2.0 * v)) * sin(u);
-    double z = snd * sin(u / 2.0) * sin(v) + snd * cos(u / 2.0) * sin(2.0 * v);
+    double x = fst * u * cos(v);//cosh(v) * cos(u);
+    double y = fst * u * sin(v);//cosh(v) * sin(u);
+    double z = fst * v;
 
     return Matrix(Point3D(x, y, z));
 }
