@@ -36,3 +36,6 @@ Makefile*
 debug/*
 release/*
 bin/*
+igs-l4-qml/debug/*
+igs-l4-qml/release/*
+igs-l4-qml/bin/*
