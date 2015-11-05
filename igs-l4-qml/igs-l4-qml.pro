@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     triangle.cpp \
     tripolygon.cpp \
     utils.cpp \
-    vector.cpp
+    vector.cpp \
+    mainwindow.cpp
 
 RESOURCES += qml.qrc
 
@@ -38,4 +39,5 @@ HEADERS += \
     tripolygon.h \
     typedefs.h \
     utils.h \
-    vector.h
+    vector.h \
+    mainwindow.h

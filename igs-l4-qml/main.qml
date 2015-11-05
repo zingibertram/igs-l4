@@ -17,21 +17,19 @@ ApplicationWindow {
                 text: qsTr("Исходное состояние")
             }
 
-            MenuSeparator {
-            }
+            MenuSeparator {}
 
             MenuItem {
                 text: qsTr("Развернуть все")
-                onTriggered: mainWindow.expandAll()
+                onTriggered: mainWindowUI.expandAll()
             }
 
             MenuItem {
                 text: qsTr("Свернуть все")
-                onTriggered: mainWindow.collapseAll()
+                onTriggered: mainWindowUI.collapseAll()
             }
 
-            MenuSeparator {
-            }
+            MenuSeparator {}
 
             MenuItem {
                 text: qsTr("Выход")
@@ -49,25 +47,31 @@ ApplicationWindow {
         }
     }
 
-    MainWindow {
-        id: mainWindow
+    MainWindowUI {
+        id: mainWindowUI
+        property bool expandedMain: false
+        property bool expandedLocation: false
+        property bool expandedIlluminant: false
+        property bool expandedColors: true
 
         function expandAll() {
-
+            mainWindowUI.change(true)
         }
 
         function collapseAll() {
-
+            mainWindowUI.change(false)
         }
 
         function change(state) {
-
+            mainWindowUI.expandedMain = state
+            mainWindowUI.expandedLocation = state
+            mainWindowUI.expandedIlluminant = state
+            mainWindowUI.expandedColors = state
         }
     }
 
     MessageDialog {
         id: messageDialog
-        title: qsTr("May I have your attention, please?")
 
         function show(title, message) {
             messageDialog.title = title
