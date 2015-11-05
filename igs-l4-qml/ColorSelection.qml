@@ -24,6 +24,7 @@ GridLayout {
 
     Slider {
         id: slider_R
+        width: 120
         Layout.column: 1
         Layout.row: 0
         orientation: Qt.Horizontal
@@ -53,6 +54,7 @@ GridLayout {
 
     Slider {
         id: slider_G
+        width: 120
         Layout.column: 1
         Layout.row: 1
         orientation: Qt.Horizontal
@@ -82,6 +84,7 @@ GridLayout {
 
     Slider {
         id: slider_B
+        width: 120
         Layout.column: 1
         Layout.row: 2
         orientation: Qt.Horizontal

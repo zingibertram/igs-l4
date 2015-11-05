@@ -20,6 +20,8 @@ Item {
         }
 
         ScrollView {
+            id: scrollView
+            horizontalScrollBarPolicy: 1
 
             ColumnLayout {
                 spacing: 4
@@ -49,6 +51,12 @@ Item {
                     ComboBox {
                         id: comboBox_SurfaceFunctions
                         model: mainWindow.surfaceFunctions
+                        currentIndex: 1
+                        Binding {
+                            target: mainWindow
+                            property: "surfaceFunction"
+                            value: comboBox_SurfaceFunctions.currentText
+                        }
                     }
                 }
 
@@ -56,12 +64,52 @@ Item {
                     id: group_SurfaceShading
                     title: qsTr("Закраска")
                     visible: mainWindowUI.expandedMain
+
+                    GridLayout {
+                        columns: 2
+                        rows: 2
+
+                        ExclusiveGroup {
+                            id: shading
+                        }
+
+                        RadioButton {
+                            text: "Каркас"
+                            exclusiveGroup: shading
+                            checked: true
+                        }
+
+                        RadioButton {
+                            text: "Flat УНЛиП"
+                            exclusiveGroup: shading
+                        }
+
+                        RadioButton {
+                            text: "Гуро"
+                            exclusiveGroup: shading
+                        }
+
+                        RadioButton {
+                            text: "Фонг"
+                            exclusiveGroup: shading
+                        }
+                    }
                 }
 
                 GroupBox {
                     id: group_SurfaceTexture
                     title: qsTr("Текстура")
                     visible: mainWindowUI.expandedMain
+
+                    RowLayout {
+                        CheckBox {
+                            text: "Текстура"
+                        }
+
+                        Button {
+                            text: "Выбрать"
+                        }
+                    }
                 }
 
                 Button {
@@ -204,6 +252,5 @@ Item {
 
     MainWindow {
         id: mainWindow
-        surfaceFunction: comboBox_SurfaceFunctions.currentText
     }
 }
