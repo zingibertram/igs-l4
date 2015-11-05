@@ -4,39 +4,74 @@ import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
 
 ApplicationWindow {
-    title: qsTr("Hello World")
+    title: qsTr("Лабораторная работа №4")
     visible: true
+    width: 640
+    height: 360
 
     menuBar: MenuBar {
         Menu {
-            title: qsTr("&File")
+            title: qsTr("Файл")
+
             MenuItem {
-                text: qsTr("&Open")
-                onTriggered: messageDialog.show(qsTr("Open action triggered"));
+                text: qsTr("Исходное состояние")
             }
+
+            MenuSeparator {
+            }
+
             MenuItem {
-                text: qsTr("E&xit")
+                text: qsTr("Развернуть все")
+                onTriggered: mainWindow.expandAll()
+            }
+
+            MenuItem {
+                text: qsTr("Свернуть все")
+                onTriggered: mainWindow.collapseAll()
+            }
+
+            MenuSeparator {
+            }
+
+            MenuItem {
+                text: qsTr("Выход")
                 onTriggered: Qt.quit();
+            }
+        }
+
+        Menu {
+            title: qsTr("Справка")
+
+            MenuItem {
+                text: qsTr("О программе")
+                onTriggered: messageDialog.show(qsTr("О программе"), qsTr("Лабораторная работа №4 по\nИнтерактивным графическим системам.\n\"Прозрачность и текстура\"\nВыполнил: ст. гр. МО-426 Ахтямов А.А.\nПроверил: проф. каф. ВМиК Верхотуров М.А."))
             }
         }
     }
 
-//    MainForm {
-//        anchors.fill: parent
-//        button1.onClicked: messageDialog.show(qsTr("Button 1 pressed"))
-//        button2.onClicked: messageDialog.show(qsTr("Button 2 pressed"))
-//        button3.onClicked: messageDialog.show(qsTr("Button 3 pressed"))
-//    }
     MainWindow {
-        anchors.fill: parent
+        id: mainWindow
+
+        function expandAll() {
+
+        }
+
+        function collapseAll() {
+
+        }
+
+        function change(state) {
+
+        }
     }
 
     MessageDialog {
         id: messageDialog
         title: qsTr("May I have your attention, please?")
 
-        function show(caption) {
-            messageDialog.text = caption;
+        function show(title, message) {
+            messageDialog.title = title
+            messageDialog.text = message;
             messageDialog.open();
         }
     }
