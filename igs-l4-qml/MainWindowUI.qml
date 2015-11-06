@@ -52,11 +52,6 @@ Item {
                         id: comboBox_SurfaceFunctions
                         model: mainWindow.surfaceFunctions
                         currentIndex: 1
-                        Binding {
-                            target: mainWindow
-                            property: "surfaceFunction"
-                            value: comboBox_SurfaceFunctions.currentText
-                        }
                     }
                 }
 
@@ -78,48 +73,28 @@ Item {
                             text: "Каркас"
                             exclusiveGroup: shading
                             checked: true
-                            onCheckedChanged: {
-                                if (radio_FrameShading.checked)
-                                {
-                                    mainWindow.surfaceShading = MainWindow.FR
-                                }
-                            }
+                            onCheckedChanged: mainWindow.setShading(radio_FrameShading, MainWindow.FR)
                         }
 
                         RadioButton {
                             id: radio_FlatShading
                             text: "Flat УНЛиП"
                             exclusiveGroup: shading
-                            onCheckedChanged: {
-                                if (radio_FlatShading.checked)
-                                {
-                                    mainWindow.surfaceShading = MainWindow.FL
-                                }
-                            }
+                            onCheckedChanged: mainWindow.setShading(radio_FlatShading, MainWindow.FL)
                         }
 
                         RadioButton {
                             id: radio_HuroShading
                             text: "Гуро"
                             exclusiveGroup: shading
-                            onCheckedChanged: {
-                                if (radio_HuroShading.checked)
-                                {
-                                    mainWindow.surfaceShading = MainWindow.HU
-                                }
-                            }
+                            onCheckedChanged: mainWindow.setShading(radio_HuroShading, MainWindow.HU)
                         }
 
                         RadioButton {
                             id: radio_FongShading
                             text: "Фонг"
                             exclusiveGroup: shading
-                            onCheckedChanged: {
-                                if (radio_FongShading.checked)
-                                {
-                                    mainWindow.surfaceShading = MainWindow.FO
-                                }
-                            }
+                            onCheckedChanged: mainWindow.setShading(radio_FongShading, MainWindow.FO)
                         }
                     }
                 }
@@ -232,12 +207,7 @@ Item {
                     visible: mainWindowUI.expandedColors
 
                     ColorSelection {
-                        id: dotedColor
-                        Binding {
-                            target: mainWindow
-                            property: "dotedColor"
-                            value: dotedColor.colorString
-                        }
+                        id: dottedColor
                     }
                 }
 
@@ -248,11 +218,6 @@ Item {
 
                     ColorSelection {
                         id: absentedColor
-                        Binding {
-                            target: mainWindow
-                            property: "absentedColor"
-                            value: absentedColor.colorString
-                        }
                     }
                 }
 
@@ -263,11 +228,6 @@ Item {
 
                     ColorSelection {
                         id: exteriorColor
-                        Binding {
-                            target: mainWindow
-                            property: "exteriorColor"
-                            value: exteriorColor.colorString
-                        }
                     }
                 }
 
@@ -278,11 +238,6 @@ Item {
 
                     ColorSelection {
                         id: interiorColor
-                        Binding {
-                            target: mainWindow
-                            property: "interiorColor"
-                            value: interiorColor.colorString
-                        }
                     }
                 }
             }
@@ -291,6 +246,18 @@ Item {
 
     MainWindow {
         id: mainWindow
+        surfaceFunction: comboBox_SurfaceFunctions.currentText
+        dottedColor: dottedColor.colorString
+        absentedColor: absentedColor.colorString
+        exteriorColor: exteriorColor.colorString
+        interiorColor: interiorColor.colorString
+
+        function setShading(radio, sh) {
+            if (radio.checked)
+            {
+                mainWindow.surfaceShading = sh
+            }
+        }
     }
 
     FileDialog {
@@ -300,7 +267,8 @@ Item {
         selectExisting: true
         selectMultiple: false
         selectFolder: false
-        nameFilters: [ "Image files (*.png *.jpg *.bmp)" ]
+        nameFilters: [ "Image files (*.jpg)" ] // друугие не загружаются
+//        nameFilters: [ "Image files (*.png *.jpg *.bmp)" ]
         onAccepted: {
             mainWindow.texturePath = openTexture.fileUrl
         }

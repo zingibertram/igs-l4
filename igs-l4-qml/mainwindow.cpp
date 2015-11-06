@@ -43,6 +43,8 @@ MainWindow::MainWindow() :
     functions["EightSurface"] = new EightSurface();
     functions["Surface3"] = new Surface3();
     functions["Surface4"] = new Surface4();
+
+    surface.textureImg.load(":/textures/resources/tex1.jpg");
 }
 
 MainWindow::~MainWindow()
@@ -75,8 +77,7 @@ void MainWindow::setSurfaceFunction(const QString &s)
 
 void MainWindow::setSurfaceShading(const Sh &sh)
 {
-    // привести к типу
-//    surface.type = sh;
+    surface.type = (Shading)sh;
     paramsChanged(true);
 }
 
@@ -88,13 +89,11 @@ void MainWindow::setTextured(const bool &t)
 
 void MainWindow::setTexturePath(const QString &s)
 {
-    // не загружается текстура
-    qDebug() << surface.textureImg.size();
-    QString path(s);
+    // не загружается текстура в png
+    QString path(s); // s == file:///*
     path.remove(0, 8);
-    path.replace("/", "\\");
-    surface.textureImg.load(path);
-    qDebug() << path << surface.textureImg.size();
+
+    surface.textureImg.load(path, file.f);
     paramsChanged(true);
 }
 

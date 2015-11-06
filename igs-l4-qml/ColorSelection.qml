@@ -3,17 +3,37 @@ import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 
 GridLayout {
+    id: mainLayout
     columns: 4
     rows: 3
     property color colorString: "#" + Number(slider_R.value).toString(16) + Number(slider_G.value).toString(16) + Number(slider_B.value).toString(16)
+    function convertColor() {
+        var r = Number(slider_R.value).toString(16)
+        var g = Number(slider_G.value).toString(16)
+        var b = Number(slider_B.value).toString(16)
+        if (r.length === 1)
+        {
+            r = "0" + r
+        }
+        if (g.length === 1)
+        {
+            g = "0" + g
+        }
+        if (b.length === 1)
+        {
+            b = "0" + b
+        }
+        colorPanel.color = "#" + r + g + b
+        mainLayout.colorString = "#" + r + g + b
+    }
 
     Rectangle {
+        id: colorPanel
         width: 32
         height: 80
         Layout.column: 3
         Layout.row: 0
         Layout.rowSpan: 3
-        color: "#" + Number(slider_R.value).toString(16) + Number(slider_G.value).toString(16) + Number(slider_B.value).toString(16)
     }
 
     Label {
@@ -32,6 +52,7 @@ GridLayout {
         maximumValue: 255
         stepSize: 1
         value: 255
+        onValueChanged: mainLayout.convertColor()
     }
 
     Label {
@@ -62,6 +83,7 @@ GridLayout {
         maximumValue: 255
         stepSize: 1
         value: 255
+        onValueChanged: mainLayout.convertColor()
     }
 
     Label {
@@ -92,6 +114,7 @@ GridLayout {
         maximumValue: 255
         stepSize: 1
         value: 255
+        onValueChanged: mainLayout.convertColor()
     }
 
     Label {
