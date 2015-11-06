@@ -6,8 +6,7 @@ import com.ics.demo 1.0
 
 Item {
     id: mainItem
-    width: 480
-    height: 270
+    anchors.fill: parent
 
     RowLayout {
         id: mainLayout
@@ -15,13 +14,16 @@ Item {
 
         Rectangle {
             id: surfaceImage
-            width: 160
-            height: 90
+            width: 120
             color: "#ffff44"
+            anchors.fill: parent
+            Layout.fillHeight: true
         }
 
         ScrollView {
             id: scrollView
+            Layout.fillHeight: true
+            anchors.fill: parent
 
             ColumnLayout {
                 spacing: 4
@@ -147,6 +149,50 @@ Item {
                     id: group_SurfaceParams
                     title: qsTr("Параметры")
                     visible: mainWindowUI.expandedLocation
+
+                    ColumnLayout {
+                        CustomSlider {
+                            id: maxU
+                            min: 0
+                            max: 360
+                            title: qsTr("mU")
+                        }
+
+                        CustomSlider {
+                            id: maxV
+                            min: 0
+                            max: 360
+                            title: qsTr("mV")
+                        }
+
+                        CustomSlider {
+                            id: dU
+                            min: 1
+                            max: 50
+                            title: qsTr("dU")
+                        }
+
+                        CustomSlider {
+                            id: dV
+                            min: 1
+                            max: 50
+                            title: qsTr("dV")
+                        }
+
+                        CustomSlider {
+                            id: param_R
+                            min: 1
+                            max: 200
+                            title: qsTr("R")
+                        }
+
+                        CustomSlider {
+                            id: param_r
+                            min: 1
+                            max: 200
+                            title: qsTr("r")
+                        }
+                    }
                 }
 
                 GroupBox {

@@ -93,7 +93,7 @@ void MainWindow::setTexturePath(const QString &s)
     QString path(s); // s == file:///*
     path.remove(0, 8);
 
-    surface.textureImg.load(path, file.f);
+    surface.textureImg.load(path);
     paramsChanged(true);
 }
 
@@ -101,6 +101,7 @@ void MainWindow::setDottedColor(const QString &s)
 {
     surface.dot = QColor(s);
     paramsChanged();
+    qDebug() << QColor(s);
 }
 
 void MainWindow::setAbsentedColor(const QString &s)

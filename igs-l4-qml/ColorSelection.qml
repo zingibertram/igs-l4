@@ -6,26 +6,7 @@ GridLayout {
     id: mainLayout
     columns: 4
     rows: 3
-    property color colorString: "#" + Number(slider_R.value).toString(16) + Number(slider_G.value).toString(16) + Number(slider_B.value).toString(16)
-    function convertColor() {
-        var r = Number(slider_R.value).toString(16)
-        var g = Number(slider_G.value).toString(16)
-        var b = Number(slider_B.value).toString(16)
-        if (r.length === 1)
-        {
-            r = "0" + r
-        }
-        if (g.length === 1)
-        {
-            g = "0" + g
-        }
-        if (b.length === 1)
-        {
-            b = "0" + b
-        }
-        colorPanel.color = "#" + r + g + b
-        mainLayout.colorString = "#" + r + g + b
-    }
+    property color colorString: Qt.rgba(slider_R.value / 255, slider_G.value / 255, slider_B.value / 255, 1)
 
     Rectangle {
         id: colorPanel
@@ -34,6 +15,7 @@ GridLayout {
         Layout.column: 3
         Layout.row: 0
         Layout.rowSpan: 3
+        color: Qt.rgba(slider_R.value / 255, slider_G.value / 255, slider_B.value / 255, 1)
     }
 
     Label {
@@ -52,7 +34,6 @@ GridLayout {
         maximumValue: 255
         stepSize: 1
         value: 255
-        onValueChanged: mainLayout.convertColor()
     }
 
     Label {
@@ -83,7 +64,6 @@ GridLayout {
         maximumValue: 255
         stepSize: 1
         value: 255
-        onValueChanged: mainLayout.convertColor()
     }
 
     Label {
@@ -114,7 +94,6 @@ GridLayout {
         maximumValue: 255
         stepSize: 1
         value: 255
-        onValueChanged: mainLayout.convertColor()
     }
 
     Label {

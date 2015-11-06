@@ -4,6 +4,7 @@ import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
 
 ApplicationWindow {
+    id: window
     title: qsTr("Лабораторная работа №4")
     visible: true
     width: 640
@@ -49,6 +50,7 @@ ApplicationWindow {
 
     MainWindowUI {
         id: mainWindowUI
+        anchors.fill: parent
         property bool expandedMain: false
         property bool expandedLocation: false
         property bool expandedIlluminant: false
