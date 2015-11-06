@@ -6,6 +6,7 @@
 
 #include <QColor>
 #include <QImage>
+#include <QObject>
 
 enum Shading
 {

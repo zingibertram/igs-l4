@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
+import QtQuick.Dialogs 1.2
 import com.ics.demo 1.0
 
 Item {
@@ -21,7 +22,6 @@ Item {
 
         ScrollView {
             id: scrollView
-            horizontalScrollBarPolicy: 1
 
             ColumnLayout {
                 spacing: 4
@@ -74,24 +74,52 @@ Item {
                         }
 
                         RadioButton {
+                            id: radio_FrameShading
                             text: "Каркас"
                             exclusiveGroup: shading
                             checked: true
+                            onCheckedChanged: {
+                                if (radio_FrameShading.checked)
+                                {
+                                    mainWindow.surfaceShading = MainWindow.FR
+                                }
+                            }
                         }
 
                         RadioButton {
+                            id: radio_FlatShading
                             text: "Flat УНЛиП"
                             exclusiveGroup: shading
+                            onCheckedChanged: {
+                                if (radio_FlatShading.checked)
+                                {
+                                    mainWindow.surfaceShading = MainWindow.FL
+                                }
+                            }
                         }
 
                         RadioButton {
+                            id: radio_HuroShading
                             text: "Гуро"
                             exclusiveGroup: shading
+                            onCheckedChanged: {
+                                if (radio_HuroShading.checked)
+                                {
+                                    mainWindow.surfaceShading = MainWindow.HU
+                                }
+                            }
                         }
 
                         RadioButton {
+                            id: radio_FongShading
                             text: "Фонг"
                             exclusiveGroup: shading
+                            onCheckedChanged: {
+                                if (radio_FongShading.checked)
+                                {
+                                    mainWindow.surfaceShading = MainWindow.FO
+                                }
+                            }
                         }
                     }
                 }
@@ -103,11 +131,22 @@ Item {
 
                     RowLayout {
                         CheckBox {
+                            id: checkBox_Textured
                             text: "Текстура"
+                            enabled: !radio_FrameShading.checked
+                            Binding {
+                                target: mainWindow
+                                property: "textured"
+                                value: checkBox_Textured.checked
+                            }
                         }
 
                         Button {
                             text: "Выбрать"
+                            enabled: !radio_FrameShading.checked
+                            onClicked: {
+                                openTexture.open();
+                            }
                         }
                     }
                 }
@@ -252,5 +291,18 @@ Item {
 
     MainWindow {
         id: mainWindow
+    }
+
+    FileDialog {
+        id: openTexture
+        modality: Qt.WindowModal
+        title: qsTr("Выберите изображение для текстуры")
+        selectExisting: true
+        selectMultiple: false
+        selectFolder: false
+        nameFilters: [ "Image files (*.png *.jpg *.bmp)" ]
+        onAccepted: {
+            mainWindow.texturePath = openTexture.fileUrl
+        }
     }
 }

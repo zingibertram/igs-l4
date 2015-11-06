@@ -49,9 +49,11 @@ MainWindow::~MainWindow()
 {
 }
 
-void MainWindow::setSurfaceFunction(const QString &s)
+void MainWindow::paramsChanged(bool isCalc)
 {
-    surface.func = functions[s];
+    surface.isPointsChanged = isCalc;
+//    ui->graphicsView_Surface->hide();
+//    ui->graphicsView_Surface->show();
 }
 
 QStringList MainWindow::getSurfaceFunctions()
@@ -65,84 +67,60 @@ QStringList MainWindow::getSurfaceFunctions()
     return res;
 }
 
+void MainWindow::setSurfaceFunction(const QString &s)
+{
+    surface.func = functions[s];
+    paramsChanged(true);
+}
+
+void MainWindow::setSurfaceShading(const Sh &sh)
+{
+    // привести к типу
+//    surface.type = sh;
+    paramsChanged(true);
+}
+
+void MainWindow::setTextured(const bool &t)
+{
+    surface.isTextured = t;
+    paramsChanged(true);
+}
+
+void MainWindow::setTexturePath(const QString &s)
+{
+    // не загружается текстура
+    qDebug() << surface.textureImg.size();
+    QString path(s);
+    path.remove(0, 8);
+    path.replace("/", "\\");
+    surface.textureImg.load(path);
+    qDebug() << path << surface.textureImg.size();
+    paramsChanged(true);
+}
+
 void MainWindow::setDottedColor(const QString &s)
 {
     surface.dot = QColor(s);
+    paramsChanged();
 }
 
 void MainWindow::setAbsentedColor(const QString &s)
 {
     surface.absent = QColor(s);
+    paramsChanged();
 }
 
 void MainWindow::setExteriorColor(const QString &s)
 {
     surface.exterior = QColor(s);
+    paramsChanged();
 }
 
 void MainWindow::setInteriorColor(const QString &s)
 {
     surface.interior = QColor(s);
+    paramsChanged();
 }
-
-//void MainWindow::reset()
-//{
-//    isSetFirstState = true;
-
-//    surface.xRotate = 0;
-//    surface.yRotate = 0;
-//    surface.zRotate = 0;
-
-//    surface.xOld = 0;
-//    surface.yOld = 0;
-//    surface.zOld = 0;
-
-//    surface.isTextured = false;
-//    surface.isPointsChanged = true;
-
-//    ui->slider_X_Rotate->setValue(90);
-//    ui->slider_Y_Rotate->setValue(60);
-//    ui->slider_Z_Rotate->setValue(30);
-
-//    ui->slider_U_Max->setValue(180);
-//    ui->slider_V_Max->setValue(180);
-
-//    ui->slider_U_Interval->setValue(20);
-//    ui->slider_V_Interval->setValue(20);
-
-//    ui->slider_U_Param->setValue(140);
-//    ui->slider_V_Param->setValue(70);
-
-//    ui->slider_R_Ext->setValue(255);
-//    ui->slider_G_Int->setValue(255);
-//    ui->slider_R_Abs->setValue(255);
-//    ui->slider_G_Abs->setValue(255);
-//    ui->slider_B_Abs->setValue(255);
-//    ui->slider_R_Dot->setValue(255);
-//    ui->slider_G_Dot->setValue(255);
-//    ui->slider_B_Dot->setValue(255);
-
-//    ui->slider_X_Illuminant->setValue(0);
-//    ui->slider_Y_Illuminant->setValue(0);
-//    ui->slider_Z_Illuminant->setValue(100);
-
-//    ui->slider_Absent->setValue(2);
-//    ui->slider_Diffusion->setValue(10);
-//    ui->slider_Specular->setValue(8);
-//    ui->slider_Power->setValue(25);
-//    ui->slider_Alpha->setValue(10);
-
-//    ui->comboBox_SurfaceFunctions->setCurrentIndex(2);
-
-//    changeChecked(ui->pushButton_Expand_ColorSelection, false);
-//    changeChecked(ui->pushButton_Expand_LightSource, false);
-//    changeChecked(ui->pushButton_Expand_SurfaceLocation);
-//    changeChecked(ui->pushButton_Expand_SurfaceMain);
-
-//    isSetFirstState = false;
-
-//    paramsChanged(true);
-//}
 
 //void MainWindow::setConnection()
 //{
@@ -196,80 +174,6 @@ void MainWindow::setInteriorColor(const QString &s)
 //    this->connect(ui->slider_Power, SIGNAL(valueChanged(int)), this, SLOT(on_slider_Power_valueChanged(int)));
 
 //    connect(ui->comboBox_SurfaceFunctions, SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_SurfaceFunctions_currentIndexChanged(int)));
-//}
-
-//void MainWindow::setCurrentColor(QWidget *panel, QColor current, QColor *surfaceSide)
-//{
-//    QString panelName = panel->objectName();
-//    *surfaceSide = current;
-//    panel->setStyleSheet(QString("QWidget#%2{border: 1px solid #8f8f91;background:%1;}").arg(current.name(), panelName));
-//    this->paramsChanged();
-//}
-
-//void MainWindow::exteriorColor_Changed()
-//{
-//    int r = ui->slider_R_Ext->value();
-//    int g = ui->slider_G_Ext->value();
-//    int b = ui->slider_B_Ext->value();
-//    this->setValueLabel(ui->value_R_Ext, r, 3, "");
-//    this->setValueLabel(ui->value_G_Ext, g, 3, "");
-//    this->setValueLabel(ui->value_B_Ext, b, 3, "");
-//    QColor current(r, g, b);
-//    this->setCurrentColor(ui->widget_ExteriorColor, current, &(surface.exterior));
-//}
-
-//void MainWindow::interiorColor_Changed()
-//{
-//    int r = ui->slider_R_Int->value();
-//    int g = ui->slider_G_Int->value();
-//    int b = ui->slider_B_Int->value();
-//    this->setValueLabel(ui->value_R_Int, r, 3, "");
-//    this->setValueLabel(ui->value_G_Int, g, 3, "");
-//    this->setValueLabel(ui->value_B_Int, b, 3, "");
-//    QColor current(r, g, b);
-//    this->setCurrentColor(ui->widget_InteriorColor, current, &(surface.interior));
-//}
-
-//void MainWindow::dotColor_Changed()
-//{
-//    int r = ui->slider_R_Dot->value();
-//    int g = ui->slider_G_Dot->value();
-//    int b = ui->slider_B_Dot->value();
-//    this->setValueLabel(ui->value_R_Dot, r, 3, "");
-//    this->setValueLabel(ui->value_G_Dot, g, 3, "");
-//    this->setValueLabel(ui->value_B_Dot, b, 3, "");
-//    QColor current(r, g, b);
-//    this->setCurrentColor(ui->widget_IlluminantDottedColor, current, &(surface.dot));
-//}
-
-//void MainWindow::absentColor_Changed()
-//{
-//    int r = ui->slider_R_Abs->value();
-//    int g = ui->slider_G_Abs->value();
-//    int b = ui->slider_B_Abs->value();
-//    this->setValueLabel(ui->value_R_Abs, r, 3, "");
-//    this->setValueLabel(ui->value_G_Abs, g, 3, "");
-//    this->setValueLabel(ui->value_B_Abs, b, 3, "");
-//    QColor current(r, g, b);
-//    this->setCurrentColor(ui->widget_IlluminantAbsentColor, current, &(surface.absent));
-//}
-
-//void MainWindow::actionAboutTriggered()
-//{
-//    QString message = QString::fromLocal8Bit("О программе");
-//    QString title = QString::fromLocal8Bit("Лабораторная работа №4 по\nИнтерактивным графическим системам.\n\"Прозрачность и текстура\"\nВыполнил: ст. гр. МО-426 Ахтямов А.А.\nПроверил: проф. каф. ВМиК Верхотуров М.А.");
-//    QMessageBox aboutBox(QMessageBox::Information, message, title, QMessageBox::Ok, this);
-//    aboutBox.exec();
-//}
-
-//void MainWindow::paramsChanged(bool isCalc)
-//{
-//    if (!isSetFirstState)
-//    {
-//        surface.isPointsChanged = isCalc;
-//        ui->graphicsView_Surface->hide();
-//        ui->graphicsView_Surface->show();
-//    }
 //}
 
 //void MainWindow::shadingChanged(bool isflat)
@@ -490,79 +394,4 @@ void MainWindow::setInteriorColor(const QString &s)
 //{
 //    surface.textureImg.load(tex);
 //    paramsChanged(true);
-//}
-
-//void MainWindow::setComboBoxFuncItems()
-//{
-//    functions["Sphere"] = new Sphere();
-//    functions["Torus"] = new Torus();
-//    functions["Hourglass"] = new Hourglass();
-//    functions["Trefoil"] = new Trefoil();
-//    functions["Seashell"] = new Seashell();
-//    functions["KleinBottle"] = new KleinBottle();
-//    functions["ConicalSpiralModCliffordTorus"] = new ConicalSpiralModCliffordTorus();
-//    functions["SpiralModCliffordTorus"] = new SpiralModCliffordTorus();
-//    functions["CliffordTorus"] = new CliffordTorus();
-//    functions["HyperbolicHelicoid"] = new HyperbolicHelicoid();
-//    functions["Catenoid"] = new Catenoid();
-//    functions["Helicoid"] = new Helicoid();
-//    functions["Surface1"] = new Surface1();
-//    functions["Hyperboloid2Sheets"] = new Hyperboloid2Sheets();
-//    functions["Hyperboloid1Sheet"] = new Hyperboloid1Sheet();
-//    functions["ConicalSpiral"] = new ConicalSpiral();
-//    functions["Spiral"] = new Spiral();
-//    functions["Surface2"] = new Surface2();
-//    functions["CrossCup"] = new CrossCup();
-//    functions["AstroidalEllipsoid"] = new AstroidalEllipsoid();
-//    functions["EightSurface"] = new EightSurface();
-//    functions["Surface3"] = new Surface3();
-//    functions["Surface4"] = new Surface4();
-
-//    QList<QString> keys = functions.keys();
-//    for (int i = 0; i < keys.count(); ++i)
-//    {
-//        ui->comboBox_SurfaceFunctions->addItem(keys[i], keys[i]);
-//    }
-//}
-
-//void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)
-//{
-//    QVariant var = ui->comboBox_SurfaceFunctions->itemData(index);
-//    QString key = var.toString();
-//    surface.func = functions[key];
-//    surface.func->setParams(ui->slider_U_Param->value(), ui->slider_V_Param->value());
-
-//    ui->slider_U_Max->setMinimum(surface.func->surfaceBorder()->minU + 1);
-//    ui->slider_U_Max->setMaximum(surface.func->surfaceBorder()->maxU);
-//    ui->slider_V_Max->setMinimum(surface.func->surfaceBorder()->minV + 1);
-//    ui->slider_V_Max->setMaximum(surface.func->surfaceBorder()->maxV);
-
-//    surface.func->surfaceBorder()->dU = ui->slider_U_Max->value();
-//    surface.func->surfaceBorder()->dV = ui->slider_V_Max->value();
-
-//    paramsChanged(true);
-//}
-
-//void MainWindow::expandAll()
-//{
-//    changeChecked(ui->pushButton_Expand_ColorSelection);
-//    changeChecked(ui->pushButton_Expand_LightSource);
-//    changeChecked(ui->pushButton_Expand_SurfaceLocation);
-//    changeChecked(ui->pushButton_Expand_SurfaceMain);
-//}
-
-//void MainWindow::collapseAll()
-//{
-//    changeChecked(ui->pushButton_Expand_ColorSelection, false);
-//    changeChecked(ui->pushButton_Expand_LightSource, false);
-//    changeChecked(ui->pushButton_Expand_SurfaceLocation, false);
-//    changeChecked(ui->pushButton_Expand_SurfaceMain, false);
-//}
-
-//void MainWindow::changeChecked(QPushButton* pb, bool need)
-//{
-//    if (pb->isChecked() != need)
-//    {
-//        pb->click();
-//    }
 //}

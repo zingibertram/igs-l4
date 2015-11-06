@@ -24,25 +24,40 @@ class MainWindow : public QObject
     Q_OBJECT
     Q_PROPERTY(QStringList surfaceFunctions READ getSurfaceFunctions)
     Q_PROPERTY(QString surfaceFunction WRITE setSurfaceFunction)
-    Q_PROPERTY(QString exteriorColor WRITE setDottedColor)
-    Q_PROPERTY(QString exteriorColor WRITE setAbsentedColor)
+    Q_PROPERTY(Sh surfaceShading WRITE setSurfaceShading)
+    Q_PROPERTY(bool textured WRITE setTextured)
+    Q_PROPERTY(QString texturePath WRITE setTexturePath)
+    Q_PROPERTY(QString dottedColor WRITE setDottedColor)
+    Q_PROPERTY(QString absentedColor WRITE setAbsentedColor)
     Q_PROPERTY(QString exteriorColor WRITE setExteriorColor)
-    Q_PROPERTY(QString exteriorColor WRITE setInteriorColor)
+    Q_PROPERTY(QString interiorColor WRITE setInteriorColor)
 
 public:
     MainWindow();
     ~MainWindow();
 
+    enum Sh
+    {
+        FR = FRAME,
+        FL = FLAT,
+        HU = HURO,
+        FO = FONG
+    };
+    Q_ENUMS(Sh)
+
 private:
-//    Ui::MainWindow *ui;
     Surface surface;
-    bool isSetFirstState;
 //    QImage texture;
     QMap<QString, SurfaceFunction*> functions;
 
-    void setSurfaceFunction(const QString &s);
+    void paramsChanged(bool isCalc = false);
 
     QStringList getSurfaceFunctions();
+
+    void setSurfaceFunction(const QString &s);
+    void setSurfaceShading(const Sh &sh);
+    void setTextured(const bool &t);
+    void setTexturePath(const QString &s);
 
     void setDottedColor(const QString &s);
     void setAbsentedColor(const QString &s);
@@ -54,18 +69,10 @@ private:
 //    void textureChanged(QString tex);
 //    void setConnection();
 //    void setValueLabel(QLabel *l = 0, double val = 0, int len = 0, QString dec = "");
-//    void setComboBoxFuncItems();
-//    void changeChecked(QPushButton* pb, bool need = true);
 
 private slots:
-//    void actionAboutTriggered();
 //    void shadingChanged(bool isflat);
-//    void exteriorColor_Changed();
-//    void interiorColor_Changed();
-//    void dotColor_Changed();
-//    void absentColor_Changed();
 //    void illuminantCoords_Changed();
-//    void reset();
 
 //    void on_slider_XRotate_valueChanged(int value);
 //    void on_slider_YRotate_valueChanged(int value);
@@ -85,10 +92,6 @@ private slots:
 //    void on_pushButton_ChooseTexture_clicked();
 //    void on_checkBox_Textured_clicked(bool checked);
 
-//    void on_comboBox_SurfaceFunctions_currentIndexChanged(int index);
-
-//    void expandAll();
-//    void collapseAll();
 };
 
 #endif // MAINWINDOW_H
