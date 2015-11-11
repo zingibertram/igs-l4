@@ -81,4 +81,9 @@ ApplicationWindow {
             messageDialog.open();
         }
     }
+
+//    Test {
+//        id: subWin
+//        visible: true
+//    }
 }

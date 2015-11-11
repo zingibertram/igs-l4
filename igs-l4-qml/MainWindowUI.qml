@@ -7,26 +7,31 @@ import com.ics.demo 1.0
 Item {
     id: mainItem
     anchors.fill: parent
+    Layout.minimumHeight: 360
+    Layout.minimumWidth: 640
 
     RowLayout {
         id: mainLayout
         spacing: 4
+        anchors.fill: parent
 
         Rectangle {
             id: surfaceImage
             width: 120
             color: "#ffff44"
-            anchors.fill: parent
             Layout.fillHeight: true
+            Layout.fillWidth: true
         }
 
         ScrollView {
             id: scrollView
             Layout.fillHeight: true
-            anchors.fill: parent
+            horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
+            //Layout.fillWidth: true
 
             ColumnLayout {
                 spacing: 4
+                width: children.width
 
                 Button {
                     id: button_Epand_Main

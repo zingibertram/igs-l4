@@ -39,3 +39,4 @@ bin/*
 igs-l4-qml/debug/*
 igs-l4-qml/release/*
 igs-l4-qml/bin/*
+igs-l4-qml/builds/*
