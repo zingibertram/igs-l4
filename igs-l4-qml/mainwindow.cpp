@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "surfacefunction.h"
 #include "utils.h"
+#include "vector.h"
 
 #include <QFileDialog>
 #include <QScrollBar>
@@ -56,6 +57,7 @@ void MainWindow::paramsChanged(bool isCalc)
     surface.isPointsChanged = isCalc;
 //    ui->graphicsView_Surface->hide();
 //    ui->graphicsView_Surface->show();
+    qDebug() << "Params changed";
 }
 
 QStringList MainWindow::getSurfaceFunctions()
@@ -69,19 +71,61 @@ QStringList MainWindow::getSurfaceFunctions()
     return res;
 }
 
+void MainWindow::setPaintViewWidth(int value)
+{
+    width = value;
+    paramsChanged(true);
+}
+
+void MainWindow::setPaintViewHeight(int value)
+{
+    height = value;
+    paramsChanged(true);
+}
+
+int MainWindow::getRangeMinU()
+{
+    return surface.func
+            ? surface.func->surfaceBorder()->minU
+            : 0;
+}
+
+int MainWindow::getRangeMaxU()
+{
+    return surface.func
+            ? surface.func->surfaceBorder()->maxU
+            : 360;
+}
+
+int MainWindow::getRangeMinV()
+{
+    return surface.func
+            ? surface.func->surfaceBorder()->minV
+            : 0;
+}
+
+int MainWindow::getRangeMaxV()
+{
+    return surface.func
+            ? surface.func->surfaceBorder()->maxV
+            : 360;
+}
+
+
 void MainWindow::setSurfaceFunction(const QString &s)
 {
     surface.func = functions[s];
     paramsChanged(true);
+    emit rangeChanged();
 }
 
-void MainWindow::setSurfaceShading(const Sh &sh)
+void MainWindow::setSurfaceShading(Sh sh)
 {
     surface.type = (Shading)sh;
     paramsChanged(true);
 }
 
-void MainWindow::setTextured(const bool &t)
+void MainWindow::setTextured(bool t)
 {
     surface.isTextured = t;
     paramsChanged(true);
@@ -96,6 +140,140 @@ void MainWindow::setTexturePath(const QString &s)
     surface.textureImg.load(path);
     paramsChanged(true);
 }
+
+void MainWindow::setMaxU(int value)
+{
+    if (!surface.func)
+    {
+        return;
+    }
+
+    surface.func->surfaceBorder()->maxU = value;
+    surface.maxU = value;
+    paramsChanged(true);
+
+    qDebug() << "max u changed" << value;
+}
+
+void MainWindow::setMaxV(int value)
+{
+    if (!surface.func)
+    {
+        return;
+    }
+
+    surface.func->surfaceBorder()->maxV = value;
+    surface.maxV = value;
+    paramsChanged(true);
+}
+
+void MainWindow::setDU(int value)
+{
+    surface.dU = value;
+    paramsChanged(true);
+}
+
+void MainWindow::setDV(int value)
+{
+    surface.dV = value;
+    paramsChanged(true);
+}
+
+void MainWindow::setParam_R(int value)
+{
+    if (!surface.func)
+    {
+        return;
+    }
+
+    surface.func->setFirstParam(value);
+    paramsChanged(true);
+}
+
+void MainWindow::setParam_r(int value)
+{
+    qDebug() << (surface.func == 0);
+    if (!surface.func)
+    {
+        return;
+    }
+
+    surface.func->setSecondParam(value);
+    paramsChanged(true);
+}
+
+void MainWindow::setRotX(int value)
+{
+    setOldRotate();
+    surface.xRotate = value;
+    paramsChanged(true);
+    setOldRotate();
+}
+
+void MainWindow::setRotY(int value)
+{
+    setOldRotate();
+    surface.yRotate = value;
+    paramsChanged(true);
+    setOldRotate();
+}
+
+void MainWindow::setRotZ(int value)
+{
+    setOldRotate();
+    surface.zRotate = value;
+    paramsChanged(true);
+    setOldRotate();
+}
+
+void MainWindow::setLight_ka(double value)
+{
+    surface.ka = value;
+    paramsChanged();
+}
+
+void MainWindow::setLight_kd(double value)
+{
+    surface.kd = value;
+    paramsChanged();
+}
+
+void MainWindow::setLight_ks(double value)
+{
+    surface.ks = value;
+    paramsChanged();
+}
+
+void MainWindow::setLight_n(int value)
+{
+    surface.n = value;
+    paramsChanged();
+}
+
+void MainWindow::setLight_alpha(double value)
+{
+    surface.alpha = value;
+    paramsChanged();
+}
+
+void MainWindow::setLightX(int value)
+{
+    surface.light.setX(value);
+    paramsChanged();
+}
+
+void MainWindow::setLightY(int value)
+{
+    surface.light.setY(value);
+    paramsChanged();
+}
+
+void MainWindow::setLightZ(int value)
+{
+    surface.light.setZ(value);
+    paramsChanged();
+}
+
 
 void MainWindow::setDottedColor(const QString &s)
 {
@@ -119,6 +297,13 @@ void MainWindow::setInteriorColor(const QString &s)
 {
     surface.interior = QColor(s);
     paramsChanged();
+}
+
+void MainWindow::setOldRotate()
+{
+    surface.xOld = surface.xRotate;
+    surface.yOld = surface.yRotate;
+    surface.zOld = surface.zRotate;
 }
 
 //void MainWindow::setConnection()

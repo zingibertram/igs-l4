@@ -50,6 +50,13 @@ Item {
                 }
             }
         }
+
+        Image {
+            id: image1
+            width: 100
+            height: 100
+            source: "resources/tex1.jpg"
+        }
     }
 }
 

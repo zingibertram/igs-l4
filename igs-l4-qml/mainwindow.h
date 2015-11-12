@@ -23,13 +23,51 @@ class MainWindow : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList surfaceFunctions READ getSurfaceFunctions)
+    Q_PROPERTY(int paintViewWidth WRITE setPaintViewWidth)
+    Q_PROPERTY(int paintViewHeight WRITE setPaintViewHeight)
+    Q_PROPERTY(int rangeMinU READ getRangeMinU NOTIFY rangeChanged)
+    Q_PROPERTY(int rangeMaxU READ getRangeMaxU NOTIFY rangeChanged)
+    Q_PROPERTY(int rangeMinV READ getRangeMinV NOTIFY rangeChanged)
+    Q_PROPERTY(int rangeMaxV READ getRangeMaxV NOTIFY rangeChanged)
+
+    // main
     Q_PROPERTY(QString surfaceFunction WRITE setSurfaceFunction)
+
     Q_PROPERTY(Sh surfaceShading WRITE setSurfaceShading)
+
     Q_PROPERTY(bool textured WRITE setTextured)
     Q_PROPERTY(QString texturePath WRITE setTexturePath)
+
+    // surface params
+    Q_PROPERTY(int maxU WRITE setMaxU)
+    Q_PROPERTY(int maxV WRITE setMaxV)
+    Q_PROPERTY(int dU WRITE setDU)
+    Q_PROPERTY(int dV WRITE setDV)
+    Q_PROPERTY(int param_R WRITE setParam_R)
+    Q_PROPERTY(int param_r WRITE setParam_r)
+
+    Q_PROPERTY(int rotX WRITE setRotX)
+    Q_PROPERTY(int rotY WRITE setRotY)
+    Q_PROPERTY(int rotZ WRITE setRotZ)
+
+    // illuminant params
+    Q_PROPERTY(double light_ka WRITE setLight_ka)
+    Q_PROPERTY(double light_kd WRITE setLight_kd)
+    Q_PROPERTY(double light_ks WRITE setLight_ks)
+    Q_PROPERTY(int light_n WRITE setLight_n)
+    Q_PROPERTY(double light_alpha WRITE setLight_alpha)
+
+    Q_PROPERTY(int lightX WRITE setLightX)
+    Q_PROPERTY(int lightY WRITE setLightY)
+    Q_PROPERTY(int lightZ WRITE setLightZ)
+
+    // color selection
     Q_PROPERTY(QString dottedColor WRITE setDottedColor)
+
     Q_PROPERTY(QString absentedColor WRITE setAbsentedColor)
+
     Q_PROPERTY(QString exteriorColor WRITE setExteriorColor)
+
     Q_PROPERTY(QString interiorColor WRITE setInteriorColor)
 
 public:
@@ -47,22 +85,66 @@ public:
 
 private:
     Surface surface;
-//    QImage texture;
     QMap<QString, SurfaceFunction*> functions;
+    int width;
+    int height;
 
     void paramsChanged(bool isCalc = false);
 
     QStringList getSurfaceFunctions();
 
     void setSurfaceFunction(const QString &s);
-    void setSurfaceShading(const Sh &sh);
-    void setTextured(const bool &t);
+
+    void setPaintViewWidth(int value);
+    void setPaintViewHeight(int value);
+
+    int getRangeMinU();
+    int getRangeMaxU();
+    int getRangeMinV();
+    int getRangeMaxV();
+
+    // main
+    void setSurfaceShading(Sh sh);
+    void setTextured(bool t);
     void setTexturePath(const QString &s);
 
+    // surface
+    void setMaxU(int value);
+    void setMaxV(int value);
+    void setDU(int value);
+    void setDV(int value);
+    void setParam_R(int value);
+    void setParam_r(int value);
+
+    void setRotX(int value);
+    void setRotY(int value);
+    void setRotZ(int value);
+
+    // illuminant
+    void setLight_ka(double value);
+    void setLight_kd(double value);
+    void setLight_ks(double value);
+    void setLight_n(int value);
+    void setLight_alpha(double value);
+
+    void setLightX(int value);
+    void setLightY(int value);
+    void setLightZ(int value);
+
+    // color selection
     void setDottedColor(const QString &s);
+
     void setAbsentedColor(const QString &s);
+
     void setExteriorColor(const QString &s);
+
     void setInteriorColor(const QString &s);
+
+
+    void setOldRotate();
+
+signals:
+    void rangeChanged();
 
 //    void setCurrentColor(QWidget *panel, QColor current, QColor *surfaceSide);
 //    void paramsChanged(bool isCalc = false);

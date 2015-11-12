@@ -35,7 +35,7 @@ RowLayout {
         width: 120
         minimumValue: mainLayout.min
         maximumValue: mainLayout.max
-        value: mainLayout.max
+        //value: mainLayout.max
         stepSize: mainLayout.step
         Layout.fillWidth: true
     }

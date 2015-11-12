@@ -23,6 +23,7 @@ Item {
             Layout.fillWidth: true
         }
 
+
         ScrollView {
             id: scrollView
             Layout.fillHeight: true
@@ -134,11 +135,11 @@ Item {
                             text: "Текстура"
                             enabled: !radio_FrameShading.checked
                             Layout.fillWidth: true
-                            Binding {
-                                target: mainWindow
-                                property: "textured"
-                                value: checkBox_Textured.checked
-                            }
+//                            Binding {
+//                                target: mainWindow
+//                                property: "textured"
+//                                value: checkBox_Textured.checked
+//                            }
                         }
 
                         Button {
@@ -183,16 +184,16 @@ Item {
                         anchors.fill: parent
                         CustomSlider {
                             id: maxU
-                            min: 0
-                            max: 360
+                            min: mainWindow.rangeMinU
+                            max: mainWindow.rangeMaxU
                             title: qsTr("mU")
                             Layout.fillWidth: true
                         }
 
                         CustomSlider {
                             id: maxV
-                            min: 0
-                            max: 360
+                            min: mainWindow.rangeMinV
+                            max: mainWindow.rangeMaxV
                             title: qsTr("mV")
                             Layout.fillWidth: true
                         }
@@ -439,10 +440,30 @@ Item {
     MainWindow {
         id: mainWindow
         surfaceFunction: comboBox_SurfaceFunctions.currentText
+        textured: checkBox_Textured.checked
+        maxU: maxU.value
+        maxV: maxV.value
+        dU: dU.value
+        dV: dV.value
+        param_R: param_R.value
+        param_r: param_r.value
+        rotX: rotOx.value
+        rotY: rotOy.value
+        rotZ: rotOz.value
+        light_ka: illiminant_ka.value
+        light_kd: illiminant_kd.value
+        light_ks: illiminant_ks.value
+        light_n: illiminant_n.value
+        light_alpha: illiminant_alpha.value
+        lightX: illiminantX.value
+        lightY: illiminantY.value
+        lightZ: illiminantZ.value
         dottedColor: dottedColor.colorString
         absentedColor: absentedColor.colorString
         exteriorColor: exteriorColor.colorString
         interiorColor: interiorColor.colorString
+        paintViewWidth: surfaceImage.width
+        paintViewHeight: surfaceImage.height
         property int maxWidth: 240
 
         function setShading(radio, sh) {
