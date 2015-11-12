@@ -101,7 +101,6 @@ void MainWindow::setDottedColor(const QString &s)
 {
     surface.dot = QColor(s);
     paramsChanged();
-    qDebug() << QColor(s);
 }
 
 void MainWindow::setAbsentedColor(const QString &s)

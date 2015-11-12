@@ -26,18 +26,21 @@ Item {
         ScrollView {
             id: scrollView
             Layout.fillHeight: true
-            horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
-            //Layout.fillWidth: true
+            Layout.minimumWidth: 260
+            //horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
+            verticalScrollBarPolicy: Qt.ScrollBarAlwaysOn
 
             ColumnLayout {
                 spacing: 4
-                width: children.width
 
                 Button {
                     id: button_Epand_Main
                     text: qsTr("Основное")
                     checkable: true
                     checked: mainWindowUI.expandedMain
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
+                    Layout.minimumWidth: mainWindow.maxWidth
                     Binding {
                         target: button_Epand_Main
                         property: "checked"
@@ -54,11 +57,15 @@ Item {
                     id: group_SurfaceFunctions
                     title: qsTr("Функция поверхности")
                     visible: button_Epand_Main.checked
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
 
                     ComboBox {
                         id: comboBox_SurfaceFunctions
+                        anchors.fill: parent
                         model: mainWindow.surfaceFunctions
                         currentIndex: 1
+                        Layout.fillWidth: true
                     }
                 }
 
@@ -66,10 +73,13 @@ Item {
                     id: group_SurfaceShading
                     title: qsTr("Закраска")
                     visible: mainWindowUI.expandedMain
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
 
                     GridLayout {
                         columns: 2
                         rows: 2
+                        anchors.fill: parent
 
                         ExclusiveGroup {
                             id: shading
@@ -81,6 +91,7 @@ Item {
                             exclusiveGroup: shading
                             checked: true
                             onCheckedChanged: mainWindow.setShading(radio_FrameShading, MainWindow.FR)
+                            Layout.fillWidth: true
                         }
 
                         RadioButton {
@@ -88,6 +99,7 @@ Item {
                             text: "Flat УНЛиП"
                             exclusiveGroup: shading
                             onCheckedChanged: mainWindow.setShading(radio_FlatShading, MainWindow.FL)
+                            Layout.fillWidth: true
                         }
 
                         RadioButton {
@@ -95,6 +107,7 @@ Item {
                             text: "Гуро"
                             exclusiveGroup: shading
                             onCheckedChanged: mainWindow.setShading(radio_HuroShading, MainWindow.HU)
+                            Layout.fillWidth: true
                         }
 
                         RadioButton {
@@ -102,6 +115,7 @@ Item {
                             text: "Фонг"
                             exclusiveGroup: shading
                             onCheckedChanged: mainWindow.setShading(radio_FongShading, MainWindow.FO)
+                            Layout.fillWidth: true
                         }
                     }
                 }
@@ -110,12 +124,16 @@ Item {
                     id: group_SurfaceTexture
                     title: qsTr("Текстура")
                     visible: mainWindowUI.expandedMain
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
 
                     RowLayout {
+                        anchors.fill: parent
                         CheckBox {
                             id: checkBox_Textured
                             text: "Текстура"
                             enabled: !radio_FrameShading.checked
+                            Layout.fillWidth: true
                             Binding {
                                 target: mainWindow
                                 property: "textured"
@@ -126,6 +144,7 @@ Item {
                         Button {
                             text: "Выбрать"
                             enabled: !radio_FrameShading.checked
+                            Layout.fillWidth: true
                             onClicked: {
                                 openTexture.open();
                             }
@@ -138,6 +157,9 @@ Item {
                     text: qsTr("Положение поверхности")
                     checkable: true
                     checked: mainWindowUI.expandedLocation
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
+                    Layout.minimumWidth: mainWindow.maxWidth
                     Binding {
                         target: button_Epand_Location
                         property: "checked"
@@ -154,13 +176,17 @@ Item {
                     id: group_SurfaceParams
                     title: qsTr("Параметры")
                     visible: mainWindowUI.expandedLocation
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
 
                     ColumnLayout {
+                        anchors.fill: parent
                         CustomSlider {
                             id: maxU
                             min: 0
                             max: 360
                             title: qsTr("mU")
+                            Layout.fillWidth: true
                         }
 
                         CustomSlider {
@@ -168,6 +194,7 @@ Item {
                             min: 0
                             max: 360
                             title: qsTr("mV")
+                            Layout.fillWidth: true
                         }
 
                         CustomSlider {
@@ -175,6 +202,7 @@ Item {
                             min: 1
                             max: 50
                             title: qsTr("dU")
+                            Layout.fillWidth: true
                         }
 
                         CustomSlider {
@@ -182,20 +210,23 @@ Item {
                             min: 1
                             max: 50
                             title: qsTr("dV")
+                            Layout.fillWidth: true
                         }
 
                         CustomSlider {
                             id: param_R
                             min: 1
-                            max: 200
+                            max: mainWindow.maxWidth
                             title: qsTr("R")
+                            Layout.fillWidth: true
                         }
 
                         CustomSlider {
                             id: param_r
                             min: 1
-                            max: 200
+                            max: mainWindow.maxWidth
                             title: qsTr("r")
+                            Layout.fillWidth: true
                         }
                     }
                 }
@@ -204,6 +235,32 @@ Item {
                     id: group_SurfaceRotate
                     title: qsTr("Повороты")
                     visible: mainWindowUI.expandedLocation
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        CustomSlider {
+                            id: rotOx
+                            min: -180
+                            max: 180
+                            title: qsTr("OX")
+                        }
+
+                        CustomSlider {
+                            id: rotOy
+                            min: -180
+                            max: 180
+                            title: qsTr("OY")
+                        }
+
+                        CustomSlider {
+                            id: rotOz
+                            min: -180
+                            max: 180
+                            title: qsTr("OZ")
+                        }
+                    }
                 }
 
                 Button {
@@ -211,6 +268,9 @@ Item {
                     text: qsTr("Источник света")
                     checkable: true
                     checked: mainWindowUI.expandedIlluminant
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
+                    Layout.minimumWidth: mainWindow.maxWidth
                     Binding {
                         target: button_Epand_Illuminant
                         property: "checked"
@@ -227,12 +287,82 @@ Item {
                     id: group_IlluminantParams
                     title: qsTr("Параметры")
                     visible: mainWindowUI.expandedIlluminant
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        CustomSlider {
+                            id: illiminant_ka
+                            min: 0
+                            max: 1
+                            title: qsTr("ka")
+                            step: 0.1
+                        }
+
+                        CustomSlider {
+                            id: illiminant_kd
+                            min: 0
+                            max: 1
+                            title: qsTr("kd")
+                            step: 0.1
+                        }
+
+                        CustomSlider {
+                            id: illiminant_ks
+                            min: 0
+                            max: 1
+                            title: qsTr("ks")
+                            step: 0.1
+                        }
+
+                        CustomSlider {
+                            id: illiminant_n
+                            min: 0
+                            max: 127
+                            title: qsTr("n")
+                        }
+
+                        CustomSlider {
+                            id: illiminant_alpha
+                            min: 0
+                            max: 1
+                            title: qsTr("α")
+                            step: 0.1
+                        }
+                    }
                 }
 
                 GroupBox {
                     id: group_IlluminantCoordinates
                     title: qsTr("Координаты")
                     visible: mainWindowUI.expandedIlluminant
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        CustomSlider {
+                            id: illiminantX
+                            min: -500
+                            max: 500
+                            title: qsTr("X")
+                        }
+
+                        CustomSlider {
+                            id: illiminantY
+                            min: -500
+                            max: 500
+                            title: qsTr("Y")
+                        }
+
+                        CustomSlider {
+                            id: illiminantZ
+                            min: -500
+                            max: 500
+                            title: qsTr("Z")
+                        }
+                    }
                 }
 
                 Button {
@@ -240,6 +370,9 @@ Item {
                     text: qsTr("Выбор цвета")
                     checkable: true
                     checked: mainWindowUI.expandedColors
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
+                    Layout.minimumWidth: mainWindow.maxWidth
                     Binding {
                         target: button_Epand_Colors
                         property: "checked"
@@ -256,6 +389,8 @@ Item {
                     id: group_IlluminantDottedColor
                     title: qsTr("Точечный источник")
                     visible: mainWindowUI.expandedColors
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
 
                     ColorSelection {
                         id: dottedColor
@@ -266,6 +401,8 @@ Item {
                     id: group_IlluminantAbsentedColor
                     title: qsTr("Рассеяный источник")
                     visible: mainWindowUI.expandedColors
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
 
                     ColorSelection {
                         id: absentedColor
@@ -276,6 +413,8 @@ Item {
                     id: group_SurfaceExteriorColor
                     title: qsTr("Внутренняя поверхность")
                     visible: mainWindowUI.expandedColors
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
 
                     ColorSelection {
                         id: exteriorColor
@@ -286,6 +425,8 @@ Item {
                     id: group_SurfaceInteriorColor
                     title: qsTr("Наружная поверхность")
                     visible: mainWindowUI.expandedColors
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: mainWindow.maxWidth
 
                     ColorSelection {
                         id: interiorColor
@@ -302,6 +443,7 @@ Item {
         absentedColor: absentedColor.colorString
         exteriorColor: exteriorColor.colorString
         interiorColor: interiorColor.colorString
+        property int maxWidth: 240
 
         function setShading(radio, sh) {
             if (radio.checked)

@@ -4,21 +4,30 @@ import QtQuick.Layouts 1.1
 
 RowLayout {
     id: mainLayout
+    Layout.fillHeight: true
     property int titleLen: 3
     property int valueLen: 4
     property string title: "***"
     property int min: 0
     property int max: 100
-    property int value: slider.value
+    property real value: slider.value
+    property real mult: 0.7
+    property real step: 1.0
 
     Label {
         id: label_Title
         text: mainLayout.title
+        Layout.minimumWidth: mainLayout.titleLen * font.pointSize * mult
+        Layout.maximumWidth: mainLayout.titleLen * font.pointSize * mult
     }
 
     Label {
         id: label_Min
-        text: mainLayout.min.toFixed(mainLayout.valueLen)
+        text: mainLayout.min
+        Layout.minimumWidth: mainLayout.valueLen * label_Min.font.pointSize * mult
+        Layout.maximumWidth: mainLayout.valueLen * label_Min.font.pointSize * mult
+        horizontalAlignment: Text.AlignRight
+        color: "#c00000"
     }
 
     Slider {
@@ -27,15 +36,24 @@ RowLayout {
         minimumValue: mainLayout.min
         maximumValue: mainLayout.max
         value: mainLayout.max
+        stepSize: mainLayout.step
+        Layout.fillWidth: true
     }
 
     Label {
         id: label_Max
-        text: mainLayout.max.toFixed(mainLayout.valueLen)
+        text: mainLayout.max
+        Layout.minimumWidth: mainLayout.valueLen * font.pointSize * mult
+        Layout.maximumWidth: mainLayout.valueLen * font.pointSize * mult
+        horizontalAlignment: Text.AlignLeft
+        color: "#009900"
     }
 
     Label {
         id: label_Value
-        text: mainLayout.value.toFixed(mainLayout.valueLen)
+        text: mainLayout.value
+        Layout.minimumWidth: mainLayout.valueLen * font.pointSize * mult
+        Layout.maximumWidth: mainLayout.valueLen * font.pointSize * mult
+        horizontalAlignment: Text.AlignHCenter
     }
 }

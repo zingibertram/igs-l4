@@ -42,3 +42,5 @@ HEADERS += \
     utils.h \
     vector.h \
     mainwindow.h
+
+RC_FILE=winico.rc

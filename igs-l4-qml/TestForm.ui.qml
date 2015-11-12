@@ -26,6 +26,7 @@ Item {
                 Button {
                     id: button1
                     text: qsTr("Button")
+                    iconSource: "/resources/arrow-down.png"
                 }
             }
         }
