@@ -53,7 +53,7 @@ MainWindow::~MainWindow()
 void MainWindow::paramsChanged(bool isCalc)
 {
     surface.isPointsChanged = isCalc;
-    paintEvent();
+//    paintEvent();
 //    ui->graphicsView_Surface->hide();
 //    ui->graphicsView_Surface->show();
     qDebug() << "Params changed";
