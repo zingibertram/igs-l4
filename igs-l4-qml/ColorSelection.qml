@@ -3,11 +3,46 @@ import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 
 GridLayout {
-    id: mainLayout
+    id: root
     columns: 4
     rows: 3
     anchors.fill: parent
-    property color colorString: Qt.rgba(slider_R.value / 255, slider_G.value / 255, slider_B.value / 255, 1)
+    property color colorString: Qt.rgba(root.r / 255, root.g / 255, root.b / 255, 1)
+    property int r
+    property int g
+    property int b
+
+    Binding {
+        target: root
+        property: "r"
+        value: slider_R.value
+    }
+    Binding {
+        target: root
+        property: "g"
+        value: slider_G.value
+    }
+    Binding {
+        target: root
+        property: "b"
+        value: slider_B.value
+    }
+
+    Binding {
+        target: slider_R
+        property: "value"
+        value: root.r
+    }
+    Binding {
+        target: slider_G
+        property: "value"
+        value: root.g
+    }
+    Binding {
+        target: slider_B
+        property: "value"
+        value: root.b
+    }
 
     Rectangle {
         id: colorPanel
@@ -18,7 +53,7 @@ GridLayout {
         Layout.rowSpan: 3
         Layout.minimumWidth: 24
         Layout.maximumWidth: 24
-        color: Qt.rgba(slider_R.value / 255, slider_G.value / 255, slider_B.value / 255, 1)
+        color: Qt.rgba(root.r / 255, root.g / 255, root.b / 255, 1)
         border.width: 1
         border.color: "#000000"
     }
@@ -52,7 +87,7 @@ GridLayout {
         text: slider_R.value;
         Layout.column: 3
         Layout.row: 0
-        color: Qt.rgba(1.0 - slider_R.value / 255, 1.0 - slider_G.value / 255, 1.0 - slider_B.value / 255, 1)
+        color: Qt.rgba(1.0 - root.r / 255, 1.0 - root.g / 255, 1.0 - root.b / 255, 1)
         Layout.minimumWidth: 24
         horizontalAlignment: Text.AlignHCenter
     }
@@ -86,7 +121,7 @@ GridLayout {
         text: slider_G.value;
         Layout.column: 3
         Layout.row: 1
-        color: Qt.rgba(1.0 - slider_R.value / 255, 1.0 - slider_G.value / 255, 1.0 - slider_B.value / 255, 1)
+        color: Qt.rgba(1.0 - root.r / 255, 1.0 - root.g / 255, 1.0 - root.b / 255, 1)
         Layout.minimumWidth: 24
         horizontalAlignment: Text.AlignHCenter
     }
@@ -120,7 +155,7 @@ GridLayout {
         text: slider_B.value;
         Layout.column: 3
         Layout.row: 2
-        color: Qt.rgba(1.0 - slider_R.value / 255, 1.0 - slider_G.value / 255, 1.0 - slider_B.value / 255, 1)
+        color: Qt.rgba(1.0 - root.r / 255, 1.0 - root.g / 255, 1.0 - root.b / 255, 1)
         Layout.minimumWidth: 24
         horizontalAlignment: Text.AlignHCenter
     }

@@ -8,10 +8,6 @@
 #include <QObject>
 #include <QMap>
 #include <QList>
-#include <QColor>
-#include <QPalette>
-#include <QPainter>
-#include <QImage>
 #include <QString>
 #include <QStringList>
 
@@ -71,7 +67,13 @@ class MainWindow : public QObject
     Q_PROPERTY(QString interiorColor WRITE setInteriorColor)
 
 
-    Q_PROPERTY(QImage surfaceImage READ surfaceImage WRITE setSurfaceImage NOTIFY surfaceImageChanged)
+    //TODO: заменить на 2 массива
+    //массив цветов(bmp) и отрезков
+    //Q_PROPERTY(QImage surfaceImage READ surfaceImage WRITE setSurfaceImage NOTIFY surfaceImageChanged)
+
+    Q_PROPERTY(bool canCalculate MEMBER _canCalculate NOTIFY canCalculateChanged)
+    Q_PROPERTY(QList<int> frameDrawingData MEMBER _frameDrawingData NOTIFY frameDrawingDataChanged)
+    Q_PROPERTY(QList<int> colorDrawingData MEMBER _colorDrawingData NOTIFY colorDrawingDataChanged)
 
 public:
     MainWindow();
@@ -90,9 +92,11 @@ private:
     Surface surface;
     QMap<QString, SurfaceFunction*> functions;
     SurfaceCalculation* surfCalc;
-    QImage surfImg;
     int width;
     int height;
+    bool _canCalculate;
+    QList<int> _frameDrawingData;
+    QList<int> _colorDrawingData;
 
     void paramsChanged(bool isCalc = false);
 
@@ -148,16 +152,15 @@ private:
 
     void setOldRotate();
 
-    void paintEvent();
-    void drawFrame(QPainter* pai);
-    void drawAxis(QPainter* p);
-
-    QImage surfaceImage();
-    void setSurfaceImage(const QImage& bmp);
+    void calculate();
+    void getFrameData();
+    void getColorData(QImage *bmp);
 
 signals:
     void rangeChanged();
-    void surfaceImageChanged();
+    void canCalculateChanged();
+    void frameDrawingDataChanged();
+    void colorDrawingDataChanged();
 
 private slots:
 

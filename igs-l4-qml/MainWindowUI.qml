@@ -15,10 +15,9 @@ Item {
         spacing: 4
         anchors.fill: parent
 
-        Rectangle {
+        Canvas {
             id: surfaceImage
             width: 120
-            color: "#ffff44"
             Layout.fillHeight: true
             Layout.fillWidth: true
         }
@@ -42,6 +41,7 @@ Item {
                     Layout.fillWidth: true
                     Layout.maximumWidth: mainWindow.maxWidth
                     Layout.minimumWidth: mainWindow.maxWidth
+                    iconSource: "/pic/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Main
                         property: "checked"
@@ -65,7 +65,6 @@ Item {
                         id: comboBox_SurfaceFunctions
                         anchors.fill: parent
                         model: mainWindow.surfaceFunctions
-                        currentIndex: 1
                         Layout.fillWidth: true
                     }
                 }
@@ -90,7 +89,6 @@ Item {
                             id: radio_FrameShading
                             text: "Каркас"
                             exclusiveGroup: shading
-                            checked: true
                             onCheckedChanged: mainWindow.setShading(radio_FrameShading, MainWindow.FR)
                             Layout.fillWidth: true
                         }
@@ -135,11 +133,6 @@ Item {
                             text: "Текстура"
                             enabled: !radio_FrameShading.checked
                             Layout.fillWidth: true
-//                            Binding {
-//                                target: mainWindow
-//                                property: "textured"
-//                                value: checkBox_Textured.checked
-//                            }
                         }
 
                         Button {
@@ -161,6 +154,7 @@ Item {
                     Layout.fillWidth: true
                     Layout.maximumWidth: mainWindow.maxWidth
                     Layout.minimumWidth: mainWindow.maxWidth
+                    iconSource: "/pic/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Location
                         property: "checked"
@@ -188,6 +182,7 @@ Item {
                             max: mainWindow.rangeMaxU
                             title: qsTr("mU")
                             Layout.fillWidth: true
+                            value: 180
                         }
 
                         CustomSlider {
@@ -272,6 +267,7 @@ Item {
                     Layout.fillWidth: true
                     Layout.maximumWidth: mainWindow.maxWidth
                     Layout.minimumWidth: mainWindow.maxWidth
+                    iconSource: "/pic/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Illuminant
                         property: "checked"
@@ -374,6 +370,7 @@ Item {
                     Layout.fillWidth: true
                     Layout.maximumWidth: mainWindow.maxWidth
                     Layout.minimumWidth: mainWindow.maxWidth
+                    iconSource: "/pic/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Colors
                         property: "checked"
@@ -435,6 +432,8 @@ Item {
                 }
             }
         }
+
+        Component.onCompleted: mainWindow.reset()
     }
 
     MainWindow {
@@ -465,12 +464,133 @@ Item {
         paintViewWidth: surfaceImage.width
         paintViewHeight: surfaceImage.height
         property int maxWidth: 240
+        onColorDrawingDataChanged: drawColor()
+        onFrameDrawingDataChanged: drawFrame()
 
         function setShading(radio, sh) {
             if (radio.checked)
             {
                 mainWindow.surfaceShading = sh
             }
+        }
+
+        function reset() {
+            comboBox_SurfaceFunctions.currentIndex = 9
+
+            console.log("comboBox_SurfaceFunctions")
+
+            radio_FrameShading.checked = true
+
+            checkBox_Textured.checked = false
+
+            maxU.value = 90
+            maxV.value = 90
+            dU.value = 20
+            dV.value = 20
+            param_R.value = 100
+            param_r.value = 50
+
+            rotOx.value = 90
+            rotOy.value = 60
+            rotOz.value = 30
+
+            illiminant_ka.value = 0.2 // absent
+            illiminant_kd.value = 1.0 // diffusion
+            illiminant_ks.value = 0.8 // specular
+            illiminant_n.value = 25 // power
+            illiminant_alpha.value = 1.0
+
+            illiminantX.value = 0
+            illiminantY.value = 0
+            illiminantZ.value = 100
+
+            dottedColor.r = 255
+            dottedColor.g = 255
+            dottedColor.b = 255
+
+            absentedColor.r = 255
+            absentedColor.g = 255
+            absentedColor.b = 255
+
+            exteriorColor.r = 255
+            exteriorColor.g = 0
+            exteriorColor.b = 0
+
+            interiorColor.r = 0
+            interiorColor.g = 255
+            interiorColor.b = 0
+
+            expandedMain = true
+            expandedLocation = true
+            expandedIlluminant = false
+            expandedColors = false
+
+            mainWindow.canCalculate = true
+
+            console.log("reset")
+        }
+
+        function drawFrame() {
+            var ctx = surfaceImage.getContext('2d');
+            ctx.reset()
+
+            drawAxes(ctx)
+
+            ctx.lineWidth = 1
+            ctx.strokeStyle = "black"
+
+            ctx.beginPath()
+
+            for (var i = 0; i < mainWindow.frameDrawingData.length;) {
+                var x1 = mainWindow.frameDrawingData[i++]
+                var x2 = mainWindow.frameDrawingData[i++]
+                var y1 = mainWindow.frameDrawingData[i++]
+                var y2 = mainWindow.frameDrawingData[i++]
+
+                ctx.moveTo(x1, y1)
+                ctx.lineTo(x2, y2)
+            }
+            ctx.stroke()
+
+            ctx.closePath()
+
+            console.log("drawFrame")
+        }
+
+        function drawColor() {
+            var ctx = surfaceImage.getContext('2d');
+
+            drawAxes(ctx)
+
+            console.log("drawColor")
+        }
+
+        function drawAxes(ctx) {
+            var w = surfaceImage.width
+            var h = surfaceImage.height
+            var cx = w / 2.0
+            var cy = h / 2.0
+
+            ctx.lineWidth = 1
+            ctx.strokeStyle = "black"
+
+            ctx.beginPath()
+
+            ctx.moveTo(cx, h)
+            ctx.lineTo(cx, 0)
+            ctx.lineTo(cx - 5, 10)
+            ctx.lineTo(cx + 5, 10)
+            ctx.lineTo(cx, 0)
+
+            ctx.moveTo(0, cy)
+            ctx.lineTo(w, cy)
+            ctx.lineTo(w - 10, cy - 5)
+            ctx.lineTo(w - 10, cy + 5)
+            ctx.lineTo(w, cy)
+
+            ctx.closePath()
+
+            ctx.stroke()
         }
     }
 
