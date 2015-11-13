@@ -38,6 +38,8 @@ public:
     void setSecondParam(double s);
     SurfaceBorder* surfaceBorder();
     virtual Matrix getVertex(double degu, double degv) = 0;
+    double getFst();
+    double getSnd();
 };
 
 class Sphere : public SurfaceFunction

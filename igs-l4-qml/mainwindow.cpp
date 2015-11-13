@@ -42,21 +42,29 @@ MainWindow::MainWindow() :
     functions["Surface4"] = new Surface4();
 
     surface.textureImg.load(":/textures/resources/tex1.jpg");
+    surface.func = functions["Hourglass"];
 
     surfCalc = new SurfaceCalculation(&surface);
+
+    _canCalculate = false;
 }
 
 MainWindow::~MainWindow()
 {
 }
 
+int paramcnt = 0;
 void MainWindow::paramsChanged(bool isCalc)
 {
+    if (!_canCalculate)
+    {
+        return;
+    }
+
     surface.isPointsChanged = isCalc;
-//    paintEvent();
-//    ui->graphicsView_Surface->hide();
-//    ui->graphicsView_Surface->show();
-    qDebug() << "Params changed";
+    calculate();
+//    qDebug() << "Params changed" << paramcnt;
+//    ++paramcnt;
 }
 
 QStringList MainWindow::getSurfaceFunctions()
@@ -113,9 +121,19 @@ int MainWindow::getRangeMaxV()
 
 void MainWindow::setSurfaceFunction(const QString &s)
 {
-    surface.func = functions[s];
-    paramsChanged(true);
-    emit rangeChanged();
+    if (functions.contains(s))
+    {
+        SurfaceFunction* f = functions[s];
+        if (surface.func)
+        {
+            f->surfaceBorder()->dU = surface.func->surfaceBorder()->dU;
+            f->surfaceBorder()->dV = surface.func->surfaceBorder()->dV;
+            f->setParams(surface.func->getFst(), surface.func->getSnd());
+        }
+        surface.func = f;
+        paramsChanged(true);
+        emit rangeChanged();
+    }
 }
 
 void MainWindow::setSurfaceShading(Sh sh)
@@ -147,11 +165,9 @@ void MainWindow::setMaxU(int value)
         return;
     }
 
-    surface.func->surfaceBorder()->maxU = value;
+    surface.func->surfaceBorder()->dU = value;
     surface.maxU = value;
     paramsChanged(true);
-
-    qDebug() << "max u changed" << value;
 }
 
 void MainWindow::setMaxV(int value)
@@ -161,7 +177,7 @@ void MainWindow::setMaxV(int value)
         return;
     }
 
-    surface.func->surfaceBorder()->maxV = value;
+    surface.func->surfaceBorder()->dV = value;
     surface.maxV = value;
     paramsChanged(true);
 }
@@ -191,7 +207,6 @@ void MainWindow::setParam_R(int value)
 
 void MainWindow::setParam_r(int value)
 {
-    qDebug() << (surface.func == 0);
     if (!surface.func)
     {
         return;
@@ -305,48 +320,36 @@ void MainWindow::setOldRotate()
     surface.zOld = surface.zRotate;
 }
 
-void MainWindow::paintEvent()
+void MainWindow::calculate()
 {
-    if (!width || !height || width > 9999 || height > 9999)
+    if (!width || !height || width > 9999 || height > 9999 || !surface.func)
     {
         return;
     }
 
-    qDebug() << width << height;
-
     QImage bmp(width, height, QImage::Format_ARGB32);
 
-    QPainter painter(&bmp);
-
-
-    painter.setRenderHint(QPainter::Antialiasing, true);
-
-    drawAxis(&painter);
-
+    surfCalc->setSize(width, height);
     surfCalc->calculateSurface();
-
-    drawAxis(&painter);
 
     if (surface.type == FRAME)
     {
-        drawFrame(&painter);
+        getFrameData();
+        emit frameDrawingDataChanged();
     }
     else
     {
-        surfCalc->setSize(width, height);
         surfCalc->calculateColors(&bmp);
-//        painter.drawImage(0, 0, bmp);
+
+        getColorData(&bmp);
+        emit colorDrawingDataChanged();
     }
 
-
-    setSurfaceImage(bmp);
 }
 
-void MainWindow::drawFrame(QPainter *pai)
+void MainWindow::getFrameData()
 {
-    QPointF center(width / 2.0, height / 2.0);
-
-    pai->setPen(QPen(Qt::white));
+    _frameDrawingData.clear();
 
     QList<Point3D>* vertices = surfCalc->vertices_();
     QList<TriPolygon>* polygons = surfCalc->polygons_();
@@ -354,7 +357,9 @@ void MainWindow::drawFrame(QPainter *pai)
     {
         return;
     }
+    QPointF center(width / 2.0, height / 2.0);
 
+    // polygons->count() * 3 * 4 - количество элементов
     for (int i = 0; i < polygons->count(); ++i)
     {
         TriPolygon polygon = polygons->operator [](i);
@@ -362,51 +367,75 @@ void MainWindow::drawFrame(QPainter *pai)
         vertex[0] = vertices->operator [](polygon.a).toQPoint() + center;
         vertex[1] = vertices->operator [](polygon.b).toQPoint() + center;
         vertex[2] = vertices->operator [](polygon.c).toQPoint() + center;
-        pai->drawLine(vertex[0], vertex[1]);
-        pai->drawLine(vertex[2], vertex[1]);
-        pai->drawLine(vertex[0], vertex[2]);
+
+        _frameDrawingData.append(vertex[0].x());
+        _frameDrawingData.append(vertex[0].y());
+        _frameDrawingData.append(vertex[1].x());
+        _frameDrawingData.append(vertex[1].y());
+
+        _frameDrawingData.append(vertex[1].x());
+        _frameDrawingData.append(vertex[1].y());
+        _frameDrawingData.append(vertex[2].x());
+        _frameDrawingData.append(vertex[2].y());
+
+        _frameDrawingData.append(vertex[2].x());
+        _frameDrawingData.append(vertex[2].y());
+        _frameDrawingData.append(vertex[1].x());
+        _frameDrawingData.append(vertex[1].y());
     }
+}
 
-//    for (int i = 0; i < vertices->count(); ++i)
+void MainWindow::getColorData(QImage* bmp)
+{
+    _colorDrawingData.clear();
+
+    // width * height - количество элементов
+    for (int i = 0; i < width; ++i)
+    {
+        for (int j = 0; j < height; ++j)
+        {
+            QRgb c = bmp->pixel(i, j);
+            _colorDrawingData.append(c);
+        }
+    }
+}
+
+//void MainWindow::drawFrame(QPainter *pai)
+//{
+//    QPointF center(width / 2.0, height / 2.0);
+
+//    pai->setPen(QPen(Qt::white));
+
+//    QList<Point3D>* vertices = surfCalc->vertices_();
+//    QList<TriPolygon>* polygons = surfCalc->polygons_();
+//    if (!vertices || vertices->count() == 0 || !polygons || polygons->count() == 0)
 //    {
-//        QPointF t = vertices->operator [](i).toQPoint() + center;
-//        QString st;
-//        pai->drawText(t, st.number(i));
+//        return;
 //    }
 
-//    for (int i = 0; i < vertices->count(); ++i)
+//    for (int i = 0; i < polygons->count(); ++i)
 //    {
-//        QPointF t = vertices->operator [](i).toQPoint() + center;
-//        QString st;
-//        pai->drawEllipse(t, 4, 4);
+//        TriPolygon polygon = polygons->operator [](i);
+//        QPointF vertex[3];
+//        vertex[0] = vertices->operator [](polygon.a).toQPoint() + center;
+//        vertex[1] = vertices->operator [](polygon.b).toQPoint() + center;
+//        vertex[2] = vertices->operator [](polygon.c).toQPoint() + center;
+//        pai->drawLine(vertex[0], vertex[1]);
+//        pai->drawLine(vertex[2], vertex[1]);
+//        pai->drawLine(vertex[0], vertex[2]);
 //    }
-}
 
-void MainWindow::drawAxis(QPainter *p)
-{
-    QPointF center(width / 2.0, height / 2.0);
+////    for (int i = 0; i < vertices->count(); ++i)
+////    {
+////        QPointF t = vertices->operator [](i).toQPoint() + center;
+////        QString st;
+////        pai->drawText(t, st.number(i));
+////    }
 
-    p->setPen(QPen(Qt::white, 1));
-    QPoint x(width - 20, center.y());
-    p->drawLine(QPoint(20, center.y()), x);
-    p->drawLine(x, x + QPoint(-12, -8));
-    p->drawLine(x, x + QPoint(-12, 8));
-    p->drawText(x + QPoint(0, 12), "X");
-
-    QPoint y(center.x(), 20);
-    p->drawLine(QPoint(center.x(), height - 20), y);
-    p->drawLine(y, y + QPoint(8, 12));
-    p->drawLine(y, y + QPoint(-8, 12));
-    p->drawText(y + QPoint(12, 8), "Y");
-}
-
-QImage MainWindow::surfaceImage()
-{
-    return surfImg;
-}
-
-void MainWindow::setSurfaceImage(const QImage &bmp)
-{
-    surfImg = bmp;
-    emit surfaceImageChanged();
-}
+////    for (int i = 0; i < vertices->count(); ++i)
+////    {
+////        QPointF t = vertices->operator [](i).toQPoint() + center;
+////        QString st;
+////        pai->drawEllipse(t, 4, 4);
+////    }
+//}

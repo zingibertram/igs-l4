@@ -226,8 +226,6 @@ void SurfaceCalculation::calculateVertices()
             }
         }
     }
-    int tr = 90;
-    tr++;
 }
 
 void SurfaceCalculation::calculatePolygons()

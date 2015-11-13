@@ -16,6 +16,7 @@ ApplicationWindow {
 
             MenuItem {
                 text: qsTr("Исходное состояние")
+                onTriggered: mainWindowUI.mainWindow.reset()
             }
 
             MenuSeparator {}

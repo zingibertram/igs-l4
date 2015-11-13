@@ -14,6 +14,18 @@ RowLayout {
     property real mult: 0.7
     property real step: 1.0
 
+    Binding {
+        target: mainLayout
+        property: "value"
+        value: slider.value
+    }
+
+    Binding {
+        target: slider
+        property: "value"
+        value: mainLayout.value
+    }
+
     Label {
         id: label_Title
         text: mainLayout.title
@@ -35,7 +47,7 @@ RowLayout {
         width: 120
         minimumValue: mainLayout.min
         maximumValue: mainLayout.max
-        //value: mainLayout.max
+        value: mainLayout.value
         stepSize: mainLayout.step
         Layout.fillWidth: true
     }
