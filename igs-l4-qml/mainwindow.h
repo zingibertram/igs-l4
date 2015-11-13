@@ -3,17 +3,17 @@
 
 #include "surface.h"
 #include "surfacefunction.h"
+#include "surfacecalculation.h"
 
 #include <QObject>
-#include <QMainWindow>
-#include <QSpinBox>
 #include <QMap>
 #include <QList>
 #include <QColor>
 #include <QPalette>
-#include <QMessageBox>
-#include <QRadioButton>
+#include <QPainter>
 #include <QImage>
+#include <QString>
+#include <QStringList>
 
 namespace Ui {
     class MainWindow;
@@ -70,6 +70,9 @@ class MainWindow : public QObject
 
     Q_PROPERTY(QString interiorColor WRITE setInteriorColor)
 
+
+    Q_PROPERTY(QImage surfaceImage READ surfaceImage WRITE setSurfaceImage NOTIFY surfaceImageChanged)
+
 public:
     MainWindow();
     ~MainWindow();
@@ -86,6 +89,8 @@ public:
 private:
     Surface surface;
     QMap<QString, SurfaceFunction*> functions;
+    SurfaceCalculation* surfCalc;
+    QImage surfImg;
     int width;
     int height;
 
@@ -143,36 +148,18 @@ private:
 
     void setOldRotate();
 
+    void paintEvent();
+    void drawFrame(QPainter* pai);
+    void drawAxis(QPainter* p);
+
+    QImage surfaceImage();
+    void setSurfaceImage(const QImage& bmp);
+
 signals:
     void rangeChanged();
-
-//    void setCurrentColor(QWidget *panel, QColor current, QColor *surfaceSide);
-//    void paramsChanged(bool isCalc = false);
-//    void textureChanged(QString tex);
-//    void setConnection();
-//    void setValueLabel(QLabel *l = 0, double val = 0, int len = 0, QString dec = "");
+    void surfaceImageChanged();
 
 private slots:
-//    void shadingChanged(bool isflat);
-//    void illuminantCoords_Changed();
-
-//    void on_slider_XRotate_valueChanged(int value);
-//    void on_slider_YRotate_valueChanged(int value);
-//    void on_slider_ZRotate_valueChanged(int value);
-//    void on_slider_UMax_valueChanged(int value);
-//    void on_slider_VMax_valueChanged(int value);
-//    void on_slider_dU_valueChanged(int value);
-//    void on_slider_dV_valueChanged(int value);
-//    void on_slider_U_Param_valueChanged(int value);
-//    void on_slider_V_Param_valueChanged(int value);
-
-//    void on_slider_Absent_valueChanged(int value);
-//    void on_slider_Diffusion_valueChanged(int value);
-//    void on_slider_Specular_valueChanged(int value);
-//    void on_slider_Power_valueChanged(int value);
-//    void on_slider_Alpha_valueChanged(int value);
-//    void on_pushButton_ChooseTexture_clicked();
-//    void on_checkBox_Textured_clicked(bool checked);
 
 };
 
