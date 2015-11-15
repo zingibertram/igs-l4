@@ -23,6 +23,10 @@ public:
     Vector operator *(double k);
     void print();
     double operator ^(Vector a);
+
+    void setX(double vx);
+    void setY(double vy);
+    void setZ(double vz);
 };
 
 #endif // VECTOR_H

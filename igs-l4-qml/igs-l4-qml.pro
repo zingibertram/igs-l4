@@ -12,7 +12,6 @@ SOURCES += main.cpp \
     surface.cpp \
     surfacecalculation.cpp \
     surfacefunction.cpp \
-    surfaceimage.cpp \
     triangle.cpp \
     tripolygon.cpp \
     utils.cpp \
@@ -35,10 +34,11 @@ HEADERS += \
     surface.h \
     surfacecalculation.h \
     surfacefunction.h \
-    surfaceimage.h \
     triangle.h \
     tripolygon.h \
     typedefs.h \
     utils.h \
     vector.h \
     mainwindow.h
+
+RC_FILE=winico.rc

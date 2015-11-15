@@ -16,6 +16,7 @@ ApplicationWindow {
 
             MenuItem {
                 text: qsTr("Исходное состояние")
+                onTriggered: mainWindowUI.mainWindow.reset()
             }
 
             MenuSeparator {}
@@ -81,4 +82,9 @@ ApplicationWindow {
             messageDialog.open();
         }
     }
+
+//    Test {
+//        id: subWin
+//        visible: true
+//    }
 }

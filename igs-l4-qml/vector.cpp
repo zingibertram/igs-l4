@@ -80,3 +80,21 @@ double Vector::operator ^(Vector a)
     }
     return ((*this) * a) / (this->len() * a.len());
 }
+
+void Vector::setX(double vx)
+{
+    x = vx;
+    unit();
+}
+
+void Vector::setY(double vy)
+{
+    y = vy;
+    unit();
+}
+
+void Vector::setZ(double vz)
+{
+    z_ = vz;
+    unit();
+}

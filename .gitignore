@@ -35,3 +35,4 @@ Makefile*
 
 bin/*
 igs-l4-qml/bin/*
+igs-l4-qml/builds/*
