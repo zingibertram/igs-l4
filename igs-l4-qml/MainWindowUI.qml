@@ -17,7 +17,6 @@ Item {
 
         Canvas {
             id: surfaceImage
-            width: 120
             Layout.fillHeight: true
             Layout.fillWidth: true
         }
@@ -26,8 +25,8 @@ Item {
         ScrollView {
             id: scrollView
             Layout.fillHeight: true
-            Layout.minimumWidth: 260
-            //horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
+            Layout.minimumWidth: mainWindow.maxWidth + 20
+            horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
             verticalScrollBarPolicy: Qt.ScrollBarAlwaysOn
 
             ColumnLayout {
@@ -39,8 +38,6 @@ Item {
                     checkable: true
                     checked: mainWindowUI.expandedMain
                     Layout.fillWidth: true
-                    Layout.maximumWidth: mainWindow.maxWidth
-                    Layout.minimumWidth: mainWindow.maxWidth
                     iconSource: "/pic/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Main
@@ -56,7 +53,7 @@ Item {
 
                 GroupBox {
                     id: group_SurfaceFunctions
-                    title: qsTr("Функция поверхности")
+                    title: qsTr("Функция")
                     visible: button_Epand_Main.checked
                     Layout.fillWidth: true
                     Layout.maximumWidth: mainWindow.maxWidth
@@ -148,12 +145,10 @@ Item {
 
                 Button {
                     id: button_Epand_Location
-                    text: qsTr("Положение поверхности")
+                    text: qsTr("Поверхность")
                     checkable: true
                     checked: mainWindowUI.expandedLocation
                     Layout.fillWidth: true
-                    Layout.maximumWidth: mainWindow.maxWidth
-                    Layout.minimumWidth: mainWindow.maxWidth
                     iconSource: "/pic/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Location
@@ -229,7 +224,7 @@ Item {
 
                 GroupBox {
                     id: group_SurfaceRotate
-                    title: qsTr("Повороты")
+                    title: qsTr("Положение")
                     visible: mainWindowUI.expandedLocation
                     Layout.fillWidth: true
                     Layout.maximumWidth: mainWindow.maxWidth
@@ -265,8 +260,6 @@ Item {
                     checkable: true
                     checked: mainWindowUI.expandedIlluminant
                     Layout.fillWidth: true
-                    Layout.maximumWidth: mainWindow.maxWidth
-                    Layout.minimumWidth: mainWindow.maxWidth
                     iconSource: "/pic/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Illuminant
@@ -332,7 +325,7 @@ Item {
 
                 GroupBox {
                     id: group_IlluminantCoordinates
-                    title: qsTr("Координаты")
+                    title: qsTr("Положение")
                     visible: mainWindowUI.expandedIlluminant
                     Layout.fillWidth: true
                     Layout.maximumWidth: mainWindow.maxWidth
@@ -364,12 +357,10 @@ Item {
 
                 Button {
                     id: button_Epand_Colors
-                    text: qsTr("Выбор цвета")
+                    text: qsTr("Цвета")
                     checkable: true
                     checked: mainWindowUI.expandedColors
                     Layout.fillWidth: true
-                    Layout.maximumWidth: mainWindow.maxWidth
-                    Layout.minimumWidth: mainWindow.maxWidth
                     iconSource: "/pic/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Colors
@@ -532,7 +523,9 @@ Item {
 
         function drawFrame() {
             var ctx = surfaceImage.getContext('2d');
-            ctx.reset()
+
+            surfaceImage.visible = false;
+            surfaceImage.visible = true;
 
             drawAxes(ctx)
 
@@ -543,26 +536,26 @@ Item {
 
             for (var i = 0; i < mainWindow.frameDrawingData.length;) {
                 var x1 = mainWindow.frameDrawingData[i++]
-                var x2 = mainWindow.frameDrawingData[i++]
                 var y1 = mainWindow.frameDrawingData[i++]
+                var x2 = mainWindow.frameDrawingData[i++]
                 var y2 = mainWindow.frameDrawingData[i++]
+                var x3 = mainWindow.frameDrawingData[i++]
+                var y3 = mainWindow.frameDrawingData[i++]
 
                 ctx.moveTo(x1, y1)
                 ctx.lineTo(x2, y2)
+                ctx.lineTo(x3, y3)
+                ctx.lineTo(x1, y1)
             }
             ctx.stroke()
 
             ctx.closePath()
-
-            console.log("drawFrame")
         }
 
         function drawColor() {
             var ctx = surfaceImage.getContext('2d');
 
             drawAxes(ctx)
-
-            console.log("drawColor")
         }
 
         function drawAxes(ctx) {
@@ -591,6 +584,8 @@ Item {
             ctx.closePath()
 
             ctx.stroke()
+
+            console.log("Draw")
         }
     }
 

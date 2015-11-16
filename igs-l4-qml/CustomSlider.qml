@@ -11,7 +11,7 @@ RowLayout {
     property int min: 0
     property int max: 100
     property real value: slider.value
-    property real mult: 0.7
+    property real mult: 0.5
     property real step: 1.0
 
     Binding {

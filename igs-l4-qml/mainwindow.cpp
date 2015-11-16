@@ -63,8 +63,8 @@ void MainWindow::paramsChanged(bool isCalc)
 
     surface.isPointsChanged = isCalc;
     calculate();
-//    qDebug() << "Params changed" << paramcnt;
-//    ++paramcnt;
+    qDebug() << "Params changed" << paramcnt;
+    ++paramcnt;
 }
 
 QStringList MainWindow::getSurfaceFunctions()
@@ -359,7 +359,7 @@ void MainWindow::getFrameData()
     }
     QPointF center(width / 2.0, height / 2.0);
 
-    // polygons->count() * 3 * 4 - количество элементов
+    // polygons->count() * 2 * 3 - количество элементов
     for (int i = 0; i < polygons->count(); ++i)
     {
         TriPolygon polygon = polygons->operator [](i);
@@ -372,16 +372,8 @@ void MainWindow::getFrameData()
         _frameDrawingData.append(vertex[0].y());
         _frameDrawingData.append(vertex[1].x());
         _frameDrawingData.append(vertex[1].y());
-
-        _frameDrawingData.append(vertex[1].x());
-        _frameDrawingData.append(vertex[1].y());
         _frameDrawingData.append(vertex[2].x());
         _frameDrawingData.append(vertex[2].y());
-
-        _frameDrawingData.append(vertex[2].x());
-        _frameDrawingData.append(vertex[2].y());
-        _frameDrawingData.append(vertex[1].x());
-        _frameDrawingData.append(vertex[1].y());
     }
 }
 
