@@ -521,11 +521,15 @@ Item {
             console.log("reset")
         }
 
+        function drawRequest(ctx) {
+            surfaceImage.requestPaint()
+            ctx.clearRect(0, 0, surfaceImage.width, surfaceImage.height)
+        }
+
         function drawFrame() {
             var ctx = surfaceImage.getContext('2d');
 
-            surfaceImage.visible = false;
-            surfaceImage.visible = true;
+            mainWindow.drawRequest(ctx)
 
             drawAxes(ctx)
 
@@ -554,6 +558,8 @@ Item {
 
         function drawColor() {
             var ctx = surfaceImage.getContext('2d');
+
+            mainWindow.drawRequest(ctx)
 
             drawAxes(ctx)
         }

@@ -53,7 +53,6 @@ MainWindow::~MainWindow()
 {
 }
 
-int paramcnt = 0;
 void MainWindow::paramsChanged(bool isCalc)
 {
     if (!_canCalculate)
@@ -63,8 +62,6 @@ void MainWindow::paramsChanged(bool isCalc)
 
     surface.isPointsChanged = isCalc;
     calculate();
-    qDebug() << "Params changed" << paramcnt;
-    ++paramcnt;
 }
 
 QStringList MainWindow::getSurfaceFunctions()
