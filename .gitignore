@@ -33,6 +33,7 @@ Makefile*
 *.qmlproject.user
 *.qmlproject.user.*
 
-bin/*
-igs-l4-qml/bin/*
-igs-l4-qml/builds/*
+qt-widgets/bin/*
+qt-widgets/builds/*
+qt-quick/bin/*
+qt-quick/builds/*
