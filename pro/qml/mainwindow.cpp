@@ -379,11 +379,16 @@ void MainWindow::getColorData(QImage* bmp)
     _colorDrawingData.clear();
 
     // width * height - количество элементов
-    for (int i = 0; i < width; ++i)
+    for (int j = 0; j < height; ++j)
     {
-        for (int j = 0; j < height; ++j)
+        for (int i = 0; i < width; ++i)
         {
             QRgb c = bmp->pixel(i, j);
+//            if (!c)
+//            {
+//                unsigned int m = 0;
+//                c = m - 1;
+//            }
             QColor color(c);
             _colorDrawingData.append(color.red());
             _colorDrawingData.append(color.green());

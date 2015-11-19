@@ -2,7 +2,7 @@ import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import com.ics.demo 1.0
+import igs.l4 1.0
 
 Item {
     id: mainItem
@@ -38,7 +38,8 @@ Item {
                     checkable: true
                     checked: mainWindowUI.expandedMain
                     Layout.fillWidth: true
-                    iconSource: "/pic/resources/arrow-down.png"
+                    Layout.minimumWidth: mainWindow.maxWidth
+                    iconSource: "/icons/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Main
                         property: "checked"
@@ -149,7 +150,8 @@ Item {
                     checkable: true
                     checked: mainWindowUI.expandedLocation
                     Layout.fillWidth: true
-                    iconSource: "/pic/resources/arrow-down.png"
+                    Layout.minimumWidth: mainWindow.maxWidth
+                    iconSource: "/icons/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Location
                         property: "checked"
@@ -260,7 +262,8 @@ Item {
                     checkable: true
                     checked: mainWindowUI.expandedIlluminant
                     Layout.fillWidth: true
-                    iconSource: "/pic/resources/arrow-down.png"
+                    Layout.minimumWidth: mainWindow.maxWidth
+                    iconSource: "/icons/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Illuminant
                         property: "checked"
@@ -361,7 +364,8 @@ Item {
                     checkable: true
                     checked: mainWindowUI.expandedColors
                     Layout.fillWidth: true
-                    iconSource: "/pic/resources/arrow-down.png"
+                    Layout.minimumWidth: mainWindow.maxWidth
+                    iconSource: "/icons/resources/arrow-down.png"
                     Binding {
                         target: button_Epand_Colors
                         property: "checked"
@@ -564,25 +568,16 @@ Item {
 
             mainWindow.drawRequest(ctx)
 
-            var cid = ctx.createImageData(surfaceImage.width, surfaceImage.height)
-//            cid.data = mainWindow.colorDrawingData
-//            ctx.drawImage(cid, 0, 0, surfaceImage.width, surfaceImage.height)
-//            console.log("cid.data length", cid.data.length)
-//            console.log("mainWindow.colorDrawingData length", mainWindow.colorDrawingData.length)
-//            for (var i = 0; i < cid.data.length;) {
-//                var r = cid.data[i++]
-//                var g = cid.data[i++]
-//                var b = cid.data[i++]
-//                var a = cid.data[i++]
-//                if (r || g || b) {
-//                    console.log("cid.data[%1] = (%2, %3, %4, %5)".arg(i).arg(r).arg(g).arg(b).arg(a))
-//                }
-//            }
-            for (var i = 0; i < cid.data.length;) {
-                var r = cid.data[i]
-                var g = cid.data[i + 1]
-                var b = cid.data[i + 2]
-                var a = cid.data[i + 3]
+            var cid = ctx.getImageData(0, 0, surfaceImage.width, surfaceImage.height)
+
+            var count = cid.data.length
+            var i = 0
+            var data = mainWindow.colorDrawingData
+            while (i < count) {
+                var r = data[i]
+                var g = data[i + 1]
+                var b = data[i + 2]
+                var a = data[i + 3]
                 if (r || g || b) {
                     cid.data[i] = r
                     cid.data[i + 1] = g

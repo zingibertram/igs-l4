@@ -4,12 +4,14 @@
 #include <QQmlApplicationEngine>
 #include <QQmlComponent>
 #include <QQmlEngine>
+#include <QIcon>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    app.setWindowIcon(QIcon(":/icons/resources/sphere_frame.png"));
 
-    qmlRegisterType<MainWindow>("com.ics.demo", 1, 0, "MainWindow");
+    qmlRegisterType<MainWindow>("igs.l4", 1, 0, "MainWindow");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

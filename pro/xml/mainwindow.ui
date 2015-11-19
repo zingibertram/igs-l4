@@ -18,7 +18,7 @@
     <normaloff>:/icons/resources/sphere_frame.png</normaloff>:/icons/resources/sphere_frame.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QGroupBox 
+   <string notr="true">/*QGroupBox 
 {
 	border: 1px solid #8f8f91;
 	padding-top: 9px;
@@ -451,6 +451,19 @@ QLabel#label_ColorSelection
      <number>4</number>
     </property>
     <item>
+     <widget class="ColorBox" name="groupBox">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="SurfaceImage" name="graphicsView_Surface">
       <property name="minimumSize">
        <size>
@@ -504,9 +517,9 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
-         <width>204</width>
-         <height>1085</height>
+         <y>-692</y>
+         <width>205</width>
+         <height>1089</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -562,8 +575,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceMain">
              <property name="minimumSize">
               <size>
-               <width>82</width>
-               <height>18</height>
+               <width>0</width>
+               <height>0</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -751,8 +764,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceLocation">
              <property name="minimumSize">
               <size>
-               <width>82</width>
-               <height>18</height>
+               <width>0</width>
+               <height>0</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -1486,8 +1499,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_LightSource">
              <property name="minimumSize">
               <size>
-               <width>82</width>
-               <height>18</height>
+               <width>0</width>
+               <height>0</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -2172,8 +2185,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_ColorSelection">
              <property name="minimumSize">
               <size>
-               <width>82</width>
-               <height>18</height>
+               <width>0</width>
+               <height>0</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -3328,7 +3341,7 @@ background-color: black;</string>
      <x>0</x>
      <y>0</y>
      <width>641</width>
-     <height>18</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -3384,6 +3397,12 @@ background-color: black;</string>
    <extends>QGraphicsView</extends>
    <header>xml/surfaceimage.h</header>
   </customwidget>
+  <customwidget>
+   <class>ColorBox</class>
+   <extends>QGroupBox</extends>
+   <header>xml/colorbox.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="../common/resources.qrc"/>
@@ -3396,12 +3415,12 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>593</x>
-     <y>-419</y>
+     <x>614</x>
+     <y>-667</y>
     </hint>
     <hint type="destinationlabel">
-     <x>590</x>
-     <y>-365</y>
+     <x>614</x>
+     <y>-637</y>
     </hint>
    </hints>
   </connection>
@@ -3412,12 +3431,12 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>582</x>
-     <y>-247</y>
+     <x>614</x>
+     <y>-490</y>
     </hint>
     <hint type="destinationlabel">
-     <x>597</x>
-     <y>-76</y>
+     <x>614</x>
+     <y>-460</y>
     </hint>
    </hints>
   </connection>
@@ -3428,12 +3447,12 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>572</x>
-     <y>40</y>
+     <x>614</x>
+     <y>-195</y>
     </hint>
     <hint type="destinationlabel">
-     <x>605</x>
-     <y>184</y>
+     <x>614</x>
+     <y>-5</y>
     </hint>
    </hints>
   </connection>
@@ -3444,8 +3463,8 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>597</x>
-     <y>299</y>
+     <x>614</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>605</x>

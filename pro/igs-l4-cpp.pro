@@ -10,7 +10,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = IGS_LabN4
+TARGET = igs-l4-widgets
 TEMPLATE = app
 
 
@@ -29,7 +29,8 @@ SOURCES += xml/main.cpp\
     common/surface.cpp \
     common/surfacecalculation.cpp \
     common/tripolygon.cpp \
-    common/surfacefunction.cpp
+    common/surfacefunction.cpp \
+    xml/colorbox.cpp
 
 HEADERS  += xml/mainwindow.h \
     common/point3d.h \
@@ -43,9 +44,11 @@ HEADERS  += xml/mainwindow.h \
     common/typedefs.h \
     common/surfacecalculation.h \
     common/tripolygon.h \
-    common/surfacefunction.h
+    common/surfacefunction.h \
+    xml/colorbox.h
 
-FORMS    += xml/mainwindow.ui
+FORMS    += xml/mainwindow.ui \
+    xml/colorbox.ui
 
 RESOURCES += \
     common/resources.qrc

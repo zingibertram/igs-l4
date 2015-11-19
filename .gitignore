@@ -36,5 +36,5 @@ qt-widgets/bin/*
 qt-widgets/builds/*
 qt-quick/bin/*
 qt-quick/builds/*
-pro/IGS_LabN4/builds/*
-pro/ig-l4-qml/builds/*
+pro/igs-l4-cpp/*
+pro/igs-l4-qml/*
