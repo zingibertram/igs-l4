@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>ColorBox</class>
  <widget class="QGroupBox" name="ColorBox">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>207</width>
+    <height>84</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
     <horstretch>0</horstretch>
@@ -34,6 +42,9 @@
      </property>
      <item>
       <layout class="QHBoxLayout" name="hLayout_R">
+       <property name="spacing">
+        <number>6</number>
+       </property>
        <item>
         <widget class="QLabel" name="label_R">
          <property name="text">
@@ -81,6 +92,9 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="hLayout_G">
+       <property name="spacing">
+        <number>6</number>
+       </property>
        <item>
         <widget class="QLabel" name="label_G">
          <property name="text">
@@ -128,6 +142,9 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="hLayout_B">
+       <property name="spacing">
+        <number>6</number>
+       </property>
        <item>
         <widget class="QLabel" name="label_B">
          <property name="text">
@@ -179,7 +196,7 @@
     <widget class="QWidget" name="widget_Color" native="true">
      <property name="minimumSize">
       <size>
-       <width>32</width>
+       <width>24</width>
        <height>0</height>
       </size>
      </property>
@@ -247,8 +264,8 @@
      <y>24</y>
     </hint>
     <hint type="destinationlabel">
-     <x>139</x>
-     <y>22</y>
+     <x>203</x>
+     <y>36</y>
     </hint>
    </hints>
   </connection>
@@ -263,8 +280,8 @@
      <y>43</y>
     </hint>
     <hint type="destinationlabel">
-     <x>136</x>
-     <y>44</y>
+     <x>203</x>
+     <y>58</y>
     </hint>
    </hints>
   </connection>
@@ -275,14 +292,17 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>52</x>
-     <y>57</y>
+     <x>80</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
-     <x>125</x>
-     <y>62</y>
+     <x>203</x>
+     <y>81</y>
     </hint>
    </hints>
   </connection>
  </connections>
+ <slots>
+  <slot>slot1()</slot>
+ </slots>
 </ui>

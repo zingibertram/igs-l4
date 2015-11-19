@@ -30,7 +30,8 @@ SOURCES += xml/main.cpp\
     common/surfacecalculation.cpp \
     common/tripolygon.cpp \
     common/surfacefunction.cpp \
-    xml/colorbox.cpp
+    xml/colorbox.cpp \
+    xml/cslider.cpp
 
 HEADERS  += xml/mainwindow.h \
     common/point3d.h \
@@ -45,10 +46,12 @@ HEADERS  += xml/mainwindow.h \
     common/surfacecalculation.h \
     common/tripolygon.h \
     common/surfacefunction.h \
-    xml/colorbox.h
+    xml/colorbox.h \
+    xml/cslider.h
 
 FORMS    += xml/mainwindow.ui \
-    xml/colorbox.ui
+    xml/colorbox.ui \
+    xml/cslider.ui
 
 RESOURCES += \
     common/resources.qrc

@@ -50,14 +50,10 @@ void MainWindow::reset()
     ui->slider_U_Param->setValue(140);
     ui->slider_V_Param->setValue(70);
 
-    ui->slider_R_Ext->setValue(255);
-    ui->slider_G_Int->setValue(255);
-    ui->slider_R_Abs->setValue(255);
-    ui->slider_G_Abs->setValue(255);
-    ui->slider_B_Abs->setValue(255);
-    ui->slider_R_Dot->setValue(255);
-    ui->slider_G_Dot->setValue(255);
-    ui->slider_B_Dot->setValue(255);
+    ui->colorBox_Dot->setColor(255, 255, 255);
+    ui->colorBox_Absent->setColor(255, 255, 255);
+    ui->colorBox_Exterior->setColor(255, 0, 0);
+    ui->colorBox_Interior->setColor(0, 255, 0);
 
     ui->slider_X_Illuminant->setValue(0);
     ui->slider_Y_Illuminant->setValue(0);
@@ -98,21 +94,10 @@ void MainWindow::setConnection()
     this->connect(ui->slider_Y_Rotate, SIGNAL(valueChanged(int)), this, SLOT(on_slider_YRotate_valueChanged(int)));
     this->connect(ui->slider_Z_Rotate, SIGNAL(valueChanged(int)), this, SLOT(on_slider_ZRotate_valueChanged(int)));
 
-    this->connect(ui->slider_R_Ext, SIGNAL(valueChanged(int)), this, SLOT(exteriorColor_Changed()));
-    this->connect(ui->slider_G_Ext, SIGNAL(valueChanged(int)), this, SLOT(exteriorColor_Changed()));
-    this->connect(ui->slider_B_Ext, SIGNAL(valueChanged(int)), this, SLOT(exteriorColor_Changed()));
-
-    this->connect(ui->slider_R_Int, SIGNAL(valueChanged(int)), this, SLOT(interiorColor_Changed()));
-    this->connect(ui->slider_G_Int, SIGNAL(valueChanged(int)), this, SLOT(interiorColor_Changed()));
-    this->connect(ui->slider_B_Int, SIGNAL(valueChanged(int)), this, SLOT(interiorColor_Changed()));
-
-    this->connect(ui->slider_R_Dot, SIGNAL(valueChanged(int)), this, SLOT(dotColor_Changed()));
-    this->connect(ui->slider_G_Dot, SIGNAL(valueChanged(int)), this, SLOT(dotColor_Changed()));
-    this->connect(ui->slider_B_Dot, SIGNAL(valueChanged(int)), this, SLOT(dotColor_Changed()));
-
-    this->connect(ui->slider_R_Abs, SIGNAL(valueChanged(int)), this, SLOT(absentColor_Changed()));
-    this->connect(ui->slider_G_Abs, SIGNAL(valueChanged(int)), this, SLOT(absentColor_Changed()));
-    this->connect(ui->slider_B_Abs, SIGNAL(valueChanged(int)), this, SLOT(absentColor_Changed()));
+    this->connect(ui->colorBox_Dot, SIGNAL(colorChanged(QColor)), this, SLOT(dotColor_Changed(QColor)));
+    this->connect(ui->colorBox_Absent, SIGNAL(colorChanged(QColor)), this, SLOT(absentColor_Changed(QColor)));
+    this->connect(ui->colorBox_Exterior, SIGNAL(colorChanged(QColor)), this, SLOT(exteriorColor_Changed(QColor)));
+    this->connect(ui->colorBox_Interior, SIGNAL(colorChanged(QColor)), this, SLOT(interiorColor_Changed(QColor)));
 
     this->connect(ui->slider_U_Max, SIGNAL(valueChanged(int)), this, SLOT(on_slider_UMax_valueChanged(int)));
     this->connect(ui->slider_V_Max, SIGNAL(valueChanged(int)), this, SLOT(on_slider_VMax_valueChanged(int)));
@@ -140,60 +125,28 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::setCurrentColor(QWidget *panel, QColor current, QColor *surfaceSide)
+void MainWindow::exteriorColor_Changed(QColor color)
 {
-    QString panelName = panel->objectName();
-    *surfaceSide = current;
-    panel->setStyleSheet(QString("QWidget#%2{border: 1px solid #8f8f91;background:%1;}").arg(current.name(), panelName));
-    this->paramsChanged();
+    surface.exterior = color;
+    paramsChanged();
 }
 
-void MainWindow::exteriorColor_Changed()
+void MainWindow::interiorColor_Changed(QColor color)
 {
-    int r = ui->slider_R_Ext->value();
-    int g = ui->slider_G_Ext->value();
-    int b = ui->slider_B_Ext->value();
-    this->setValueLabel(ui->value_R_Ext, r, 3, "");
-    this->setValueLabel(ui->value_G_Ext, g, 3, "");
-    this->setValueLabel(ui->value_B_Ext, b, 3, "");
-    QColor current(r, g, b);
-    this->setCurrentColor(ui->widget_ExteriorColor, current, &(surface.exterior));
+    surface.interior = color;
+    paramsChanged();
 }
 
-void MainWindow::interiorColor_Changed()
+void MainWindow::dotColor_Changed(QColor color)
 {
-    int r = ui->slider_R_Int->value();
-    int g = ui->slider_G_Int->value();
-    int b = ui->slider_B_Int->value();
-    this->setValueLabel(ui->value_R_Int, r, 3, "");
-    this->setValueLabel(ui->value_G_Int, g, 3, "");
-    this->setValueLabel(ui->value_B_Int, b, 3, "");
-    QColor current(r, g, b);
-    this->setCurrentColor(ui->widget_InteriorColor, current, &(surface.interior));
+    surface.dot = color;
+    paramsChanged();
 }
 
-void MainWindow::dotColor_Changed()
+void MainWindow::absentColor_Changed(QColor color)
 {
-    int r = ui->slider_R_Dot->value();
-    int g = ui->slider_G_Dot->value();
-    int b = ui->slider_B_Dot->value();
-    this->setValueLabel(ui->value_R_Dot, r, 3, "");
-    this->setValueLabel(ui->value_G_Dot, g, 3, "");
-    this->setValueLabel(ui->value_B_Dot, b, 3, "");
-    QColor current(r, g, b);
-    this->setCurrentColor(ui->widget_IlluminantDottedColor, current, &(surface.dot));
-}
-
-void MainWindow::absentColor_Changed()
-{
-    int r = ui->slider_R_Abs->value();
-    int g = ui->slider_G_Abs->value();
-    int b = ui->slider_B_Abs->value();
-    this->setValueLabel(ui->value_R_Abs, r, 3, "");
-    this->setValueLabel(ui->value_G_Abs, g, 3, "");
-    this->setValueLabel(ui->value_B_Abs, b, 3, "");
-    QColor current(r, g, b);
-    this->setCurrentColor(ui->widget_IlluminantAbsentColor, current, &(surface.absent));
+    surface.absent = color;
+    paramsChanged();
 }
 
 void MainWindow::actionAboutTriggered()
@@ -208,7 +161,7 @@ void MainWindow::paramsChanged(bool isCalc)
 {
     if (!isSetFirstState)
     {
-        surface.isPointsChanged = isCalc;
+        surface.isPointsChanged = true;
         ui->graphicsView_Surface->hide();
         ui->graphicsView_Surface->show();
     }
@@ -218,8 +171,8 @@ void MainWindow::shadingChanged(bool isflat)
 {
     this->setValueLabel();
     ui->checkBox_Textured->setEnabled(true);
-    ui->groupBox_ExteriorColor->setEnabled(true);
-    ui->groupBox_InterioColor->setEnabled(true);
+    ui->colorBox_Exterior->setEnabled(true);
+    ui->colorBox_Interior->setEnabled(true);
     QRadioButton *sndr = (QRadioButton*)this->sender();
     if (sndr == ui->radioButton_WireframeShading)
     {
@@ -403,8 +356,8 @@ void MainWindow::on_checkBox_Textured_clicked(bool checked)
         return;
     }
 
-    ui->groupBox_ExteriorColor->setEnabled(!checked);
-    ui->groupBox_InterioColor->setEnabled(!checked);
+    ui->colorBox_Exterior->setEnabled(!checked);
+    ui->colorBox_Interior->setEnabled(!checked);
     surface.isTextured = checked;
 
     if (checked)
@@ -413,15 +366,8 @@ void MainWindow::on_checkBox_Textured_clicked(bool checked)
     }
     else
     {
-        int r = ui->slider_R_Ext->value();
-        int g = ui->slider_G_Ext->value();
-        int b = ui->slider_B_Ext->value();
-        surface.exterior = QColor(r, g, b);
-
-        r = ui->slider_R_Int->value();
-        g = ui->slider_G_Int->value();
-        b = ui->slider_B_Int->value();
-        surface.interior = QColor(r, g, b);
+        surface.exterior = ui->colorBox_Exterior->color();
+        surface.interior = ui->colorBox_Interior->color();
     }
 
     this->setValueLabel();

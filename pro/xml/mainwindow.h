@@ -33,7 +33,6 @@ private:
     QImage texture;
     QMap<QString, SurfaceFunction*> functions;
 
-    void setCurrentColor(QWidget *panel, QColor current, QColor *surfaceSide);
     void paramsChanged(bool isCalc = false);
     void textureChanged(QString tex);
     void setConnection();
@@ -44,10 +43,10 @@ private:
 private slots:
     void actionAboutTriggered();
     void shadingChanged(bool isflat);
-    void exteriorColor_Changed();
-    void interiorColor_Changed();
-    void dotColor_Changed();
-    void absentColor_Changed();
+    void exteriorColor_Changed(QColor color);
+    void interiorColor_Changed(QColor color);
+    void dotColor_Changed(QColor color);
+    void absentColor_Changed(QColor color);
     void illuminantCoords_Changed();
     void reset();
 

@@ -12,11 +12,12 @@ namespace Ui {
 class ColorBox : public QGroupBox
 {
     Q_OBJECT
-    Q_PROPERTY(QString title MEMBER _title)
 
 public:
     explicit ColorBox(QWidget *parent = 0);
     ~ColorBox();
+    void setColor(int r, int g, int b);
+    QColor color();
 
 signals:
     void colorChanged(QColor color);
@@ -26,7 +27,6 @@ private slots:
 
 private:
     Ui::ColorBox *ui;
-    QString _title;
 };
 
 #endif // COLORBOX_H
