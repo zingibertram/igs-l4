@@ -1,9 +1,9 @@
 #include "mainwindow.h"
-#include "surfacefunction.h"
-#include "utils.h"
-#include "vector.h"
-#include "point3d.h"
-#include "tripolygon.h"
+#include "common/surfacefunction.h"
+#include "common/utils.h"
+#include "common/vector.h"
+#include "common/point3d.h"
+#include "common/tripolygon.h"
 
 #include <QFileDialog>
 #include <QScrollBar>

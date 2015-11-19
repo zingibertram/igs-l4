@@ -27,10 +27,6 @@ void FlatDrawing::setPixel(QColor current, int i, int j)
     int r = surface->alpha * (double)current.red() + one_Minus_Alpha * (double)bufCol.red();
     int g = surface->alpha * (double)current.green() + one_Minus_Alpha * (double)bufCol.green();
     int b = surface->alpha * (double)current.blue() + one_Minus_Alpha * (double)bufCol.blue();
-    QRgb cc = QColor(std::min(255, r), std::min(255, g), std::min(255, b)).rgb();
     bmp->setPixel(i, j, QColor(std::min(255, r), std::min(255, g), std::min(255, b)).rgb());
-    QRgb pp = bmp->pixel(i, j);
-    int tr = 90;
-    tr++;
 }
 
