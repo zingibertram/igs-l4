@@ -14,7 +14,7 @@
    <string>Лабораторная работа №4</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset resource="../common/resources.qrc">
     <normaloff>:/icons/resources/sphere_frame.png</normaloff>:/icons/resources/sphere_frame.png</iconset>
   </property>
   <property name="styleSheet">
@@ -488,6 +488,9 @@ background-color: black;</string>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
       </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
@@ -501,7 +504,7 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-685</y>
+         <y>0</y>
          <width>204</width>
          <height>1085</height>
         </rect>
@@ -559,7 +562,7 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceMain">
              <property name="minimumSize">
               <size>
-               <width>200</width>
+               <width>82</width>
                <height>18</height>
               </size>
              </property>
@@ -570,7 +573,7 @@ background-color: black;</string>
               <string>Основное</string>
              </property>
              <property name="icon">
-              <iconset resource="resources.qrc">
+              <iconset resource="../common/resources.qrc">
                <normaloff>:/icons/resources/arrow-down.png</normaloff>:/icons/resources/arrow-down.png</iconset>
              </property>
              <property name="checkable">
@@ -748,7 +751,7 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceLocation">
              <property name="minimumSize">
               <size>
-               <width>200</width>
+               <width>82</width>
                <height>18</height>
               </size>
              </property>
@@ -759,7 +762,7 @@ background-color: black;</string>
               <string>Положение поверхности</string>
              </property>
              <property name="icon">
-              <iconset resource="resources.qrc">
+              <iconset resource="../common/resources.qrc">
                <normaloff>:/icons/resources/arrow-down.png</normaloff>:/icons/resources/arrow-down.png</iconset>
              </property>
              <property name="checkable">
@@ -1483,7 +1486,7 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_LightSource">
              <property name="minimumSize">
               <size>
-               <width>200</width>
+               <width>82</width>
                <height>18</height>
               </size>
              </property>
@@ -1494,7 +1497,7 @@ background-color: black;</string>
               <string>Источник света</string>
              </property>
              <property name="icon">
-              <iconset resource="resources.qrc">
+              <iconset resource="../common/resources.qrc">
                <normaloff>:/icons/resources/arrow-down.png</normaloff>:/icons/resources/arrow-down.png</iconset>
              </property>
              <property name="checkable">
@@ -2169,7 +2172,7 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_ColorSelection">
              <property name="minimumSize">
               <size>
-               <width>200</width>
+               <width>82</width>
                <height>18</height>
               </size>
              </property>
@@ -2180,7 +2183,7 @@ background-color: black;</string>
               <string>Выбор цвета</string>
              </property>
              <property name="icon">
-              <iconset resource="resources.qrc">
+              <iconset resource="../common/resources.qrc">
                <normaloff>:/icons/resources/arrow-down.png</normaloff>:/icons/resources/arrow-down.png</iconset>
              </property>
              <property name="checkable">
@@ -3379,11 +3382,11 @@ background-color: black;</string>
   <customwidget>
    <class>SurfaceImage</class>
    <extends>QGraphicsView</extends>
-   <header>surfaceimage.h</header>
+   <header>xml/surfaceimage.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../common/resources.qrc"/>
  </resources>
  <connections>
   <connection>

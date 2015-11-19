@@ -32,6 +32,26 @@ void SurfaceFunction::setParams(double f, double s)
     snd = s;
 }
 
+void SurfaceFunction::setFirstParam(double f)
+{
+    fst = f;
+}
+
+void SurfaceFunction::setSecondParam(double s)
+{
+    snd = s;
+}
+
+double SurfaceFunction::getFst()
+{
+    return fst;
+}
+
+double SurfaceFunction::getSnd()
+{
+    return snd;
+}
+
 SurfaceBorder* SurfaceFunction::surfaceBorder()
 {
     return border;

@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "surfacefunction.h"
+#include "common/surfacefunction.h"
 
 #include <QFileDialog>
 #include <QScrollBar>

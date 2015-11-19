@@ -14,69 +14,40 @@ TARGET = IGS_LabN4
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    point3d.cpp \
-    matrix.cpp \
-    surfaceimage.cpp \
-    triangle.cpp \
-    drawing.cpp \
-    utils.cpp \
-    drawFlat.cpp \
-    drawHuro.cpp \
-    drawFong.cpp \
-    vector.cpp \
-    surface.cpp \
-    surfacecalculation.cpp \
-    tripolygon.cpp \
-    surfacefunction.cpp
+SOURCES += xml/main.cpp\
+        xml/mainwindow.cpp \
+    common/point3d.cpp \
+    common/matrix.cpp \
+    xml/surfaceimage.cpp \
+    common/triangle.cpp \
+    common/drawing.cpp \
+    common/utils.cpp \
+    common/drawFlat.cpp \
+    common/drawHuro.cpp \
+    common/drawFong.cpp \
+    common/vector.cpp \
+    common/surface.cpp \
+    common/surfacecalculation.cpp \
+    common/tripolygon.cpp \
+    common/surfacefunction.cpp
 
-HEADERS  += mainwindow.h \
-    point3d.h \
-    matrix.h \
-    surfaceimage.h \
-    surface.h \
-    triangle.h \
-    drawing.h \
-    utils.h \
-    vector.h \
-    typedefs.h \
-    surfacecalculation.h \
-    tripolygon.h \
-    surfacefunction.h
+HEADERS  += xml/mainwindow.h \
+    common/point3d.h \
+    common/matrix.h \
+    xml/surfaceimage.h \
+    common/surface.h \
+    common/triangle.h \
+    common/drawing.h \
+    common/utils.h \
+    common/vector.h \
+    common/typedefs.h \
+    common/surfacecalculation.h \
+    common/tripolygon.h \
+    common/surfacefunction.h
 
-FORMS    += mainwindow.ui
+FORMS    += xml/mainwindow.ui
 
 RESOURCES += \
-    resources.qrc
+    common/resources.qrc
 
-RC_FILE += winico.rc
-
-DISTFILES += \
-    other/TMVertexGenerator.cs
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+RC_FILE += common/winico.rc

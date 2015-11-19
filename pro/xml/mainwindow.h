@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "surface.h"
-#include "surfacefunction.h"
+#include "common/surface.h"
+#include "common/surfacefunction.h"
 
 #include <QMainWindow>
 #include <QSpinBox>

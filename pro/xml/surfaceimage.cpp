@@ -1,5 +1,5 @@
 #include "surfaceimage.h"
-#include "surfacecalculation.h"
+#include "common/surfacecalculation.h"
 
 SurfaceImage::SurfaceImage(QWidget *parent) :
     QGraphicsView(parent)
