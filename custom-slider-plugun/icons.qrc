@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cslider.png</file>
+    </qresource>
+</RCC>
