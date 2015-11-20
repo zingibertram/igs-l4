@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>180</width>
+    <width>151</width>
     <height>19</height>
    </rect>
   </property>
@@ -76,22 +76,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>slider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_Value</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>157</x>
-     <y>19</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>309</x>
-     <y>21</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

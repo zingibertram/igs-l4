@@ -18,7 +18,7 @@
     <normaloff>:/icons/resources/sphere_frame.png</normaloff>:/icons/resources/sphere_frame.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*QGroupBox 
+   <string notr="true">QGroupBox 
 {
 	border: 1px solid #8f8f91;
 	padding-top: 9px;
@@ -503,9 +503,9 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-61</y>
-         <width>205</width>
-         <height>805</height>
+         <y>-16</y>
+         <width>204</width>
+         <height>674</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -561,8 +561,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceMain">
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>0</height>
+               <width>82</width>
+               <height>18</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -750,8 +750,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceLocation">
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>0</height>
+               <width>82</width>
+               <height>18</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -814,418 +814,22 @@ background-color: black;</string>
                   <number>1</number>
                  </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_6">
-                   <item>
-                    <widget class="QLabel" name="label_U_Max">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>U max:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_10">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_U_Max">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>1</number>
-                     </property>
-                     <property name="maximum">
-                      <number>720</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_11">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>360</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_U_Max">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_U_Max" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_7">
-                   <item>
-                    <widget class="QLabel" name="label_V_Max">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>V max:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_13">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_V_Max">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>1</number>
-                     </property>
-                     <property name="maximum">
-                      <number>360</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_14">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>360</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_V_Max">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_V_Max" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_9">
-                   <item>
-                    <widget class="QLabel" name="label_U_Interval">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>U seg:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_16">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>1</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_U_Interval">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>1</number>
-                     </property>
-                     <property name="maximum">
-                      <number>50</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_17">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string> 50</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_U_Interval">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_U_Interval" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_10">
-                   <item>
-                    <widget class="QLabel" name="label_V_Interval">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>V seg:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_19">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>1</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_V_Interval">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>1</number>
-                     </property>
-                     <property name="maximum">
-                      <number>50</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_20">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string> 50</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_V_Interval">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_V_Interval" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_11">
-                   <item>
-                    <widget class="QLabel" name="label_U_Param">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>    R:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_22">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_U_Param">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="maximum">
-                      <number>200</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_23">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>200</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_U_Param">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_U_Param" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_12">
-                   <item>
-                    <widget class="QLabel" name="label_V_Param">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>    r:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_25">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_V_Param">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="maximum">
-                      <number>200</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_26">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>200</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_V_Param">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_V_Param" native="true"/>
                  </item>
                 </layout>
                </widget>
@@ -1257,223 +861,13 @@ background-color: black;</string>
                   <number>1</number>
                  </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_3">
-                   <item>
-                    <widget class="QLabel" name="label_X_Rotate">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>OX:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_5">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>-180</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_X_Rotate">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>-180</number>
-                     </property>
-                     <property name="maximum">
-                      <number>180</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_4">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>180</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_X_Rotate">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(****)</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_X_Rotate" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_4">
-                   <item>
-                    <widget class="QLabel" name="label_Y_Rotate">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>OY:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>-180</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_Y_Rotate">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>-180</number>
-                     </property>
-                     <property name="maximum">
-                      <number>180</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_2">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>180</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_Y_Rotate">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(****)</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_Y_Rotate" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_5">
-                   <item>
-                    <widget class="QLabel" name="label_Z_Rotate">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>OZ:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_8">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>-180</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_Z_Rotate">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>-180</number>
-                     </property>
-                     <property name="maximum">
-                      <number>180</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_9">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>180</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_Z_Rotate">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(****)</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_Z_Rotate" native="true"/>
                  </item>
                 </layout>
                </widget>
@@ -1485,8 +879,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_LightSource">
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>0</height>
+               <width>82</width>
+               <height>18</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -1549,369 +943,19 @@ background-color: black;</string>
                   <number>1</number>
                  </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_34">
-                   <item>
-                    <widget class="QLabel" name="label_AbsentComponent">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>ka:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_68">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_Absent">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>0</number>
-                     </property>
-                     <property name="maximum">
-                      <number>10</number>
-                     </property>
-                     <property name="value">
-                      <number>1</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_69">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>  1</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_Absent">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_Absent" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_35">
-                   <item>
-                    <widget class="QLabel" name="label_DiffusonComponent">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>kd:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_72">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_Diffusion">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>0</number>
-                     </property>
-                     <property name="maximum">
-                      <number>10</number>
-                     </property>
-                     <property name="value">
-                      <number>1</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_73">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>  1</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_Diffusion">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_Diffusion" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_36">
-                   <item>
-                    <widget class="QLabel" name="label_SpecularComponent">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>ks:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_76">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_Specular">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>0</number>
-                     </property>
-                     <property name="maximum">
-                      <number>10</number>
-                     </property>
-                     <property name="value">
-                      <number>1</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_77">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>  1</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_Specular">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_Specular" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_37">
-                   <item>
-                    <widget class="QLabel" name="label_Power">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string> n:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_80">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_Power">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>0</number>
-                     </property>
-                     <property name="maximum">
-                      <number>127</number>
-                     </property>
-                     <property name="value">
-                      <number>1</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_81">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>127</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_Power">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_Power" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_38">
-                   <item>
-                    <widget class="QLabel" name="label_Alpha">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string> α:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_82">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_Alpha">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>0</number>
-                     </property>
-                     <property name="maximum">
-                      <number>10</number>
-                     </property>
-                     <property name="value">
-                      <number>1</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_83">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>  1</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_Alpha">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(***)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_Alpha" native="true"/>
                  </item>
                 </layout>
                </widget>
@@ -1943,223 +987,13 @@ background-color: black;</string>
                   <number>1</number>
                  </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_31">
-                   <item>
-                    <widget class="QLabel" name="label_X_Illuminant">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>X:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_59">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>-500</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_X_Illuminant">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>-500</number>
-                     </property>
-                     <property name="maximum">
-                      <number>500</number>
-                     </property>
-                     <property name="value">
-                      <number>-1</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_58">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>500</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_X_Coord">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(****)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_X_Illuminant" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_32">
-                   <item>
-                    <widget class="QLabel" name="label_Y_Illuminant">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Y:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_61">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>-500</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_Y_Illuminant">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>-500</number>
-                     </property>
-                     <property name="maximum">
-                      <number>500</number>
-                     </property>
-                     <property name="value">
-                      <number>-1</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_56">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>500</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_Y_Coord">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(****)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_Y_Illuminant" native="true"/>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_33">
-                   <item>
-                    <widget class="QLabel" name="label_Z_Illuminant">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Z:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_65">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>-500</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QSlider" name="slider_Z_Illuminant">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="minimum">
-                      <number>-500</number>
-                     </property>
-                     <property name="maximum">
-                      <number>500</number>
-                     </property>
-                     <property name="value">
-                      <number>-1</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_64">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>500</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="value_Z_Coord">
-                     <property name="font">
-                      <font>
-                       <family>Consolas</family>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>(****)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="CSlider" name="slider_Z_Illuminant" native="true"/>
                  </item>
                 </layout>
                </widget>
@@ -2171,8 +1005,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_ColorSelection">
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>0</height>
+               <width>82</width>
+               <height>18</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -2213,7 +1047,6 @@ background-color: black;</string>
                 <property name="title">
                  <string>Точечный источник</string>
                 </property>
-                <zorder>colorBox_Interior</zorder>
                </widget>
               </item>
               <item>
@@ -2235,7 +1068,6 @@ background-color: black;</string>
                 <property name="title">
                  <string>Внутренняя поверхность</string>
                 </property>
-                <zorder>colorBox_Exterior</zorder>
                </widget>
               </item>
              </layout>
@@ -2269,7 +1101,7 @@ background-color: black;</string>
      <x>0</x>
      <y>0</y>
      <width>736</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -2331,6 +1163,12 @@ background-color: black;</string>
    <header>xml/colorbox.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>CSlider</class>
+   <extends>QWidget</extends>
+   <header>xml/cslider.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="../common/resources.qrc"/>
@@ -2344,11 +1182,11 @@ background-color: black;</string>
    <hints>
     <hint type="sourcelabel">
      <x>709</x>
-     <y>-664</y>
+     <y>-282</y>
     </hint>
     <hint type="destinationlabel">
      <x>709</x>
-     <y>-634</y>
+     <y>-252</y>
     </hint>
    </hints>
   </connection>
@@ -2360,11 +1198,11 @@ background-color: black;</string>
    <hints>
     <hint type="sourcelabel">
      <x>709</x>
-     <y>-487</y>
+     <y>-105</y>
     </hint>
     <hint type="destinationlabel">
      <x>709</x>
-     <y>-457</y>
+     <y>103</y>
     </hint>
    </hints>
   </connection>
@@ -2375,12 +1213,12 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>614</x>
-     <y>-195</y>
+     <x>709</x>
+     <y>134</y>
     </hint>
     <hint type="destinationlabel">
-     <x>614</x>
-     <y>-5</y>
+     <x>709</x>
+     <y>342</y>
     </hint>
    </hints>
   </connection>
@@ -2391,12 +1229,12 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>614</x>
-     <y>55</y>
+     <x>709</x>
+     <y>374</y>
     </hint>
     <hint type="destinationlabel">
-     <x>605</x>
-     <y>402</y>
+     <x>709</x>
+     <y>450</y>
     </hint>
    </hints>
   </connection>

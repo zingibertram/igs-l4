@@ -1,6 +1,7 @@
 #include "surfacecalculation.h"
 
 #include <QtAlgorithms>
+#include <QDebug>
 
 #include <math.h>
 
@@ -175,16 +176,19 @@ void SurfaceCalculation::calculateRotateMatrix()
     if (surface->xOld != surface->xRotate)
     {
         rotate *= rotateMatrix(1, 2, surface->xRotate - surface->xOld);
+        surface->xOld = surface->xRotate;
         return;
     }
     if (surface->yOld != surface->yRotate)
     {
         rotate *= rotateMatrix(0, 2, 360 - surface->yRotate + surface->yOld);
+        surface->yOld = surface->yRotate;
         return;
     }
     if (surface->zOld != surface->zRotate)
     {
         rotate *= rotateMatrix(0, 1, surface->zRotate - surface->zOld);
+        surface->zOld = surface->zRotate;
         return;
     }
 }

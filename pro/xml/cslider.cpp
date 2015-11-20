@@ -12,18 +12,16 @@ CSlider::CSlider(QWidget *parent) :
     ui->setupUi(this);
 
     ui->label_Min->setStyleSheet(QString("QLabel#label_Min{color: red;}"));
-    ui->label_Max->setStyleSheet(QString("QLabel#label_Max{color: green; border: 1px solid black;}"));
+    ui->label_Max->setStyleSheet(QString("QLabel#label_Max{color: green;}"));
 
     QFont f = font();
     QFontMetrics fm(f);
 
     int sliderLabelCharCount = 4;
-    int titleCharCount = 3;
+    int titleCharCount = 2;
 
     int lw = fm.width(QString("0")) * sliderLabelCharCount;
     int tw = fm.width(QString("W")) * titleCharCount;
-
-    qDebug() << tw << lw;
 
     ui->label_Title->setMinimumWidth(tw);
     ui->label_Title->setMaximumWidth(tw);
@@ -40,9 +38,17 @@ CSlider::~CSlider()
     delete ui;
 }
 
-void CSlider::on_slider_valueChanged(int value)
+void CSlider::on_slider_valueChanged(int v)
 {
-    emit valueChanged(value);
+    if (divider)
+    {
+        ui->label_Value->setText(QString::number((double)v / divider));
+    }
+    else
+    {
+        ui->label_Value->setNum(v);
+    }
+    emit valueChanged(v);
 }
 
 void CSlider::setValue(int v)
@@ -59,6 +65,7 @@ int CSlider::value()
 void CSlider::setMinimum(int v)
 {
     ui->slider->setMinimum(v);
+    ui->label_Min->setNum(v);
     emit minimumChanged(v);
 }
 
@@ -70,6 +77,7 @@ int CSlider::minimum()
 void CSlider::setMaximum(int v)
 {
     ui->slider->setMaximum(v);
+    ui->label_Max->setNum(v);
     emit maximumChanged(v);
 }
 
@@ -89,3 +97,10 @@ QString CSlider::title()
     return ui->label_Title->text();
 }
 
+void CSlider::init(QString t, int min, int max, double d)
+{
+    setTitle(t);
+    setMinimum(min);
+    setMaximum(max);
+    divider = d;
+}

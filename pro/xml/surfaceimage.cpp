@@ -17,15 +17,14 @@ void SurfaceImage::paintEvent(QPaintEvent *event)
 
     surfCalc->calculateSurface();
 
-    drawAxis(&painter);
-
-    QImage bmp(size(), QImage::Format_ARGB32);
     if (surface->type == FRAME)
     {
         drawFrame(&painter);
     }
     else
     {
+        QImage bmp(size(), QImage::Format_ARGB32);
+
         surfCalc->setSize(width(), height());
         surfCalc->calculateColors(&bmp);
         painter.drawImage(0, 0, bmp);
@@ -36,7 +35,7 @@ void SurfaceImage::drawFrame(QPainter *pai)
 {
     QPointF center(width() / 2.0, height() / 2.0);
 
-    pai->setPen(QPen(Qt::white));
+    pai->setPen(QPen(Qt::red, 1));
 
     QList<Point3D>* vertices = surfCalc->vertices_();
     QList<TriPolygon>* polygons = surfCalc->polygons_();
@@ -56,38 +55,29 @@ void SurfaceImage::drawFrame(QPainter *pai)
         pai->drawLine(vertex[2], vertex[1]);
         pai->drawLine(vertex[0], vertex[2]);
     }
-
-//    for (int i = 0; i < vertices->count(); ++i)
-//    {
-//        QPointF t = vertices->operator [](i).toQPoint() + center;
-//        QString st;
-//        pai->drawText(t, st.number(i));
-//    }
-
-//    for (int i = 0; i < vertices->count(); ++i)
-//    {
-//        QPointF t = vertices->operator [](i).toQPoint() + center;
-//        QString st;
-//        pai->drawEllipse(t, 4, 4);
-//    }
 }
 
 void SurfaceImage::drawAxis(QPainter *p)
 {
-    QPointF center(width() / 2.0, height() / 2.0);
+    int w = width();
+    int h = height();
+    int cw = w / 2;
+    int ch = h / 2;
 
     p->setPen(QPen(Qt::white, 1));
-    QPoint x(width() - 20, center.y());
-    p->drawLine(QPoint(20, center.y()), x);
-    p->drawLine(x, x + QPoint(-12, -8));
-    p->drawLine(x, x + QPoint(-12, 8));
-    p->drawText(x + QPoint(0, 12), "X");
+    p->drawLine(0, ch, w, ch);
+    QPolygon pl;
+    pl << QPoint(w, ch) << QPoint(w - 10, ch - 5) << QPoint(w - 10, ch + 5);
+    QPainterPath pathl;
+    pathl.addPolygon(pl);
+    p->fillPath(pathl, QBrush(Qt::white));
 
-    QPoint y(center.x(), 20);
-    p->drawLine(QPoint(center.x(), height() - 20), y);
-    p->drawLine(y, y + QPoint(8, 12));
-    p->drawLine(y, y + QPoint(-8, 12));
-    p->drawText(y + QPoint(12, 8), "Y");
+    p->drawLine(cw, 0, cw, h);
+    QPolygon pt;
+    pt << QPoint(cw, 0) << QPoint(cw - 5, 10) << QPoint(cw + 5, 10);
+    QPainterPath patht;
+    patht.addPolygon(pt);
+    p->fillPath(patht, QBrush(Qt::white));
 }
 
 void SurfaceImage::setSurface(Surface* sur)
