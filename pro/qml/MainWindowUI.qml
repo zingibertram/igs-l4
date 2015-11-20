@@ -109,7 +109,7 @@ Item {
 
                         RadioButton {
                             id: radio_FongShading
-                            text: "Фонг"
+                            text: "Фонга"
                             exclusiveGroup: shading
                             onCheckedChanged: mainWindow.setShading(radio_FongShading, MainWindow.FO)
                             Layout.fillWidth: true
@@ -128,18 +128,14 @@ Item {
                         anchors.fill: parent
                         CheckBox {
                             id: checkBox_Textured
-                            text: "Текстура"
-                            enabled: !radio_FrameShading.checked
+                            text: "Наложить"
                             Layout.fillWidth: true
                         }
 
                         Button {
                             text: "Выбрать"
-                            enabled: !radio_FrameShading.checked
                             Layout.fillWidth: true
-                            onClicked: {
-                                openTexture.open();
-                            }
+                            onClicked: openTexture.open()
                         }
                     }
                 }
@@ -210,7 +206,7 @@ Item {
                             id: param_R
                             min: 1
                             max: mainWindow.maxWidth
-                            title: qsTr("R")
+                            title: qsTr("RU")
                             Layout.fillWidth: true
                         }
 
@@ -218,7 +214,7 @@ Item {
                             id: param_r
                             min: 1
                             max: mainWindow.maxWidth
-                            title: qsTr("r")
+                            title: qsTr("rV")
                             Layout.fillWidth: true
                         }
                     }
@@ -360,7 +356,7 @@ Item {
 
                 Button {
                     id: button_Epand_Colors
-                    text: qsTr("Цвета")
+                    text: qsTr("Цвет")
                     checkable: true
                     checked: mainWindowUI.expandedColors
                     Layout.fillWidth: true
@@ -404,7 +400,7 @@ Item {
 
                 GroupBox {
                     id: group_SurfaceExteriorColor
-                    title: qsTr("Внутренняя поверхность")
+                    title: qsTr("Внешняя поверхность")
                     visible: mainWindowUI.expandedColors
                     Layout.fillWidth: true
                     Layout.maximumWidth: mainWindow.maxWidth
@@ -416,7 +412,7 @@ Item {
 
                 GroupBox {
                     id: group_SurfaceInteriorColor
-                    title: qsTr("Наружная поверхность")
+                    title: qsTr("Внутренняя поверхность")
                     visible: mainWindowUI.expandedColors
                     Layout.fillWidth: true
                     Layout.maximumWidth: mainWindow.maxWidth
@@ -458,7 +454,7 @@ Item {
         interiorColor: interiorColor.colorString
         paintViewWidth: surfaceImage.width
         paintViewHeight: surfaceImage.height
-        property int maxWidth: 240
+        property int maxWidth: 200
         onColorDrawingDataChanged: drawColor()
         onFrameDrawingDataChanged: drawFrame()
 

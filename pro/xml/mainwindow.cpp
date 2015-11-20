@@ -248,31 +248,6 @@ void MainWindow::shadingChanged(bool /* isflat */)
     if (sndr == ui->radioButton_WireframeShading)
     {
         surface.type = FRAME;
-
-        ui->checkBox_Textured->setChecked(false);
-        ui->checkBox_Textured->setEnabled(false);
-
-        changeChecked(ui->pushButton_Expand_LightSource, false);
-        ui->groupBox_IlluminantParams->setEnabled(false);
-        ui->groupBox_IlluminantCoords->setEnabled(false);
-
-        changeChecked(ui->pushButton_Expand_ColorSelection, false);
-        ui->colorBox_Dot->setEnabled(false);
-        ui->colorBox_Absent->setEnabled(false);
-        ui->colorBox_Exterior->setEnabled(false);
-        ui->colorBox_Interior->setEnabled(false);
-    }
-    else
-    {
-        ui->checkBox_Textured->setEnabled(true);
-
-        ui->groupBox_IlluminantParams->setEnabled(true);
-        ui->groupBox_IlluminantCoords->setEnabled(true);
-
-        ui->colorBox_Dot->setEnabled(true);
-        ui->colorBox_Absent->setEnabled(true);
-        ui->colorBox_Exterior->setEnabled(true);
-        ui->colorBox_Interior->setEnabled(true);
     }
     /*if (sndr == ui->radioButton_FlatShading)
     {

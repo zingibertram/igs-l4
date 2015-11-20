@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>736</width>
-    <height>429</height>
+    <width>633</width>
+    <height>426</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -101,7 +101,7 @@ QPushButton
 	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
     border: 1px solid #8f8f91;
     min-width: 80px;
-    min-height: 16px;
+    min-height: 18px;
  }
 
 QPushButton:checked
@@ -503,9 +503,9 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-16</y>
+         <y>0</y>
          <width>204</width>
-         <height>674</height>
+         <height>684</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -562,7 +562,7 @@ background-color: black;</string>
              <property name="minimumSize">
               <size>
                <width>82</width>
-               <height>18</height>
+               <height>20</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -601,7 +601,7 @@ background-color: black;</string>
               <item>
                <widget class="QGroupBox" name="groupBox_SurfaceFunction">
                 <property name="title">
-                 <string>Функция поверхности</string>
+                 <string>Функция</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
                  <property name="spacing">
@@ -729,7 +729,7 @@ background-color: black;</string>
                  <item>
                   <widget class="QCheckBox" name="checkBox_Textured">
                    <property name="text">
-                    <string>Текстуры</string>
+                    <string>Наложить</string>
                    </property>
                   </widget>
                  </item>
@@ -751,14 +751,14 @@ background-color: black;</string>
              <property name="minimumSize">
               <size>
                <width>82</width>
-               <height>18</height>
+               <height>20</height>
               </size>
              </property>
              <property name="styleSheet">
               <string notr="true">text-align: left;</string>
              </property>
              <property name="text">
-              <string>Положение поверхности</string>
+              <string>Поверхность</string>
              </property>
              <property name="icon">
               <iconset resource="../common/resources.qrc">
@@ -795,7 +795,7 @@ background-color: black;</string>
                  </font>
                 </property>
                 <property name="title">
-                 <string>Параметры поверхности</string>
+                 <string>Параметры</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <property name="spacing">
@@ -842,7 +842,7 @@ background-color: black;</string>
                  </font>
                 </property>
                 <property name="title">
-                 <string>Повороты вокруг осей координат</string>
+                 <string>Повороты</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_10">
                  <property name="spacing">
@@ -880,7 +880,7 @@ background-color: black;</string>
              <property name="minimumSize">
               <size>
                <width>82</width>
-               <height>18</height>
+               <height>20</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -924,7 +924,7 @@ background-color: black;</string>
                  </font>
                 </property>
                 <property name="title">
-                 <string>Параметры источника света</string>
+                 <string>Параметры</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
                  <property name="spacing">
@@ -968,7 +968,7 @@ background-color: black;</string>
                  </font>
                 </property>
                 <property name="title">
-                 <string>Координаты источника света</string>
+                 <string>Координаты</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout">
                  <property name="spacing">
@@ -1006,7 +1006,7 @@ background-color: black;</string>
              <property name="minimumSize">
               <size>
                <width>82</width>
-               <height>18</height>
+               <height>20</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -1100,7 +1100,7 @@ background-color: black;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>736</width>
+     <width>633</width>
      <height>18</height>
     </rect>
    </property>

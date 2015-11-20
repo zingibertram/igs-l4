@@ -7,6 +7,8 @@ GridLayout {
     columns: 4
     rows: 3
     anchors.fill: parent
+    rowSpacing: 1
+    columnSpacing: 6
     property color colorString: Qt.rgba(root.r / 255, root.g / 255, root.b / 255, 1)
     property int r
     property int g
