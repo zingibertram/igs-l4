@@ -186,7 +186,7 @@ void MainWindow::paramsChanged(bool isCalc)
 {
     if (!isSetFirstState)
     {
-        surface.isPointsChanged = isCalc;
+        surface.isPointsChanged = true;
         ui->graphicsView_Surface->hide();
         ui->graphicsView_Surface->show();
     }

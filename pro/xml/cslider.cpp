@@ -3,7 +3,6 @@
 
 #include <QFont>
 #include <QFontMetrics>
-#include <QDebug>
 
 CSlider::CSlider(QWidget *parent) :
     QWidget(parent),

@@ -1,11 +1,28 @@
 #include "colorbox.h"
 #include "ui_colorbox.h"
 
+#include <QFont>
+#include <QFontMetrics>
+
 ColorBox::ColorBox(QWidget *parent) :
     QGroupBox(parent),
     ui(new Ui::ColorBox)
 {
     ui->setupUi(this);
+
+    QFont f = font();
+    QFontMetrics fm(f);
+
+    int w = fm.width(QString("W"));
+
+    ui->label_R->setMinimumWidth(w);
+    ui->label_R->setMaximumWidth(w);
+    ui->label_G->setMinimumWidth(w);
+    ui->label_G->setMaximumWidth(w);
+    ui->label_B->setMinimumWidth(w);
+    ui->label_B->setMaximumWidth(w);
+
+    w = fm.width(QString("0"));
 
     setColor(0, 0, 0);
 }

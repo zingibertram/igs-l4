@@ -55,6 +55,8 @@ private:
     void sortPolygonsVertices(); // сортировка вершин всех полигонов, должна быть в calculateColors
     void deleteZBuffer(); // удаление буфера глубины
 
+    bool pointInImage(Point3D *p);
+
 };
 
 #endif // SURFACECALCULATION_H

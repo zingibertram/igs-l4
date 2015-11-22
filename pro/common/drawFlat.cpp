@@ -86,7 +86,7 @@ void FlatDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor c, 
         }
     }
 
-    if (- 1 < xp && xp < width && - 1 < yp && yp < height)
+    //if (- 1 < xp && xp < width && - 1 < yp && yp < height)
     {
         if (sz - zBuffer[xp][yp] > 0.999)
         {

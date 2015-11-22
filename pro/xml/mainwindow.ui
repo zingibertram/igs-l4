@@ -18,7 +18,7 @@
     <normaloff>:/icons/resources/sphere_frame.png</normaloff>:/icons/resources/sphere_frame.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QGroupBox 
+   <string notr="true">/*QGroupBox 
 {
 	border: 1px solid #8f8f91;
 	padding-top: 9px;
@@ -504,8 +504,8 @@ background-color: black;</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>204</width>
-         <height>684</height>
+         <width>205</width>
+         <height>690</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -561,8 +561,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceMain">
              <property name="minimumSize">
               <size>
-               <width>82</width>
-               <height>20</height>
+               <width>0</width>
+               <height>0</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -750,8 +750,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_SurfaceLocation">
              <property name="minimumSize">
               <size>
-               <width>82</width>
-               <height>20</height>
+               <width>0</width>
+               <height>0</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -879,8 +879,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_LightSource">
              <property name="minimumSize">
               <size>
-               <width>82</width>
-               <height>20</height>
+               <width>0</width>
+               <height>0</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -1005,8 +1005,8 @@ background-color: black;</string>
             <widget class="QPushButton" name="pushButton_Expand_ColorSelection">
              <property name="minimumSize">
               <size>
-               <width>82</width>
-               <height>20</height>
+               <width>0</width>
+               <height>0</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -1101,7 +1101,7 @@ background-color: black;</string>
      <x>0</x>
      <y>0</y>
      <width>633</width>
-     <height>18</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

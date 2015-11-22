@@ -1,6 +1,7 @@
 #include "surfacecalculation.h"
 
 #include <QtAlgorithms>
+#include <QTime>
 #include <QDebug>
 
 #include <math.h>
@@ -53,6 +54,9 @@ void SurfaceCalculation::calculateSurface()
 
 void SurfaceCalculation::calculateColors(QImage* bmp)
 {
+    QTime timer;
+    timer.start();
+
     createZBuffer();
 
     setPolygonsCharacters(surface->type != FLAT);
@@ -68,6 +72,9 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
 
     sortPolygonsVertices();
 
+    int m = timer.elapsed();
+    qDebug() << "calculateColors prepare" << m;
+
     QPointF center(width / 2.0, height / 2.0);
 
     FlatDrawing *drawing = getDrawing(bmp);
@@ -76,6 +83,11 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
         Point3D A = vertices[polygons[i].a];
         Point3D B = vertices[polygons[i].b];
         Point3D C = vertices[polygons[i].c];
+
+        if (!pointInImage(&A) && !pointInImage(&B) && !pointInImage(&C))
+        {
+            continue;
+        }
 
         drawing->setVertices(&vertices, &polygons[i]);
 
@@ -142,7 +154,6 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
             double prevSX = xa - 1.0;
             for (double sx = xa; sx <= xb; sx += 0.5)
             {
-
                 if ((int)prevSX == (int)sx)
                 {
                     continue;
@@ -153,12 +164,20 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
                 int xp = (int)(sx + center.x());
                 int yp = (int)(center.y() - sy);
 
+                if (xp < 0 || width < xp || yp < 0 || height < yp)
+                {
+                    continue;
+                }
+
                 drawing->calculatePixel(xp, yp, sz, k, polygons[i].color, polygons[i].normal);
             }
         }
     }
 
     deleteZBuffer();
+
+    int n = timer.elapsed();
+    qDebug() << "plus calculateColors ended" << n - m;
 }
 
 QList<TriPolygon>* SurfaceCalculation::polygons_()
@@ -209,6 +228,9 @@ Matrix SurfaceCalculation::rotateMatrix(int i, int j, int angle)
 
 void SurfaceCalculation::calculateVertices()
 {
+    QTime timer;
+    timer.start();
+
     SurfaceBorder* b = surface->func->surfaceBorder();
     double mu = b->dU - b->minU;
     double mv = b->dV - b->minV;
@@ -234,13 +256,13 @@ void SurfaceCalculation::calculateVertices()
 
 void SurfaceCalculation::calculatePolygons()
 {
-    int u = surface->dU + 1;
-    int v = surface->dV + 1;
-
     SurfaceBorder* b = surface->func->surfaceBorder();
 
     bool isU = b->dU == b->maxU && b->isUCycle;
     bool isV = b->dV == b->maxV && b->isVCycle;
+
+    int u = surface->dU + !isU;
+    int v = surface->dV + !isV;
 
     int mu = isU ? u : u - 1;
     int mv = isV ? v : v - 1;
@@ -388,4 +410,12 @@ void SurfaceCalculation::deleteZBuffer()
     {
         delete zBuffer;
     }
+}
+
+bool SurfaceCalculation::pointInImage(Point3D* p)
+{
+    int x = p->x() + width / 2;
+    int y = height / 2 - p->y();
+
+    return !(x < 0 || width < x || y < 0 || height < y);
 }

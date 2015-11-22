@@ -61,7 +61,7 @@ Sphere::Sphere() :
     SurfaceFunction()
 {
     // полувывернута
-    border = new SurfaceBorder(0, 0, 360, 180);
+    border = new SurfaceBorder(0, 0, 360, 180, true, false);
 }
 
 Matrix Sphere::getVertex(double degu, double degv)
