@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
+import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import igs.l4 1.0
@@ -40,6 +41,7 @@ Item {
                     Layout.fillWidth: true
                     Layout.minimumWidth: mainWindow.maxWidth
                     iconSource: "/icons/resources/arrow-down.png"
+                    style: bStyle
                     Binding {
                         target: button_Epand_Main
                         property: "checked"
@@ -626,10 +628,24 @@ Item {
         selectExisting: true
         selectMultiple: false
         selectFolder: false
-        nameFilters: [ "Image files (*.jpg)" ] // друугие не загружаются
+        nameFilters: [ "Image files (*.jpg)" ] // другие не загружаются
 //        nameFilters: [ "Image files (*.png *.jpg *.bmp)" ]
         onAccepted: {
             mainWindow.texturePath = openTexture.fileUrl
+        }
+    }
+
+    ButtonStyle {
+        id: bStyle
+        label: Component {
+            Text {
+                text: bStyle.control.text
+                clip: true
+                wrapMode: Text.WordWrap
+                verticalAlignment: Text.AlignLeft
+                horizontalAlignment: Text.AlignHCenter
+                anchors.fill: parent
+            }
         }
     }
 }
