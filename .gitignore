@@ -38,3 +38,4 @@ qt-quick/bin/*
 qt-quick/builds/*
 pro/igs-l4-cpp/*
 pro/igs-l4-qml/*
+pro/benchmark/*
