@@ -1,6 +1,7 @@
 #include "surfacecalculation.h"
 
 #include <QtAlgorithms>
+#include <QDebug>
 
 #include <math.h>
 
@@ -162,6 +163,8 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
     }
 
     deleteZBuffer();
+
+    qDebug() << "Check count" << drawing->check;
 }
 
 QList<TriPolygon>* SurfaceCalculation::polygons_()

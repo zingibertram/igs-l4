@@ -52,6 +52,8 @@ public:
     virtual void setABInterpolatedB(double k);
     virtual void swapAB();
     virtual void calculatePixel(int xp, int yp, double sz, double k, QColor c, Vector n);
+
+    int check;
 };
 
 class HuroDrawing : public FlatDrawing

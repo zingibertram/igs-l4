@@ -1,7 +1,6 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "triangle.h"
 #include "point3d.h"
 #include "surface.h"
 #include "typedefs.h"

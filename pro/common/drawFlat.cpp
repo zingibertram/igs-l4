@@ -8,6 +8,8 @@ FlatDrawing::FlatDrawing(Surface *s, double **buffer, QImage *img)
     zBuffer = buffer;
     bmp = img;
 
+    check = 0;
+
     if (surface->isTextured)
     {
         surface->exterior = QColor(Qt::white);
@@ -17,6 +19,7 @@ FlatDrawing::FlatDrawing(Surface *s, double **buffer, QImage *img)
 
 void FlatDrawing::setA()
 {
+    ++check;
     if (surface->isTextured)
     {
         texXA = texC->x();
@@ -26,6 +29,7 @@ void FlatDrawing::setA()
 
 void FlatDrawing::setInterpolatedA(double k)
 {
+    ++check;
     if (surface->isTextured)
     {
         texXA += k * (double)(texA->x() - texC->x());
@@ -35,6 +39,7 @@ void FlatDrawing::setInterpolatedA(double k)
 
 void FlatDrawing::setBCInterpolatedB(double k)
 {
+    ++check;
     if (surface->isTextured)
     {
         texXB = texC->x() + k * (double)(texB->x() - texC->x());
@@ -44,6 +49,7 @@ void FlatDrawing::setBCInterpolatedB(double k)
 
 void FlatDrawing::setB()
 {
+    ++check;
     if (surface->isTextured)
     {
         texXB = texB->x();
@@ -53,6 +59,7 @@ void FlatDrawing::setB()
 
 void FlatDrawing::setABInterpolatedB(double k)
 {
+    ++check;
     if (surface->isTextured)
     {
         texXB += k * (double)(texA->x() - texB->x());
@@ -62,6 +69,7 @@ void FlatDrawing::setABInterpolatedB(double k)
 
 void FlatDrawing::swapAB()
 {
+    ++check;
     if (surface->isTextured)
     {
         int tex;
