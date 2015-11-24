@@ -41,7 +41,6 @@ Item {
                     Layout.fillWidth: true
                     Layout.minimumWidth: mainWindow.maxWidth
                     iconSource: "/icons/resources/arrow-down.png"
-                    style: bStyle
                     Binding {
                         target: button_Epand_Main
                         property: "checked"
@@ -79,6 +78,8 @@ Item {
                     GridLayout {
                         columns: 2
                         rows: 2
+                        rowSpacing: 1
+                        columnSpacing: 6
                         anchors.fill: parent
 
                         ExclusiveGroup {
@@ -171,6 +172,8 @@ Item {
 
                     ColumnLayout {
                         anchors.fill: parent
+                        spacing: 1
+
                         CustomSlider {
                             id: maxU
                             min: mainWindow.rangeMinU
@@ -231,6 +234,8 @@ Item {
 
                     ColumnLayout {
                         anchors.fill: parent
+                        spacing: 1
+
                         CustomSlider {
                             id: rotOx
                             min: -180
@@ -283,6 +288,8 @@ Item {
 
                     ColumnLayout {
                         anchors.fill: parent
+                        spacing: 1
+
                         CustomSlider {
                             id: illiminant_ka
                             min: 0
@@ -333,6 +340,8 @@ Item {
 
                     ColumnLayout {
                         anchors.fill: parent
+                        spacing: 1
+
                         CustomSlider {
                             id: illiminantX
                             min: -500
@@ -632,20 +641,6 @@ Item {
 //        nameFilters: [ "Image files (*.png *.jpg *.bmp)" ]
         onAccepted: {
             mainWindow.texturePath = openTexture.fileUrl
-        }
-    }
-
-    ButtonStyle {
-        id: bStyle
-        label: Component {
-            Text {
-                text: bStyle.control.text
-                clip: true
-                wrapMode: Text.WordWrap
-                verticalAlignment: Text.AlignLeft
-                horizontalAlignment: Text.AlignHCenter
-                anchors.fill: parent
-            }
         }
     }
 }

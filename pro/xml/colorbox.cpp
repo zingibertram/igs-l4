@@ -58,7 +58,7 @@ QColor ColorBox::color()
     return QColor(r, g, b);
 }
 
-void ColorBox::on_slider_valueChanged(int value)
+void ColorBox::on_slider_valueChanged(int /* value */)
 {
     QColor c = color();
     QString cs = QColor(255 - c.red(), 255 - c.green(), 255 - c.blue()).name();

@@ -37,7 +37,7 @@ private:
     void setConnection();
     void setComboBoxFuncItems();
     void setSlidersRange();
-    void paramsChanged(bool isCalc = false);
+    void paramsChanged();
     void changeChecked(QPushButton* pb, bool need = true);
 
 private slots:

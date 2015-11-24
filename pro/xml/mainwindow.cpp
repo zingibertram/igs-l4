@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView_Surface->setSurface(&surface);
     ui->radioButton_WireframeShading->click();
 
-    paramsChanged(true);
+    paramsChanged();
 }
 
 MainWindow::~MainWindow()
@@ -142,7 +142,6 @@ void MainWindow::reset()
     surface.zOld = 0;
 
     surface.isTextured = false;
-    surface.isPointsChanged = true;
 
     changeChecked(ui->pushButton_Expand_ColorSelection, false);
     changeChecked(ui->pushButton_Expand_LightSource, false);
@@ -179,17 +178,13 @@ void MainWindow::reset()
 
     isSetFirstState = false;
 
-    paramsChanged(true);
+    paramsChanged();
 }
 
-void MainWindow::paramsChanged(bool isCalc)
+void MainWindow::paramsChanged()
 {
-    if (!isSetFirstState)
-    {
-        surface.isPointsChanged = true;
-        ui->graphicsView_Surface->hide();
-        ui->graphicsView_Surface->show();
-    }
+    ui->graphicsView_Surface->hide();
+    ui->graphicsView_Surface->show();
 }
 
 void MainWindow::actionAboutTriggered()
@@ -239,7 +234,7 @@ void MainWindow::on_comboBox_SurfaceFunctions_currentIndexChanged(int index)
     surface.func->surfaceBorder()->dV = ui->slider_V_Max->value();
     surface.func->setParams(ui->slider_U_Param->value(), ui->slider_V_Param->value());
 
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::shadingChanged(bool /* isflat */)
@@ -265,7 +260,7 @@ void MainWindow::shadingChanged(bool /* isflat */)
     {
         surface.type = FLAT;
     }
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_checkBox_Textured_clicked(bool checked)
@@ -290,14 +285,14 @@ void MainWindow::on_checkBox_Textured_clicked(bool checked)
         surface.interior = ui->colorBox_Interior->color();
     }
 
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_pushButton_ChooseTexture_clicked()
 {
     QString title = QString::fromLocal8Bit("Выберете файл изображения для текстур");
     QString tex = QFileDialog::getOpenFileName(this, title, QString(), QString("All files (*.*);; JPEG (*.jpg *.jpeg);; Bitmap (*.bmp);; PNG (*.png)"));
-    if (tex == "")
+    if (tex != "")
     {
         textureChanged(tex);
     }
@@ -306,63 +301,63 @@ void MainWindow::on_pushButton_ChooseTexture_clicked()
 void MainWindow::textureChanged(QString tex)
 {
     surface.textureImg.load(tex);
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_slider_UMax_valueChanged(int value)
 {
     surface.maxU = value;
     surface.func->surfaceBorder()->dU = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_slider_VMax_valueChanged(int value)
 {
     surface.maxV = value;
     surface.func->surfaceBorder()->dV = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_slider_dU_valueChanged(int value)
 {
     surface.dU = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_slider_dV_valueChanged(int value)
 {
     surface.dV = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_slider_U_Param_valueChanged(int value)
 {
     surface.func->setParams(value, ui->slider_V_Param->value());
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_slider_V_Param_valueChanged(int value)
 {
     surface.func->setParams(ui->slider_U_Param->value(), value);
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_X_Rotate_Changed(int value)
 {
     surface.xRotate = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_Y_Rotate_Changed(int value)
 {
     surface.yRotate = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_Z_Rotate_Changed(int value)
 {
     surface.zRotate = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::on_slider_Absent_valueChanged(int value)
@@ -411,23 +406,23 @@ void MainWindow::illuminantCoords_Changed()
 void MainWindow::dotColor_Changed(QColor color)
 {
     surface.dot = color;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::absentColor_Changed(QColor color)
 {
     surface.absent = color;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::exteriorColor_Changed(QColor color)
 {
     surface.exterior = color;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::interiorColor_Changed(QColor color)
 {
     surface.interior = color;
-    paramsChanged(true);
+    paramsChanged();
 }
