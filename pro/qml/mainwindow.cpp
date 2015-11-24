@@ -53,14 +53,13 @@ MainWindow::~MainWindow()
 {
 }
 
-void MainWindow::paramsChanged(bool isCalc)
+void MainWindow::paramsChanged()
 {
     if (!_canCalculate)
     {
         return;
     }
 
-    surface.isPointsChanged = isCalc;
     calculate();
 }
 
@@ -78,13 +77,13 @@ QStringList MainWindow::getSurfaceFunctions()
 void MainWindow::setPaintViewWidth(int value)
 {
     width = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setPaintViewHeight(int value)
 {
     height = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 int MainWindow::getRangeMinU()
@@ -128,7 +127,7 @@ void MainWindow::setSurfaceFunction(const QString &s)
             f->setParams(surface.func->getFst(), surface.func->getSnd());
         }
         surface.func = f;
-        paramsChanged(true);
+        paramsChanged();
         emit rangeChanged();
     }
 }
@@ -136,13 +135,13 @@ void MainWindow::setSurfaceFunction(const QString &s)
 void MainWindow::setSurfaceShading(Sh sh)
 {
     surface.type = (Shading)sh;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setTextured(bool t)
 {
     surface.isTextured = t;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setTexturePath(const QString &s)
@@ -152,7 +151,7 @@ void MainWindow::setTexturePath(const QString &s)
     path.remove(0, 8);
 
     surface.textureImg.load(path);
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setMaxU(int value)
@@ -164,7 +163,7 @@ void MainWindow::setMaxU(int value)
 
     surface.func->surfaceBorder()->dU = value;
     surface.maxU = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setMaxV(int value)
@@ -176,19 +175,19 @@ void MainWindow::setMaxV(int value)
 
     surface.func->surfaceBorder()->dV = value;
     surface.maxV = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setDU(int value)
 {
     surface.dU = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setDV(int value)
 {
     surface.dV = value;
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setParam_R(int value)
@@ -199,7 +198,7 @@ void MainWindow::setParam_R(int value)
     }
 
     surface.func->setFirstParam(value);
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setParam_r(int value)
@@ -210,14 +209,14 @@ void MainWindow::setParam_r(int value)
     }
 
     surface.func->setSecondParam(value);
-    paramsChanged(true);
+    paramsChanged();
 }
 
 void MainWindow::setRotX(int value)
 {
     setOldRotate();
     surface.xRotate = value;
-    paramsChanged(true);
+    paramsChanged();
     setOldRotate();
 }
 
@@ -225,7 +224,7 @@ void MainWindow::setRotY(int value)
 {
     setOldRotate();
     surface.yRotate = value;
-    paramsChanged(true);
+    paramsChanged();
     setOldRotate();
 }
 
@@ -233,7 +232,7 @@ void MainWindow::setRotZ(int value)
 {
     setOldRotate();
     surface.zRotate = value;
-    paramsChanged(true);
+    paramsChanged();
     setOldRotate();
 }
 

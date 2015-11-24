@@ -98,7 +98,7 @@ private:
     QList<int> _frameDrawingData;
     QList<int> _colorDrawingData;
 
-    void paramsChanged(bool isCalc = false);
+    void paramsChanged();
 
     QStringList getSurfaceFunctions();
 
