@@ -19,7 +19,6 @@ SOURCES += xml/main.cpp\
     common/point3d.cpp \
     common/matrix.cpp \
     xml/surfaceimage.cpp \
-    common/triangle.cpp \
     common/drawing.cpp \
     common/utils.cpp \
     common/drawFlat.cpp \
@@ -38,7 +37,6 @@ HEADERS  += xml/mainwindow.h \
     common/matrix.h \
     xml/surfaceimage.h \
     common/surface.h \
-    common/triangle.h \
     common/drawing.h \
     common/utils.h \
     common/vector.h \

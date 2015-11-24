@@ -50,8 +50,6 @@ struct Surface
     Vector light;
     Vector observer;
 
-    bool isPointsChanged;
-
     Surface();
 };
 

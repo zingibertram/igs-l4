@@ -2,14 +2,11 @@
 
 #include <QColor>
 
-FlatDrawing::FlatDrawing(Surface *s, double **buffer, QImage *img, int w, int h)
+FlatDrawing::FlatDrawing(Surface *s, double **buffer, QImage *img)
 {
     surface = s;
     zBuffer = buffer;
     bmp = img;
-
-    width = w;
-    height = h;
 
     if (surface->isTextured)
     {
@@ -75,34 +72,21 @@ void FlatDrawing::swapAB()
 
 void FlatDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor c, Vector n)
 {
-    QPoint texPoint;
-    QColor texColor;
-    if (surface->isTextured)
+    if (sz - zBuffer[xp][yp] > 0.999)
     {
-        texPoint = QPoint(texXA + (double)(texXB - texXA) * k, texYA + (double)(texYB - texYA) * k);
-        if (surface->textureImg.valid(texPoint))
+        QColor current;
+
+        if (surface->isTextured)
         {
-            texColor = QColor(surface->textureImg.pixel(texPoint));
+            QColor texColor = getTextureColor(k);
+            current = U::calcColor(surface, n, false, texColor, true);
         }
-    }
-
-    //if (- 1 < xp && xp < width && - 1 < yp && yp < height)
-    {
-        if (sz - zBuffer[xp][yp] > 0.999)
+        else
         {
-            QColor current;
-
-            if (surface->isTextured)
-            {
-                current = U::calcColor(surface, n, false, texColor, true);
-            }
-            else
-            {
-                current = c;
-            }
-
-            setPixel(current, xp, yp);
-            zBuffer[xp][yp] = sz;
+            current = c;
         }
+
+        setPixel(current, xp, yp);
+        zBuffer[xp][yp] = sz;
     }
 }

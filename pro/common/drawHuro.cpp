@@ -1,7 +1,7 @@
 #include "drawing.h"
 
-HuroDrawing::HuroDrawing(Surface *s, double **buffer, QImage *img, int w, int h)
-    :FlatDrawing(s, buffer, img, w, h)
+HuroDrawing::HuroDrawing(Surface *s, double **buffer, QImage *img)
+    :FlatDrawing(s, buffer, img)
 {
 }
 
@@ -43,48 +43,36 @@ void HuroDrawing::swapAB()
     colb = buf;
 }
 
-void HuroDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor c, Vector n)
+void HuroDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor /* c */, Vector /* n */)
 {
-    QPoint texPoint;
-    QColor texColor;
-    if (surface->isTextured)
+    if (sz - zBuffer[xp][yp] > 0.999)
     {
-        texPoint = QPoint(texXA + (double)(texXB - texXA) * k, texYA + (double)(texYB - texYA) * k);
-        if (surface->textureImg.valid(texPoint))
+        QColor current;
+
+        QColor tmpCol = U::colorInterpolation(colb, cola, k, 1 - k);
+        if (surface->isTextured)
         {
-            texColor = QColor(surface->textureImg.pixel(texPoint));
-        }
-    }
+            QColor texColor = getTextureColor(k);
 
-    if (- 1 < xp && xp < width && - 1 < yp && yp < height)
-    {
-        if (sz - zBuffer[xp][yp] > 0.999)
+            double rtex = texColor.red();
+            double gtex = texColor.green();
+            double btex = texColor.blue();
+
+            double rc = tmpCol.red() / 255.0;
+            double gc = tmpCol.green() / 255.0;
+            double bc = tmpCol.blue() / 255.0;
+
+            int r = rc * rtex;
+            int g = gc * gtex;
+            int b = bc * btex;
+            current = QColor(r, g, b);
+        }
+        else
         {
-            QColor current;
-
-            QColor tmpCol = U::colorInterpolation(colb, cola, k, 1 - k);
-            if (surface->isTextured)
-            {
-                double rtex = texColor.red();
-                double gtex = texColor.green();
-                double btex = texColor.blue();
-
-                double rc = tmpCol.red() / 255.0;
-                double gc = tmpCol.green() / 255.0;
-                double bc = tmpCol.blue() / 255.0;
-
-                int r = rc * rtex;
-                int g = gc * gtex;
-                int b = bc * btex;
-                current = QColor(r, g, b);
-            }
-            else
-            {
-                current = tmpCol;
-            }
-
-            setPixel(current, xp, yp);
-            zBuffer[xp][yp] = sz;
+            current = tmpCol;
         }
+
+        setPixel(current, xp, yp);
+        zBuffer[xp][yp] = sz;
     }
 }

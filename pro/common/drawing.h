@@ -2,7 +2,7 @@
 #define DRAWING_H
 
 #include "surface.h"
-#include "triangle.h"
+#include "tripolygon.h"
 #include "point3d.h"
 #include "utils.h"
 
@@ -13,10 +13,15 @@
 class FlatDrawing
 {
 private:
+    QList<Point3D> *vertices;
+    QList<QPoint> *texels;
+    QList<TriPolygon> *polygons;
+
     QImage *bmp;
     QPoint *texA;
     QPoint *texB;
     QPoint *texC;
+
 protected:
     Surface *surface;
     double **zBuffer;
@@ -30,13 +35,13 @@ protected:
     int texYA;
     int texYB;
 
-    int width;
-    int height;
-public:
-    FlatDrawing(Surface *, double **, QImage *, int, int);
+    QColor getTextureColor(double k);
 
-    void setTexels(QList<QPoint>* texels, TriPolygon* polygon);
-    void setVertices(QList<Point3D>* vertices, TriPolygon* polygon);
+public:
+    FlatDrawing(Surface *, double **, QImage *);
+
+    void setDataArrays(QList<Point3D>* vs, QList<QPoint>* ts, QList<TriPolygon>* ps);
+    void setPolygon(int idx);
     void setPixel(QColor current, int i, int j);
 
     // в порядке использования
@@ -56,7 +61,7 @@ private:
     QColor colb;
 
 public:
-    HuroDrawing(Surface*, double **, QImage *, int, int);
+    HuroDrawing(Surface*, double **, QImage *);
 
     virtual void setA();
     virtual void setInterpolatedA(double k);
@@ -74,7 +79,7 @@ private:
     Vector vecb;
 
 public:
-    FongDrawing(Surface*, double **, QImage *, int, int);
+    FongDrawing(Surface*, double **, QImage *);
 
     virtual void setA();
     virtual void setInterpolatedA(double k);

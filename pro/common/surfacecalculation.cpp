@@ -1,11 +1,8 @@
 #include "surfacecalculation.h"
 
 #include <QtAlgorithms>
-#include <QTime>
-#include <QDebug>
 
 #include <math.h>
-
 
 SurfaceCalculation::SurfaceCalculation(Surface *sur)
 {
@@ -38,25 +35,19 @@ void SurfaceCalculation::setSize(int w, int h)
 
 void SurfaceCalculation::calculateSurface()
 {
-    if (surface->isPointsChanged)
-    {
-        vertices.clear();
-        texels.clear();
-        polygons.clear();
+    vertices.clear();
+    texels.clear();
+    polygons.clear();
 
-        calculateRotateMatrix();
-        calculateVertices();
-        calculatePolygons();
+    calculateRotateMatrix();
+    calculateVertices();
+    calculatePolygons();
 
-        qSort(polygons);
-    }
+    qSort(polygons);
 }
 
 void SurfaceCalculation::calculateColors(QImage* bmp)
 {
-    QTime timer;
-    timer.start();
-
     createZBuffer();
 
     setPolygonsCharacters(surface->type != FLAT);
@@ -72,9 +63,6 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
 
     sortPolygonsVertices();
 
-    int m = timer.elapsed();
-    qDebug() << "calculateColors prepare" << m;
-
     QPointF center(width / 2.0, height / 2.0);
 
     FlatDrawing *drawing = getDrawing(bmp);
@@ -84,14 +72,13 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
         Point3D B = vertices[polygons[i].b];
         Point3D C = vertices[polygons[i].c];
 
+        // Good 1100 ms -> 800 ms
         if (!pointInImage(&A) && !pointInImage(&B) && !pointInImage(&C))
         {
             continue;
         }
 
-        drawing->setVertices(&vertices, &polygons[i]);
-
-        drawing->setTexels(&texels, &polygons[i]);
+        drawing->setPolygon(i);
 
         double prevSY = C.y() - 1.0;
         for (double sy = C.y(); sy <= A.y(); sy += 0.5)
@@ -164,7 +151,7 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
                 int xp = (int)(sx + center.x());
                 int yp = (int)(center.y() - sy);
 
-                if (xp < 0 || width < xp || yp < 0 || height < yp)
+                if (xp < 0 || width <= xp || yp < 0 || height <= yp)
                 {
                     continue;
                 }
@@ -175,9 +162,6 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
     }
 
     deleteZBuffer();
-
-    int n = timer.elapsed();
-    qDebug() << "plus calculateColors ended" << n - m;
 }
 
 QList<TriPolygon>* SurfaceCalculation::polygons_()
@@ -228,9 +212,6 @@ Matrix SurfaceCalculation::rotateMatrix(int i, int j, int angle)
 
 void SurfaceCalculation::calculateVertices()
 {
-    QTime timer;
-    timer.start();
-
     SurfaceBorder* b = surface->func->surfaceBorder();
     double mu = b->dU - b->minU;
     double mv = b->dV - b->minV;
@@ -358,17 +339,24 @@ void SurfaceCalculation::setVerticesColor()
 
 FlatDrawing* SurfaceCalculation::getDrawing(QImage* bmp)
 {
+    FlatDrawing* drawing;
     switch (surface->type)
     {
         case FLAT:
-            return new FlatDrawing(surface, zBuffer, bmp, width, height);
+            drawing = new FlatDrawing(surface, zBuffer, bmp);
+            break;
         case HURO:
-            return new HuroDrawing(surface, zBuffer, bmp, width, height);
+            drawing = new HuroDrawing(surface, zBuffer, bmp);
+            break;
         case FONG:
-            return new FongDrawing(surface, zBuffer, bmp, width, height);
+            drawing = new FongDrawing(surface, zBuffer, bmp);
+            break;
         default:
             throw "Unsupported colorable surface type";
     }
+
+    drawing->setDataArrays(&vertices, &texels, &polygons);
+    return drawing;
 }
 
 void SurfaceCalculation::sortPolygonsVertices()

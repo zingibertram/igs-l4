@@ -1,7 +1,7 @@
 #include "drawing.h"
 
-FongDrawing::FongDrawing(Surface *s, double **buffer, QImage *img, int w, int h)
-    :FlatDrawing(s, buffer, img, w, h)
+FongDrawing::FongDrawing(Surface *s, double **buffer, QImage *img)
+    :FlatDrawing(s, buffer, img)
 {
 }
 
@@ -43,38 +43,25 @@ void FongDrawing::swapAB()
     vecb = buf;
 }
 
-void FongDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor c, Vector n)
+void FongDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor /* c */, Vector /* n */)
 {
-    QPoint texPoint;
-    QColor texColor;
-    if (surface->isTextured)
+    if (sz - zBuffer[xp][yp] > 0.999)
     {
-        texPoint = QPoint(texXA + (double)(texXB - texXA) * k, texYA + (double)(texYB - texYA) * k);
-        if (surface->textureImg.valid(texPoint))
+        Vector norm;
+        QColor current;
+
+        norm = veca + (vecb - veca) * k;
+        if (surface->isTextured)
         {
-            texColor = QColor(surface->textureImg.pixel(texPoint));
+            QColor texColor = getTextureColor(k);
+            current = U::calcColor(surface, norm, false, texColor, true);
         }
-    }
-
-    if (- 1 < xp && xp < width && - 1 < yp && yp < height)
-    {
-        if (sz - zBuffer[xp][yp] > 0.999)
+        else
         {
-            Vector norm;
-            QColor current;
-
-            norm = veca + (vecb - veca) * k;
-            if (surface->isTextured)
-            {
-                current = U::calcColor(surface, norm, false, texColor, true);
-            }
-            else
-            {
-                current = U::calcColor(surface, norm, false);
-            }
-
-            setPixel(current, xp, yp);
-            zBuffer[xp][yp] = sz;
+            current = U::calcColor(surface, norm, false);
         }
+
+        setPixel(current, xp, yp);
+        zBuffer[xp][yp] = sz;
     }
 }
