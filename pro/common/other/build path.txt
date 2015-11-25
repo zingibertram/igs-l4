@@ -1,6 +1,0 @@
-old
-../build-%{CurrentProject:Name}-%{CurrentKit:FileSystemName}-%{CurrentBuild:Name}
-
-new
-%{CurrentProject:Path}/%{CurrentBuild:Name}/
-

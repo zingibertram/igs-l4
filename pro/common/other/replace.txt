@@ -1,1 +1,0 @@
-(fabs(A.z()) < eps && fabs(B.z()) < eps) || (fabs(C.z()) < eps && fabs(B.z()) < eps) || (fabs(A.z()) < eps && fabs(C.z()) < eps);

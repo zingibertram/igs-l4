@@ -32,10 +32,6 @@ Makefile*
 *.qmlproject.user
 *.qmlproject.user.*
 
-qt-widgets/bin/*
-qt-widgets/builds/*
-qt-quick/bin/*
-qt-quick/builds/*
-pro/igs-l4-cpp/*
-pro/igs-l4-qml/*
-pro/benchmark/*
+igs-l4-cpp/*
+igs-l4-qml/*
+benchmark/*
