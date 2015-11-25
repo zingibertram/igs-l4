@@ -4,6 +4,9 @@
 
 #include <QFileDialog>
 #include <QScrollBar>
+#include <QStringList>
+#include <QFont>
+#include <QFontMetrics>
 
 #include <math.h>
 
@@ -106,7 +109,10 @@ void MainWindow::setComboBoxFuncItems()
 
 void MainWindow::setSlidersRange()
 {
+    QStringList titles;
+
     SurfaceBorder* border = surface.func->surfaceBorder();
+
     ui->slider_U_Max->init("mU", border->minU, border->maxU);
     ui->slider_V_Max->init("mV", border->minV, border->maxV);
     ui->slider_U_Interval->init("dU", 1, 50);
@@ -114,9 +120,26 @@ void MainWindow::setSlidersRange()
     ui->slider_U_Param->init("RU", 1, 200);
     ui->slider_V_Param->init("rV", 1, 200);
 
+    titles.clear();
+    titles << "mU" << "mV" << "dU" << "dV" << "RU" << "rV";
+    int w = calcSliderTitleWidth(titles);
+    ui->slider_U_Max->setLabelWidth(w, 1, 4, 4);
+    ui->slider_V_Max->setLabelWidth(w, 1, 4, 4);
+    ui->slider_U_Interval->setLabelWidth(w, 1, 4, 4);
+    ui->slider_V_Interval->setLabelWidth(w, 1, 4, 4);
+    ui->slider_U_Param->setLabelWidth(w, 1, 4, 4);
+    ui->slider_V_Param->setLabelWidth(w, 1, 4, 4);;
+
     ui->slider_X_Rotate->init("OX", -180, 180);
     ui->slider_Y_Rotate->init("OY", -180, 180);
     ui->slider_Z_Rotate->init("OZ", -180, 180);
+
+    titles.clear();
+    titles << "OX" << "OY" << "OZ";
+    w = calcSliderTitleWidth(titles);
+    ui->slider_X_Rotate->setLabelWidth(w, 4, 3, 4);
+    ui->slider_Y_Rotate->setLabelWidth(w, 4, 3, 4);
+    ui->slider_Z_Rotate->setLabelWidth(w, 4, 3, 4);
 
     ui->slider_Absent->init("ka", 0, 10, 10);
     ui->slider_Diffusion->init("kd", 0, 10, 10);
@@ -124,9 +147,25 @@ void MainWindow::setSlidersRange()
     ui->slider_Power->init("n", 0, 127);
     ui->slider_Alpha->init(QString(QChar(0xb1, 0x03)), 0, 10, 10);
 
+    titles.clear();
+    titles << "ka" << "kd" << "ks" << "n" << QString(QChar(0xb1, 0x03));
+    w = calcSliderTitleWidth(titles);
+    ui->slider_Absent->setLabelWidth(w, 1, 1, 3);
+    ui->slider_Diffusion->setLabelWidth(w, 1, 1, 3);
+    ui->slider_Specular->setLabelWidth(w, 1, 1, 3);
+    ui->slider_Power->setLabelWidth(w, 1, 3, 3);
+    ui->slider_Alpha->setLabelWidth(w, 1, 1, 3);
+
     ui->slider_X_Illuminant->init("X", -500, 500);
     ui->slider_Y_Illuminant->init("Y", -500, 500);
     ui->slider_Z_Illuminant->init("Z", -500, 500);
+
+    titles.clear();
+    titles << "X" << "Y" << "Z";
+    w = calcSliderTitleWidth(titles);
+    ui->slider_X_Illuminant->setLabelWidth(w, 4, 3, 4);
+    ui->slider_Y_Illuminant->setLabelWidth(w, 4, 3, 4);
+    ui->slider_Z_Illuminant->setLabelWidth(w, 4, 3, 4);
 }
 
 void MainWindow::reset()
@@ -425,4 +464,22 @@ void MainWindow::interiorColor_Changed(QColor color)
 {
     surface.interior = color;
     paramsChanged();
+}
+
+int MainWindow::calcSliderTitleWidth(QStringList titles)
+{
+    int width = 0;
+
+    QFont f = ui->centralWidget->font();
+    QFontMetrics fm(f);
+
+    for (int i = 0; i < titles.count(); ++i)
+    {
+        int w = fm.width(titles[i]);
+        if (w > width)
+        {
+            width = w;
+        }
+    }
+    return width;
 }

@@ -13,6 +13,7 @@
 #include <QMessageBox>
 #include <QRadioButton>
 #include <QImage>
+#include <QStringList>
 
 namespace Ui {
     class MainWindow;
@@ -39,6 +40,7 @@ private:
     void setSlidersRange();
     void paramsChanged();
     void changeChecked(QPushButton* pb, bool need = true);
+    int calcSliderTitleWidth(QStringList titles);
 
 private slots:
     void reset();

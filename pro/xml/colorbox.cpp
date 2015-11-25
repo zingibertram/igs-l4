@@ -22,7 +22,10 @@ ColorBox::ColorBox(QWidget *parent) :
     ui->label_B->setMinimumWidth(w);
     ui->label_B->setMaximumWidth(w);
 
-    w = fm.width(QString("0"));
+    w = fm.width(QString("255")) + 4;
+
+    ui->widget_Color->setMinimumWidth(w);
+    ui->widget_Color->setMaximumWidth(w);
 
     setColor(0, 0, 0);
 }

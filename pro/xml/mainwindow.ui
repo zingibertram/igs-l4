@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>633</width>
-    <height>426</height>
+    <height>438</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -457,11 +457,6 @@ QLabel#label_ColorSelection
         <height>400</height>
        </size>
       </property>
-      <property name="font">
-       <font>
-        <family>Consolas</family>
-       </font>
-      </property>
       <property name="styleSheet">
        <string notr="true">border-style: outset;
 border-width: 1px;
@@ -493,9 +488,6 @@ background-color: black;</string>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
-      <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustToContents</enum>
-      </property>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -504,8 +496,8 @@ background-color: black;</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>205</width>
-         <height>690</height>
+         <width>202</width>
+         <height>810</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -627,11 +619,6 @@ background-color: black;</string>
               </item>
               <item>
                <widget class="QGroupBox" name="groupBox_Shading">
-                <property name="font">
-                 <font>
-                  <family>Consolas</family>
-                 </font>
-                </property>
                 <property name="title">
                  <string>Закраска</string>
                 </property>
@@ -653,11 +640,6 @@ background-color: black;</string>
                  </property>
                  <item row="1" column="0">
                   <widget class="QRadioButton" name="radioButton_WireframeShading">
-                   <property name="font">
-                    <font>
-                     <family>Consolas</family>
-                    </font>
-                   </property>
                    <property name="text">
                     <string>Каркас</string>
                    </property>
@@ -668,23 +650,13 @@ background-color: black;</string>
                  </item>
                  <item row="1" column="1">
                   <widget class="QRadioButton" name="radioButton_SortFlatShading">
-                   <property name="font">
-                    <font>
-                     <family>Consolas</family>
-                    </font>
-                   </property>
                    <property name="text">
-                    <string>Flat УНЛиП</string>
+                    <string>&amp;Flat УНЛиП</string>
                    </property>
                   </widget>
                  </item>
                  <item row="2" column="0">
                   <widget class="QRadioButton" name="radioButton_HuroShading">
-                   <property name="font">
-                    <font>
-                     <family>Consolas</family>
-                    </font>
-                   </property>
                    <property name="text">
                     <string>Гуро</string>
                    </property>
@@ -692,11 +664,6 @@ background-color: black;</string>
                  </item>
                  <item row="2" column="1">
                   <widget class="QRadioButton" name="radioButton_FongShding">
-                   <property name="font">
-                    <font>
-                     <family>Consolas</family>
-                    </font>
-                   </property>
                    <property name="text">
                     <string>Фонга</string>
                    </property>
@@ -789,11 +756,6 @@ background-color: black;</string>
               </property>
               <item>
                <widget class="QGroupBox" name="groupBox_SurfaceParams">
-                <property name="font">
-                 <font>
-                  <family>Consolas</family>
-                 </font>
-                </property>
                 <property name="title">
                  <string>Параметры</string>
                 </property>
@@ -836,11 +798,6 @@ background-color: black;</string>
               </item>
               <item>
                <widget class="QGroupBox" name="groupBox_Rotate">
-                <property name="font">
-                 <font>
-                  <family>Consolas</family>
-                 </font>
-                </property>
                 <property name="title">
                  <string>Повороты</string>
                 </property>
@@ -918,11 +875,6 @@ background-color: black;</string>
               </property>
               <item>
                <widget class="QGroupBox" name="groupBox_IlluminantParams">
-                <property name="font">
-                 <font>
-                  <family>Consolas</family>
-                 </font>
-                </property>
                 <property name="title">
                  <string>Параметры</string>
                 </property>
@@ -962,11 +914,6 @@ background-color: black;</string>
               </item>
               <item>
                <widget class="QGroupBox" name="groupBox_IlluminantCoords">
-                <property name="font">
-                 <font>
-                  <family>Consolas</family>
-                 </font>
-                </property>
                 <property name="title">
                  <string>Координаты</string>
                 </property>
@@ -1101,7 +1048,7 @@ background-color: black;</string>
      <x>0</x>
      <y>0</y>
      <width>633</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

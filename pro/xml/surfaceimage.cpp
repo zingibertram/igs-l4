@@ -6,6 +6,7 @@ SurfaceImage::SurfaceImage(QWidget *parent) :
 {
 }
 
+// in kubuntu old image didn't removing
 void SurfaceImage::paintEvent(QPaintEvent *event)
 {
     QGraphicsView::paintEvent(event);

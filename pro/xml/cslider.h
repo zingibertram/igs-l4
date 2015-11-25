@@ -25,6 +25,7 @@ public:
     void setTitle(QString s);
     QString title();
     void init(QString t, int min, int max, double d = 0);
+    void setLabelWidth(int w, int lmin, int lmax, int lval);
 
 signals:
     void valueChanged(int v);

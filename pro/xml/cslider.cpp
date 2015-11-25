@@ -103,3 +103,22 @@ void CSlider::init(QString t, int min, int max, double d)
     setMaximum(max);
     divider = d;
 }
+
+void CSlider::setLabelWidth(int w, int lmin, int lmax, int lval)
+{
+
+    ui->label_Title->setMinimumWidth(w);
+    ui->label_Title->setMaximumWidth(w);
+
+    QFont f = font();
+    QFontMetrics fm(f);
+
+    int lw = fm.width(QString("0"));
+
+    ui->label_Min->setMinimumWidth(lw * lmin);
+    ui->label_Min->setMaximumWidth(lw * lmin);
+    ui->label_Value->setMinimumWidth(lw * lval);
+    ui->label_Value->setMaximumWidth(lw * lval);
+    ui->label_Max->setMinimumWidth(lw * lmax);
+    ui->label_Max->setMaximumWidth(lw * lmax);
+}
