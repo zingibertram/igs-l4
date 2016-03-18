@@ -10,6 +10,13 @@ ColorBox::ColorBox(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->label_R_Min->setStyleSheet(QString("QLabel#label_R_Min{color: red;}"));
+    ui->label_R_Max->setStyleSheet(QString("QLabel#label_R_Max{color: green;}"));
+    ui->label_G_Min->setStyleSheet(QString("QLabel#label_G_Min{color: red;}"));
+    ui->label_G_Max->setStyleSheet(QString("QLabel#label_G_Max{color: green;}"));
+    ui->label_B_Min->setStyleSheet(QString("QLabel#label_B_Min{color: red;}"));
+    ui->label_B_Max->setStyleSheet(QString("QLabel#label_B_Max{color: green;}"));
+
     QFont f = font();
     QFontMetrics fm(f);
 
@@ -64,7 +71,7 @@ QColor ColorBox::color()
 void ColorBox::on_slider_valueChanged(int /* value */)
 {
     QColor c = color();
-    QString cs = QColor(255 - c.red(), 255 - c.green(), 255 - c.blue()).name();
+    QString cs = contrastColor();
 
     ui->widget_Color->setStyleSheet(QString("QWidget#widget_Color{border: 1px solid #8f8f91; background: %1;}").arg(c.name()));
     ui->label_R_Value->setStyleSheet(QString("QLabel#label_R_Value{color: %1;}").arg(cs));
@@ -72,4 +79,14 @@ void ColorBox::on_slider_valueChanged(int /* value */)
     ui->label_B_Value->setStyleSheet(QString("QLabel#label_B_Value{color: %1;}").arg(cs));
 
     emit colorChanged(c);
+}
+
+QString ColorBox::contrastColor()
+{
+    int r = ui->slider_R->value();
+    int g = ui->slider_G->value();
+    int b = ui->slider_B->value();
+    int yiq = ((r * 299)+(g * 587)+(b * 114)) / 1000;
+
+    return yiq >= 128 ? "black" : "white";
 }

@@ -27,6 +27,8 @@ private slots:
 
 private:
     Ui::ColorBox *ui;
+
+    QString contrastColor();
 };
 
 #endif // COLORBOX_H
