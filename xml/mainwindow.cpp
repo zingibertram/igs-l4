@@ -250,7 +250,7 @@ void MainWindow::collapseAll()
     changeChecked(ui->pushButton_Expand_SurfaceMain, false);
 }
 
-void MainWindow::changeChecked(QPushButton* pb, bool need)
+void MainWindow::changeChecked(QToolButton* pb, bool need)
 {
     if (pb->isChecked() != need)
     {

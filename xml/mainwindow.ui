@@ -10,6 +10,13 @@
     <height>438</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <weight>50</weight>
+    <bold>false</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Лабораторная работа №4</string>
   </property>
@@ -18,9 +25,20 @@
     <normaloff>:/icons/resources/sphere_frame.png</normaloff>:/icons/resources/sphere_frame.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*QGroupBox 
+   <string notr="true">@release1 = #f6f7fa
+@release2 = #dadbde
+@border = #8f8f91
+@over = #99ff66 /*rgb(153, 255, 102)*/
+@press = #00cc33 /*rgb(0, 204, 51)*/
+@check1 = #ccff99 /* rgb(204, 255, 153)*/
+@check2 = #66cc33 /*rgb(102, 204, 51)*/
+@grey1 = #f0f0f0 /*rgb(240, 240, 240)*/
+@grey2 = #dcdcdc /*rgb(220, 220, 220)*/
+
+
+QGroupBox 
 {
-	border: 1px solid #8f8f91;
+	border: 1px solid @border;
 	padding-top: 9px;
 	padding-bottom: 1px;
 	padding-left: 1px;
@@ -60,7 +78,7 @@ QSlider::add-page:horizontal
 
 QSlider::handle:horizontal
 {
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background: #dadbde;
 	border: 1px solid #8f8f91;
 	width: 8px;
 	margin-top: -4px;
@@ -96,37 +114,37 @@ QSlider::handle:horizontal:disabled
 }
 
 
-QPushButton
+QToolButton
 {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background-color: #dadbde;
     border: 1px solid #8f8f91;
     min-width: 80px;
     min-height: 18px;
  }
 
-QPushButton:checked
+QToolButton:checked
 {
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(204, 255, 153), stop: 1 rgb(102, 204, 51));
+	background: #66cc33;
 	border: 1px inset #8f8f91;
 }
 
-QPushButton:hover
+QToolButton:hover
 {
 	background: rgb(153, 255, 102);
 }
 
-QPushButton:checked:hover
+QToolButton:checked:hover
 {
 	background: rgb(153, 255, 102);
 	border: 1px inset #8f8f91;
 }
 
-QPushButton:pressed
+QToolButton:pressed
 {
      background-color: rgb(0, 204, 51);
  }
 
-QPushButton:checked:pressed
+QToolButton:checked:pressed
 {
 	background-color: rgb(0, 204, 51);
 	border: 1px inset #8f8f91;
@@ -135,7 +153,7 @@ QPushButton:checked:pressed
 
 QComboBox
 {
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background: #dadbde;
     border: 1px solid #8f8f91;
 	padding: 1px 18px 1px 3px;
 	min-width: 6em;
@@ -154,7 +172,7 @@ QComboBox:editable
 
 QComboBox:!editable, QComboBox::drop-down:editable
 {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background-color: #dadbde;
 }
 
 QComboBox:!editable:on, QComboBox::drop-down:editable:on
@@ -200,7 +218,7 @@ QComboBox QAbstractItemView
 
 QMenuBar
 {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background-color: #dadbde;
 	border: 1px solid #8f8f91;
 	margin-left: -1px;
 	margin-top: -1px;
@@ -266,7 +284,7 @@ QRadioButton::indicator
 
 QRadioButton::indicator::unchecked
 {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background-color: #dadbde;
 }
 
 QRadioButton::indicator::checked
@@ -294,7 +312,7 @@ QCheckBox::indicator
 
 QCheckBox::indicator::unchecked
 {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background-color: #dadbde;
 }
 
 QCheckBox::indicator::checked
@@ -323,7 +341,7 @@ QScrollBar:vertical
 
 QScrollBar::handle:vertical
 {
-	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background: #dadbde;
 	border: 1px solid #8f8f91;
 	min-height: 20px;
 	margin: -1px -1px
@@ -360,7 +378,7 @@ QScrollBar::sub-line:vertical
 QScrollBar::up-arrow:vertical
 {
 	border: 1px solid #8f8f91;
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background: #dadbde;
 	image: url(:/icons/resources/arrow-up.png);
 }
 
@@ -377,7 +395,7 @@ QScrollBar::up-arrow:vertical:pressed
 QScrollBar::down-arrow:vertical
 {
 	border: 1px solid #8f8f91;
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background: #dadbde;
 	image: url(:/icons/resources/arrow-down.png);
 }
 
@@ -406,7 +424,7 @@ QScrollBar::add-page:vertical:pressed, QScrollBar::sub-page:vertical:pressed
 Line
 {
 	border: 1px solid #8f8f91;
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+	background-color: #dadbde;
 }
 /*
 QLabel#label_SurfaceLocation
@@ -496,8 +514,8 @@ background-color: black;</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>202</width>
-         <height>810</height>
+         <width>204</width>
+         <height>591</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -550,12 +568,12 @@ background-color: black;</string>
             <number>0</number>
            </property>
            <item>
-            <widget class="QPushButton" name="pushButton_Expand_SurfaceMain">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
+            <widget class="QToolButton" name="pushButton_Expand_SurfaceMain">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
              <property name="styleSheet">
               <string notr="true">text-align: left;</string>
@@ -571,6 +589,12 @@ background-color: black;</string>
               <bool>true</bool>
              </property>
              <property name="checked">
+              <bool>true</bool>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
               <bool>true</bool>
              </property>
             </widget>
@@ -701,7 +725,7 @@ background-color: black;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_ChooseTexture">
+                  <widget class="QToolButton" name="pushButton_ChooseTexture">
                    <property name="text">
                     <string>Выбрать</string>
                    </property>
@@ -714,11 +738,17 @@ background-color: black;</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_Expand_SurfaceLocation">
+            <widget class="QToolButton" name="pushButton_Expand_SurfaceLocation">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>0</height>
+               <width>82</width>
+               <height>20</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -735,6 +765,12 @@ background-color: black;</string>
               <bool>true</bool>
              </property>
              <property name="checked">
+              <bool>true</bool>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
               <bool>true</bool>
              </property>
             </widget>
@@ -833,11 +869,17 @@ background-color: black;</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_Expand_LightSource">
+            <widget class="QToolButton" name="pushButton_Expand_LightSource">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>0</height>
+               <width>82</width>
+               <height>20</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -854,6 +896,12 @@ background-color: black;</string>
               <bool>true</bool>
              </property>
              <property name="checked">
+              <bool>true</bool>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
               <bool>true</bool>
              </property>
             </widget>
@@ -949,11 +997,17 @@ background-color: black;</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_Expand_ColorSelection">
+            <widget class="QToolButton" name="pushButton_Expand_ColorSelection">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>0</height>
+               <width>82</width>
+               <height>20</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -970,6 +1024,12 @@ background-color: black;</string>
               <bool>true</bool>
              </property>
              <property name="checked">
+              <bool>true</bool>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
               <bool>true</bool>
              </property>
             </widget>
@@ -1048,7 +1108,7 @@ background-color: black;</string>
      <x>0</x>
      <y>0</y>
      <width>633</width>
-     <height>30</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1122,34 +1182,18 @@ background-color: black;</string>
  </resources>
  <connections>
   <connection>
-   <sender>pushButton_Expand_SurfaceMain</sender>
+   <sender>pushButton_Expand_ColorSelection</sender>
    <signal>clicked(bool)</signal>
-   <receiver>widget_Expand_SurfaceMain</receiver>
+   <receiver>widget_Expand_ColorSelection</receiver>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>709</x>
-     <y>-282</y>
+     <x>505</x>
+     <y>540</y>
     </hint>
     <hint type="destinationlabel">
-     <x>709</x>
-     <y>-252</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_Expand_SurfaceLocation</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>widget_Expand_SurfaceLocation</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>709</x>
-     <y>-105</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>709</x>
-     <y>103</y>
+     <x>565</x>
+     <y>574</y>
     </hint>
    </hints>
   </connection>
@@ -1160,28 +1204,44 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>709</x>
-     <y>134</y>
+     <x>474</x>
+     <y>382</y>
     </hint>
     <hint type="destinationlabel">
-     <x>709</x>
-     <y>342</y>
+     <x>493</x>
+     <y>473</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_Expand_ColorSelection</sender>
+   <sender>pushButton_Expand_SurfaceLocation</sender>
    <signal>clicked(bool)</signal>
-   <receiver>widget_Expand_ColorSelection</receiver>
+   <receiver>widget_Expand_SurfaceLocation</receiver>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>709</x>
-     <y>374</y>
+     <x>477</x>
+     <y>209</y>
     </hint>
     <hint type="destinationlabel">
-     <x>709</x>
-     <y>450</y>
+     <x>504</x>
+     <y>315</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Expand_SurfaceMain</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>widget_Expand_SurfaceMain</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>477</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>94</y>
     </hint>
    </hints>
   </connection>

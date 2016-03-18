@@ -14,6 +14,7 @@
 #include <QRadioButton>
 #include <QImage>
 #include <QStringList>
+#include <QToolButton>
 
 namespace Ui {
     class MainWindow;
@@ -39,7 +40,7 @@ private:
     void setComboBoxFuncItems();
     void setSlidersRange();
     void paramsChanged();
-    void changeChecked(QPushButton* pb, bool need = true);
+    void changeChecked(QToolButton* pb, bool need = true);
     int calcSliderTitleWidth(QStringList titles);
 
 private slots:
