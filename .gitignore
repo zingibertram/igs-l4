@@ -35,3 +35,4 @@ Makefile*
 igs-l4-cpp/*
 igs-l4-qml/*
 benchmark/*
+pro/*
