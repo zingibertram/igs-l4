@@ -14,8 +14,8 @@
    <string>Лабораторная работа №4</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../common/resources.qrc">
-    <normaloff>:/icons/resources/sphere_frame.png</normaloff>:/icons/resources/sphere_frame.png</iconset>
+   <iconset>
+    <normaloff>:/icon_theme/icon_theme/icon_theme.qrc</normaloff>:/icon_theme/icon_theme/icon_theme.qrc</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -77,9 +77,9 @@ background-color: black;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
-         <width>183</width>
-         <height>610</height>
+         <y>-206</y>
+         <width>147</width>
+         <height>606</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -134,8 +134,8 @@ background-color: black;</string>
               <string>Основное</string>
              </property>
              <property name="icon">
-              <iconset resource="../common/resources.qrc">
-               <normaloff>:/icons/resources/arrow-down.png</normaloff>:/icons/resources/arrow-down.png</iconset>
+              <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+               <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -304,8 +304,8 @@ background-color: black;</string>
               <string>Поверхность</string>
              </property>
              <property name="icon">
-              <iconset resource="../common/resources.qrc">
-               <normaloff>:/icons/resources/arrow-down.png</normaloff>:/icons/resources/arrow-down.png</iconset>
+              <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+               <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -429,8 +429,8 @@ background-color: black;</string>
               <string>Источник света</string>
              </property>
              <property name="icon">
-              <iconset resource="../common/resources.qrc">
-               <normaloff>:/icons/resources/arrow-down.png</normaloff>:/icons/resources/arrow-down.png</iconset>
+              <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+               <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -551,8 +551,8 @@ background-color: black;</string>
               <string>Выбор цвета</string>
              </property>
              <property name="icon">
-              <iconset resource="../common/resources.qrc">
-               <normaloff>:/icons/resources/arrow-down.png</normaloff>:/icons/resources/arrow-down.png</iconset>
+              <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+               <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -712,7 +712,7 @@ background-color: black;</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../common/resources.qrc"/>
+  <include location="../common/icon_theme/breeze_classic/actions_16.qrc"/>
  </resources>
  <connections>
   <connection>

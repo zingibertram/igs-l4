@@ -52,6 +52,40 @@ FORMS    += xml/mainwindow.ui \
     xml/cslider.ui
 
 RESOURCES += \
-    common/resources.qrc
+    common/resources.qrc \
+    common/icon_theme/breeze_classic/actions_16.qrc \
+    common/icon_theme/breeze_classic/actions_22.qrc \
+    common/icon_theme/breeze_classic/actions_24.qrc \
+    common/icon_theme/breeze_classic/actions_32.qrc \
+    common/icon_theme/breeze_classic/actions_48.qrc \
+    common/icon_theme/breeze_classic/applets_256.qrc \
+    common/icon_theme/breeze_classic/apps_16.qrc \
+    common/icon_theme/breeze_classic/apps_22.qrc \
+    common/icon_theme/breeze_classic/apps_32.qrc \
+    common/icon_theme/breeze_classic/apps_48.qrc \
+    common/icon_theme/breeze_classic/categories_16.qrc \
+    common/icon_theme/breeze_classic/categories_22.qrc \
+    common/icon_theme/breeze_classic/categories_32.qrc \
+    common/icon_theme/breeze_classic/categories_48.qrc \
+    common/icon_theme/breeze_classic/devices_16.qrc \
+    common/icon_theme/breeze_classic/devices_22.qrc \
+    common/icon_theme/breeze_classic/devices_48.qrc \
+    common/icon_theme/breeze_classic/devices_64.qrc \
+    common/icon_theme/breeze_classic/emblems_8.qrc \
+    common/icon_theme/breeze_classic/emblems_16.qrc \
+    common/icon_theme/breeze_classic/emblems_22.qrc \
+    common/icon_theme/breeze_classic/emotes_22.qrc \
+    common/icon_theme/breeze_classic/mimetypes_16.qrc \
+    common/icon_theme/breeze_classic/mimetypes_22.qrc \
+    common/icon_theme/breeze_classic/mimetypes_32.qrc \
+    common/icon_theme/breeze_classic/mimetypes_64.qrc \
+    common/icon_theme/breeze_classic/places_16.qrc \
+    common/icon_theme/breeze_classic/places_22.qrc \
+    common/icon_theme/breeze_classic/places_32.qrc \
+    common/icon_theme/breeze_classic/places_64.qrc \
+    common/icon_theme/breeze_classic/status_16.qrc \
+    common/icon_theme/breeze_classic/status_22.qrc \
+    common/icon_theme/breeze_classic/status_24.qrc \
+    common/icon_theme/breeze_classic/status_64.qrc
 
 RC_FILE += common/winico.rc
