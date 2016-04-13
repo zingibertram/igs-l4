@@ -1,0 +1,423 @@
+@release1 = #f6f7fa
+@release2 = #dadbde
+@border = #8f8f91
+@over = #99ff66 /*rgb(153, 255, 102)*/
+@press = #00cc33 /*rgb(0, 204, 51)*/
+@check1 = #ccff99 /* rgb(204, 255, 153)*/
+@check2 = #66cc33 /*rgb(102, 204, 51)*/
+@grey1 = #f0f0f0 /*rgb(240, 240, 240)*/
+@grey2 = #dcdcdc /*rgb(220, 220, 220)*/
+
+
+QGroupBox 
+{
+	border: 1px solid @border;
+	padding-top: 9px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	margin-top: 2ex;
+}
+
+QGroupBox::title
+{
+	border: 1px solid @border;
+	subcontrol-origin: margin;
+	subcontrol-position: top center;
+	padding: 0 1px;
+}
+
+
+QSlider::groove:horizontal
+{
+	border: 1px solid @border;
+	background: white;
+	height: 4px;
+}
+
+QSlider::sub-page:horizontal
+{
+	background: @over;
+	border: 1px solid @border;
+	height: 4px;
+}
+
+QSlider::add-page:horizontal
+{
+	background: #fff;
+	border: 1px solid @border;
+	height: 4px;
+}
+
+QSlider::handle:horizontal
+{
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+	border: 1px solid @border;
+	width: 8px;
+	margin-top: -4px;
+	margin-bottom: -4px;
+}
+
+QSlider::handle:horizontal:hover
+{
+	background: @over;
+}
+
+QSlider::handle:horizontal:pressed
+{
+	background: @press;
+}
+
+QSlider::sub-page:horizontal:disabled
+{
+	background: #bbb;
+	border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled
+{
+	background: #eee;
+	border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled
+{
+	background: #eee;
+	border: 1px solid #aaa;
+}
+
+
+QToolButton
+{
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+    border: 1px solid @border;
+    min-width: 80px;
+    min-height: 18px;
+ }
+
+QToolButton:checked
+{
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @check1, stop: 1 @check2);
+	border: 1px inset @border;
+}
+
+QToolButton:hover
+{
+	background: @over;
+}
+
+QToolButton:checked:hover
+{
+	background: @over;
+	border: 1px inset @border;
+}
+
+QToolButton:pressed
+{
+     background-color: @press;
+ }
+
+QToolButton:checked:pressed
+{
+	background-color: @press;
+	border: 1px inset @border;
+}
+
+
+QComboBox
+{
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+    border: 1px solid @border;
+	padding: 1px 18px 1px 3px;
+	min-width: 6em;
+	min-height: 16px;
+ }
+
+QComboBox::!editable:hover, QComboBox::drop-down:editable:hover
+{
+	background-color: @over;
+}
+
+QComboBox:editable
+{
+	background: white;
+}
+
+QComboBox:!editable, QComboBox::drop-down:editable
+{
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+}
+
+QComboBox:!editable:on, QComboBox::drop-down:editable:on
+{
+	background-color: @press;
+}
+
+QComboBox:on
+{
+	padding-top: 3px;
+	padding-left: 4px;
+}
+
+QComboBox::drop-down
+{
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 15px;
+
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+}
+
+QComboBox::down-arrow
+{
+	image: url(:/icons/resources/arrow-down.png);
+ }
+
+QComboBox::down-arrow:on
+{
+	top: 1px;
+	left: 1px;
+}
+
+QComboBox QAbstractItemView
+{
+	border: 1px solid darkgray;
+	selection-background-color: @over;
+	selection-color: black;
+}
+
+
+QMenuBar
+{
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+	border: 1px solid @border;
+	margin-left: -1px;
+	margin-top: -1px;
+	margin-right: -1px;
+ }
+
+QMenuBar::item
+{
+	spacing: 4px;
+	padding: 1px 4px;
+	background: transparent;
+}
+
+QMenuBar::item:selected
+{
+ 	background: @over;
+}
+
+QMenuBar::item:pressed
+{
+	background: @press;
+}
+
+
+QMenu
+{
+	background-color: @grey1;
+	border: 1px solid @border;
+}
+
+QMenu::item
+{
+	background-color: transparent;
+}
+
+QMenu::item:selected
+{
+	background-color: @over;
+	color: black;
+}
+
+QMenu::item:pressed
+{
+	background-color: @press;
+}
+
+QMenu::separator
+{
+	height: 1px;
+	background: @border;
+	margin-left: 16px;
+	margin-right: 8px;
+}
+
+
+QRadioButton::indicator
+{
+	width: 11px;
+	height: 11px;
+	border: 1px solid @border;
+	border-radius: 6px;
+}
+
+QRadioButton::indicator::unchecked
+{
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+}
+
+QRadioButton::indicator::checked
+{
+	image: url(:/icons/resources/rbindicator.png);
+}
+
+QRadioButton::indicator:hover
+{
+	background-color: @over;
+}
+
+QRadioButton::indicator:pressed
+{
+	background-color: @press;
+}
+
+
+QCheckBox::indicator
+{
+	width: 11px;
+	height: 11px;
+	border: 1px solid @border;
+}
+
+QCheckBox::indicator::unchecked
+{
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+}
+
+QCheckBox::indicator::checked
+{
+	image: url(:/icons/resources/cbindicator.png);
+}
+
+QCheckBox::indicator:hover
+{
+	background-color: @over;
+}
+
+QCheckBox::indicator:pressed
+{
+	background-color: @press;
+}
+
+
+QScrollBar:vertical
+{
+	background: @grey1;
+	border: 1px solid @grey2;
+	width: 18px;
+	margin: 17px 0 17px 0;
+}
+
+QScrollBar::handle:vertical
+{
+	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 @release1, stop: 1 @release2);
+	border: 1px solid @border;
+	min-height: 20px;
+	margin: -1px -1px
+}
+
+QScrollBar::handle:vertical:hover
+{
+	background: @over;
+}
+
+QScrollBar::handle:vertical:pressed
+{
+	background: @press;
+}
+
+QScrollBar::add-line:vertical
+{
+	border: 1px solid @border;
+	background: none;
+	height: 16px;
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical
+{
+	border: 1px solid @border;
+	background: none;
+	height: 16px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical
+{
+	border: 1px solid @border;
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+	image: url(:/icons/resources/arrow-up.png);
+}
+
+QScrollBar::up-arrow:vertical:hover
+{
+	background: @over;
+}
+
+QScrollBar::up-arrow:vertical:pressed
+{
+	background: @press;
+}
+
+QScrollBar::down-arrow:vertical
+{
+	border: 1px solid @border;
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+	image: url(:/icons/resources/arrow-down.png);
+}
+
+QScrollBar::down-arrow:vertical:hover
+{
+	background: @over;
+}
+
+QScrollBar::down-arrow:vertical:pressed
+{
+	background: @press;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+{
+	background: none;
+}
+
+QScrollBar::add-page:vertical:pressed, QScrollBar::sub-page:vertical:pressed
+{
+	background: @press;
+	border: 1px solid @border;
+}
+
+
+Line
+{
+	border: 1px solid @border;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @release1, stop: 1 @release2);
+}
+/*
+QLabel#label_SurfaceLocation
+{
+	border: 1px solid @border;
+	margin-top: 10px;
+}
+
+QLabel#label_SurfaceMain
+{
+	border: 1px solid @border;
+}
+QLabel#label_LightSource
+{
+	border: 1px solid @border;
+	margin-top: 10px;
+}
+
+QLabel#label_ColorSelection
+{
+	border: 1px solid @border;
+	margin-top: 10px;
+}*/
