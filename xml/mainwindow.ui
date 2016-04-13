@@ -6,16 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>633</width>
-    <height>438</height>
+    <width>615</width>
+    <height>421</height>
    </rect>
-  </property>
-  <property name="font">
-   <font>
-    <family>Arial</family>
-    <weight>50</weight>
-    <bold>false</bold>
-   </font>
   </property>
   <property name="windowTitle">
    <string>Лабораторная работа №4</string>
@@ -33,16 +26,16 @@
      <number>3</number>
     </property>
     <property name="leftMargin">
-     <number>4</number>
+     <number>0</number>
     </property>
     <property name="topMargin">
-     <number>4</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>4</number>
+     <number>0</number>
     </property>
     <property name="bottomMargin">
-     <number>4</number>
+     <number>0</number>
     </property>
     <item>
      <widget class="SurfaceImage" name="graphicsView_Surface">
@@ -68,12 +61,6 @@ background-color: black;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="minimumSize">
-       <size>
-        <width>222</width>
-        <height>0</height>
-       </size>
-      </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
       </property>
@@ -91,8 +78,8 @@ background-color: black;</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>204</width>
-         <height>591</height>
+         <width>183</width>
+         <height>610</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -114,22 +101,10 @@ background-color: black;</string>
         <item>
          <widget class="QWidget" name="widget_Controls" native="true">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>200</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_11">
            <property name="leftMargin">
@@ -147,7 +122,7 @@ background-color: black;</string>
            <item>
             <widget class="QToolButton" name="pushButton_Expand_SurfaceMain">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -317,16 +292,10 @@ background-color: black;</string>
            <item>
             <widget class="QToolButton" name="pushButton_Expand_SurfaceLocation">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>82</width>
-               <height>20</height>
-              </size>
              </property>
              <property name="styleSheet">
               <string notr="true">text-align: left;</string>
@@ -448,16 +417,10 @@ background-color: black;</string>
            <item>
             <widget class="QToolButton" name="pushButton_Expand_LightSource">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>82</width>
-               <height>20</height>
-              </size>
              </property>
              <property name="styleSheet">
               <string notr="true">text-align: left;</string>
@@ -576,16 +539,10 @@ background-color: black;</string>
            <item>
             <widget class="QToolButton" name="pushButton_Expand_ColorSelection">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>82</width>
-               <height>20</height>
-              </size>
              </property>
              <property name="styleSheet">
               <string notr="true">text-align: left;</string>
@@ -684,8 +641,8 @@ background-color: black;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>633</width>
-     <height>18</height>
+     <width>615</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

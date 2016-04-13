@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>219</width>
-    <height>102</height>
+    <width>98</width>
+    <height>84</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -23,6 +23,9 @@
    <string>GroupBox</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_4">
+   <property name="spacing">
+    <number>6</number>
+   </property>
    <property name="leftMargin">
     <number>1</number>
    </property>
@@ -42,9 +45,6 @@
      </property>
      <item>
       <layout class="QHBoxLayout" name="hLayout_R">
-       <property name="spacing">
-        <number>6</number>
-       </property>
        <item>
         <widget class="QLabel" name="label_R">
          <property name="text">
@@ -86,9 +86,6 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="hLayout_G">
-       <property name="spacing">
-        <number>6</number>
-       </property>
        <item>
         <widget class="QLabel" name="label_G">
          <property name="text">
@@ -130,9 +127,6 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="hLayout_B">
-       <property name="spacing">
-        <number>6</number>
-       </property>
        <item>
         <widget class="QLabel" name="label_B">
          <property name="text">
