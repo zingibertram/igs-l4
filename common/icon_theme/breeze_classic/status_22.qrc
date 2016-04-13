@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>status/22/audio-ready.svg</file>
+        <file>status/22/audio-volume-high.svg</file>
+        <file>status/22/audio-volume-low.svg</file>
+        <file>status/22/audio-volume-medium.svg</file>
+        <file>status/22/audio-volume-muted.svg</file>
+        <file>status/22/camera-off.svg</file>
+        <file>status/22/camera-on.svg</file>
+        <file>status/22/camera-ready.svg</file>
+        <file>status/22/dialog-information.svg</file>
+        <file>status/22/dropboxstatus-busy.svg</file>
+        <file>status/22/dropboxstatus-idle.svg</file>
+        <file>status/22/dropboxstatus-x.svg</file>
+        <file>status/22/kdeconnect-tray.svg</file>
+        <file>status/22/mic-off.svg</file>
+        <file>status/22/mic-on.svg</file>
+        <file>status/22/mic-ready.svg</file>
+        <file>status/22/security-high.svg</file>
+        <file>status/22/security-low.svg</file>
+        <file>status/22/security-medium.svg</file>
+        <file>status/22/state-download.svg</file>
+        <file>status/22/state-information.svg</file>
+        <file>status/22/state-offline.svg</file>
+        <file>status/22/state-pause.svg</file>
+        <file>status/22/state-warning.svg</file>
+        <file>status/22/update-high.svg</file>
+        <file>status/22/update-low.svg</file>
+        <file>status/22/update-medium.svg</file>
+        <file>status/22/update-none.svg</file>
+        <file>status/22/user-idle.svg</file>
+    </qresource>
+</RCC>

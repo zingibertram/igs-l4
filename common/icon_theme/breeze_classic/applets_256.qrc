@@ -1,0 +1,46 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>applets/256/applets-template.svg</file>
+        <file>applets/256/org.kde.ktpcontactlist.svg</file>
+        <file>applets/256/org.kde.muonnotifier.svg</file>
+        <file>applets/256/org.kde.plasma.activitybar.svg</file>
+        <file>applets/256/org.kde.plasma.analogclock.svg</file>
+        <file>applets/256/org.kde.plasma.battery.svg</file>
+        <file>applets/256/org.kde.plasma.binaryclock.svg</file>
+        <file>applets/256/org.kde.plasma.calculator.svg</file>
+        <file>applets/256/org.kde.plasma.calendar.svg</file>
+        <file>applets/256/org.kde.plasma.clipboard.svg</file>
+        <file>applets/256/org.kde.plasma.colorpicker.svg</file>
+        <file>applets/256/org.kde.plasma.comic.svg</file>
+        <file>applets/256/org.kde.plasma.date.svg</file>
+        <file>applets/256/org.kde.plasma.devicenotifier.svg</file>
+        <file>applets/256/org.kde.plasma.digitalclock.svg</file>
+        <file>applets/256/org.kde.plasma.fifteenpuzzle.svg</file>
+        <file>applets/256/org.kde.plasma.folder.svg</file>
+        <file>applets/256/org.kde.plasma.frame.svg</file>
+        <file>applets/256/org.kde.plasma.fuzzyclock.svg</file>
+        <file>applets/256/org.kde.plasma.icontasks.svg</file>
+        <file>applets/256/org.kde.plasma.kicker.svg</file>
+        <file>applets/256/org.kde.plasma.kickerdash.svg</file>
+        <file>applets/256/org.kde.plasma.kickoff.svg</file>
+        <file>applets/256/org.kde.plasma.mediacontroller.svg</file>
+        <file>applets/256/org.kde.plasma.networkmanagement.svg</file>
+        <file>applets/256/org.kde.plasma.notes.svg</file>
+        <file>applets/256/org.kde.plasma.pager.svg</file>
+        <file>applets/256/org.kde.plasma.quicklaunch.svg</file>
+        <file>applets/256/org.kde.plasma.showactivitymanager.svg</file>
+        <file>applets/256/org.kde.plasma.systemloadviewer.svg</file>
+        <file>applets/256/org.kde.plasma.systemmonitor.cpu.svg</file>
+        <file>applets/256/org.kde.plasma.systemmonitor.diskactivity.svg</file>
+        <file>applets/256/org.kde.plasma.systemmonitor.diskusage.svg</file>
+        <file>applets/256/org.kde.plasma.systemmonitor.memory.svg</file>
+        <file>applets/256/org.kde.plasma.systemmonitor.net.svg</file>
+        <file>applets/256/org.kde.plasma.systemtray.svg</file>
+        <file>applets/256/org.kde.plasma.taskmanager.svg</file>
+        <file>applets/256/org.kde.plasma.timer.svg</file>
+        <file>applets/256/org.kde.plasma.userswitch.svg</file>
+        <file>applets/256/org.kde.plasma.userswitcher.svg</file>
+        <file>applets/256/org.kde.plasma.volume.svg</file>
+        <file>applets/256/org.kde.plasma.windowlist.svg</file>
+    </qresource>
+</RCC>

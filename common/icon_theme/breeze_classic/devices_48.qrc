@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>devices/48/computer.svg</file>
+    </qresource>
+</RCC>

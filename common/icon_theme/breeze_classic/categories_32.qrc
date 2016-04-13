@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>categories/32/applications-development.svg</file>
+        <file>categories/32/applications-education.svg</file>
+        <file>categories/32/applications-engineering.svg</file>
+        <file>categories/32/applications-games.svg</file>
+        <file>categories/32/applications-graphics.svg</file>
+        <file>categories/32/applications-internet.svg</file>
+        <file>categories/32/applications-multimedia.svg</file>
+        <file>categories/32/applications-office.svg</file>
+        <file>categories/32/applications-science.svg</file>
+        <file>categories/32/applications-utilities.svg</file>
+    </qresource>
+</RCC>

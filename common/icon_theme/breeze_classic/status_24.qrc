@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>status/24/dialog-information.svg</file>
+    </qresource>
+</RCC>

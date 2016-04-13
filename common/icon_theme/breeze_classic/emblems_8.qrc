@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>emblems/8/emblem-error.svg</file>
+        <file>emblems/8/emblem-information.svg</file>
+        <file>emblems/8/emblem-locked.svg</file>
+        <file>emblems/8/emblem-mounted.svg</file>
+        <file>emblems/8/emblem-pause.svg</file>
+        <file>emblems/8/emblem-question.svg</file>
+        <file>emblems/8/emblem-success.svg</file>
+        <file>emblems/8/emblem-unavailable.svg</file>
+        <file>emblems/8/emblem-unlocked.svg</file>
+        <file>emblems/8/emblem-unmounted.svg</file>
+        <file>emblems/8/emblem-warning.svg</file>
+    </qresource>
+</RCC>

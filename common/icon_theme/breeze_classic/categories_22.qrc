@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>categories/22/applications-system.svg</file>
+    </qresource>
+</RCC>

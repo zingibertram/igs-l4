@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>emblems/22/emblem-encrypted-unlocked.svg</file>
+        <file>emblems/22/emblem-favorite.svg</file>
+        <file>emblems/22/emblem-important.svg</file>
+        <file>emblems/22/emblem-locked.svg</file>
+        <file>emblems/22/emblem-symbolic-link.svg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,45 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>places/22/folder-activities.svg</file>
+        <file>places/22/folder-add.svg</file>
+        <file>places/22/folder-black.svg</file>
+        <file>places/22/folder-blue.svg</file>
+        <file>places/22/folder-brown.svg</file>
+        <file>places/22/folder-cloud.svg</file>
+        <file>places/22/folder-cyan.svg</file>
+        <file>places/22/folder-download.svg</file>
+        <file>places/22/folder-favorites.svg</file>
+        <file>places/22/folder-green.svg</file>
+        <file>places/22/folder-grey.svg</file>
+        <file>places/22/folder-html.svg</file>
+        <file>places/22/folder-important.svg</file>
+        <file>places/22/folder-locked.svg</file>
+        <file>places/22/folder-magenta.svg</file>
+        <file>places/22/folder-mail.svg</file>
+        <file>places/22/folder-network.svg</file>
+        <file>places/22/folder-open.svg</file>
+        <file>places/22/folder-orange.svg</file>
+        <file>places/22/folder-pictures.svg</file>
+        <file>places/22/folder-publicshare.svg</file>
+        <file>places/22/folder-red.svg</file>
+        <file>places/22/folder-script.svg</file>
+        <file>places/22/folder-sound.svg</file>
+        <file>places/22/folder-tar.svg</file>
+        <file>places/22/folder-temp.svg</file>
+        <file>places/22/folder-templates.svg</file>
+        <file>places/22/folder-text.svg</file>
+        <file>places/22/folder-videos.svg</file>
+        <file>places/22/folder-violet.svg</file>
+        <file>places/22/folder-yellow.svg</file>
+        <file>places/22/folder.svg</file>
+        <file>places/22/mail-folder-inbox.svg</file>
+        <file>places/22/mail-folder-outbox.svg</file>
+        <file>places/22/mail-message.svg</file>
+        <file>places/22/network-server-database.svg</file>
+        <file>places/22/network-workgroup.svg</file>
+        <file>places/22/user-desktop.svg</file>
+        <file>places/22/user-home.svg</file>
+        <file>places/22/user-trash-full.svg</file>
+        <file>places/22/user-trash.svg</file>
+    </qresource>
+</RCC>

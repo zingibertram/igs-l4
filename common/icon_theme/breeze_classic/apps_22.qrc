@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>apps/22/akregator.svg</file>
+        <file>apps/22/fcitx-googlepinyin.svg</file>
+        <file>apps/22/fcitx-pinyin-libpinyin.svg</file>
+        <file>apps/22/fcitx-pinyin.svg</file>
+        <file>apps/22/fcitx-shuangpin-libpinyin.svg</file>
+        <file>apps/22/fcitx-shuangpin.svg</file>
+        <file>apps/22/fcitx-sunpinyin.svg</file>
+        <file>apps/22/fcitx-wubi.svg</file>
+        <file>apps/22/homerun.svg</file>
+        <file>apps/22/kde.svg</file>
+        <file>apps/22/ktorrent.svg</file>
+        <file>apps/22/plasma.svg</file>
+        <file>apps/22/preferences-desktop-font.svg</file>
+        <file>apps/22/system-file-manager.svg</file>
+        <file>apps/22/system-help.svg</file>
+        <file>apps/22/system-lock-screen.svg</file>
+        <file>apps/22/system-log-out.svg</file>
+        <file>apps/22/system-shutdown.svg</file>
+        <file>apps/22/system-suspend-hibernate.svg</file>
+        <file>apps/22/system-suspend.svg</file>
+        <file>apps/22/system-switch-user.svg</file>
+        <file>apps/22/utilities-terminal.svg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>emblems/16/emblem-symbolic-link.svg</file>
+        <file>emblems/16/vcs-added.svg</file>
+        <file>emblems/16/vcs-conflicting.svg</file>
+        <file>emblems/16/vcs-locally-modified-unstaged.svg</file>
+        <file>emblems/16/vcs-locally-modified.svg</file>
+        <file>emblems/16/vcs-normal.svg</file>
+        <file>emblems/16/vcs-removed.svg</file>
+        <file>emblems/16/vcs-update-required.svg</file>
+    </qresource>
+</RCC>

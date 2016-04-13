@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>apps/16/nepomuk.svg</file>
+        <file>apps/16/system-help.svg</file>
+    </qresource>
+</RCC>

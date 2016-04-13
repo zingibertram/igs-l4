@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>devices/16/computer-laptop.svg</file>
+        <file>devices/16/computer.svg</file>
+        <file>devices/16/drive-harddisk.svg</file>
+        <file>devices/16/drive-removable-media.svg</file>
+        <file>devices/16/input-tablet.svg</file>
+        <file>devices/16/media-floppy.svg</file>
+        <file>devices/16/media-optical-audio.svg</file>
+        <file>devices/16/media-optical-data.svg</file>
+        <file>devices/16/media-optical-mixed-cd.svg</file>
+        <file>devices/16/media-optical-recordable.svg</file>
+        <file>devices/16/media-optical-video.svg</file>
+        <file>devices/16/media-optical.svg</file>
+        <file>devices/16/multimedia-player-ipod-mini-blue.svg</file>
+        <file>devices/16/network-bluetooth.svg</file>
+        <file>devices/16/network-modem.svg</file>
+        <file>devices/16/network-vpn.svg</file>
+        <file>devices/16/network-wired-activated.svg</file>
+        <file>devices/16/network-wired-unavailable.svg</file>
+        <file>devices/16/network-wireless-connected-00.svg</file>
+        <file>devices/16/network-wireless-connected-100.svg</file>
+        <file>devices/16/network-wireless-connected-25.svg</file>
+        <file>devices/16/network-wireless-connected-50.svg</file>
+        <file>devices/16/network-wireless-connected-75.svg</file>
+        <file>devices/16/network-wireless-disconnected.svg</file>
+        <file>devices/16/smartphone.svg</file>
+        <file>devices/16/tablet.svg</file>
+    </qresource>
+</RCC>

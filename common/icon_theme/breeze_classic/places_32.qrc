@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>places/32/folder-activities.svg</file>
+        <file>places/32/folder-black.svg</file>
+        <file>places/32/folder-blue.svg</file>
+        <file>places/32/folder-bookmark.svg</file>
+        <file>places/32/folder-brown.svg</file>
+        <file>places/32/folder-cloud.svg</file>
+        <file>places/32/folder-cyan.svg</file>
+        <file>places/32/folder-development.svg</file>
+        <file>places/32/folder-documents.svg</file>
+        <file>places/32/folder-download.svg</file>
+        <file>places/32/folder-favorites.svg</file>
+        <file>places/32/folder-green.svg</file>
+        <file>places/32/folder-grey.svg</file>
+        <file>places/32/folder-html.svg</file>
+        <file>places/32/folder-important.svg</file>
+        <file>places/32/folder-locked.svg</file>
+        <file>places/32/folder-magenta.svg</file>
+        <file>places/32/folder-mail.svg</file>
+        <file>places/32/folder-network.svg</file>
+        <file>places/32/folder-open.svg</file>
+        <file>places/32/folder-orange.svg</file>
+        <file>places/32/folder-pictures.svg</file>
+        <file>places/32/folder-print.svg</file>
+        <file>places/32/folder-publicshare.svg</file>
+        <file>places/32/folder-red.svg</file>
+        <file>places/32/folder-script.svg</file>
+        <file>places/32/folder-sound.svg</file>
+        <file>places/32/folder-tar.svg</file>
+        <file>places/32/folder-temp.svg</file>
+        <file>places/32/folder-templates.svg</file>
+        <file>places/32/folder-text.svg</file>
+        <file>places/32/folder-videos.svg</file>
+        <file>places/32/folder-violet.svg</file>
+        <file>places/32/folder-yellow.svg</file>
+        <file>places/32/folder.svg</file>
+        <file>places/32/network-workgroup.svg</file>
+        <file>places/32/user-desktop.svg</file>
+        <file>places/32/user-home.svg</file>
+        <file>places/32/user-trash-full.svg</file>
+        <file>places/32/user-trash.svg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>devices/64/audio-card.svg</file>
+        <file>devices/64/audio-heaphones.svg</file>
+        <file>devices/64/battery.svg</file>
+        <file>devices/64/camera-photo.svg</file>
+        <file>devices/64/camera-web.svg</file>
+        <file>devices/64/computer-laptop.svg</file>
+        <file>devices/64/computer.svg</file>
+        <file>devices/64/cpu.svg</file>
+        <file>devices/64/drive-harddisk.svg</file>
+        <file>devices/64/drive-removable-media.svg</file>
+        <file>devices/64/input-gaming.svg</file>
+        <file>devices/64/input-keyboard.svg</file>
+        <file>devices/64/input-mouse.svg</file>
+        <file>devices/64/input-tablet.svg</file>
+        <file>devices/64/input-touchpad.svg</file>
+        <file>devices/64/media-flash-memory-stick.svg</file>
+        <file>devices/64/media-flash-sd-mmc.svg</file>
+        <file>devices/64/media-flash.svg</file>
+        <file>devices/64/media-optical-audio.svg</file>
+        <file>devices/64/media-optical-blu-ray.svg</file>
+        <file>devices/64/media-optical-data.svg</file>
+        <file>devices/64/media-optical-dvd.svg</file>
+        <file>devices/64/media-optical-recordable.svg</file>
+        <file>devices/64/media-optical-video.svg</file>
+        <file>devices/64/media-optical.svg</file>
+        <file>devices/64/multimedia-player.svg</file>
+        <file>devices/64/network-card.svg</file>
+        <file>devices/64/printer.svg</file>
+        <file>devices/64/scanner.svg</file>
+        <file>devices/64/smartphone.svg</file>
+        <file>devices/64/video-display.svg</file>
+        <file>devices/64/video-television.svg</file>
+    </qresource>
+</RCC>

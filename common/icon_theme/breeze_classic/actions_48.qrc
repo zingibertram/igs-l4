@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>actions/48/bookmarks.svg</file>
+        <file>actions/48/document-open-recent.svg</file>
+    </qresource>
+</RCC>

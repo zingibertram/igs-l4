@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>status/64/dialog-error.svg</file>
+        <file>status/64/dialog-information.svg</file>
+        <file>status/64/dialog-password.svg</file>
+        <file>status/64/dialog-question.svg</file>
+        <file>status/64/dialog-warning.svg</file>
+        <file>status/64/security-high.svg</file>
+        <file>status/64/security-low.svg</file>
+        <file>status/64/security-medium.svg</file>
+    </qresource>
+</RCC>

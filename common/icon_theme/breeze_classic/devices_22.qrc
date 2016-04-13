@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/breeze_classic">
+        <file>devices/22/computer-laptop.svg</file>
+        <file>devices/22/computer.svg</file>
+        <file>devices/22/drive-harddisk.svg</file>
+        <file>devices/22/drive-removable-media.svg</file>
+        <file>devices/22/input-keyboard.svg</file>
+        <file>devices/22/input-tablet.svg</file>
+        <file>devices/22/input-touchpad.svg</file>
+        <file>devices/22/media-floppy.svg</file>
+        <file>devices/22/media-optical-data.svg</file>
+        <file>devices/22/media-optical-mixed-cd.svg</file>
+        <file>devices/22/media-optical-recordable.svg</file>
+        <file>devices/22/multimedia-player-ipod-mini-blue.svg</file>
+        <file>devices/22/network-bluetooth.svg</file>
+        <file>devices/22/network-modem.svg</file>
+        <file>devices/22/network-vpn.svg</file>
+        <file>devices/22/network-wired-activated.svg</file>
+        <file>devices/22/network-wired-unavailable.svg</file>
+        <file>devices/22/network-wireless-connected-00.svg</file>
+        <file>devices/22/network-wireless-connected-100.svg</file>
+        <file>devices/22/network-wireless-connected-25.svg</file>
+        <file>devices/22/network-wireless-connected-50.svg</file>
+        <file>devices/22/network-wireless-connected-75.svg</file>
+        <file>devices/22/network-wireless-disconnected.svg</file>
+        <file>devices/22/smartphone.svg</file>
+        <file>devices/22/tablet.svg</file>
+    </qresource>
+</RCC>
