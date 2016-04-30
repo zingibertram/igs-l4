@@ -242,11 +242,16 @@ double Matrix::vectorLength()
     return -1;
 }
 
+int toInt(double d)
+{
+    return d + 0.5;
+}
+
 Point3D Matrix::toPoint3D()
 {
     if (mat[0][3] == 1)
     {
-        return Point3D(mat[0][0], mat[0][1], mat[0][2]);
+        return Point3D(toInt(mat[0][0]), toInt(mat[0][1]), toInt(mat[0][2]));
     }
     return Point3D(0, 0, 0);
 }

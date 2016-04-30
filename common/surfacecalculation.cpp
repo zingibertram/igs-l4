@@ -82,7 +82,7 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
         drawing->setPolygon(i);
 
         double prevSY = C.y() - 1.0;
-        for (double sy = C.y(); sy <= A.y(); sy += 0.5)
+        for (double sy = (int)C.y(); sy <= (int)(A.y() + 0.5); sy++)
         {
             if ((int)prevSY == (int)sy)
             {
@@ -140,7 +140,7 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
                 drawing->swapAB();
             }
             double prevSX = xa - 1.0;
-            for (double sx = xa; sx <= xb; sx += 0.5)
+            for (double sx = (int)xa; sx <= (int)(xb + 0.5); sx++)
             {
                 if ((int)prevSX == (int)sx)
                 {
