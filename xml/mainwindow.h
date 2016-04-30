@@ -80,6 +80,8 @@ private slots:
     void interiorColor_Changed(QColor color);
     void dotColor_Changed(QColor color);
     void absentColor_Changed(QColor color);
+
+    void on_expandBtn_Clicked(bool checked);
 };
 
 #endif // MAINWINDOW_H

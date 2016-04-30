@@ -7,6 +7,9 @@
 #include <QStringList>
 #include <QFont>
 #include <QFontMetrics>
+#include <QToolButton>
+#include <QIcon>
+#include <qdebug.h>
 
 #include <math.h>
 
@@ -25,6 +28,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->radioButton_WireframeShading->click();
 
     paramsChanged();
+
+    QWidget *w = ui->dockWidget->titleBarWidget();
+    qDebug() << (w == 0);
+//    w->hide();
 }
 
 MainWindow::~MainWindow()
@@ -72,6 +79,11 @@ void MainWindow::setConnection()
     connect(ui->colorBox_Absent, SIGNAL(colorChanged(QColor)), this, SLOT(absentColor_Changed(QColor)));
     connect(ui->colorBox_Exterior, SIGNAL(colorChanged(QColor)), this, SLOT(exteriorColor_Changed(QColor)));
     connect(ui->colorBox_Interior, SIGNAL(colorChanged(QColor)), this, SLOT(interiorColor_Changed(QColor)));
+
+    connect(ui->pushButton_Expand_ColorSelection, SIGNAL(clicked(bool)), this, SLOT(on_expandBtn_Clicked(bool)));
+    connect(ui->pushButton_Expand_LightSource, SIGNAL(clicked(bool)), this, SLOT(on_expandBtn_Clicked(bool)));
+    connect(ui->pushButton_Expand_SurfaceLocation, SIGNAL(clicked(bool)), this, SLOT(on_expandBtn_Clicked(bool)));
+    connect(ui->pushButton_Expand_SurfaceMain, SIGNAL(clicked(bool)), this, SLOT(on_expandBtn_Clicked(bool)));
 }
 
 void MainWindow::setComboBoxFuncItems()
@@ -482,4 +494,19 @@ int MainWindow::calcSliderTitleWidth(QStringList titles)
         }
     }
     return width;
+}
+
+void MainWindow::on_expandBtn_Clicked(bool checked)
+{
+    QToolButton *tbtn = (QToolButton*)sender();
+    QIcon icon;
+    if (checked)
+    {
+        icon = QIcon(":/breeze_classic/actions/16/go-up.svg");
+    }
+    else
+    {
+        icon = QIcon(":/breeze_classic/actions/16/go-down.svg");
+    }
+    tbtn->setIcon(icon);
 }

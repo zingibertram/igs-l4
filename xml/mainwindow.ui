@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>615</width>
-    <height>421</height>
+    <width>569</width>
+    <height>465</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,587 +53,6 @@ background-color: black;</string>
       </property>
      </widget>
     </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QScrollArea" name="scrollArea_Controls">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>-206</y>
-         <width>147</width>
-         <height>606</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <property name="spacing">
-         <number>6</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QWidget" name="widget_Controls" native="true">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_11">
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QToolButton" name="pushButton_Expand_SurfaceMain">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">text-align: left;</string>
-             </property>
-             <property name="text">
-              <string>Основное</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
-               <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-             <property name="toolButtonStyle">
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-             <property name="autoRaise">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="widget_Expand_SurfaceMain" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QGroupBox" name="groupBox_SurfaceFunction">
-                <property name="title">
-                 <string>Функция</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_3">
-                 <property name="spacing">
-                  <number>1</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>1</number>
-                 </property>
-                 <item>
-                  <widget class="QComboBox" name="comboBox_SurfaceFunctions"/>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QGroupBox" name="groupBox_Shading">
-                <property name="title">
-                 <string>Закраска</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_2">
-                 <property name="leftMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="spacing">
-                  <number>1</number>
-                 </property>
-                 <item row="1" column="0">
-                  <widget class="QRadioButton" name="radioButton_WireframeShading">
-                   <property name="text">
-                    <string>Каркас</string>
-                   </property>
-                   <property name="checked">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QRadioButton" name="radioButton_SortFlatShading">
-                   <property name="text">
-                    <string>&amp;Flat УНЛиП</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QRadioButton" name="radioButton_HuroShading">
-                   <property name="text">
-                    <string>Гуро</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QRadioButton" name="radioButton_FongShding">
-                   <property name="text">
-                    <string>Фонга</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QGroupBox" name="groupBox_Texture">
-                <property name="title">
-                 <string>Текстура</string>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_8">
-                 <property name="spacing">
-                  <number>1</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>1</number>
-                 </property>
-                 <item>
-                  <widget class="QCheckBox" name="checkBox_Textured">
-                   <property name="text">
-                    <string>Наложить</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QToolButton" name="pushButton_ChooseTexture">
-                   <property name="text">
-                    <string>Выбрать</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QToolButton" name="pushButton_Expand_SurfaceLocation">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">text-align: left;</string>
-             </property>
-             <property name="text">
-              <string>Поверхность</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
-               <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-             <property name="toolButtonStyle">
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-             <property name="autoRaise">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="widget_Expand_SurfaceLocation" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_7">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QGroupBox" name="groupBox_SurfaceParams">
-                <property name="title">
-                 <string>Параметры</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_6">
-                 <property name="spacing">
-                  <number>1</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>1</number>
-                 </property>
-                 <item>
-                  <widget class="CSlider" name="slider_U_Max" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_V_Max" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_U_Interval" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_V_Interval" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_U_Param" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_V_Param" native="true"/>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QGroupBox" name="groupBox_Rotate">
-                <property name="title">
-                 <string>Повороты</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_10">
-                 <property name="spacing">
-                  <number>1</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>1</number>
-                 </property>
-                 <item>
-                  <widget class="CSlider" name="slider_X_Rotate" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_Y_Rotate" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_Z_Rotate" native="true"/>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QToolButton" name="pushButton_Expand_LightSource">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">text-align: left;</string>
-             </property>
-             <property name="text">
-              <string>Источник света</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
-               <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-             <property name="toolButtonStyle">
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-             <property name="autoRaise">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="widget_Expand_LightSource" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_8">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QGroupBox" name="groupBox_IlluminantParams">
-                <property name="title">
-                 <string>Параметры</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_4">
-                 <property name="spacing">
-                  <number>1</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>1</number>
-                 </property>
-                 <item>
-                  <widget class="CSlider" name="slider_Absent" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_Diffusion" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_Specular" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_Power" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_Alpha" native="true"/>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QGroupBox" name="groupBox_IlluminantCoords">
-                <property name="title">
-                 <string>Координаты</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout">
-                 <property name="spacing">
-                  <number>1</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>1</number>
-                 </property>
-                 <item>
-                  <widget class="CSlider" name="slider_X_Illuminant" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_Y_Illuminant" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="CSlider" name="slider_Z_Illuminant" native="true"/>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QToolButton" name="pushButton_Expand_ColorSelection">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">text-align: left;</string>
-             </property>
-             <property name="text">
-              <string>Выбор цвета</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
-               <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-             <property name="toolButtonStyle">
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-             <property name="autoRaise">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="widget_Expand_ColorSelection" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_9">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="ColorBox" name="colorBox_Dot">
-                <property name="title">
-                 <string>Точечный источник</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="ColorBox" name="colorBox_Absent">
-                <property name="title">
-                 <string>Рассеянный источник</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="ColorBox" name="colorBox_Exterior">
-                <property name="title">
-                 <string>Внешняя поверхность</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="ColorBox" name="colorBox_Interior">
-                <property name="title">
-                 <string>Внутренняя поверхность</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -641,9 +60,12 @@ background-color: black;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>615</width>
+     <width>569</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>true</bool>
    </property>
    <widget class="QMenu" name="menu_File">
     <property name="title">
@@ -665,27 +87,693 @@ background-color: black;</string>
    <addaction name="menu_File"/>
    <addaction name="menu_Help"/>
   </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_Reset"/>
+   <addaction name="action_ExpandAll"/>
+   <addaction name="action_CollapseAll"/>
+   <addaction name="separator"/>
+   <addaction name="action_About"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Управление поверхностью</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_12">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>3</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QScrollArea" name="scrollArea_Controls">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOn</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>-233</y>
+          <width>151</width>
+          <height>606</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QWidget" name="widget_Controls" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <property name="leftMargin">
+             <number>2</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>2</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QToolButton" name="pushButton_Expand_SurfaceMain">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">text-align: left;</string>
+              </property>
+              <property name="text">
+               <string>Основное</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+                <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+              <property name="toolButtonStyle">
+               <enum>Qt::ToolButtonTextBesideIcon</enum>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_Expand_SurfaceMain" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QGroupBox" name="groupBox_SurfaceFunction">
+                 <property name="title">
+                  <string>Функция</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>1</number>
+                  </property>
+                  <item>
+                   <widget class="QComboBox" name="comboBox_SurfaceFunctions"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_Shading">
+                 <property name="title">
+                  <string>Закраска</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_2">
+                  <property name="leftMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <item row="1" column="0">
+                   <widget class="QRadioButton" name="radioButton_WireframeShading">
+                    <property name="text">
+                     <string>Каркас</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QRadioButton" name="radioButton_SortFlatShading">
+                    <property name="text">
+                     <string>&amp;Flat УНЛиП</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QRadioButton" name="radioButton_HuroShading">
+                    <property name="text">
+                     <string>Гуро</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QRadioButton" name="radioButton_FongShding">
+                    <property name="text">
+                     <string>Фонга</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_Texture">
+                 <property name="title">
+                  <string>Текстура</string>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>1</number>
+                  </property>
+                  <item>
+                   <widget class="QCheckBox" name="checkBox_Textured">
+                    <property name="text">
+                     <string>Наложить</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="pushButton_ChooseTexture">
+                    <property name="text">
+                     <string>Выбрать</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="pushButton_Expand_SurfaceLocation">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">text-align: left;</string>
+              </property>
+              <property name="text">
+               <string>Поверхность</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+                <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+              <property name="toolButtonStyle">
+               <enum>Qt::ToolButtonTextBesideIcon</enum>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_Expand_SurfaceLocation" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_7">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QGroupBox" name="groupBox_SurfaceParams">
+                 <property name="title">
+                  <string>Параметры</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_6">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>1</number>
+                  </property>
+                  <item>
+                   <widget class="CSlider" name="slider_U_Max" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_V_Max" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_U_Interval" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_V_Interval" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_U_Param" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_V_Param" native="true"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_Rotate">
+                 <property name="title">
+                  <string>Повороты</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_10">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>1</number>
+                  </property>
+                  <item>
+                   <widget class="CSlider" name="slider_X_Rotate" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_Y_Rotate" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_Z_Rotate" native="true"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="pushButton_Expand_LightSource">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">text-align: left;</string>
+              </property>
+              <property name="text">
+               <string>Источник света</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+                <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+              <property name="toolButtonStyle">
+               <enum>Qt::ToolButtonTextBesideIcon</enum>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_Expand_LightSource" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_8">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QGroupBox" name="groupBox_IlluminantParams">
+                 <property name="title">
+                  <string>Параметры</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>1</number>
+                  </property>
+                  <item>
+                   <widget class="CSlider" name="slider_Absent" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_Diffusion" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_Specular" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_Power" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_Alpha" native="true"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_IlluminantCoords">
+                 <property name="title">
+                  <string>Координаты</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>1</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>1</number>
+                  </property>
+                  <item>
+                   <widget class="CSlider" name="slider_X_Illuminant" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_Y_Illuminant" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="CSlider" name="slider_Z_Illuminant" native="true"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="pushButton_Expand_ColorSelection">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">text-align: left;</string>
+              </property>
+              <property name="text">
+               <string>Выбор цвета</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+                <normaloff>:/breeze_classic/actions/16/go-down.svg</normaloff>:/breeze_classic/actions/16/go-down.svg</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+              <property name="toolButtonStyle">
+               <enum>Qt::ToolButtonTextBesideIcon</enum>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_Expand_ColorSelection" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="ColorBox" name="colorBox_Dot">
+                 <property name="title">
+                  <string>Точечный источник</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ColorBox" name="colorBox_Absent">
+                 <property name="title">
+                  <string>Рассеянный источник</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ColorBox" name="colorBox_Exterior">
+                 <property name="title">
+                  <string>Внешняя поверхность</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ColorBox" name="colorBox_Interior">
+                 <property name="title">
+                  <string>Внутренняя поверхность</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <action name="action_Exit">
+   <property name="icon">
+    <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+     <normaloff>:/breeze_classic/actions/16/window-close.svg</normaloff>:/breeze_classic/actions/16/window-close.svg</iconset>
+   </property>
    <property name="text">
     <string>Выход</string>
    </property>
   </action>
   <action name="action_About">
+   <property name="icon">
+    <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+     <normaloff>:/breeze_classic/actions/16/help-about.svg</normaloff>:/breeze_classic/actions/16/help-about.svg</iconset>
+   </property>
    <property name="text">
     <string>О программе</string>
    </property>
   </action>
   <action name="action_Reset">
+   <property name="icon">
+    <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+     <normaloff>:/breeze_classic/actions/16/view-restore.svg</normaloff>:/breeze_classic/actions/16/view-restore.svg</iconset>
+   </property>
    <property name="text">
     <string>Исходное состояние</string>
    </property>
   </action>
   <action name="action_ExpandAll">
+   <property name="icon">
+    <iconset resource="../common/icon_theme/breeze_classic/actions_22.qrc">
+     <normaloff>:/breeze_classic/actions/22/kdenlive-zindex-bottom.svg</normaloff>:/breeze_classic/actions/22/kdenlive-zindex-bottom.svg</iconset>
+   </property>
    <property name="text">
     <string>Развернуть все</string>
    </property>
   </action>
   <action name="action_CollapseAll">
+   <property name="icon">
+    <iconset resource="../common/icon_theme/breeze_classic/actions_22.qrc">
+     <normaloff>:/breeze_classic/actions/22/kdenlive-zindex-top.svg</normaloff>:/breeze_classic/actions/22/kdenlive-zindex-top.svg</iconset>
+   </property>
    <property name="text">
     <string>Свернуть все</string>
    </property>
@@ -713,6 +801,7 @@ background-color: black;</string>
  </customwidgets>
  <resources>
   <include location="../common/icon_theme/breeze_classic/actions_16.qrc"/>
+  <include location="../common/icon_theme/breeze_classic/actions_22.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -722,12 +811,12 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>505</x>
-     <y>540</y>
+     <x>597</x>
+     <y>452</y>
     </hint>
     <hint type="destinationlabel">
-     <x>565</x>
-     <y>574</y>
+     <x>597</x>
+     <y>528</y>
     </hint>
    </hints>
   </connection>
@@ -738,12 +827,12 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>474</x>
-     <y>382</y>
+     <x>597</x>
+     <y>283</y>
     </hint>
     <hint type="destinationlabel">
-     <x>493</x>
-     <y>473</y>
+     <x>597</x>
+     <y>415</y>
     </hint>
    </hints>
   </connection>
@@ -754,12 +843,12 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>477</x>
-     <y>209</y>
+     <x>597</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
-     <x>504</x>
-     <y>315</y>
+     <x>597</x>
+     <y>246</y>
     </hint>
    </hints>
   </connection>
@@ -770,12 +859,12 @@ background-color: black;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>477</x>
-     <y>43</y>
+     <x>597</x>
+     <y>-77</y>
     </hint>
     <hint type="destinationlabel">
-     <x>493</x>
-     <y>94</y>
+     <x>597</x>
+     <y>23</y>
     </hint>
    </hints>
   </connection>
