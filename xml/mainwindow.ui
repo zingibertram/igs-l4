@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>569</width>
-    <height>465</height>
+    <height>467</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -112,6 +112,7 @@ background-color: black;</string>
    <addaction name="action_Reset"/>
    <addaction name="action_ExpandAll"/>
    <addaction name="action_CollapseAll"/>
+   <addaction name="showMainMenu_act"/>
    <addaction name="separator"/>
    <addaction name="action_About"/>
   </widget>
@@ -173,9 +174,9 @@ background-color: black;</string>
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-233</y>
-          <width>151</width>
-          <height>606</height>
+          <y>0</y>
+          <width>160</width>
+          <height>609</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -376,6 +377,13 @@ background-color: black;</string>
                    <widget class="QToolButton" name="pushButton_ChooseTexture">
                     <property name="text">
                      <string>Выбрать</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../common/icon_theme/breeze_classic/actions_22.qrc">
+                      <normaloff>:/breeze_classic/actions/22/texture.svg</normaloff>:/breeze_classic/actions/22/texture.svg</iconset>
+                    </property>
+                    <property name="toolButtonStyle">
+                     <enum>Qt::ToolButtonTextBesideIcon</enum>
                     </property>
                    </widget>
                   </item>
@@ -776,6 +784,18 @@ background-color: black;</string>
    </property>
    <property name="text">
     <string>Свернуть все</string>
+   </property>
+  </action>
+  <action name="showMainMenu_act">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../common/icon_theme/breeze_classic/actions_16.qrc">
+     <normaloff>:/breeze_classic/actions/16/show-menu.svg</normaloff>:/breeze_classic/actions/16/show-menu.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Главное меню</string>
    </property>
   </action>
  </widget>

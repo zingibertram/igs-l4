@@ -18,6 +18,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->menuBar->setVisible(false);
+
     textureChanged(":/texture/resources/tex1.jpg");
     setConnection();
     setComboBoxFuncItems();
@@ -28,10 +31,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->radioButton_WireframeShading->click();
 
     paramsChanged();
-
-    QWidget *w = ui->dockWidget->titleBarWidget();
-    qDebug() << (w == 0);
-//    w->hide();
 }
 
 MainWindow::~MainWindow()
@@ -84,6 +83,8 @@ void MainWindow::setConnection()
     connect(ui->pushButton_Expand_LightSource, SIGNAL(clicked(bool)), this, SLOT(on_expandBtn_Clicked(bool)));
     connect(ui->pushButton_Expand_SurfaceLocation, SIGNAL(clicked(bool)), this, SLOT(on_expandBtn_Clicked(bool)));
     connect(ui->pushButton_Expand_SurfaceMain, SIGNAL(clicked(bool)), this, SLOT(on_expandBtn_Clicked(bool)));
+
+    connect(ui->showMainMenu_act, SIGNAL(triggered(bool)), ui->menuBar, SLOT(setVisible(bool)));
 }
 
 void MainWindow::setComboBoxFuncItems()
@@ -509,4 +510,14 @@ void MainWindow::on_expandBtn_Clicked(bool checked)
         icon = QIcon(":/breeze_classic/actions/16/go-down.svg");
     }
     tbtn->setIcon(icon);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    QMainWindow::keyPressEvent(event);
+    if (event->key() == Qt::Key_Alt)
+    {
+        ui->showMainMenu_act->trigger();
+        // ui->menuBar->setVisible(!ui->menuBar->isVisible());
+    }
 }
