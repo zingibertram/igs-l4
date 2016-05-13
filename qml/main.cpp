@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(":/icons/resources/sphere_frame.png"));
 
+    app.setStyle("Fusion");
+
     qmlRegisterType<MainWindow>("igs.l4", 1, 0, "MainWindow");
 
     QQmlApplicationEngine engine;

@@ -45,7 +45,8 @@ void Benchmark::setParams1()
     l.unit();
 
     surface.func = func;
-    surface.type = FONG;
+    //surface.type = FONG;
+    surface.type = HURO;
     surface.isTextured = false;
     border->dU = 360;
     border->dV = 1080;

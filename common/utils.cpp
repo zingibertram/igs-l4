@@ -7,28 +7,35 @@
 #include <math.h>
 #include <algorithm>
 
-void debugColor(QColor c, QString s)
+void U::debugColor(QColor c, QString s)
 {
     qDebug() << s << c.red() << ' ' << c.green() << ' ' << c.blue();
 }
 
 QColor U::colorInterpolation(QColor max, QColor min, double kmax, double kmin)
 {
-    double r = max.red() * kmax + min.red() * kmin;
+    // ускорить
+    // QColor::setRgb: RGB parameters out of range
+    int r = max.red() * kmax + min.red() * kmin;
     if (r > 255)
     {
         r = 255;
     }
-    double g = max.green() * kmax + min.green() * kmin;
+    int g = max.green() * kmax + min.green() * kmin;
     if (g > 255)
     {
         g = 255;
     }
-    double b = max.blue() * kmax + min.blue() * kmin;
+    int b = max.blue() * kmax + min.blue() * kmin;
     if (b > 255)
     {
         b = 255;
     }
+//    int a = max.alpha() * kmax + min.alpha() * kmin;
+//    if (a > 255)
+//    {
+//        a = 255;
+//    }
     return QColor(r, g, b);
 }
 
@@ -82,6 +89,6 @@ QColor U::calcColorImpl(Surface *surface, Vector n, QColor c)
     int B = std::min(surface->absent.blue(), c.blue()) * surface->ka
           + std::min(surface->dot.blue(), c.blue()) * cosnl
           + surface->dot.blue() * cosor;
-
+//    qDebug() << std::min(R, 255) << std::min(G, 255) << std::min(B, 255);
     return QColor(std::min(R, 255), std::min(G, 255), std::min(B, 255));
 }

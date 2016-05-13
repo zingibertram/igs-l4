@@ -81,14 +81,8 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
 
         drawing->setPolygon(i);
 
-        double prevSY = C.y() - 1.0;
-        for (double sy = (int)C.y(); sy <= (int)(A.y() + 0.5); sy++)
+        for (int sy = (int)C.y(); sy <= (int)(A.y() + 0.5); sy++)
         {
-            if ((int)prevSY == (int)sy)
-            {
-                continue;
-            }
-            prevSY = sy;
             double k;
             double xa, xb, za, zb;
 
@@ -139,14 +133,9 @@ void SurfaceCalculation::calculateColors(QImage* bmp)
 
                 drawing->swapAB();
             }
-            double prevSX = xa - 1.0;
-            for (double sx = (int)xa; sx <= (int)(xb + 0.5); sx++)
+
+            for (int sx = (int)xa; sx <= (int)(xb + 0.5); sx++)
             {
-                if ((int)prevSX == (int)sx)
-                {
-                    continue;
-                }
-                prevSX = sx;
                 double k = (sx - xa) / (xb - xa);
                 double sz = za + (zb - za) * k;
                 int xp = (int)(sx + center.x());
@@ -298,15 +287,21 @@ void SurfaceCalculation::setPolygonsCharacters(bool isColor)
 
 Vector SurfaceCalculation::calculatePolygonNormal(Point3D *A, Point3D *B, Point3D *C)
 {
-    double x = (A->y() - B->y())*(A->z() + B->z())
-             +(B->y() - C->y())*(B->z() + C->z())
-             +(C->y() - A->y())*(C->z() + A->z());
-    double y = (A->z() - B->z())*(A->x() + B->x())
-             +(B->z() - C->z())*(B->x() + C->x())
-             +(C->z() - A->z())*(C->x() + A->x());
-    double z = (A->x() - B->x())*(A->y() + B->y())
-             +(B->x() - C->x())*(B->y() + C->y())
-             +(C->x() - A->x())*(C->y() + A->y());
+    double ax = A->x();
+    double ay = A->y();
+    double az = A->z();
+
+    double bx = B->x();
+    double by = B->y();
+    double bz = B->z();
+
+    double cx = C->x();
+    double cy = C->y();
+    double cz = C->z();
+
+    double x = (ay - by)*(az + bz)+(by - cy)*(bz + cz)+(cy - ay)*(cz + az);
+    double y = (az - bz)*(ax + bx)+(bz - cz)*(bx + cx)+(cz - az)*(cx + ax);
+    double z = (ax - bx)*(ay + by)+(bx - cx)*(by + cy)+(cx - ax)*(cy + ay);
 
     Vector plain(x, y, z);
     plain.unit();

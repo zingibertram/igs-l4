@@ -51,6 +51,7 @@ void FongDrawing::calculatePixel(int xp, int yp, double sz, double k, QColor /* 
         QColor current;
 
         norm = veca + (vecb - veca) * k;
+        // QColor::setRgb: RGB parameters out of range
         if (surface->isTextured)
         {
             QColor texColor = getTextureColor(k);
